@@ -15,7 +15,9 @@ for (const w of [360, 1440]) {
   await p.addStyleTag({ content: '* { content-visibility: visible !important; }' });
     await p.evaluate(async () => {
     document.querySelectorAll('img[loading=lazy]').forEach((i) => (i.loading = 'eager'));
-    await Promise.all([...document.images].map((i) => (i.complete ? null : new Promise((r) => { i.onload = i.onerror = r; }))));
+    for (let y = 0; y < document.documentElement.scrollHeight; y += 500) { scrollTo(0, y); await new Promise((r) => setTimeout(r, 90)); }
+    const listas = () => [...document.images].every((i) => i.complete && i.naturalWidth > 0);
+    for (let n = 0; n < 60 && !listas(); n++) await new Promise((r) => setTimeout(r, 100));
     scrollTo(0, 0);
   });
   await p.waitForLoadState('networkidle');

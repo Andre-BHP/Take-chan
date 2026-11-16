@@ -24,6 +24,6 @@ await p.screenshot({ path: `${salida}-ticket.png` });
 await p.getByRole('button', { name: /Enviar por WhatsApp/ }).click();
 await p.waitForTimeout(500);
 await p.screenshot({ path: `${salida}-whatsapp.png` });
-console.log('mensaje:\n' + (await p.locator('dialog pre').textContent()));
+console.log('mensaje:\n' + (await p.locator('.burbuja-texto').textContent()));
 console.log('sw', await p.evaluate(() => document.documentElement.scrollWidth), errores.length ? 'ERRORES ' + errores.join(' | ') : 'sin errores');
 await b.close();

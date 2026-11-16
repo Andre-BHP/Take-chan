@@ -20,8 +20,8 @@ import { FOTOS } from './foto';
         @for (s of sucursales; track s.id) {
           <div>
             <p class="t-subtitulo"><a [routerLink]="'/' + s.id">{{ s.nombre }}</a>@if (!s.confirmada) { <span class="marca-tentativa">por confirmar</span> }</p>
-            <p class="t-dato tenue">{{ direccion(s) }}</p>
-            <p class="t-dato tenue">{{ horario(s) }}</p>
+            <p class="t-pequeno tenue">{{ direccion(s) }}</p>
+            <p class="t-dato tenue">{{ s.confirmada ? horario(s) : 'Horario pendiente' }}</p>
             <p><a class="enlace" [href]="s.mapa" target="_blank" rel="noopener">Mapa<span class="solo-lector"> de {{ s.nombre }} en Google Maps (se abre en otra pestaña)</span></a></p>
           </div>
         }

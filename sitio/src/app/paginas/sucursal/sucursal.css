@@ -1,11 +1,11 @@
-.cabeza { position: relative; isolation: isolate; overflow: hidden; min-height: min(72svh, 640px); display: grid; align-items: end; }
+.cabeza { position: relative; isolation: isolate; overflow: hidden; min-height: min(calc(100svh - 87px), 940px); display: grid; align-items: end; }
 .cabeza-foto { position: absolute; inset: 0; z-index: -2; }
 .cabeza::after { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(to top, rgba(18, 17, 16, .97) 0%, rgba(18, 17, 16, .8) 38%, rgba(18, 17, 16, .2) 75%); }
 .cabeza-foto ::ng-deep .rotulo { bottom: auto; top: var(--e-2); }
 .cabeza-texto { display: grid; gap: var(--e-3); justify-items: start; padding-block: var(--e-8) var(--e-6); }
 .migas a { color: var(--ceniza); }
 .cabeza h1 { overflow-wrap: anywhere; }
-.cabeza h1 .pre { display: block; font: 600 .8125rem/1 var(--sans); letter-spacing: .24em; text-transform: uppercase; margin-bottom: var(--e-3); }
+.direccion { font-size: 1.125rem; line-height: 1.45; max-width: 30ch; }
 .tentativa { display: grid; gap: var(--e-2); justify-items: start; max-width: 56ch; color: var(--washi-2); font-size: .9375rem; }
 .acciones { display: flex; flex-wrap: wrap; gap: var(--e-3); margin-top: var(--e-2); }
 

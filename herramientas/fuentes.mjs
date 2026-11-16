@@ -5,7 +5,13 @@ import path from 'node:path';
 const destino = path.resolve(process.argv[2] ?? 'sitio/public/fuentes');
 fs.mkdirSync(destino, { recursive: true });
 const latin = Array.from({ length: 95 }, (_, i) => String.fromCharCode(32 + i)).join('') + 'áéíóúÁÉÍÓÚñÑüÜ¿¡·—–“”‘’…°×→←↗✓';
-const japones = '家系ラーメン食券機硬め普通柔らかめ濃いめ薄め多め少なめのれん朱竹';
+// Todos los caracteres japoneses que aparecen en sitio/src (así el subconjunto nunca se queda corto).
+const leerTodo = (dir) => fs.readdirSync(dir, { withFileTypes: true }).flatMap((e) => {
+  const p = path.join(dir, e.name);
+  return e.isDirectory() ? leerTodo(p) : /\.(ts|html|json|css)$/.test(e.name) ? [fs.readFileSync(p, 'utf8')] : [];
+});
+const japones = [...new Set(leerTodo(path.resolve(path.dirname(new URL(import.meta.url).pathname.replace(/^\/([A-Z]:)/, '$1')), '..', 'sitio', 'src')).join('').match(/[　-鿿＀-￯]/g))].join('');
+console.log('Japonés:', japones.length, 'caracteres');
 const UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Safari/537.36';
 const fuentes = [
   ['shippori-700', 'Shippori+Mincho+B1:wght@700', 700, latin + japones],

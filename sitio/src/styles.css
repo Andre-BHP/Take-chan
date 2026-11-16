@@ -47,6 +47,7 @@ body {
   color: var(--washi);
   font: 400 1rem/1.6 var(--sans);
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   font-kerning: normal;
   overflow-x: clip;
   caret-color: var(--bermellon);
@@ -59,6 +60,9 @@ a { color: inherit; text-underline-offset: .22em; text-decoration-thickness: 1px
 :focus-visible { outline: 2px solid var(--washi); outline-offset: 3px; border-radius: 2px; }
 
 h1, h2, h3 { text-wrap: balance; font-weight: 700; }
+/* Geist se carga en 400, 500 y 600: las negritas usan 600 para no sintetizar un 700 que no existe. */
+strong, b { font-weight: 600; }
+a { text-underline-position: from-font; }
 p { text-wrap: pretty; }
 [lang='ja'] { font-family: var(--mincho); }
 
@@ -94,7 +98,7 @@ p { text-wrap: pretty; }
 .washi .boton-contorno:hover { border-color: var(--tinta); background: rgba(26, 23, 20, .04); }
 .boton svg { width: 18px; height: 18px; flex: none; }
 
-.enlace { font-weight: 600; text-decoration: underline; text-underline-offset: .25em; }
+.enlace { display: inline-flex; align-items: center; min-height: 44px; font-weight: 600; text-decoration: underline; text-underline-offset: .25em; }
 
 /* Estado (dis-039): punto lleno abierto, hueco cerrado; nunca color de acento. */
 .estado { display: inline-flex; align-items: center; gap: var(--e-2); }

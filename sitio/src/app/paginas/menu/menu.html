@@ -20,30 +20,37 @@
         <span class="letrero-es">Elige y presiona: cada tecla es un ticket</span>
       </div>
 
-      @for (c of menu.categorias; track c.id) {
-        <section class="categoria" [id]="'cat-' + c.id" [attr.data-seccion]="c.id" tabindex="-1" [attr.aria-labelledby]="'tit-' + c.id">
-          <h2 class="categoria-titulo" [id]="'tit-' + c.id"><span lang="ja">{{ c.ja }}</span> {{ c.nombre }}</h2>
-          <div class="teclas">
-            @for (p of c.items; track p.id) {
-              <button type="button" class="tecla" [class.elegida]="pedido.cantidad(p.id) > 0" [class.pulsada]="pulsada() === p.id"
-                (click)="presionar(p.id)" [attr.aria-label]="'Agregar ' + p.nombre + ', ' + pesos(p.precio) + '. En el pedido: ' + pedido.cantidad(p.id)">
-                <span class="ventana">
-                  @if (p.foto) { <app-foto [nombre]="p.foto" sizes="(min-width: 1000px) 12rem, 45vw" [rotulo]="false" alt="" /> }
-                  @else { <span class="sin-foto" lang="ja" aria-hidden="true">{{ c.ja }}</span> }
-                </span>
-                <span class="nombre">{{ p.nombre }}</span>
-                <span class="led" aria-hidden="true">{{ pesos(p.precio) }}</span>
-                @if (pedido.cantidad(p.id) > 0) { <span class="cuenta" aria-hidden="true">{{ pedido.cantidad(p.id) }}</span> }
-              </button>
-            }
-          </div>
-        </section>
-      }
-
-      <div class="tablero" aria-hidden="true">
-        <span class="moneda"><span class="ranura-moneda"></span><span lang="ja">硬貨</span></span>
-        <span class="pantalla">{{ pedido.piezas() }} × {{ pesos(pedido.total()) || '$0' }}</span>
+      <div class="cuerpo">
+        <div class="frente">
+        @for (c of menu.categorias; track c.id) {
+          <section class="categoria" [id]="'cat-' + c.id" [attr.data-seccion]="c.id" tabindex="-1" [attr.aria-labelledby]="'tit-' + c.id">
+            <h2 class="categoria-titulo" [id]="'tit-' + c.id"><span lang="ja">{{ c.ja }}</span> {{ c.nombre }}</h2>
+            <div class="teclas">
+              @for (p of c.items; track p.id) {
+                <button type="button" class="tecla" [class.elegida]="pedido.cantidad(p.id) > 0" [class.pulsada]="pulsada() === p.id"
+                  (click)="presionar(p.id)" [attr.aria-label]="'Agregar ' + p.nombre + ', ' + pesos(p.precio) + '. En el pedido: ' + pedido.cantidad(p.id)">
+                  <span class="ventana">
+                    @if (p.foto) { <app-foto [nombre]="p.foto" sizes="(min-width: 1000px) 12rem, 45vw" [rotulo]="false" alt="" /> }
+                    @else { <span class="sin-foto" lang="ja" aria-hidden="true">{{ c.ja }}</span> }
+                  </span>
+                  <span class="nombre">{{ p.nombre }}</span>
+                  <span class="led" aria-hidden="true">{{ pesos(p.precio) }}</span>
+                  @if (pedido.cantidad(p.id) > 0) { <span class="cuenta" aria-hidden="true">{{ pedido.cantidad(p.id) }}</span> }
+                </button>
+              }
+            </div>
+          </section>
+        }
+        </div>
+        <div class="cobro" aria-hidden="true">
+          <div class="pieza"><span class="ranura-billete"></span><span class="etiqueta"><span lang="ja">千円札</span>Billetes</span></div>
+          <div class="pieza"><span class="ranura-moneda"></span><span class="etiqueta"><span lang="ja">硬貨</span>Monedas</span></div>
+          <div class="pieza"><span class="pantalla"><span lang="ja">合計</span> {{ pesos(pedido.total()) || '$0' }}</span></div>
+          <div class="pieza"><span class="palanca"></span><span class="etiqueta"><span lang="ja">返却</span>Devolución</span></div>
+          <div class="pieza charola"><span class="bandeja"></span><span class="etiqueta"><span lang="ja">おつり</span>Cambio</span></div>
+        </div>
       </div>
+      <div class="boca" aria-hidden="true"><span class="boca-ranura"></span><span class="etiqueta"><span lang="ja">発券口</span>Salida del ticket</span></div>
       <p class="rotulo-fotos">Fotos de las teclas: imágenes ilustrativas.</p>
     </div>
 
@@ -96,7 +103,7 @@
           <input type="radio" name="sucursal" [value]="s.id" [checked]="pedido.sucursalId() === s.id" (change)="pedido.cambiar(pedido.sucursalId, s.id)" />
           <span>
             <strong>{{ s.nombre }}</strong>
-            <span class="t-dato tenue">{{ direccion(s) }}</span>
+            <span class="t-pequeno tenue">{{ direccion(s) }}</span>
             @if (!s.confirmada) { <span class="marca-tentativa">por confirmar</span> }
           </span>
         </label>
@@ -145,7 +152,14 @@
           <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 20l1.3-3.9A8 8 0 1 1 8 19z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
           Enviar por WhatsApp
         </button>
-        <p class="ayuda tenue">Modo demostración: se muestra el mensaje, no se envía.</p>
+        @if (contacto.aviso(); as a) {
+          <div class="burbuja" role="status">
+            <p class="burbuja-titulo">Modo demostración: este mensaje le llegaría a Take-chan por WhatsApp. No se envió nada.</p>
+            <p class="burbuja-texto">{{ a.mensaje }}</p>
+          </div>
+        } @else {
+          <p class="ayuda tenue">Modo demostración: se muestra el mensaje, no se envía.</p>
+        }
       </div>
     }
   </aside>

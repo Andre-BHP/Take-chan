@@ -38,13 +38,12 @@
       "nombre": "Bebidas",
       "ja": "ドリンク",
       "items": [
-        { "id": "te", "nombre": "Té verde", "desc": "Caliente o frío.", "precio": 35, "foto": "te", "confirmado": false },
-        { "id": "refresco", "nombre": "Refresco", "desc": "De lata.", "precio": 35, "foto": null, "confirmado": false }
+        { "id": "te", "nombre": "Té verde", "desc": "Caliente o frío.", "precio": 35, "foto": "te", "confirmado": false }
       ]
     }
   ],
   "alGusto": {
-    "nota": "Como en las ramen-ya Iekei: se pide el fideo, el sabor y la grasa al gusto. Confirmar si Take-chan lo ofrece.",
+    "nota": "Como en las ramen-ya Iekei: se pide el fideo, el sabor y la grasa al gusto.",
     "confirmado": false,
     "opciones": [
       { "id": "fideo", "nombre": "Fideo", "valores": [{ "ja": "硬め", "es": "Firme" }, { "ja": "普通", "es": "Normal" }, { "ja": "柔らかめ", "es": "Suave" }], "omision": "Normal" },
@@ -53,7 +52,7 @@
     ]
   },
   "recoger": {
-    "nota": "Horas cada 15 minutos dentro del horario. Confirmar si aceptan pedidos para recoger.",
+    "nota": "Horas cada 15 minutos dentro del horario.",
     "confirmado": false,
     "cadaMinutos": 15,
     "margenCierreMinutos": 30

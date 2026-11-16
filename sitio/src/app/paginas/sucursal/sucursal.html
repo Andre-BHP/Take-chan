@@ -1,12 +1,12 @@
 <section class="cabeza" aria-labelledby="sucursal-titulo">
-  <app-foto class="cabeza-foto" [nombre]="s.id === 'tlaquepaque' ? 'barra' : 'tazon'" [prioridad]="true" sizes="100vw" />
+  <app-foto class="cabeza-foto" [nombre]="s.id === 'tlaquepaque' ? 'barra' : 'picante'" [prioridad]="true" sizes="100vw" />
   <div class="envoltura cabeza-texto">
     <p class="migas t-pequeno"><a routerLink="/" fragment="sucursales">Sucursales</a> / {{ s.nombre }}</p>
-    <h1 id="sucursal-titulo" class="t-display"><span class="pre">Take-chan Ramen</span> {{ s.nombre }}</h1>
+    <h1 id="sucursal-titulo" class="t-display"><span class="solo-lector">Take-chan Ramen </span>{{ s.nombre }}</h1>
     @if (!s.confirmada) {
       <p class="tentativa"><span class="marca-tentativa">Sucursal por confirmar</span> Solo la menciona un video de TikTok. Esta página queda lista para cuando el negocio confirme dirección y horario; mientras, no lleva datos estructurados.</p>
     }
-    <app-estado [turnos]="s.horario.turnos" />
+    @if (s.confirmada) { <app-estado [turnos]="s.horario.turnos" /> }
     <div class="acciones">
       <a class="boton boton-primario" routerLink="/menu">Arma tu pedido</a>
       <a class="boton boton-contorno" [href]="s.mapa" target="_blank" rel="noopener">Cómo llegar<span class="solo-lector"> (se abre Google Maps)</span></a>
@@ -17,13 +17,14 @@
 <div class="envoltura datos">
   <section class="ficha" aria-labelledby="direccion-titulo">
     <h2 id="direccion-titulo" class="t-titulo">Dirección</h2>
-    <p class="t-dato">{{ direccion }}</p>
+    <p class="direccion">{{ direccion }}</p>
     @if (s.direccion.referencia) { <p class="tenue">{{ s.direccion.referencia }}</p> }
     <a class="enlace" [href]="s.mapa" target="_blank" rel="noopener">Abrir en Google Maps<span class="solo-lector"> (se abre en otra pestaña)</span></a>
   </section>
 
   <section class="ficha" aria-labelledby="horario-titulo">
     <h2 id="horario-titulo" class="t-titulo">Horario</h2>
+    @if (s.confirmada) {
     <table class="horario">
       <caption class="solo-lector">Horario de {{ s.nombre }}</caption>
       <tbody>
@@ -32,6 +33,9 @@
         }
       </tbody>
     </table>
+    } @else {
+      <p class="tenue">Pendiente: el negocio todavía no publica el horario de esta sucursal.</p>
+    }
   </section>
 
   <section class="ficha" aria-labelledby="info-titulo">

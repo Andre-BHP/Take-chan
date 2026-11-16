@@ -14,7 +14,7 @@
     "url": "https://images.unsplash.com/photo-1737266320359-d9c1f1d60e05",
     "autor": "Kouji Tsuru",
     "usuario": "pafuxu",
-    "uso": "Iekei clásico (bento y máquina)",
+    "uso": "Qué es el Iekei y menú",
     "alt": "Ramen de caldo cremoso con huevo marinado en tazón negro"
   },
   {
@@ -41,7 +41,7 @@
     "url": "https://images.unsplash.com/photo-1749361219832-9a14affc2d8c",
     "autor": "Kouji Tsuru",
     "usuario": "pafuxu",
-    "uso": "Iekei picante",
+    "uso": "Iekei picante y sucursal Americana",
     "alt": "Ramen picante con huevo y cebollín en tazón negro"
   },
   {
@@ -61,15 +61,6 @@
     "usuario": "pafuxu",
     "uso": "Paso 1: caldo",
     "alt": "Caldo cremoso de ramen con huevo"
-  },
-  {
-    "nombre": "tare",
-    "id": "AiL8i9P_NtA",
-    "url": "https://images.unsplash.com/photo-1721024250728-e100fc947b36",
-    "autor": "akhmad jazuli",
-    "usuario": "djazz356",
-    "uso": "Paso 2: tare de soya",
-    "alt": "Botella de salsa de soya sobre mesa de madera"
   },
   {
     "nombre": "fideo",
@@ -115,5 +106,23 @@
     "usuario": "crypticsy",
     "uso": "Sucursales (barra de cocina)",
     "alt": "Barra de cocina de una ramen-ya con tazones apilados y palillos"
+  },
+  {
+    "nombre": "olla",
+    "id": "WLDy6dh7CPo",
+    "url": "https://images.unsplash.com/photo-1713279714088-89834c1e6a83",
+    "autor": "sehoon ye",
+    "usuario": "_3bread",
+    "uso": "Paso 1: caldo de la olla",
+    "alt": "Caldo servido de la olla sobre un tazón de fideos"
+  },
+  {
+    "nombre": "soya",
+    "id": "hm1arTdhkiY",
+    "url": "https://images.unsplash.com/photo-1615203508881-9e7e357c0cc1",
+    "autor": "Gerard M. C.",
+    "usuario": "g_designer",
+    "uso": "Paso 2: tare de soya",
+    "alt": "Palillos sobre un cuenco con salsa de soya"
   }
 ]

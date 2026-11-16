@@ -2,7 +2,7 @@
 
 - **Pages:** https://andre-bhp.github.io/Take-chan/
 - **Repositorio:** https://github.com/Andre-BHP/Take-chan
-- **Última subida:** 2026-11-16 10:25 (hora de Guadalajara)
+- **Última subida:** 2026-11-16 10:38 (hora de Guadalajara)
 
 ## Rediseño (2026-11-15)
 André revisó la primera versión: "quedó muy feo y muy mal". Este rediseño cambia la dirección a "una ramen-ya de Yokohama de noche": fotos de ejemplo rotuladas, negro sumi y papel washi, 家系 vertical y un solo acento bermellón.
@@ -13,7 +13,7 @@ André revisó la primera versión: "quedó muy feo y muy mal". Este rediseño c
 - [x] R3. Tipografías, tokens y portada nueva
 - [x] R4. `/menu` con una máquina de tickets de verdad
 - [x] R5. Sucursales y pie
-- [ ] R6. Revisión de impeccable y design-taste-frontend, y correcciones
+- [x] R6. Revisión de impeccable y design-taste-frontend, y correcciones
 - [ ] R7. Pruebas, comparativa antes y después, mockups de visita
 - [ ] R8. Reporte
 
@@ -21,12 +21,12 @@ André revisó la primera versión: "quedó muy feo y muy mal". Este rediseño c
 Repositorio, Pages, datos, inicio, máquina de tickets, sucursales con JSON-LD, pruebas y lista para el negocio. Capturas en `entregables/avances/antes/`.
 
 ## Último paso
-**R5.** Páginas de sucursal con foto a sangre, nombre en mincho, "abierto ahora", "Arma tu pedido" y "Cómo llegar"; dirección, horario por día y datos útiles. La Americana con su única marca "por confirmar" y sin JSON-LD. Pie compacto con las dos sucursales, horario, TikTok, mapa y créditos de fotos. Se quitaron dos fotos de fachadas que mostraban marcas reales de otros negocios y un término ofensivo; ahora es una barra de cocina sin letreros.
+**R6.** Revisiones de impeccable (finish review), design-taste-frontend y better-typography, y correcciones: máquina reconstruida (teclas iluminadas tipo 券売機, columna de cobro con billetes, monedas, total, devolución y cambio, y boca de salida del ticket); mensaje de WhatsApp demo en línea, sin ventana modal; noren de tela washi con 家系ラーメン en sumi, al cierre de la página; sin rótulo encima del título y 家系 más grande en celular; fotos de proceso nuevas para no repetir imágenes; la Americana ya no muestra horario ni "abierto/cerrado" supuestos; direcciones en sans; enlaces de 44 px; sin desborde a 320 px; Geist en negritas a 600 sin sintetizar; subconjunto japonés automático. Se mantuvieron, porque el plan los pide: la sección horizontal fija y el vaivén del noren.
 
 ## Sigue
-R6: revisión con impeccable (critique), better-typography y design-taste-frontend; correcciones.
+R7: pruebas, comparativa antes y después y mockups de visita.
 
 ## Capturas más recientes
-| Tlaquepaque 360 | Americana 1440 | Portada 1440 |
+| Portada 360 | Menú 1440 | WhatsApp demo 390 |
 |---|---|---|
-| <img src="entregables/avances/2026-11-16_paso-R5_tlaquepaque_360.png" width="160"> | <img src="entregables/avances/2026-11-16_paso-R5_americana_1440.png" width="320"> | <img src="entregables/avances/2026-11-16_paso-R5_1440.png" width="320"> |
+| <img src="entregables/avances/2026-11-16_paso-R6_360.png" width="160"> | <img src="entregables/avances/2026-11-16_paso-R6_menu_1440.png" width="320"> | <img src="entregables/avances/2026-11-16_paso-R6_whatsapp_390.png" width="160"> |

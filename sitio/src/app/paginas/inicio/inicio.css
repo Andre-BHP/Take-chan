@@ -21,11 +21,10 @@
 }
 .kanji {
   grid-area: kanji; writing-mode: vertical-rl; text-orientation: upright;
-  font: 800 clamp(4.25rem, 20vw, 13rem)/1 var(--mincho); letter-spacing: .02em;
+  font: 800 clamp(5.75rem, 26vw, 13rem)/1 var(--mincho); letter-spacing: .02em;
   color: var(--washi); margin-bottom: -.06em;
 }
 .heroe-texto { grid-area: texto; display: grid; gap: var(--e-3); justify-items: start; }
-.marca { font: 600 .8125rem/1 var(--sans); letter-spacing: .24em; color: var(--washi); }
 .heroe .t-display { font-size: clamp(1.75rem, 1.1rem + 2.4vw, 3.25rem); max-width: 15ch; text-shadow: 0 1px 18px rgba(18, 17, 16, .6); }
 .heroe-estado { color: var(--washi); }
 .acciones { grid-area: acciones; display: flex; flex-wrap: wrap; gap: var(--e-3); }
@@ -77,6 +76,7 @@
   background: var(--sumi-2);
 }
 .celda app-foto { position: absolute; inset: 0; z-index: -2; }
+.celda app-foto ::ng-deep .rotulo { top: var(--e-2); bottom: auto; }
 .celda::after { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(to top, rgba(18, 17, 16, .92) 0%, rgba(18, 17, 16, .35) 45%, rgba(18, 17, 16, 0) 70%); }
 .celda-texto { padding: var(--e-3); display: grid; gap: var(--e-1); }
 .celda .precio { color: var(--washi); }
@@ -87,7 +87,7 @@
 .celda:last-child { grid-column: 1 / -1; }
 @media (hover: hover) and (prefers-reduced-motion: no-preference) {
   .celda app-foto { transition: transform 600ms var(--salida); }
-  .celda:hover app-foto { transform: scale(1.05) translate3d(0, -1.5%, 0); }
+  .celda:hover app-foto { transform: scale(1.03); }
 }
 .celda:focus-visible { outline-offset: 4px; }
 @media (min-width: 900px) {
@@ -121,7 +121,7 @@
 }
 
 /* ---------- Noren (una sola vez) ---------- */
-.noren { margin-top: var(--e-7); }
+.noren { margin-block: var(--e-5) var(--e-8); }
 
 /* ---------- Sucursales ---------- */
 .sucursales { padding-block: var(--e-6) var(--e-7); display: grid; gap: var(--e-5); }

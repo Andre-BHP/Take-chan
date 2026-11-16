@@ -17,7 +17,7 @@ import { NotaEjemplo } from '../../componentes/nota-ejemplo';
 })
 export class Menu {
   protected readonly pedido = inject(Pedido);
-  private readonly contacto = inject(Contacto);
+  protected readonly contacto = inject(Contacto);
   protected readonly menu = MENU;
   protected readonly sucursales = SUCURSALES;
   protected readonly direccion = direccionCorta;
@@ -85,6 +85,7 @@ export class Menu {
   }
 
   protected imprimir() {
+    this.contacto.aviso.set(null);
     this.pedido.imprimir();
     setTimeout(() => this.host.nativeElement.querySelector<HTMLElement>('.ticket')?.focus(), 0);
   }
@@ -97,5 +98,6 @@ export class Menu {
 
   protected enviar() {
     this.contacto.enviarWhatsapp(this.pedido.mensaje());
+    setTimeout(() => this.host.nativeElement.querySelector<HTMLElement>('.burbuja')?.scrollIntoView({ block: 'nearest', behavior: 'smooth' }), 0);
   }
 }

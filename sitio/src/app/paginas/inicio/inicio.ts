@@ -25,8 +25,8 @@ export class Inicio {
   protected readonly direccion = direccionCorta;
   protected readonly pesos = pesos;
   protected readonly pasos = [
-    { foto: 'clasico', titulo: 'El caldo', texto: 'Hueso de cerdo hervido a fuego alto hasta que el caldo se vuelve espeso y cremoso.' },
-    { foto: 'tare', titulo: 'El tare', texto: 'Una base de salsa de soya va al fondo del tazón: es la que da el sabor salado.' },
+    { foto: 'olla', titulo: 'El caldo', texto: 'Hueso de cerdo hervido a fuego alto hasta que el caldo se vuelve espeso y cremoso.' },
+    { foto: 'soya', titulo: 'El tare', texto: 'Una base de salsa de soya va al fondo del tazón: es la que da el sabor salado.' },
     { foto: 'fideo', titulo: 'El fideo', texto: 'Grueso y recto. Se pide firme, normal o suave.' },
     { foto: 'tazon', titulo: 'El tazón', texto: 'Espinaca, tres hojas de nori y chashu. Sabor y grasa al gusto.' },
   ];

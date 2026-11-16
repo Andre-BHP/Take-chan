@@ -6,8 +6,7 @@
   <div class="envoltura heroe-capa">
     <p class="kanji" lang="ja" aria-hidden="true">家系</p>
     <div class="heroe-texto">
-      <p class="marca">TAKE-CHAN RAMEN</p>
-      <h1 id="heroe-titulo" class="t-display">Ramen Iekei en Tlaquepaque. Caldo y fideo traídos de Japón.</h1>
+      <h1 id="heroe-titulo" class="t-display"><span class="solo-lector">Take-chan Ramen. </span>Ramen Iekei en Tlaquepaque. Caldo y fideo traídos de Japón.</h1>
       <app-estado class="heroe-estado" [turnos]="tlaquepaque.horario.turnos" />
     </div>
     <div class="acciones">
@@ -26,11 +25,11 @@
       <dl>
         <div><dt>El caldo</dt><dd>Hueso de cerdo hervido hasta que se vuelve cremoso, con soya y una capa de grasa encima.</dd></div>
         <div><dt>El fideo</dt><dd>Grueso y recto, para que el caldo se le pegue en cada bocado.</dd></div>
-        <div><dt>El nombre</dt><dd><span lang="ja">家系</span>, <i>iekei</i>: viene de las ramen-ya de Yokohama cuyo nombre termina en <span lang="ja">家</span>, «casa».</dd></div>
+        <div><dt>El nombre</dt><dd><span lang="ja">家系</span> (iekei) viene de las ramen-ya de Yokohama cuyo nombre termina en <span lang="ja">家</span>, «casa».</dd></div>
       </dl>
       <p class="origen">Según su ficha, en Take-chan el fideo y el caldo se hacen en Japón y se importan.</p>
     </div>
-    <app-foto class="iekei-foto" nombre="fideo" sizes="(min-width: 900px) 40vw, 100vw" />
+    <app-foto class="iekei-foto" nombre="clasico" sizes="(min-width: 900px) 40vw, 100vw" />
   </div>
 </section>
 
@@ -82,19 +81,17 @@
   </div>
 </section>
 
-<app-noren class="noren" />
-
 <section id="sucursales" class="sucursales envoltura" aria-labelledby="sucursales-titulo">
   <h2 id="sucursales-titulo" class="t-titulo">Sucursales</h2>
   <div class="tarjetas">
     @for (s of sucursales; track s.id) {
       <article class="sucursal">
-        <app-foto [nombre]="s.id === 'tlaquepaque' ? 'barra' : 'tazon'" sizes="(min-width: 720px) 45vw, 100vw" />
+        <app-foto [nombre]="s.id === 'tlaquepaque' ? 'barra' : 'picante'" sizes="(min-width: 720px) 45vw, 100vw" />
         <div class="sucursal-texto">
           <h3 class="t-titulo"><a [routerLink]="'/' + s.id">{{ s.nombre }}</a></h3>
           @if (!s.confirmada) { <p class="marca-tentativa">Sucursal por confirmar</p> }
-          <app-estado [turnos]="s.horario.turnos" />
-          <p class="t-dato tenue">{{ direccion(s) }}</p>
+          @if (s.confirmada) { <app-estado [turnos]="s.horario.turnos" /> }
+          <p class="t-pequeno tenue">{{ direccion(s) }}</p>
           <div class="acciones-sucursal">
             <a class="boton boton-contorno" [href]="s.mapa" target="_blank" rel="noopener">Cómo llegar<span class="solo-lector"> a {{ s.nombre }} (se abre Google Maps)</span></a>
             <a class="enlace" [routerLink]="'/' + s.id">Ver sucursal<span class="solo-lector"> {{ s.nombre }}</span></a>
@@ -104,3 +101,5 @@
     }
   </div>
 </section>
+
+<app-noren class="noren" />
