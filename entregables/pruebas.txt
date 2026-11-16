@@ -1,0 +1,17 @@
+axe / 390: sin violaciones
+axe / 1440: sin violaciones
+360 px /: scrollWidth 360 ok
+axe /menu 390: sin violaciones
+axe /menu 1440: sin violaciones
+360 px /menu: scrollWidth 360 ok
+axe /tlaquepaque 390: sin violaciones
+axe /tlaquepaque 1440: sin violaciones
+360 px /tlaquepaque: scrollWidth 360 ok
+axe /americana 390: sin violaciones
+axe /americana 1440: sin violaciones
+360 px /americana: scrollWidth 360 ok
+portada: 156 KB transferidos (límite 500), LCP 888 ms con 4G lenta y CPU 4x (límite 2500)
+movimiento no-preference: {"animacion":"subir","opacidad":"0.234436","bucles":3}
+movimiento reduce: {"animacion":"none","opacidad":"0.4","bucles":0}
+
+Todo en orden

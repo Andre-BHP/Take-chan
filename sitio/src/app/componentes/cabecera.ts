@@ -7,6 +7,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [RouterLink, RouterLinkActive],
   template: `
+    <header>
     <p class="aviso" role="note">Propuesta no oficial de sitio para Take-chan Ramen</p>
     <nav class="envoltura barra" aria-label="Principal">
       <a class="marca" routerLink="/" aria-label="Take-chan Ramen, inicio">TAKE-CHAN<span> RAMEN</span></a>
@@ -15,6 +16,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
         <li><a routerLink="/" fragment="sucursales">Sucursales</a></li>
       </ul>
     </nav>
+    </header>
   `,
   styles: `
     :host { display: block; position: sticky; top: 0; z-index: 20; background: color-mix(in srgb, var(--carbon) 94%, transparent); border-bottom: 1px solid var(--borde); }
