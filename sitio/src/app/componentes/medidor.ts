@@ -35,7 +35,7 @@ import { isPlatformBrowser } from '@angular/common';
         <path class="cuerpo" d="M24 92c6 92 62 144 136 144s130-52 136-144" />
         <path class="pie" d="M120 236l6 14h68l6-14" />
       </svg>
-      <p class="leyenda t-dato" aria-hidden="true">{{ paso() }} / 4</p>
+      <p class="leyenda t-dato" aria-hidden="true">{{ paso() }} / 4<span class="desliza"> · desliza los pasos →</span></p>
     </div>
     <ol class="pasos" tabindex="0" aria-label="Pasos para hacer un Iekei">
       @for (p of pasos; track p.titulo; let i = $index) {

@@ -17,6 +17,32 @@ async function deslizar(p, total, pasos = 40, ms = 120) {
   for (let i = 0; i < pasos; i++) { await p.mouse.wheel(0, total / pasos); await espera(p, ms); }
 }
 const escenas = {
+  async intro(p) { await p.goto(url('/'), { waitUntil: 'commit' }); await espera(p, 1800); },
+  async transicion(p) {
+    await p.addInitScript(() => { try { sessionStorage.setItem('take-intro', '1'); } catch (e) {} });
+    await p.goto(url('/'), { waitUntil: 'load' }); await espera(p, 1200);
+    const celda = p.locator('.bento .celda').nth(2); await celda.scrollIntoViewIfNeeded(); await espera(p, 900);
+    await celda.click(); await espera(p, 1500);
+    await p.getByRole('link', { name: /Sucursales/ }).first().click(); await espera(p, 1600);
+    await p.getByRole('link', { name: /Take-chan Ramen, inicio/ }).click(); await espera(p, 1400);
+  },
+  async social(p) {
+    await p.addInitScript(() => { try { sessionStorage.setItem('take-intro', '1'); } catch (e) {} });
+    await p.goto(url('/'), { waitUntil: 'load' }); await espera(p, 1500);
+    await p.evaluate(() => document.querySelector('.social').scrollIntoView({ block: 'center' })); await espera(p, 2200);
+  },
+  async medidor(p) {
+    await p.addInitScript(() => { try { sessionStorage.setItem('take-intro', '1'); } catch (e) {} });
+    await p.goto(url('/'), { waitUntil: 'load' }); await espera(p, 1500);
+    await p.evaluate(() => document.querySelector('.como').scrollIntoView({ block: 'start' })); await espera(p, 1200);
+    await deslizar(p, 1600, 20, 120);
+    const lista = p.locator('app-medidor .pasos');
+    if (await lista.evaluate((el) => el.scrollWidth > el.clientWidth)) {
+      await p.evaluate(() => document.querySelector('.como').scrollIntoView({ block: 'start' })); await espera(p, 600);
+      for (let i = 1; i <= 3; i++) { await lista.evaluate((el, i) => el.scrollTo({ left: el.clientWidth * 0.85 * i, behavior: 'smooth' }), i); await espera(p, 900); }
+    }
+    await espera(p, 600);
+  },
   async inicio(p) { await p.goto(url('/'), { waitUntil: 'load' }); await espera(p, 2600); await deslizar(p, 5200, 70, 110); await espera(p, 800); },
   async menu(p, w) {
     await p.goto(url('/menu?ramen=iekei-clasico'), { waitUntil: 'load' }); await espera(p, 1800);

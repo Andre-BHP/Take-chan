@@ -26,7 +26,8 @@
 }
 .heroe-texto { grid-area: texto; display: grid; gap: var(--e-3); justify-items: start; }
 .heroe .t-display { font-size: clamp(1.75rem, 1.1rem + 2.4vw, 3.25rem); max-width: 15ch; text-shadow: 0 1px 18px rgba(18, 17, 16, .6); }
-.heroe-estado { color: var(--washi); }
+.heroe-estado { color: var(--washi); min-height: 2.5rem; align-items: flex-start; }
+@media (min-width: 900px) { .heroe-estado { min-height: 1.25rem; } }
 .acciones { grid-area: acciones; display: flex; flex-wrap: wrap; gap: var(--e-3); }
 .acciones .boton { flex: 1 1 10rem; }
 

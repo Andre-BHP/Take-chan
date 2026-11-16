@@ -5,6 +5,7 @@ svg { width: min(78vw, 340px); height: auto; overflow: visible; }
 .borde { fill: #2a2724; stroke: var(--washi-2); stroke-width: 2; }
 .cuerpo, .pie { fill: none; stroke: var(--washi-2); stroke-width: 2.5; stroke-linecap: round; }
 .leyenda { color: var(--ceniza); }
+@media (min-width: 900px) { .desliza { display: none; } }
 
 /* Capas: cada una aparece cuando su paso está activo y se queda. */
 .capa { transition: transform var(--t-4) var(--ease-out), opacity var(--t-4) var(--ease-out); }

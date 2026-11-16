@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, afterNextRender, inject } from '@angular/core';
 import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
+import { ViewportScroller } from '@angular/common';
 import { filter } from 'rxjs';
 import { Cabecera } from './componentes/cabecera';
 import { Pie } from './componentes/pie';
@@ -20,6 +21,8 @@ export class App {
   constructor() {
     const movimiento = inject(Movimiento);
     const router = inject(Router);
+    // Las anclas (#sucursales) quedan debajo del encabezado fijo, no tapadas por él.
+    inject(ViewportScroller).setOffset([0, 100]);
     afterNextRender(() => {
       // Lenis y GSAP entran cuando la página ya cargó: no compiten con la foto del héroe (LCP).
       const iniciar = () => ('requestIdleCallback' in window ? requestIdleCallback(() => movimiento.iniciarScroll(), { timeout: 1500 }) : setTimeout(() => movimiento.iniciarScroll(), 300));
