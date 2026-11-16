@@ -1,0 +1,26 @@
+# Pruebas del movimiento (build de Pages servido en local), 2026-11-16 15:35
+axe / 390: sin violaciones
+axe / 1440: sin violaciones
+360 px /: scrollWidth 360 ok
+axe /menu 390: sin violaciones
+axe /menu 1440: sin violaciones
+360 px /menu: scrollWidth 360 ok
+axe /tlaquepaque 390: sin violaciones
+axe /tlaquepaque 1440: sin violaciones
+360 px /tlaquepaque: scrollWidth 360 ok
+axe /americana 390: sin violaciones
+axe /americana 1440: sin violaciones
+360 px /americana: scrollWidth 360 ok
+portada: 417 KB transferidos (límite 500), LCP 1756 ms con 4G lenta y CPU 4x (límite 2500)
+movimiento no-preference: {"animacion":"subir","opacidad":"0.160933","bucles":3}
+movimiento reduce: {"animacion":"none","opacidad":"0.14","bucles":0}
+
+Todo en orden
+360 px: CLS 0 · tareas largas en la carga 0 · en el scroll 0 [] · 60 fps promedio · 0 de 358 cuadros de más de 34 ms
+390 px: CLS 0 · tareas largas en la carga 1 · en el scroll 0 [] · 59 fps promedio · 1 de 355 cuadros de más de 34 ms
+1440 px: CLS 0 · tareas largas en la carga 1 · en el scroll 0 [] · 60 fps promedio · 0 de 359 cuadros de más de 34 ms
+desborde 360 /: scrollWidth 360
+desborde 360 /menu: scrollWidth 360
+desborde 360 /tlaquepaque: scrollWidth 360
+desborde 360 /americana: scrollWidth 360
+Peor caso con las fuentes retrasadas 1.5 s: CLS 0.009 a 360 px y 0.026 a 390 px (bajo 0.1).

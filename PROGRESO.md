@@ -2,7 +2,7 @@
 
 - **Pages:** https://andre-bhp.github.io/Take-chan/
 - **Repositorio:** https://github.com/Andre-BHP/Take-chan
-- **Última subida:** 2026-11-16 15:30 (hora de Guadalajara)
+- **Última subida:** 2026-11-16 15:36 (hora de Guadalajara)
 
 ## Rediseño (2026-11-15)
 André revisó la primera versión: "quedó muy feo y muy mal". Este rediseño cambia la dirección a "una ramen-ya de Yokohama de noche": fotos de ejemplo rotuladas, negro sumi y papel washi, 家系 vertical y un solo acento bermellón.
@@ -27,21 +27,19 @@ André: "mejor animación, más transiciones, mejor diseño, mejor todo". Metáf
 - [x] M4. Medidor del tazón en "Cómo se hace", sucursales y noren final de tela
 - [x] M5. `/menu` física: encendido, vuelo al pedido, odómetro, indicadores e impresión y corte del ticket
 - [x] M6. Revisiones de impeccable y design-taste-frontend
-- [ ] M7. Pruebas: axe, 360 px, peso, LCP con intro, CLS 0, 60 fps, reduced-motion
+- [x] M7. Pruebas: axe, 360 px, peso, LCP con intro, CLS 0, 60 fps, reduced-motion
 - [ ] M8. Videos, GIF, capturas de visita y reporte
 
 ## Primera versión (pasos 0 a 9, terminada)
 Repositorio, Pages, datos, inicio, máquina de tickets, sucursales con JSON-LD, pruebas y lista para el negocio. Capturas en `entregables/avances/antes/`.
 
 ## Último paso
-**M6.** Revisiones de impeccable y design-taste-frontend, con videos a 10 fps. Arreglos: la transición entre páginas ahora es un telón de noren de tela de verdad (tres paños índigo bajan escalonados, la página cambia debajo y se separan hacia los lados); solo vuela la foto del platillo tocado y solo en escritorio, con la ruta del menú precargada; la cifra de Google rueda de 4.0 a 4.8 (nunca desde 0) y se lee completa con lector de pantalla; el medidor avanza con el scroll vertical en celular; la luz de 発券口 está en la ranura de donde sale el papel; el 家系 de la intro se dibuja completo y se desvanece antes de abrir los paños; el botón "Saltar" desaparece al terminar; el vapor ya no fuerza recálculos en cada cuadro y se pausa fuera de vista; el latido de "abierto" late 3 veces; los enlaces con ancla y el botón Atrás respetan la posición; la noren final pone dos caracteres por paño. Medido: CLS 0, scroll a 59 fps sin tareas largas.
+**M7.** Pruebas completas ([`entregables/pruebas-movimiento.txt`](entregables/pruebas-movimiento.txt)): axe sin violaciones en las 4 páginas a 390 y 1440 px; sin desborde a 360 px en ninguna página; portada de unos 417 KB; LCP de 1.8 a 2.0 s con la intro activa, 4G lenta y CPU 4x; CLS 0 (y menos de 0.03 en el peor caso, con las fuentes retrasadas, gracias a fuentes de respaldo con el mismo ancho); scroll a 59–60 fps sin tareas largas; con movimiento reducido no hay intro, ni Lenis, ni GSAP, ni bucles.
 
 ## Sigue
-M7: pruebas completas.
+M8: videos finales, capturas de visita y reporte.
 
 ## Capturas más recientes
-| Telón entre páginas, 1440 px | Medidor en celular |
+| Portada 360 | Portada 1440 |
 |---|---|
-| <img src="entregables/avances/video/2026-11-16_M6_transicion_1440.gif" width="420"> | <img src="entregables/avances/video/2026-11-16_M6_medidor_390.gif" width="200"> |
-
-Videos: [transición 1440](entregables/avances/video/2026-11-16_M6_transicion_1440.mp4) · [transición 390](entregables/avances/video/2026-11-16_M6_transicion_390.mp4) · [intro 390](entregables/avances/video/2026-11-16_M6_intro_390.mp4) · [menú 390](entregables/avances/video/2026-11-16_M6_menu_390.mp4)
+| <img src="entregables/avances/2026-11-16_paso-M6_360.png" width="180"> | <img src="entregables/avances/2026-11-16_paso-M6_1440.png" width="360"> |
