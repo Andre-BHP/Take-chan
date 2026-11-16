@@ -6,18 +6,18 @@ related_targets: ["sitio/src/app/paginas/menu"]
 ---
 
 ## Scope
-Inicio (`/`) y Menú (`/menu`) del prototipo; las páginas de sucursal heredan. Modo: Persuade (inicio) y Operate (máquina de tickets en `/menu`).
+Rediseño de inicio (`/`), menú (`/menu`) y sucursales. Modo: Persuade (inicio) y Operate (máquina de tickets). Plan fijado por PLAN_REDISENO.md.
 
 ## Audience and job
-Quien llega desde TikTok o Maps en el celular: saber qué es el Iekei, si está abierto, cómo llegar y armar un pedido. Acción principal: "Arma tu pedido".
+Quien llega desde TikTok o Maps en el celular: tener hambre en 3 segundos, saber si está abierto, cómo llegar y armar un pedido. Acción principal: "Arma tu pedido".
 
 ## Direction contract
-THESIS: El sitio es la barra de una ramen-ya Iekei: madera oscura, papel washi y la máquina de tickets 食券機. Rechaza el héroe de foto con texto encima y la cuadrícula de tarjetas iguales del restaurante promedio.
-OWN-WORLD: Carbón cálido y madera oscura con veta sutil como suelo; papel washi para tickets y tarjetas; un solo acento rojo laca en el botón principal y en lo activo. Dela Gothic One para TAKE-CHAN y 家系, Zen Kaku Gothic New para texto, Martian Mono solo para horarios, precios y folios. Botones de máquina con canto físico que se hunden.
-STORY: Esto es ramen Iekei de verdad, con caldo y fideo de Japón; está abierto ahora; se pide como en Japón, con un ticket.
-FIRST VIEWPORT: Aviso arriba. TAKE-CHAN gigante a todo el ancho (dos líneas en celular). Debajo, la frase y el tazón ilustrado con vapor que sube. Microetiqueta mono "Abierto ahora · cierra 17:00". Botón sólido laca "Arma tu pedido" y "Cómo llegar" en contorno, dentro del primer pantallazo en 390 px.
-FORM: Dirección fijada por el encargo (cartas de Gambit dis-050, dis-009, dis-006, dis-005, dis-054); no hubo tirada. Momento animado único: vapor del tazón. Interacción firma: botón de máquina que se hunde e imprime el ticket. seed: none (unavailable)
+THESIS: Una ramen-ya de Yokohama de noche: se entra por una foto oscura de un tazón con vapor y se pide en una máquina de tickets de metal. Rechaza el formulario beige y la plantilla de tarjetas con etiquetas.
+OWN-WORLD: Negro sumi y papel washi con grano; un solo acento bermellón en el botón principal y lo activo. Shippori Mincho B1 para 家系 vertical y títulos, Geist para texto, Geist Mono solo en horario y precios. Fotos oscuras de comida rotuladas "Imagen ilustrativa". Máquina de metal con letrero iluminado y precios LED ámbar.
+STORY: Esto es ramen Iekei de verdad, se ve delicioso, está abierto ahora y se pide con un ticket como en Japón.
+FIRST VIEWPORT: Aviso de una línea. Foto a sangre del tazón con vapor animado. 家系 vertical gigante a la izquierda; a su lado TAKE-CHAN RAMEN chico, la frase, "Abierto ahora · cierra 17:00" en mono y "Arma tu pedido" en bermellón con "Cómo llegar" en contorno, dentro del primer pantallazo a 390 px.
+FORM: Dirección fijada por PLAN_REDISENO.md (cartas dis-064, 043, 006, 005, 054, 023, 040, 028, 050, 059). Momento animado: vapor en portada, ticket térmico en menú. seed: none (unavailable)
 FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance
 
 ## Constraints
-Sin fotos propias; huecos rotulados para las de André. Datos no confirmados en "por confirmar". Sin contacto real. Un solo momento animado por página.
+Fotos de Unsplash rotuladas y acreditadas. Una sola nota de "ejemplo" por página. Americana con su marca "por confirmar". Sin contacto real.
