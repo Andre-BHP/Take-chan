@@ -28,14 +28,14 @@ const escenas = [
   ['2_maquina-de-tickets', 'Máquina de tickets', 'El menú se pide como en una ramen-ya de Japón: tecla por tecla.', async (p) => {
     await p.goto(base + '/menu?ramen=iekei-clasico', { waitUntil: 'networkidle' });
     await p.waitForTimeout(300);
-    await p.getByRole('button', { name: /Agregar Panceta extra/ }).click();
+    await p.getByRole('button', { name: /Agregar Gyoza/ }).click();
     await p.evaluate(() => { const s = document.querySelector('#cat-ramen'); scrollTo(0, s.getBoundingClientRect().top + scrollY - 190); });
   }],
   ['3_ticket-armado', 'Ticket armado', 'Sucursal, hora para recoger y el ticket listo para WhatsApp.', async (p) => {
     await p.goto(base + '/menu?ramen=iekei-clasico', { waitUntil: 'networkidle' });
     await p.waitForTimeout(300);
-    await p.getByRole('button', { name: /Agregar Panceta extra/ }).click();
-    await p.getByRole('button', { name: /Agregar Huevo marinado/ }).click();
+    await p.getByRole('button', { name: /Agregar Gyoza/ }).click();
+    await p.getByRole('button', { name: /Agregar Té verde/ }).click();
     await p.selectOption('select', '13:30');
     await p.getByRole('button', { name: 'Imprimir ticket' }).click();
     await p.waitForTimeout(300);

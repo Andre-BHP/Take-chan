@@ -5,10 +5,13 @@ import { MENU, SUCURSALES, direccionCorta, pesos } from '../../servicios/datos';
 import { Pedido } from '../../servicios/pedido';
 import { Contacto } from '../../servicios/contacto';
 import { Seo } from '../../servicios/seo';
+import { Foto } from '../../componentes/foto';
+import { NotaEjemplo } from '../../componentes/nota-ejemplo';
 
 @Component({
   selector: 'app-menu',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [Foto, NotaEjemplo],
   templateUrl: './menu.html',
   styleUrl: './menu.css',
 })
@@ -34,7 +37,7 @@ export class Menu {
   constructor() {
     inject(Seo).establecer({
       titulo: 'Menú y pedido · Take-chan Ramen',
-      descripcion: 'Arma tu pedido de ramen Iekei como en una máquina de tickets japonesa y apártalo para recoger en Tlaquepaque. Precios por confirmar.',
+      descripcion: 'Arma tu pedido de ramen Iekei como en una máquina de tickets japonesa y apártalo para recoger en Tlaquepaque. Menú y precios de ejemplo.',
       ruta: '/menu',
     });
     const ruta = inject(ActivatedRoute);
@@ -84,6 +87,12 @@ export class Menu {
   protected imprimir() {
     this.pedido.imprimir();
     setTimeout(() => this.host.nativeElement.querySelector<HTMLElement>('.ticket')?.focus(), 0);
+  }
+
+  /** Kanji de la opción elegida de "al gusto" (硬め, 普通…), para el ticket. */
+  protected ja(id: string) {
+    const o = MENU.alGusto.opciones.find((x) => x.id === id)!;
+    return o.valores.find((v) => v.es === this.pedido.alGusto()[id])?.ja ?? '';
   }
 
   protected enviar() {
