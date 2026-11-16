@@ -24,12 +24,12 @@ async function pantalla(preparar) {
 }
 
 const escenas = [
-  ['1_portada', 'Portada', 'Abierto ahora con la hora de Guadalajara, el tazón con vapor y un solo botón: Arma tu pedido.', (p) => p.goto(base + '/', { waitUntil: 'networkidle' })],
-  ['2_maquina-de-tickets', 'Máquina de tickets', 'El menú se pide como en una ramen-ya de Japón: tecla por tecla.', async (p) => {
+  ['1_portada', 'Portada', 'Foto con vapor, 家系 en grande, abierto ahora y un solo botón: Arma tu pedido.', (p) => p.goto(base + '/', { waitUntil: 'networkidle' })],
+  ['2_maquina-de-tickets', 'Máquina de tickets', 'Una máquina de tickets de verdad: teclas con foto y precio, como en Japón.', async (p) => {
     await p.goto(base + '/menu?ramen=iekei-clasico', { waitUntil: 'networkidle' });
     await p.waitForTimeout(300);
     await p.getByRole('button', { name: /Agregar Gyoza/ }).click();
-    await p.evaluate(() => { const s = document.querySelector('#cat-ramen'); scrollTo(0, s.getBoundingClientRect().top + scrollY - 190); });
+    await p.evaluate(() => { const s = document.querySelector('#cat-ramen'); scrollTo(0, s.getBoundingClientRect().top + scrollY - 290); });
   }],
   ['3_ticket-armado', 'Ticket armado', 'Sucursal, hora para recoger y el ticket listo para WhatsApp.', async (p) => {
     await p.goto(base + '/menu?ramen=iekei-clasico', { waitUntil: 'networkidle' });
@@ -46,15 +46,15 @@ const escenas = [
 for (const [archivo, titulo, texto, preparar] of escenas) {
   const img = await pantalla(preparar);
   const html = `<!doctype html><html lang="es"><head><meta charset="utf-8"><style>
-    @font-face { font-family: D; src: url(${fuente('dela-gothic-one.woff2')}); }
-    @font-face { font-family: Z; src: url(${fuente('zen-kaku-400.woff2')}); }
+    @font-face { font-family: D; src: url(${fuente('shippori-800.woff2')}); }
+    @font-face { font-family: Z; src: url(${fuente('geist-400.woff2')}); }
     * { margin: 0; box-sizing: border-box; }
     body { width: 1080px; height: 1350px; overflow: hidden; display: grid; grid-template-rows: auto 1fr; justify-items: center; align-items: center; padding-top: 32px;
-      background: radial-gradient(60% 45% at 50% 42%, #3a2a20 0%, #1d1612 60%, #120e0b 100%); color: #f0e7d8; font-family: Z, sans-serif; }
-    .barra { position: absolute; left: 0; right: 0; bottom: 0; height: 260px; background: linear-gradient(#2c211a, #1a130f); box-shadow: 0 -2px 0 #3e3027; }
+      background: radial-gradient(60% 45% at 50% 42%, #2a211b 0%, #171412 60%, #121110 100%); color: #f0e7d8; font-family: Z, sans-serif; }
+    .barra { position: absolute; left: 0; right: 0; bottom: 0; height: 260px; background: linear-gradient(#1b1917, #121110); box-shadow: 0 -1px 0 #37322d; }
     .escena { position: relative; display: grid; justify-items: center; gap: 36px; }
     .telefono { width: 430px; height: 884px; border-radius: 64px; padding: 20px; background: #0b0807;
-      box-shadow: 0 0 0 2px #3e3027, 0 50px 90px -30px rgba(0,0,0,.85), 0 0 140px -20px rgba(194,47,40,.18); position: relative; }
+      box-shadow: 0 0 0 2px #3e3027, 0 50px 90px -30px rgba(0,0,0,.85), 0 0 140px -20px rgba(217,56,30,.16); position: relative; }
     .telefono img { width: 390px; height: 844px; border-radius: 46px; display: block; }
     .isla { position: absolute; top: 34px; left: 50%; translate: -50%; width: 110px; height: 30px; border-radius: 20px; background: #000; }
     .pie { text-align: center; display: grid; gap: 10px; }

@@ -143,3 +143,13 @@ Sustituye al de la primera versión. Tokens fijados antes de construir (dis-019)
 
 ## Datos de ejemplo
 Una sola nota por página: "Propuesta: menú, precios y fotos de ejemplo hasta que Take-chan confirme los suyos". Cada foto lleva un rótulo pequeño "Imagen ilustrativa". Solo la sucursal Americana lleva su marca "por confirmar".
+
+## Lo que quedó construido (2026-11-16)
+Diferencias con los tokens de arriba, después de las revisiones de impeccable, design-taste-frontend y better-typography:
+- **Héroe:** en escritorio la foto ocupa la derecha a sangre y se funde con el sumi hacia el texto; en celular ocupa la parte de arriba. Sin rótulo encima del título; 家系 a `clamp(5.75rem, 26vw, 13rem)`.
+- **Máquina de tickets (券売機):** cuerpo de esmalte oscuro, letrero washi iluminado, teclas claras tipo botón iluminado con foto, nombre y precio LED ámbar; columna de cobro (千円札, 硬貨, 合計, 返却, おつり) y boca de salida 発券口. Sombras difusas, sin canto duro.
+- **Noren:** tela washi con 家系ラーメン en sumi, una sola vez, al cierre de la portada; se mece al pasar el cursor.
+- **WhatsApp en demostración:** el mensaje aparece en línea como globo bajo el botón, sin ventana modal.
+- **Mono:** solo horario, estado y precios; las direcciones van en Geist.
+- **Pesos cargados:** Shippori 700 y 800, Geist 400, 500 y 600 (las negritas usan 600), Geist Mono 500. El subconjunto japonés se arma solo con los caracteres de `sitio/src`.
+- **Sucursal Americana:** solo la marca "por confirmar"; sin estado abierto o cerrado, sin horario supuesto y sin JSON-LD.
