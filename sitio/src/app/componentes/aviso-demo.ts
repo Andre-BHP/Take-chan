@@ -20,7 +20,7 @@ import { Contacto } from '../servicios/contacto';
     </dialog>
   `,
   styles: `
-    dialog { border: 0; padding: 0; background: transparent; color: var(--tinta); max-width: min(30rem, calc(100vw - 32px)); width: 100%; }
+    dialog { margin: auto; border: 0; padding: 0; background: transparent; color: var(--tinta); max-width: min(30rem, calc(100vw - 32px)); width: 100%; }
     dialog::backdrop { background: rgba(10, 7, 5, .72); }
     .hoja { background: var(--washi) var(--fibra); border-radius: var(--r-m); padding: var(--e-4); display: grid; gap: var(--e-3); box-shadow: var(--sombra-ticket); }
     p { color: var(--tinta-2); }

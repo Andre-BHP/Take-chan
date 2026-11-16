@@ -1,0 +1,160 @@
+<section class="cabeza envoltura" aria-labelledby="menu-titulo">
+  <h1 id="menu-titulo" class="t-titulo">Menú y pedido</h1>
+  <p class="t-entrada">Como en una ramen-ya de Japón: presiona las teclas de la máquina, elige sucursal y hora, y sale tu ticket listo para mandarlo por WhatsApp.</p>
+  <p class="aviso-precios"><span class="por-confirmar">menú y precios por confirmar</span> <span class="tenue">Los nombres son una propuesta para ordenar la carta; el negocio pone los reales.</span></p>
+</section>
+
+<div class="envoltura disposicion">
+  <nav class="indice" aria-label="Secciones del menú">
+    <ul>
+      @for (s of secciones; track s.id) {
+        <li><a [href]="'menu#cat-' + s.id" [class.activa]="activa() === s.id" [attr.aria-current]="activa() === s.id ? 'true' : null" (click)="ir($event, s.id)">{{ s.nombre }}</a></li>
+      }
+    </ul>
+  </nav>
+
+  <div class="maquina">
+    <div class="rotulo">
+      <span class="kanji" lang="ja">食券</span>
+      <p>Cada tecla agrega un ticket. Las apagadas esperan el menú real.</p>
+    </div>
+
+    @for (c of menu.categorias; track c.id) {
+      <section class="categoria" [id]="'cat-' + c.id" [attr.data-seccion]="c.id" tabindex="-1" [attr.aria-labelledby]="'tit-' + c.id">
+        <div class="categoria-cabeza">
+          <h2 class="t-subtitulo" [id]="'tit-' + c.id">{{ c.nombre }}</h2>
+          <p class="tenue">{{ c.nota }}</p>
+        </div>
+        <div class="teclas" [class.ramen]="c.id === 'ramen'">
+          @for (p of c.items; track p.id) {
+            @if (p.hueco) {
+              <button type="button" class="tecla apagada" disabled>
+                <span class="nombre">{{ p.nombre }}</span>
+                <span class="sub">por definir con el negocio</span>
+              </button>
+            } @else {
+              <button type="button" class="tecla" [class.elegida]="pedido.cantidad(p.id) > 0" [class.pulsada]="pulsada() === p.id"
+                (click)="presionar(p.id)" [attr.aria-label]="'Agregar ' + p.nombre + '. En el ticket: ' + pedido.cantidad(p.id)">
+                <span class="nombre">{{ p.nombre }}</span>
+                <span class="sub">{{ pesos(p.precio) ?? 'precio por confirmar' }}</span>
+                @if (pedido.cantidad(p.id) > 0) { <span class="cuenta" aria-hidden="true">{{ pedido.cantidad(p.id) }}</span> }
+              </button>
+            }
+          }
+        </div>
+      </section>
+    }
+
+    <section class="categoria" id="cat-al-gusto" data-seccion="al-gusto" tabindex="-1" aria-labelledby="tit-al-gusto">
+      <div class="categoria-cabeza">
+        <h2 class="t-subtitulo" id="tit-al-gusto">Al gusto</h2>
+        <p class="tenue">{{ menu.alGusto.nota }}</p>
+      </div>
+      @for (o of menu.alGusto.opciones; track o.id) {
+        <fieldset class="segmentos">
+          <legend>{{ o.nombre }}</legend>
+          <div>
+            @for (v of o.valores; track v) {
+              <label>
+                <input type="radio" [name]="'gusto-' + o.id" [value]="v" [checked]="pedido.alGusto()[o.id] === v"
+                  (change)="pedido.elegirGusto(o.id, v)" />
+                <span>{{ v }}</span>
+              </label>
+            }
+          </div>
+        </fieldset>
+      }
+    </section>
+  </div>
+
+  <aside id="ticket" class="panel" aria-labelledby="ticket-titulo">
+    <h2 id="ticket-titulo" class="t-subtitulo">Tu pedido</h2>
+
+    @if (pedido.lineas().length) {
+      <ul class="lineas">
+        @for (l of pedido.lineas(); track l.platillo.id) {
+          <li>
+            <span class="linea-nombre">{{ l.platillo.nombre }}</span>
+            <span class="cantidad">
+              <button type="button" (click)="pedido.sumar(l.platillo.id, -1)" [attr.aria-label]="'Quitar uno de ' + l.platillo.nombre">−</button>
+              <span class="t-dato" aria-live="polite">{{ l.cantidad }}</span>
+              <button type="button" (click)="pedido.sumar(l.platillo.id, 1)" [attr.aria-label]="'Agregar uno de ' + l.platillo.nombre">+</button>
+            </span>
+          </li>
+        }
+      </ul>
+      <button type="button" class="vaciar" (click)="pedido.vaciar()">Vaciar pedido</button>
+    } @else {
+      <p class="vacio tenue">Todavía no hay tickets. Presiona una tecla de la máquina; si es tu primera vez, empieza por el Iekei clásico.</p>
+    }
+
+    <fieldset class="opciones">
+      <legend>Sucursal</legend>
+      @for (s of sucursales; track s.id) {
+        <label class="opcion">
+          <input type="radio" name="sucursal" [value]="s.id" [checked]="pedido.sucursalId() === s.id" (change)="pedido.cambiar(pedido.sucursalId, s.id)" />
+          <span>
+            <strong>{{ s.nombre }}</strong>
+            <span class="t-dato tenue">{{ direccion(s) }}</span>
+            @if (!s.confirmada) { <span class="por-confirmar">por confirmar</span> }
+          </span>
+        </label>
+      }
+    </fieldset>
+
+    <div class="campos">
+      <label class="campo">
+        <span>Hora para recoger</span>
+        <select [value]="pedido.hora()" (change)="pedido.cambiar(pedido.hora, $any($event.target).value)">
+          <option value="pronto">Lo antes posible</option>
+          @for (h of pedido.horas(); track h) { <option [value]="h">{{ h }}</option> }
+        </select>
+      </label>
+      <label class="campo">
+        <span>A nombre de <span class="tenue">(opcional)</span></span>
+        <input type="text" autocomplete="given-name" maxlength="40" [value]="pedido.nombre()" (input)="pedido.cambiar(pedido.nombre, $any($event.target).value)" />
+      </label>
+    </div>
+
+    @if (!pedido.folio()) {
+      <button type="button" class="boton boton-primario imprimir" [disabled]="!pedido.piezas()" (click)="imprimir()">
+        Imprimir ticket
+      </button>
+      @if (!pedido.piezas()) { <p class="t-dato tenue ayuda">Agrega al menos un platillo para imprimir.</p> }
+    } @else {
+      <div class="salida">
+        <div class="ranura" aria-hidden="true"></div>
+        <div class="ticket sobre-washi" tabindex="-1" role="group" aria-label="Ticket impreso">
+          <p class="ticket-marca">TAKE-CHAN RAMEN <span lang="ja">食券</span></p>
+          <p class="t-dato">N.º {{ pedido.folio() }} · {{ pedido.sucursal().nombre }}</p>
+          <hr />
+          @for (l of pedido.lineas(); track l.platillo.id) {
+            <p class="ticket-linea"><span>{{ l.cantidad }} × {{ l.platillo.nombre }}</span><span>{{ pesos(l.platillo.precio) ?? '—' }}</span></p>
+          }
+          @if (pedido.lleva()) {
+            <p class="t-dato gusto">
+              @for (o of menu.alGusto.opciones; track o.id) { {{ o.nombre }}: {{ pedido.alGusto()[o.id] }}@if (!$last) { · } }
+            </p>
+          }
+          <hr />
+          <p class="ticket-linea"><span>Recoger</span><span>{{ pedido.hora() === 'pronto' ? 'lo antes posible' : pedido.hora() }}</span></p>
+          @if (pedido.nombre().trim()) { <p class="ticket-linea"><span>A nombre de</span><span>{{ pedido.nombre().trim() }}</span></p> }
+          <p class="ticket-linea total"><span>Total</span><span>{{ pedido.total() == null ? 'por confirmar' : pesos(pedido.total()) }}</span></p>
+          <p class="t-dato nota">Ticket de demostración: no es un pedido real.</p>
+        </div>
+        <button type="button" class="boton boton-primario" (click)="enviar()">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 20l1.3-3.9A8 8 0 1 1 8 19z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+          Enviar por WhatsApp
+        </button>
+        <p class="t-dato tenue ayuda">Modo demostración: se muestra el mensaje, no se envía.</p>
+      </div>
+    }
+  </aside>
+</div>
+
+@if (pedido.piezas()) {
+  <a class="barra-movil" href="menu#ticket" [class.oculta]="panelVisible()" [attr.tabindex]="panelVisible() ? -1 : null" [attr.aria-hidden]="panelVisible() ? 'true' : null">
+    <span class="t-dato">{{ pedido.piezas() }} {{ pedido.piezas() === 1 ? 'ticket' : 'tickets' }}</span>
+    <span>Ver pedido</span>
+  </a>
+}
