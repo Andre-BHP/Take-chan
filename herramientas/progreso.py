@@ -1,7 +1,7 @@
 """Actualiza PROGRESO.md: python herramientas/progreso.py <paso R#> "<qué se hizo>" "<qué sigue>" "<tabla de capturas markdown>"."""
-import re, sys, datetime, zoneinfo
+import re, sys, datetime
 paso, hecho, sigue, capturas = sys.argv[1:5]
-h = datetime.datetime.now(zoneinfo.ZoneInfo('America/Mexico_City')).strftime('%Y-%m-%d %H:%M')
+h = datetime.datetime.now().strftime('%Y-%m-%d %H:%M')
 p = 'PROGRESO.md'
 t = open(p, encoding='utf-8').read()
 t = re.sub(r'- \[ \] ' + re.escape(paso) + r'\.', f'- [x] {paso}.', t)
