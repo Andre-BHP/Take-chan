@@ -1,5 +1,5 @@
 <section class="cabeza" aria-labelledby="sucursal-titulo">
-  <app-foto class="cabeza-foto" [nombre]="s.id === 'tlaquepaque' ? 'barra' : 'barra'" [prioridad]="true" sizes="100vw" />
+  <app-mapa class="cabeza-foto" [sucursal]="s.id" [alt]="'Mapa de las calles alrededor de ' + s.direccion.calle" [aproximada]="!s.confirmada" [prioridad]="true" />
   <div class="envoltura cabeza-texto">
     <p class="migas t-pequeno"><a routerLink="/" fragment="sucursales">Sucursales</a> / {{ s.nombre }}</p>
     <h1 id="sucursal-titulo" class="t-display"><span class="solo-lector">Take-chan Ramen </span>{{ s.nombre }}</h1>

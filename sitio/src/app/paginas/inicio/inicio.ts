@@ -5,6 +5,7 @@ import { SUCURSALES, direccionCorta, pesos, platillo } from '../../servicios/dat
 import { Seo } from '../../servicios/seo';
 import { restaurante } from '../../servicios/esquema';
 import { Foto } from '../../componentes/foto';
+import { Mapa } from '../../componentes/mapa';
 import { Vapor } from '../../componentes/vapor';
 import { Noren } from '../../componentes/noren';
 import { Estado } from '../../componentes/estado';
@@ -16,7 +17,7 @@ import { Telon } from '../../componentes/telon';
 @Component({
   selector: 'app-inicio',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [RouterLink, Foto, Vapor, Noren, Estado, NotaEjemplo, Medidor],
+  imports: [RouterLink, Foto, Mapa, Vapor, Noren, Estado, NotaEjemplo, Medidor],
   templateUrl: './inicio.html',
   styleUrl: './inicio.css',
 })

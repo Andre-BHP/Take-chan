@@ -2,7 +2,7 @@
 
 - **Pages:** https://andre-bhp.github.io/Take-chan/
 - **Repositorio:** https://github.com/Andre-BHP/Take-chan
-- **Última subida:** 2026-11-16 16:16 (hora de Guadalajara)
+- **Última subida:** 2026-11-16 16:30 (hora de Guadalajara)
 
 ## Rediseño (2026-11-15)
 André revisó la primera versión: "quedó muy feo y muy mal". Este rediseño cambia la dirección a "una ramen-ya de Yokohama de noche": fotos de ejemplo rotuladas, negro sumi y papel washi, 家系 vertical y un solo acento bermellón.
@@ -22,7 +22,7 @@ Plan de Arthemis para pasar de "bien hecho" a "de premio".
 
 - [x] N0. Crítica y diferencias con el plan (`entregables/N0_critica.md`)
 - [x] N1. Una sola mirada fotográfica: tratamiento de color, grano y viñeta
-- [ ] N2. Mapas propios de OpenStreetMap en lugar de fotos de las sucursales
+- [x] N2. Mapas propios de OpenStreetMap en lugar de fotos de las sucursales
 - [ ] N3. "Cómo se hace un Iekei": tazón visto desde arriba y pasos 一二三四
 - [ ] N4. Sello hanko de la propuesta
 - [ ] N5. Héroe legible y saludo いらっしゃいませ
@@ -49,12 +49,12 @@ André: "mejor animación, más transiciones, mejor diseño, mejor todo". Metáf
 Repositorio, Pages, datos, inicio, máquina de tickets, sucursales con JSON-LD, pruebas y lista para el negocio. Capturas en `entregables/avances/antes/`.
 
 ## Último paso
-**N1.** Un solo tratamiento de color para todas las fotos con `sharp` (`herramientas/gradear.mjs`): balance cálido, negros profundos, saturación contenida y una capa ámbar. Encima de cada foto, viñeta y grano de película en CSS (PNG de 2 KB). Los tazones blancos (chashu, huevo, tazón) se recortaron para que el caldo llene el cuadro. Fuera la foto de la Catedral y la del té. axe limpio, sin scroll a 360 y portada de 413 KB. El LCP dio 2.9 s, pero el sitio publicado antes de este paso también da 2.75 s hoy en esta máquina; se corrige en N5.
+**N2.** Mapas propios con datos de OpenStreetMap (`herramientas/mapas.mjs`): calles en tonos de sumi, las calles clave en claro con su nombre y "© OpenStreetMap" con enlace. Tlaquepaque marca la esquina real de Calzada Córdoba y Niños Héroes, sacada de los nodos de OSM. La Americana va como "Ubicación aproximada", estimada por la numeración vecina de Prisciliano Sánchez. El sello 家 en bermellón cae una vez al entrar en vista (quieto con movimiento reducido). Reemplazan las fotos en las tarjetas de la portada y en la cabeza de cada sucursal; la foto de la barra se quitó. axe limpio, sin scroll a 360, portada de 415 KB.
 
 ## Sigue
-N2: mapas propios de OpenStreetMap para las dos sucursales.
+N3: "Cómo se hace un Iekei" con el tazón visto desde arriba y los pasos 一二三四.
 
 ## Capturas más recientes
-| Hoja antes y después | 360 | 1440 |
-|---|---|---|
-| ![gradeo](entregables/avances/2026-11-16_N1_gradeo.png) | ![360](entregables/avances/2026-11-16_paso-N1_360.png) | ![1440](entregables/avances/2026-11-16_paso-N1_1440.png) |
+| Tlaquepaque 360 | Tlaquepaque 1440 | Americana 1440 | Video |
+|---|---|---|---|
+| ![360](entregables/avances/2026-11-16_paso-N2_tlaquepaque_360.png) | ![1440](entregables/avances/2026-11-16_paso-N2_tlaquepaque_1440.png) | ![Americana](entregables/avances/2026-11-16_paso-N2_americana_1440.png) | [GIF 390](entregables/avances/video/2026-11-16_N2_sucursales_390.gif) · [MP4 1440](entregables/avances/video/2026-11-16_N2_sucursales_1440.mp4) |

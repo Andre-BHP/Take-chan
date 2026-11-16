@@ -1,7 +1,11 @@
 .cabeza { position: relative; isolation: isolate; overflow: hidden; min-height: min(calc(100svh - 87px), 940px); display: grid; align-items: end; }
 .cabeza-foto { position: absolute; inset: 0; z-index: -2; }
 .cabeza::after { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(to top, rgba(18, 17, 16, .97) 0%, rgba(18, 17, 16, .8) 38%, rgba(18, 17, 16, .2) 75%); }
-.cabeza-foto ::ng-deep .rotulo { bottom: auto; top: var(--e-2); }
+.cabeza-foto ::ng-deep .osm { bottom: auto; top: var(--e-2); }
+.cabeza-foto ::ng-deep .aprox { top: var(--e-2); }
+/* El punto queda arriba del texto: el mapa ocupa el 76 % de arriba y su centro (el punto) cae al 38 %. */
+.cabeza-foto ::ng-deep img { height: 76%; mask-image: linear-gradient(#000 70%, transparent); }
+.cabeza-foto ::ng-deep .pin, .cabeza-foto ::ng-deep .sombra { top: 38%; }
 .cabeza-texto { display: grid; gap: var(--e-3); justify-items: start; padding-block: var(--e-8) var(--e-6); }
 .migas a { color: var(--ceniza); }
 .cabeza h1 { overflow-wrap: anywhere; }
@@ -18,3 +22,4 @@
 dl { display: grid; gap: var(--e-3); }
 dt { font-weight: 600; }
 dd { color: var(--ceniza); }
+.cabeza-foto ::ng-deep .sello { width: clamp(2.75rem, 4vw, 3.75rem); font-size: clamp(1.5rem, 2.2vw, 2rem); }

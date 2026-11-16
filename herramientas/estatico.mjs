@@ -2,7 +2,7 @@ import http from 'node:http'; import fs from 'node:fs'; import path from 'node:p
 const raiz = path.resolve(process.argv[2]); const puerto = Number(process.argv[3] || 4300);
 // Prefijo opcional para imitar GitHub Pages (por ejemplo /Arleth).
 const prefijo = process.argv[4] || '';
-const tipos = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript', '.css': 'text/css', '.avif': 'image/avif', '.webp': 'image/webp', '.png': 'image/png', '.woff2': 'font/woff2', '.woff': 'font/woff', '.mp4': 'video/mp4', '.webm': 'video/webm', '.json': 'application/json' };
+const tipos = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript', '.css': 'text/css', '.avif': 'image/avif', '.webp': 'image/webp', '.png': 'image/png', '.woff2': 'font/woff2', '.woff': 'font/woff', '.mp4': 'video/mp4', '.webm': 'video/webm', '.json': 'application/json', '.svg': 'image/svg+xml', '.txt': 'text/plain; charset=utf-8' };
 http.createServer((q, r) => {
   let ruta = decodeURIComponent(q.url.split('?')[0]);
   if (prefijo) {

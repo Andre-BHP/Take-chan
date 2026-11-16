@@ -18,6 +18,5 @@ Se descartaron fotos de fachadas con marcas reales de otros negocios y un térmi
 | `fideo` | Qué es el Iekei y fideo extra | [Nahima Aparicio](https://unsplash.com/@nahimaaparicio) | [unsplash.com/photos/6esxgklFkQs](https://unsplash.com/photos/6esxgklFkQs) |
 | `tazon` | Paso 4: tazón armado | [Kouji Tsuru](https://unsplash.com/@pafuxu) | [unsplash.com/photos/T_B8nPvDWNk](https://unsplash.com/photos/T_B8nPvDWNk) |
 | `arroz` | Arroz (menú) | [Vinn Koonyosying](https://unsplash.com/@mggbox) | [unsplash.com/photos/zXNC_lBBVGE](https://unsplash.com/photos/zXNC_lBBVGE) |
-| `barra` | Sucursales (barra de cocina) | [Mesh](https://unsplash.com/@crypticsy) | [unsplash.com/photos/QiA43Y5AJCU](https://unsplash.com/photos/QiA43Y5AJCU) |
 
 Procesado: `herramientas/procesar-fotos.mjs` (AVIF y WebP a 480, 960 y 1600 px, color promedio y miniatura borrosa). Originales en `fuentes-fotos/` (no se suben).

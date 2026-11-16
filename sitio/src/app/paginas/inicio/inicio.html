@@ -83,7 +83,7 @@
   <div class="tarjetas" data-revelar="grupo">
     @for (s of sucursales; track s.id) {
       <article class="sucursal">
-        <app-foto [nombre]="s.id === 'tlaquepaque' ? 'barra' : 'barra'" sizes="(min-width: 720px) 45vw, 100vw" />
+        <app-mapa [sucursal]="s.id" [alt]="'Mapa de las calles alrededor de ' + s.direccion.calle" [aproximada]="!s.confirmada" />
         <div class="sucursal-texto">
           <h3 class="t-titulo"><a [routerLink]="'/' + s.id">{{ s.nombre }}</a></h3>
           @if (!s.confirmada) { <p class="marca-tentativa">Sucursal por confirmar</p> }
