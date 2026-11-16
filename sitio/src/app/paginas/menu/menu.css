@@ -50,7 +50,7 @@
 }
 .tecla .nombre { font: 700 1rem/1.2 var(--sans); }
 .tecla .sub { font: 400 .6875rem/1.4 var(--mono); color: var(--tinta-2); }
-.tecla:hover { border-color: var(--washi-fibra); }
+.tecla:not(:disabled):hover { border-color: var(--washi-fibra); }
 .tecla:active, .tecla.pulsada { transform: translateY(3px); box-shadow: var(--sombra-boton-hundido); }
 .tecla.elegida { border-color: var(--laca); }
 .tecla:focus-visible { outline: 2px solid var(--texto); outline-offset: 3px; }

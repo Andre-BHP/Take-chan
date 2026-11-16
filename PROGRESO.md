@@ -4,7 +4,7 @@ Propuesta no oficial de sitio para Take-chan Ramen.
 
 - **Pages:** https://andre-bhp.github.io/Take-chan/ (falta activarlo: Settings → Pages → rama `gh-pages`)
 - **Repositorio:** https://github.com/Andre-BHP/Take-chan
-- **Última subida:** 2026-11-15 23:23 (hora de Guadalajara)
+- **Última subida:** 2026-11-15 23:25 (hora de Guadalajara)
 
 ## Pasos
 - [x] 0. Repositorio, Pages "en construcción" (aviso y `noindex`) y este archivo
@@ -15,16 +15,16 @@ Propuesta no oficial de sitio para Take-chan Ramen.
 - [x] 5. Menú y máquina de tickets
 - [x] 6. Sucursales y JSON-LD
 - [x] 7. Pruebas, axe y capturas
-- [ ] 8. Entregables
+- [x] 8. Entregables
 - [ ] 9. Push y Pages final
 
 ## Último paso
-**Paso 7.** Pruebas con `herramientas/pruebas.mjs` (resultado en [`entregables/pruebas.txt`](entregables/pruebas.txt)): axe sin violaciones en las 4 páginas a 390 y 1440 px; sin scroll horizontal a 360 px; portada de 156 KB transferidos; LCP de 0.8 s con 4G lenta y CPU 4 veces más lenta; el vapor se anima normalmente y queda quieto con movimiento reducido. Capturas de todas las páginas a 360, 390 y 1440 px en [`entregables/capturas/`](entregables/capturas/).
+**Paso 8.** [`entregables/PEDIR_AL_NEGOCIO.md`](entregables/PEDIR_AL_NEGOCIO.md) con los 8 puntos para la visita y la tabla de todo lo que dice "por confirmar". Capturas para enseñar en el celular, en mockup (dis-020): [`entregables/capturas-visita/`](entregables/capturas-visita/) (portada, máquina de tickets y ticket armado).
 
 ## Sigue
-Paso 8: `PEDIR_AL_NEGOCIO.md` y capturas para la visita en mockup de celular.
+Paso 9: revisión final de diseño, `DESIGN.md` al día y Pages final.
 
 ## Capturas más recientes
-| Inicio 360 px | Inicio 1440 px |
-|---|---|
-| <img src="entregables/avances/2026-11-15_paso-7_360.png" width="180"> | <img src="entregables/avances/2026-11-15_paso-7_1440.png" width="360"> |
+| Visita: portada | Visita: máquina | Visita: ticket |
+|---|---|---|
+| <img src="entregables/capturas-visita/1_portada.png" width="240"> | <img src="entregables/capturas-visita/2_maquina-de-tickets.png" width="240"> | <img src="entregables/capturas-visita/3_ticket-armado.png" width="240"> |
