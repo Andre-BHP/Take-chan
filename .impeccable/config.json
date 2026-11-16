@@ -12,6 +12,18 @@
         ],
         "createdAt": "2026-11-16T21:17:36.317Z",
         "reason": "Claude (sesión SENSEI): el texto 家系 de la intro empieza con fill-opacity 0 a propósito y se entinta con la animación; el botón Saltar es washi sobre sumi (alto contraste)"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "shippori respaldo",
+        "createdAt": "2026-11-16T21:46:01.746Z",
+        "reason": "Claude (sesión SENSEI): alias local de respaldo con size-adjust para Shippori Mincho B1 (evita CLS al cargar la fuente); no es una tipografía nueva"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "geist respaldo",
+        "createdAt": "2026-11-16T21:46:02.100Z",
+        "reason": "Claude (sesión SENSEI): alias local de respaldo con size-adjust para Geist (evita CLS al cargar la fuente); no es una tipografía nueva"
       }
     ]
   }
