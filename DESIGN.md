@@ -160,3 +160,10 @@ dis-023 se reinterpreta: **un momento firma por página** (la noren que se abre 
 - **Curvas:** `--ease-out: cubic-bezier(.22, 1, .36, 1)` (entradas), `--ease-in-out: cubic-bezier(.65, 0, .35, 1)` (cortinas y transiciones), `--ease-tela: cubic-bezier(.33, 1.3, .5, 1)` (rebote leve de la tela). En GSAP: `expo.out` y `back.out(1.3)`.
 - **Base:** Lenis (`lerp` 0.1) y GSAP con ScrollTrigger y SplitText, cargados solo en el navegador cuando la página ya terminó de cargar (`servicios/movimiento.ts`). Nada de esto existe en el prerender.
 - **Reglas:** solo `transform`, `opacity` y `clip-path`; el contenido es visible por defecto; con `prefers-reduced-motion` no se carga Lenis ni GSAP y todo queda quieto.
+
+### Lo que quedó construido del movimiento (M0 a M8)
+- **Intro de la noren** (solo la primera visita, CSS en `index.html`): 家系 se dibuja y se entinta, se desvanece y la noren se abre en dos mitades con `--ease-tela`; 1.2 s, botón "Saltar".
+- **Entre páginas:** telón de noren (`componentes/telon.ts`): tres paños índigo caen escalonados (60 ms), la página cambia debajo y se separan hacia los lados; unos 600 ms. En escritorio, la foto del platillo tocado en el bento vuela a su tecla con View Transitions.
+- **Portada:** entrada del héroe en CSS (foto 1.08 → 1, titular por líneas, trazo de 家系), paralaje del héroe, washi rasgado, títulos por líneas (SplitText), cifra de Google que rueda de 4.0 a 4.8, bento con paralaje del puntero, medidor del tazón por capas, sucursales escalonadas y noren índigo que se mece y se abre al menú.
+- **Menú:** encendido de la máquina, tecla que se hunde y rebota, miniatura que vuela al pedido, LED en odómetro, marcos deslizantes (índice y al gusto), ticket que sale en tres jalones con la luz de 発券口 y se corta al enviarlo; hoja inferior en celular.
+- **Reglas medidas:** CLS 0 (fuentes de respaldo con `size-adjust` y alto reservado en el héroe), 59–60 fps al hacer scroll, vapor sin recálculo de layout y en pausa fuera de vista, bucles limitados.

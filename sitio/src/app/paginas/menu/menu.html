@@ -133,7 +133,7 @@
       @if (!pedido.piezas()) { <p class="ayuda tenue">Agrega al menos un platillo para imprimir.</p> }
     } @else {
       <div class="salida">
-        <div class="ranura-salida" aria-hidden="true" [class.imprimiendo]="imprimiendo()"><span class="ranura"></span><span class="etiqueta-salida" lang="ja">発券口</span></div>
+        <div class="ranura-salida" aria-hidden="true" [class.imprimiendo]="imprimiendo()"><span class="etiqueta-salida" lang="ja">発券口</span><span class="ranura"></span></div>
         <div class="ticket" tabindex="-1" role="group" aria-label="Ticket impreso" [class.cortado]="cortado()">
           <p class="ticket-marca"><span lang="ja">食券</span> TAKE-CHAN RAMEN</p>
           <p class="ticket-meta"><span>N.º {{ pedido.folio() }}</span><span>{{ pedido.sucursal().nombre }}</span></p>
