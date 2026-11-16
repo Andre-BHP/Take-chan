@@ -26,11 +26,30 @@
   grid-area: kanji; writing-mode: vertical-rl; text-orientation: upright;
   font: 800 clamp(5.75rem, 26vw, 13rem)/1 var(--mincho); letter-spacing: .02em;
   color: var(--washi); margin-bottom: -.06em;
+  /* Medida fija de dos caracteres: la fuente de respaldo no cambia el alto (CLS 0). */
+  height: 2.04em; width: 1em; overflow: hidden;
 }
 .heroe-texto { grid-area: texto; display: grid; gap: var(--e-3); justify-items: start; }
 /* Celular: el bloque del héroe reserva su alto final, así el cambio de fuente no lo empuja (CLS 0). */
-@media (max-width: 899px) { .heroe-capa { min-height: 27rem; align-content: end; } }
-.heroe .t-display { font-size: clamp(1.75rem, 1.1rem + 2.4vw, 3.25rem); max-width: 15ch; text-shadow: 0 1px 18px rgba(18, 17, 16, .6); }
+@media (max-width: 899px) {
+  .heroe-capa { min-height: calc(23.25rem + 25vw); align-content: end; }
+  /* En celular la bajada ocupa dos líneas con Geist; se reservan antes de que llegue la fuente (CLS 0). */
+  .bajada { min-height: 2.8em; }
+  /* "en Tlaquepaque." mide 8em en Shippori y la columna mide .74 del ancho menos 48 px: así cabe siempre en una línea,
+     con la fuente final y con la de respaldo, y nada se recorre al llegar la fuente. */
+  .heroe .t-display { font-size: calc(9vw - 6px); }
+  .heroe .t-display .l { white-space: nowrap; }
+}
+@media (max-width: 599px) {
+  /* Botones apilados con cualquier fuente: con Geist ya no caben lado a lado. */
+  .heroe .acciones .boton { flex-basis: 100%; }
+  /* Velo de abajo hacia arriba: el titular cae sobre la parte clara del caldo. */
+  .heroe-visual::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(18, 17, 16, .92) 0%, rgba(18, 17, 16, .55) 40%, rgba(18, 17, 16, .1) 75%); }
+}
+.heroe .t-display { font-size: clamp(1.875rem, .9rem + 4.6vw, 5.5rem); line-height: 1; letter-spacing: -.015em; text-shadow: 0 1px 18px rgba(18, 17, 16, .6); }
+/* El nombre del negocio, chico encima del titular (forma parte del h1). */
+.marca-heroe { font: 600 .8125rem/1.4 var(--sans); letter-spacing: .14em; text-transform: uppercase; color: var(--washi-2); text-shadow: none; margin-bottom: var(--e-3); }
+.bajada { margin: 0; font: 500 clamp(1rem, .9rem + .5vw, 1.25rem)/1.4 var(--sans); color: var(--washi); text-shadow: 0 1px 12px rgba(18, 17, 16, .8); }
 .heroe-estado { color: var(--washi); min-height: 2.5rem; align-items: flex-start; }
 @media (min-width: 900px) { .heroe-estado { min-height: 1.25rem; } }
 .acciones { grid-area: acciones; display: flex; flex-wrap: wrap; gap: var(--e-3); }
@@ -43,8 +62,11 @@
   .heroe-foto { --enfoque: 70% 50%; }
   .heroe-foto ::ng-deep .rotulo { top: auto; bottom: var(--e-3); right: var(--e-3); }
   .heroe-vapor { left: 50%; bottom: 50%; width: 32%; height: 48%; z-index: 1; }
+  .kanji { font-size: clamp(13rem, 16vw, 15.5rem); }
+  /* Dos líneas cortas, sin que "en Tlaquepaque." se parta. */
+  .heroe .t-display .l { white-space: nowrap; }
   .heroe-capa {
-    grid-template-columns: auto minmax(0, 30rem) 1fr;
+    grid-template-columns: auto minmax(0, 44rem) 1fr;
     grid-template-areas: 'kanji texto .' 'kanji acciones .';
     column-gap: var(--e-7); padding-block: var(--e-9) var(--e-8);
   }
@@ -59,11 +81,12 @@
 .heroe .l > span { display: block; }
 @media (prefers-reduced-motion: no-preference) {
   .heroe-foto { animation: heroe-foto 1400ms var(--ease-out) var(--retraso) both; }
-  .heroe .l > span { animation: heroe-linea 900ms var(--ease-out) both; }
+  .heroe .l > span { animation: heroe-linea 900ms var(--ease-out) var(--retraso) both; }
   .heroe .l:nth-of-type(2) > span { animation-delay: calc(var(--retraso) + .18s); }
   .heroe .l:nth-of-type(3) > span { animation-delay: calc(var(--retraso) + .26s); }
   .heroe .l:nth-of-type(4) > span { animation-delay: calc(var(--retraso) + .34s); }
   .heroe .l:nth-of-type(5) > span { animation-delay: calc(var(--retraso) + .42s); }
+  .heroe .bajada > span { display: block; animation: heroe-sube var(--t-4) var(--ease-out) calc(var(--retraso) + .4s) both; }
   .kanji { animation: heroe-trazo 900ms var(--ease-in-out) var(--retraso) both; }
   .heroe-estado, .acciones { animation: heroe-sube var(--t-4) var(--ease-out) calc(var(--retraso) + .55s) both; }
   @keyframes heroe-foto { from { transform: scale(1.08); } }

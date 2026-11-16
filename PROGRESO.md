@@ -2,7 +2,7 @@
 
 - **Pages:** https://andre-bhp.github.io/Take-chan/
 - **Repositorio:** https://github.com/Andre-BHP/Take-chan
-- **Última subida:** 2026-11-16 16:44 (hora de Guadalajara)
+- **Última subida:** 2026-11-16 17:03 (hora de Guadalajara)
 
 ## Rediseño (2026-11-15)
 André revisó la primera versión: "quedó muy feo y muy mal". Este rediseño cambia la dirección a "una ramen-ya de Yokohama de noche": fotos de ejemplo rotuladas, negro sumi y papel washi, 家系 vertical y un solo acento bermellón.
@@ -25,7 +25,7 @@ Plan de Arthemis para pasar de "bien hecho" a "de premio".
 - [x] N2. Mapas propios de OpenStreetMap en lugar de fotos de las sucursales
 - [x] N3. "Cómo se hace un Iekei": tazón visto desde arriba y pasos 一二三四
 - [x] N4. Sello hanko de la propuesta
-- [ ] N5. Héroe legible y saludo いらっしゃいませ
+- [x] N5. Héroe legible y saludo いらっしゃいませ
 - [ ] N6. Ritmo editorial: títulos, 4.8 con sección propia y pausa a sangre
 - [ ] N7. Menú que vende: sugerencia, detalle de tecla y vista de lista
 - [ ] N8. Reloj en vivo, TikTok bajo demanda, contraste AA y detalles
@@ -49,12 +49,12 @@ André: "mejor animación, más transiciones, mejor diseño, mejor todo". Metáf
 Repositorio, Pages, datos, inicio, máquina de tickets, sucursales con JSON-LD, pruebas y lista para el negocio. Capturas en `entregables/avances/antes/`.
 
 ## Último paso
-**N4.** Sello hanko de la propuesta: cuadrado bermellón con 家系 en blanco (estilo 白文), borde irregular y poros de tinta. Se dibuja en Edge con la fuente real y se guarda como raster (`herramientas/sello.mjs`; 7 KB a 96 px). Está en el favicon (PNG de 32 px y el ícono de iPhone), en la esquina del héroe, en el pie y estampado en el ticket: al terminar de imprimir baja de 1.3 a 1 con un giro leve y la tinta se mezcla con el papel. Queda anotado en `PEDIR_AL_NEGOCIO.md` como logo de propuesta.
+**N5.** Héroe más legible y con más carácter: titular en 2 líneas ("Ramen Iekei / en Tlaquepaque.", hasta 88 px), "Take-chan Ramen" chico encima, la bajada "Caldo y fideo traídos de Japón." en sans, 家系 más alto en escritorio y velo de abajo hacia arriba en celular. La intro saluda "いらっしゃいませ · Bienvenido" cuando se abre la noren. El LCP alto venía de las 6 fuentes precargadas, que esta versión de Edge trata como bloqueantes (el primer pintado esperaba 2.3 s). Sin las precargas: LCP de 2.28 s con 4G lenta y CPU 4x. Las medidas del héroe ya no dependen de la fuente (CLS de 0.003 de 320 a 1440 px). axe limpio, sin scroll a 360, portada de 446 KB.
 
 ## Sigue
-N5: héroe más legible en celular, "Take-chan Ramen" chico en el héroe, saludo いらっしゃいませ en la intro y bajar el LCP.
+N6: ritmo editorial (títulos más grandes con kanji vertical, sección propia para el 4.8 y una pausa a sangre).
 
 ## Capturas más recientes
-| Héroe 1440 | Ticket con sello | 360 | Video |
+| 360 | 1440 | Saludo | Video |
 |---|---|---|---|
-| ![1440](entregables/avances/2026-11-16_paso-N4_1440.png) | ![ticket](entregables/avances/2026-11-16_paso-N4_ticket_1440.png) | ![360](entregables/avances/2026-11-16_paso-N4_360.png) | [GIF 390](entregables/avances/video/2026-11-16_N4_menu_390.gif) · [MP4 1440](entregables/avances/video/2026-11-16_N4_menu_1440.mp4) |
+| ![360](entregables/avances/2026-11-16_paso-N5_360.png) | ![1440](entregables/avances/2026-11-16_paso-N5_1440.png) | ![saludo](entregables/avances/2026-11-16_paso-N5_saludo_390.png) | [GIF 390](entregables/avances/video/2026-11-16_N5_intro_390.gif) · [MP4 1440](entregables/avances/video/2026-11-16_N5_intro_1440.mp4) |

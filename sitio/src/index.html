@@ -9,12 +9,6 @@
   <meta name="color-scheme" content="dark">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
-  <link rel="preload" href="fuentes/shippori-800.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="fuentes/shippori-700.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="fuentes/geist-400.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="fuentes/geist-500.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="fuentes/geist-600.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="fuentes/geist-mono-500.woff2" as="font" type="font/woff2" crossorigin>
   <style>
     /* Subconjuntos autohospedados (herramientas/fuentes.mjs). Rutas relativas a <base href>: sirven en / y en /Take-chan/. */
     @font-face { font-family: 'Shippori Mincho B1'; font-weight: 700; font-display: swap; src: url(fuentes/shippori-700.woff2) format('woff2'); }
@@ -40,6 +34,11 @@
     #intro svg { position: absolute; left: 50%; top: 50%; width: min(34vw, 180px); translate: -50% -52%; overflow: visible; animation: intro-kanji 160ms ease .5s both; }
     #intro text { font: 800 160px/1 'Shippori Mincho B1', 'Yu Mincho', serif; fill: #f3eee4; fill-opacity: 0; stroke: #f3eee4; stroke-width: 2; stroke-dasharray: 3200; stroke-dashoffset: 3200; animation: intro-trazo 420ms cubic-bezier(.65, 0, .35, 1) .02s forwards, intro-tinta 200ms ease .3s forwards; }
     #intro button { position: absolute; right: 16px; bottom: 16px; pointer-events: auto; min-height: 44px; padding: 0 16px; border: 1px solid rgba(243, 238, 228, .45); border-radius: 6px; background: transparent; color: #f3eee4; font: 500 .875rem/1 'Geist', system-ui, sans-serif; cursor: pointer; animation: intro-kanji 200ms ease .6s both; }
+    /* Saludo de toda ramen-ya al entrar: aparece cuando se abre la noren y se va antes del titular. */
+    #intro .saludo { position: absolute; left: 50%; top: 50%; translate: -50% -50%; margin: 0; display: grid; justify-items: center; gap: 8px; color: #f3eee4; white-space: nowrap; opacity: 0; animation: intro-saludo 560ms ease .66s both; }
+    #intro .saludo [lang] { font: 700 clamp(1.5rem, 5vw, 2.5rem)/1.2 'Shippori Mincho B1', 'Shippori respaldo', serif; letter-spacing: .08em; }
+    #intro .saludo span:last-child { font: 500 .875rem/1 'Geist', 'Geist respaldo', sans-serif; letter-spacing: .12em; color: rgba(243, 238, 228, .75); }
+    @keyframes intro-saludo { 0% { opacity: 0; transform: translateY(6px); } 25%, 70% { opacity: 1; transform: none; } 100% { opacity: 0; } }
     @keyframes intro-trazo { to { stroke-dashoffset: 0; } }
     @keyframes intro-tinta { to { fill-opacity: 1; } }
     @keyframes intro-kanji { to { opacity: 0; } }
@@ -53,6 +52,7 @@
   <div id="intro">
     <div class="mitad izq"></div><div class="mitad der"></div>
     <svg viewBox="0 0 160 330" aria-hidden="true" focusable="false"><text x="0" y="140">家</text><text x="0" y="310">系</text></svg>
+    <p class="saludo"><span lang="ja">いらっしゃいませ</span><span>Bienvenido</span></p>
     <button type="button" onclick="document.documentElement.classList.add('intro-saltada')">Saltar</button>
   </div>
   <app-root></app-root>
