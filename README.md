@@ -2,7 +2,7 @@ Prototipo no oficial de sitio para Take-chan Ramen (Tlaquepaque). No es el sitio
 
 # SENSEI · propuesta para Take-chan Ramen
 
-Demostración: https://andre-bhp.github.io/SENSEI/ · Avance: [`PROGRESO.md`](PROGRESO.md)
+Demostración: https://andre-bhp.github.io/Take-chan/ · Avance: [`PROGRESO.md`](PROGRESO.md)
 
 | Carpeta | Contenido |
 |---|---|

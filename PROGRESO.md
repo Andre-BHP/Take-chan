@@ -2,8 +2,8 @@
 
 Propuesta no oficial de sitio para Take-chan Ramen.
 
-- **Pages:** https://andre-bhp.github.io/SENSEI/
-- **Repositorio:** https://github.com/Andre-BHP/SENSEI
+- **Pages:** https://andre-bhp.github.io/Take-chan/
+- **Repositorio:** https://github.com/Andre-BHP/Take-chan
 - **Última subida:** 2026-11-15 23:20 (hora de Guadalajara)
 
 ## Pasos

@@ -41,7 +41,7 @@
                 { "type": "anyComponentStyle", "maximumWarning": "12kB", "maximumError": "24kB" }
               ],
               "outputHashing": "all",
-              "baseHref": "/SENSEI/",
+              "baseHref": "/Take-chan/",
               "fileReplacements": [{ "replace": "src/entornos/entorno.ts", "with": "src/entornos/entorno.pages.ts" }],
               "outputPath": "dist/pages"
             }
