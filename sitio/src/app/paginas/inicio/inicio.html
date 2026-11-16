@@ -1,0 +1,126 @@
+<section class="heroe" aria-labelledby="heroe-titulo">
+  <div class="envoltura heroe-rejilla">
+    <p class="ja" lang="ja">家系ラーメン</p>
+    <h1 id="heroe-titulo" class="gigante"><span>TAKE-</span><span>CHAN</span><span class="solo-lector"> Ramen</span></h1>
+    <app-tazon class="heroe-tazon" [vapor]="true" etiqueta="Ilustración de un tazón de ramen Iekei con vapor" />
+    <div class="heroe-texto">
+      <p class="t-entrada frase">Ramen Iekei en Guadalajara. Caldo y fideo traídos de Japón.</p>
+      <app-estado [turnos]="tlaquepaque.horario.turnos" [confirmado]="tlaquepaque.horario.confirmado" />
+      <div class="acciones">
+        <a class="boton boton-primario" routerLink="/menu">Arma tu pedido</a>
+        <a class="boton boton-secundario" [href]="tlaquepaque.mapa" target="_blank" rel="noopener">
+          Cómo llegar<span class="solo-lector"> a Tlaquepaque (se abre Google Maps)</span>
+        </a>
+      </div>
+      <p class="t-dato tenue donde">{{ direccion(tlaquepaque) }}, Tlaquepaque</p>
+    </div>
+  </div>
+</section>
+
+<app-noren />
+
+<section class="iekei sobre-washi" aria-labelledby="iekei-titulo">
+  <div class="envoltura iekei-rejilla">
+    <h2 id="iekei-titulo" class="t-titulo">Qué es el Iekei</h2>
+    <dl>
+      <div>
+        <dt>Caldo</dt>
+        <dd>Hueso de cerdo cocido hasta que espesa, con soya y una capa de grasa encima.</dd>
+      </div>
+      <div>
+        <dt>Fideo</dt>
+        <dd>Grueso y recto, para que el caldo se le pegue en cada bocado.</dd>
+      </div>
+      <div>
+        <dt>Nombre</dt>
+        <dd><span lang="ja">家系</span> (<i>iekei</i>) viene de las ramen-ya de Yokohama cuyo nombre termina en <span lang="ja">家</span>, «casa».</dd>
+      </div>
+    </dl>
+    <p class="origen">Según su ficha, en Take-chan el fideo y el caldo se hacen en Japón y se importan.</p>
+  </div>
+</section>
+
+<section class="favoritos envoltura" aria-labelledby="favoritos-titulo">
+  <div class="encabezado">
+    <h2 id="favoritos-titulo" class="t-titulo">Para pedir</h2>
+    <p class="tenue">Nombres propuestos para ordenar el menú. Los precios y los platillos reales los confirma el negocio.</p>
+  </div>
+
+  <div class="bento">
+    <article class="celda protagonista">
+      <app-hueco-foto class="foto" texto="Foto real del tazón pendiente: se toma en el local" />
+      <app-tazon class="ilustracion" etiqueta="Ilustración del Iekei clásico" />
+      <div class="ficha">
+        <h3 class="t-titulo">{{ clasico.nombre }}</h3>
+        <p>{{ clasico.desc }}</p>
+        <p class="pie-celda">
+          <span class="por-confirmar">nombre y precio por confirmar</span>
+          <a class="boton boton-secundario" routerLink="/menu" [queryParams]="{ ramen: clasico.id }">Pedir este</a>
+        </p>
+      </div>
+    </article>
+
+    <article class="celda panceta sobre-washi">
+      <svg class="dibujo" viewBox="0 0 160 90" aria-hidden="true" focusable="false">
+        <ellipse cx="80" cy="45" rx="70" ry="34" fill="#e1c3a6" />
+        <ellipse cx="80" cy="44" rx="60" ry="27" fill="#a56e53" />
+        <path d="M36 40c24-10 60-12 88 0M44 54c22-6 52-6 74 1" stroke="#c79478" stroke-width="4" fill="none" stroke-linecap="round" />
+      </svg>
+      <h3 class="t-subtitulo">{{ panceta.nombre }}</h3>
+      <p class="cita">El caldo y la panceta son lo más elogiado en las reseñas públicas.</p>
+      <span class="por-confirmar">precio por confirmar</span>
+    </article>
+
+    <article class="celda huevo">
+      <svg class="dibujo" viewBox="0 0 120 80" aria-hidden="true" focusable="false">
+        <ellipse cx="60" cy="40" rx="46" ry="30" fill="var(--washi)" />
+        <ellipse cx="62" cy="39" rx="24" ry="16" fill="#c88a3a" />
+        <ellipse cx="64" cy="38" rx="12" ry="8" fill="#b0702a" />
+      </svg>
+      <h3 class="t-subtitulo">{{ huevo.nombre }}</h3>
+      <p class="tenue">{{ huevo.desc }}</p>
+      <span class="por-confirmar">precio por confirmar</span>
+    </article>
+
+    <article class="celda fideo">
+      <svg class="dibujo" viewBox="0 0 240 64" aria-hidden="true" focusable="false">
+        @for (y of [10, 22, 34, 46]; track y) {
+          <path [attr.d]="'M8 ' + y + 'h224'" stroke="var(--washi-2)" stroke-width="7" stroke-linecap="round" />
+        }
+      </svg>
+      <div>
+        <h3 class="t-subtitulo">{{ fideo.nombre }}</h3>
+        <p class="tenue">{{ fideo.desc }}</p>
+      </div>
+      <span class="por-confirmar">precio por confirmar</span>
+    </article>
+  </div>
+
+  <aside class="primera sobre-washi" aria-labelledby="primera-titulo">
+    <h2 id="primera-titulo" class="t-subtitulo">¿Primera vez? Empieza por el Iekei clásico.</h2>
+    <p>Pídelo normal: fideo, sabor y grasa al punto de la casa. La próxima vez lo ajustas a tu gusto.</p>
+    <a class="boton boton-secundario" routerLink="/menu" [queryParams]="{ ramen: clasico.id }">Elegir el clásico</a>
+  </aside>
+</section>
+
+<section id="sucursales" class="sucursales envoltura" aria-labelledby="sucursales-titulo">
+  <h2 id="sucursales-titulo" class="t-titulo">Sucursales</h2>
+  <div class="tarjetas">
+    @for (s of sucursales; track s.id) {
+      <article class="sucursal" [class.tentativa]="!s.confirmada">
+        <div class="sucursal-encabezado">
+          <h3 class="t-titulo"><a [routerLink]="'/' + s.id">{{ s.nombre }}</a></h3>
+          @if (!s.confirmada) { <span class="por-confirmar">sucursal por confirmar</span> }
+        </div>
+        <p class="t-dato">{{ direccion(s) }}</p>
+        @if (s.direccion.referencia) { <p class="t-dato tenue">{{ s.direccion.referencia }}</p> }
+        <app-estado [turnos]="s.horario.turnos" [confirmado]="s.horario.confirmado" />
+        <app-hueco-foto class="foto-local" texto="Foto de la fachada pendiente" />
+        <div class="acciones">
+          <a class="boton boton-secundario" [href]="s.mapa" target="_blank" rel="noopener">Cómo llegar<span class="solo-lector"> a {{ s.nombre }} (se abre Google Maps)</span></a>
+          <a class="enlace" [routerLink]="'/' + s.id">Ver sucursal<span class="solo-lector"> {{ s.nombre }}</span></a>
+        </div>
+      </article>
+    }
+  </div>
+</section>

@@ -1,0 +1,121 @@
+/* Tokens de DESIGN.md (dis-019). Todo componente los consume; no hay valores sueltos de color. */
+:root {
+  --carbon: #17120f;
+  --madera: #221a15;
+  --madera-veta: #2c211a;
+  --madera-canto: #0d0907;
+  --borde: #3e3027;
+  --texto: #f0e7d8;
+  --texto-tenue: #bcae9c;
+  --washi: #efe6d6;
+  --washi-2: #e3d6c0;
+  --washi-fibra: #d5c6ad;
+  --tinta: #1c1612;
+  --tinta-2: #5b4d42;
+  --laca: #c22f28;
+  --laca-hundida: #a3261f;
+  --laca-texto: #ec5b47;
+
+  --display: 'Dela Gothic One', 'Arial Black', sans-serif;
+  --sans: 'Zen Kaku Gothic New', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --mono: 'Martian Mono', ui-monospace, 'Cascadia Mono', Consolas, monospace;
+
+  --e-1: 4px; --e-2: 8px; --e-3: 16px; --e-4: 24px; --e-5: 32px; --e-6: 48px; --e-7: 64px; --e-8: 96px; --e-9: 128px;
+  --gutter: clamp(16px, 4vw, 48px);
+  --ancho: 72rem;
+
+  --r-s: 4px; --r-boton: 6px; --r-m: 8px;
+
+  --sombra-tarjeta: 0 1px 0 rgba(255, 240, 220, .04) inset, 0 8px 24px -12px rgba(0, 0, 0, .6);
+  --sombra-boton: 0 4px 0 var(--madera-canto), 0 8px 16px -6px rgba(0, 0, 0, .55);
+  --sombra-boton-hundido: 0 1px 0 var(--madera-canto), 0 2px 6px -2px rgba(0, 0, 0, .5);
+  --sombra-ticket: 0 10px 30px -10px rgba(0, 0, 0, .7);
+
+  --rapido: 150ms; --base: 200ms; --lento: 250ms;
+  --salida: cubic-bezier(.23, 1, .32, 1);
+  --pulsar: cubic-bezier(.3, .7, .4, 1);
+
+  /* Grano de madera: ruido SVG en línea, menos de 1 KB (dis-009). */
+  --grano: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.012 .9' numOctaves='2' seed='7'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 .9 0 0 0 0 .8 0 0 0 .05 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  /* Fibra del washi. */
+  --fibra: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='f'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.55' numOctaves='3' seed='3'/%3E%3CfeColorMatrix values='0 0 0 0 .35 0 0 0 0 .28 0 0 0 0 .2 0 0 0 .09 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23f)'/%3E%3C/svg%3E");
+
+  color-scheme: dark;
+  scrollbar-color: var(--borde) var(--carbon);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+* { margin: 0; }
+
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; scroll-padding-top: 96px; }
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+
+body {
+  background-color: var(--carbon);
+  background-image: var(--grano);
+  color: var(--texto);
+  font: 400 1rem/1.6 var(--sans);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
+  caret-color: var(--laca-texto);
+}
+
+::selection { background: var(--laca); color: var(--washi); }
+
+img, svg { display: block; max-width: 100%; }
+button, input, select { font: inherit; color: inherit; }
+a { color: inherit; text-underline-offset: .2em; text-decoration-thickness: 1px; }
+
+:focus-visible { outline: 2px solid var(--texto); outline-offset: 2px; border-radius: 2px; }
+
+h1, h2, h3 { text-wrap: balance; font-weight: 400; }
+p { text-wrap: pretty; }
+
+.envoltura { width: 100%; max-width: var(--ancho); margin-inline: auto; padding-inline: var(--gutter); }
+
+/* Seis claves de jerarquía (dis-090) */
+.t-titulo { font: 400 clamp(1.75rem, 1.2rem + 2.4vw, 3rem)/1.05 var(--display); letter-spacing: -.01em; }
+.t-subtitulo { font: 700 1.25rem/1.25 var(--sans); }
+.t-entrada { font-size: clamp(1.125rem, 1rem + .5vw, 1.375rem); line-height: 1.45; }
+.t-dato { font: 400 .8125rem/1.5 var(--mono); letter-spacing: -.01em; font-variant-numeric: tabular-nums; }
+.tenue { color: var(--texto-tenue); }
+
+/* Botones (dis-051): uno sólido por pantalla, el resto en contorno. */
+.boton {
+  display: inline-flex; align-items: center; justify-content: center; gap: var(--e-2);
+  min-height: 52px; padding: 0 var(--e-4);
+  border-radius: var(--r-boton); border: 0;
+  font: 700 1rem/1 var(--sans); text-decoration: none; cursor: pointer;
+  transition: transform var(--rapido) var(--pulsar), box-shadow var(--rapido) var(--pulsar), background-color var(--base) var(--salida), border-color var(--base) var(--salida);
+  -webkit-tap-highlight-color: transparent;
+}
+.boton-primario { background: var(--laca); color: #fff; box-shadow: var(--sombra-boton); }
+.boton-primario:hover { background: var(--laca-hundida); }
+.boton-primario:active { transform: translateY(3px); box-shadow: var(--sombra-boton-hundido); }
+.boton-secundario { background: transparent; color: var(--texto); border: 1.5px solid var(--texto-tenue); }
+.boton-secundario:hover { border-color: var(--texto); }
+.boton-secundario:active { transform: translateY(1px); }
+.boton svg { width: 18px; height: 18px; flex: none; }
+
+/* Datos por confirmar: discretos pero visibles. */
+.por-confirmar {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 2px 8px; border: 1px dashed currentColor; border-radius: var(--r-s);
+  font: 400 .6875rem/1.5 var(--mono); letter-spacing: 0; white-space: nowrap;
+  color: var(--texto-tenue);
+}
+.sobre-washi .por-confirmar, .por-confirmar.en-washi { color: var(--tinta-2); }
+
+/* Microetiqueta de estado (dis-039): punto lleno abierto, hueco cerrado. */
+.estado { display: inline-flex; align-items: center; gap: var(--e-2); }
+.estado::before { content: ''; width: 8px; height: 8px; border-radius: 50%; border: 1.5px solid currentColor; flex: none; }
+.estado.abierto::before { background: currentColor; }
+
+.solo-lector { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+
+.salto { position: absolute; left: var(--e-3); top: -100px; z-index: 50; background: var(--washi); color: var(--tinta); padding: var(--e-2) var(--e-3); border-radius: var(--r-s); }
+.salto:focus { top: var(--e-2); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+}

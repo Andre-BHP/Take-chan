@@ -1,7 +1,6 @@
 name: Publicar propuesta en GitHub Pages
 
 # Versión pública del prototipo: aviso fijo, noindex, sin contacto real.
-# Mientras no exista sitio/, se publica la página "en construcción".
 on:
   push:
     branches: [main]
@@ -17,19 +16,23 @@ concurrency:
 jobs:
   publicar:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: sitio
     steps:
       - uses: actions/checkout@v4
-      - name: Página en construcción
-        run: |
-          mkdir -p publicar
-          cp -r construccion/. publicar/
-          touch publicar/.nojekyll
-          grep -q 'noindex' publicar/index.html
-          grep -q 'Propuesta no oficial' publicar/index.html
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: sitio/package-lock.json
+      - run: npm ci
+      # ng build -c pages + preparar-pages (falla si falta el aviso o el noindex, o si hay contacto real)
+      - run: npm run build:pages
       - uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: publicar
+          publish_dir: sitio/dist/pages/browser
           publish_branch: gh-pages
           force_orphan: true
           commit_message: Publicación de la propuesta
