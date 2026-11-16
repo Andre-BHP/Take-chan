@@ -38,7 +38,7 @@
       "nombre": "Bebidas",
       "ja": "ドリンク",
       "items": [
-        { "id": "te", "nombre": "Té verde", "desc": "Caliente o frío.", "precio": 35, "foto": "te", "confirmado": false }
+        { "id": "te", "nombre": "Té verde", "desc": "Caliente o frío.", "precio": 35, "foto": null, "confirmado": false }
       ]
     }
   ],

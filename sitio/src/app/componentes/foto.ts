@@ -6,7 +6,8 @@ export const FOTOS = fotosJson as Record<string, FotoDatos>;
 
 /**
  * Foto de ejemplo de Unsplash (AVIF y WebP en 3 anchos). Mientras carga se ve su color promedio
- * y una miniatura borrosa (dis-025). Lleva siempre el rótulo "Imagen ilustrativa".
+ * y una miniatura borrosa (dis-025). Lleva siempre el rótulo "Imagen ilustrativa",
+ * y encima la viñeta y el grano comunes (el color se trata antes, en herramientas/gradear.mjs).
  */
 @Component({
   selector: 'app-foto',
@@ -25,6 +26,16 @@ export const FOTOS = fotosJson as Record<string, FotoDatos>;
     :host { position: relative; display: block; overflow: hidden; background: var(--color) var(--lqip) center / cover no-repeat; }
     picture, img { display: block; width: 100%; height: 100%; }
     img { object-fit: cover; object-position: var(--enfoque, 50% 50%); }
+    /* Misma mirada para todas las fotos: viñeta suave y grano fino de película (PNG de 2 KB en mosaico). */
+    :host::after {
+      content: ''; position: absolute; inset: 0; z-index: 1; pointer-events: none;
+      background: url('./grano.png') 0 0 / 96px 96px;
+      mix-blend-mode: overlay; opacity: .55;
+    }
+    :host::before {
+      content: ''; position: absolute; inset: 0; z-index: 1; pointer-events: none;
+      background: radial-gradient(ellipse at 50% 45%, transparent 58%, rgba(10, 8, 6, .3) 100%);
+    }
     .rotulo {
       position: absolute; right: var(--e-2); bottom: var(--e-2); z-index: 2;
       padding: 3px 8px; border-radius: var(--r-s);

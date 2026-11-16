@@ -17,9 +17,7 @@ Se descartaron fotos de fachadas con marcas reales de otros negocios y un térmi
 | `caldo` | Paso 1: caldo | [Kouji Tsuru](https://unsplash.com/@pafuxu) | [unsplash.com/photos/wzsOpOtcuNI](https://unsplash.com/photos/wzsOpOtcuNI) |
 | `fideo` | Qué es el Iekei y fideo extra | [Nahima Aparicio](https://unsplash.com/@nahimaaparicio) | [unsplash.com/photos/6esxgklFkQs](https://unsplash.com/photos/6esxgklFkQs) |
 | `tazon` | Paso 4: tazón armado | [Kouji Tsuru](https://unsplash.com/@pafuxu) | [unsplash.com/photos/T_B8nPvDWNk](https://unsplash.com/photos/T_B8nPvDWNk) |
-| `te` | Té (menú) | [Stanislav Rozhkov](https://unsplash.com/@stas_r) | [unsplash.com/photos/2HRYV-72Ohg](https://unsplash.com/photos/2HRYV-72Ohg) |
 | `arroz` | Arroz (menú) | [Vinn Koonyosying](https://unsplash.com/@mggbox) | [unsplash.com/photos/zXNC_lBBVGE](https://unsplash.com/photos/zXNC_lBBVGE) |
 | `barra` | Sucursales (barra de cocina) | [Mesh](https://unsplash.com/@crypticsy) | [unsplash.com/photos/QiA43Y5AJCU](https://unsplash.com/photos/QiA43Y5AJCU) |
-| `guadalajara` | Sucursal Americana (calle de Guadalajara) | [Sergio Rodríguez](https://unsplash.com/@sergiordgz) | [unsplash.com/photos/8N8LwHeSRM0](https://unsplash.com/photos/8N8LwHeSRM0) |
 
 Procesado: `herramientas/procesar-fotos.mjs` (AVIF y WebP a 480, 960 y 1600 px, color promedio y miniatura borrosa). Originales en `fuentes-fotos/` (no se suben).

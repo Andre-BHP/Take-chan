@@ -2,7 +2,7 @@
 
 - **Pages:** https://andre-bhp.github.io/Take-chan/
 - **Repositorio:** https://github.com/Andre-BHP/Take-chan
-- **Última subida:** 2026-11-16 16:10 (hora de Guadalajara)
+- **Última subida:** 2026-11-16 16:16 (hora de Guadalajara)
 
 ## Rediseño (2026-11-15)
 André revisó la primera versión: "quedó muy feo y muy mal". Este rediseño cambia la dirección a "una ramen-ya de Yokohama de noche": fotos de ejemplo rotuladas, negro sumi y papel washi, 家系 vertical y un solo acento bermellón.
@@ -21,7 +21,7 @@ André revisó la primera versión: "quedó muy feo y muy mal". Este rediseño c
 Plan de Arthemis para pasar de "bien hecho" a "de premio".
 
 - [x] N0. Crítica y diferencias con el plan (`entregables/N0_critica.md`)
-- [ ] N1. Una sola mirada fotográfica: tratamiento de color, grano y viñeta
+- [x] N1. Una sola mirada fotográfica: tratamiento de color, grano y viñeta
 - [ ] N2. Mapas propios de OpenStreetMap en lugar de fotos de las sucursales
 - [ ] N3. "Cómo se hace un Iekei": tazón visto desde arriba y pasos 一二三四
 - [ ] N4. Sello hanko de la propuesta
@@ -49,10 +49,12 @@ André: "mejor animación, más transiciones, mejor diseño, mejor todo". Metáf
 Repositorio, Pages, datos, inicio, máquina de tickets, sucursales con JSON-LD, pruebas y lista para el negocio. Capturas en `entregables/avances/antes/`.
 
 ## Último paso
-**N0.** Crítica de impeccable sobre el sitio de M8. Coincide en la Catedral, el tazón de clip-art y las fotos sin mirada común. Difiere en los antetítulos (el kanji irá vertical), en el velo del héroe (solo falta en celular) y en la cantidad de movimiento. Diferencias y decisiones en `entregables/N0_critica.md`.
+**N1.** Un solo tratamiento de color para todas las fotos con `sharp` (`herramientas/gradear.mjs`): balance cálido, negros profundos, saturación contenida y una capa ámbar. Encima de cada foto, viñeta y grano de película en CSS (PNG de 2 KB). Los tazones blancos (chashu, huevo, tazón) se recortaron para que el caldo llene el cuadro. Fuera la foto de la Catedral y la del té. axe limpio, sin scroll a 360 y portada de 413 KB. El LCP dio 2.9 s, pero el sitio publicado antes de este paso también da 2.75 s hoy en esta máquina; se corrige en N5.
 
 ## Sigue
-N1: un solo tratamiento de color para todas las fotos, grano y viñeta; fuera la Catedral y la foto del té.
+N2: mapas propios de OpenStreetMap para las dos sucursales.
 
 ## Capturas más recientes
-Sin capturas nuevas en este paso (solo documento).
+| Hoja antes y después | 360 | 1440 |
+|---|---|---|
+| ![gradeo](entregables/avances/2026-11-16_N1_gradeo.png) | ![360](entregables/avances/2026-11-16_paso-N1_360.png) | ![1440](entregables/avances/2026-11-16_paso-N1_1440.png) |

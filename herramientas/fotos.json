@@ -24,7 +24,13 @@
     "autor": "Kouji Tsuru",
     "usuario": "pafuxu",
     "uso": "Iekei con chashu extra",
-    "alt": "Ramen con rebanadas de chashu y nori"
+    "alt": "Ramen con rebanadas de chashu y nori",
+    "recorte": {
+      "x": 0.04,
+      "y": 0.28,
+      "w": 0.9,
+      "h": 0.5
+    }
   },
   {
     "nombre": "huevo",
@@ -33,7 +39,13 @@
     "autor": "Kouji Tsuru",
     "usuario": "pafuxu",
     "uso": "Iekei con huevo marinado",
-    "alt": "Ramen con huevo marinado y chashu"
+    "alt": "Ramen con huevo marinado y chashu",
+    "recorte": {
+      "x": 0.05,
+      "y": 0.33,
+      "w": 0.95,
+      "h": 0.48
+    }
   },
   {
     "nombre": "picante",
@@ -78,16 +90,13 @@
     "autor": "Kouji Tsuru",
     "usuario": "pafuxu",
     "uso": "Paso 4: tazón armado",
-    "alt": "Tazón de ramen con nori, huevo y chashu"
-  },
-  {
-    "nombre": "te",
-    "id": "2HRYV-72Ohg",
-    "url": "https://images.unsplash.com/photo-1759662510393-bb58988ebadb",
-    "autor": "Stanislav Rozhkov",
-    "usuario": "stas_r",
-    "uso": "Té (menú)",
-    "alt": "Tazón oscuro de té"
+    "alt": "Tazón de ramen con nori, huevo y chashu",
+    "recorte": {
+      "x": 0.17,
+      "y": 0.12,
+      "w": 0.7,
+      "h": 0.8
+    }
   },
   {
     "nombre": "arroz",
@@ -106,14 +115,5 @@
     "usuario": "crypticsy",
     "uso": "Sucursales (barra de cocina)",
     "alt": "Barra de cocina de una ramen-ya con tazones apilados y palillos"
-  },
-  {
-    "nombre": "guadalajara",
-    "id": "8N8LwHeSRM0",
-    "url": "https://images.unsplash.com/photo-1708733968596-b5a5b1cdfdd0",
-    "autor": "Sergio Rodríguez",
-    "usuario": "sergiordgz",
-    "uso": "Sucursal Americana (calle de Guadalajara)",
-    "alt": "Centro de Guadalajara al anochecer, con la catedral al fondo"
   }
 ]

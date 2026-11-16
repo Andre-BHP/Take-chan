@@ -1,6 +1,7 @@
-// Convierte las fotos de fuentes-fotos/ a AVIF y WebP en 3 anchos, con color promedio y una miniatura borrosa (LQIP).
+// Recorta (si se pide), aplica el mismo tratamiento de color (gradear.mjs) y convierte las fotos de fuentes-fotos/ a AVIF y WebP en 3 anchos, con color promedio y una miniatura borrosa (LQIP).
 // Uso: node herramientas/procesar-fotos.mjs
 import sharp from 'sharp';
+import { gradearBuffer } from './gradear.mjs';
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -13,17 +14,25 @@ const datos = {};
 let total = 0;
 for (const f of lista) {
   const origen = path.join(raiz, 'fuentes-fotos', f.nombre + '.jpg');
-  const meta = await sharp(origen).metadata();
+  // Recorte opcional (fracciones del original) para que el tazón llene el cuadro y no quede la mesa clara.
+  let fuente = origen;
+  if (f.recorte) {
+    const m = await sharp(origen).metadata();
+    const r = f.recorte;
+    fuente = await sharp(origen).extract({ left: Math.round(r.x * m.width), top: Math.round(r.y * m.height), width: Math.round(r.w * m.width), height: Math.round(r.h * m.height) }).toBuffer();
+  }
+  const meta = await sharp(fuente).metadata();
+  const gradeada = await gradearBuffer(fuente);
   for (const w of anchos) {
-    const base = sharp(origen).resize({ width: Math.min(w, meta.width) }).modulate({ saturation: 1.02 });
+    const base = sharp(gradeada).resize({ width: Math.min(w, meta.width) });
     const avif = await base.clone().avif({ quality: w > 960 ? 48 : 52, effort: 6 }).toBuffer();
     const webp = await base.clone().webp({ quality: 74 }).toBuffer();
     fs.writeFileSync(path.join(salida, `${f.nombre}-${w}.avif`), avif);
     fs.writeFileSync(path.join(salida, `${f.nombre}-${w}.webp`), webp);
     total += avif.length;
   }
-  const { dominant } = await sharp(origen).stats();
-  const lqip = await sharp(origen).resize({ width: 24 }).blur(1.2).webp({ quality: 40 }).toBuffer();
+  const { dominant } = await sharp(gradeada).stats();
+  const lqip = await sharp(gradeada).resize({ width: 24 }).blur(1.2).webp({ quality: 40 }).toBuffer();
   datos[f.nombre] = {
     ancho: meta.width, alto: meta.height,
     color: '#' + [dominant.r, dominant.g, dominant.b].map((c) => c.toString(16).padStart(2, '0')).join(''),
