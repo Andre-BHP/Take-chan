@@ -13,6 +13,12 @@ for (const w of [360, 1440]) {
   const p = await ctx.newPage();
   await p.goto(base.replace(/\/$/, '') + ruta, { waitUntil: 'networkidle' });
   await p.addStyleTag({ content: '* { content-visibility: visible !important; }' });
+    await p.evaluate(async () => {
+    document.querySelectorAll('img[loading=lazy]').forEach((i) => (i.loading = 'eager'));
+    await Promise.all([...document.images].map((i) => (i.complete ? null : new Promise((r) => { i.onload = i.onerror = r; }))));
+    scrollTo(0, 0);
+  });
+  await p.waitForLoadState('networkidle');
   await p.waitForTimeout(400);
   const sw = await p.evaluate(() => document.documentElement.scrollWidth);
   const archivo = path.join(raiz, 'entregables', 'avances', `${fecha}_paso-${paso}${sufijo}_${w}.png`);

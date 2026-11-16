@@ -13,7 +13,13 @@ for (const ruta of ['/', '/menu', '/tlaquepaque', '/americana']) {
     const ctx = await b.newContext({ viewport: { width: w, height: w < 800 ? 800 : 900 }, reducedMotion: 'reduce' });
     const p = await ctx.newPage();
     await p.goto(base + ruta, { waitUntil: 'networkidle' });
-    await p.waitForTimeout(300);
+      await p.evaluate(async () => {
+    document.querySelectorAll('img[loading=lazy]').forEach((i) => (i.loading = 'eager'));
+    await Promise.all([...document.images].map((i) => (i.complete ? null : new Promise((r) => { i.onload = i.onerror = r; }))));
+    scrollTo(0, 0);
+  });
+  await p.waitForLoadState('networkidle');
+  await p.waitForTimeout(300);
     const nombre = `${ruta === '/' ? 'inicio' : ruta.slice(1)}_${w}.png`;
     await p.screenshot({ path: path.join(salida, nombre), fullPage: true });
     console.log(nombre);

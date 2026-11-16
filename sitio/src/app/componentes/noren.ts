@@ -1,35 +1,44 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 /**
- * Cortina noren (のれん) como separador: barra de madera y paños de tela oscura con 家系ラーメン,
- * un carácter por paño, como en la entrada de una ramen-ya. Decorativa: el término ya está en el texto.
+ * Noren (のれん): tela de tres paños con cortes y 家系ラーメン de lado a lado, como en la entrada
+ * de una ramen-ya. Los paños se mecen solo al pasar el cursor. Aparece una sola vez.
  */
 @Component({
   selector: 'app-noren',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  host: { 'aria-hidden': 'true' },
   template: `
-    <div class="barra"></div>
-    <div class="panos" lang="ja">
-      @for (c of letras; track $index) { <span class="pano">{{ c }}</span> }
+    <div class="vara" aria-hidden="true"></div>
+    <div class="tela">
+      @for (i of panos; track i) {
+        <div class="pano" aria-hidden="true"><span lang="ja" [style.--i]="i">家系ラーメン</span></div>
+      }
+      <p class="solo-lector" lang="ja">家系ラーメン (iekei rāmen)</p>
     </div>
   `,
   styles: `
-    :host { display: block; width: 100%; overflow: hidden; }
-    .barra { height: 8px; background: var(--madera-veta); box-shadow: 0 1px 0 var(--borde), 0 4px 8px -2px rgba(0, 0, 0, .6); position: relative; z-index: 1; }
-    .panos { display: grid; grid-template-columns: repeat(6, 1fr); gap: 3px; padding-inline: 3px; }
+    :host { display: block; padding-inline: var(--gutter); }
+    .vara { height: 10px; max-width: 64rem; margin: 0 auto; border-radius: 5px; background: linear-gradient(#5a4535, #2c211a); box-shadow: 0 6px 12px -6px rgba(0, 0, 0, .8); position: relative; z-index: 1; }
+    .tela { max-width: 62rem; margin: -2px auto 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
     .pano {
-      display: grid; place-items: center;
-      height: clamp(64px, 9vw, 112px);
-      background: var(--madera-canto) var(--fibra);
-      border: 1px solid var(--borde); border-top: 0;
-      border-radius: 0 0 var(--r-boton) var(--r-boton);
-      font: 400 clamp(1.5rem, 3.6vw, 3rem)/1 var(--display);
-      color: var(--washi);
-      box-shadow: inset 0 10px 12px -8px rgba(0, 0, 0, .8);
+      position: relative; overflow: hidden; height: clamp(120px, 18vw, 200px);
+      background: var(--sumi-3) var(--grano); border-radius: 0 0 4px 4px;
+      box-shadow: inset 0 14px 16px -12px rgba(0, 0, 0, .7), inset 0 -2px 0 rgba(255, 255, 255, .04);
+      transform-origin: 50% 0;
+      transition: transform 700ms cubic-bezier(.34, 1.4, .5, 1);
+    }
+    .pano span {
+      position: absolute; top: 50%; left: calc(var(--i) * -100% - var(--i) * 6px);
+      width: calc(300% + 12px); transform: translateY(-50%);
+      text-align: center; color: var(--washi); font: 800 clamp(1.9rem, 6.4vw, 4.75rem)/1 var(--mincho); letter-spacing: .12em; white-space: nowrap;
+    }
+    @media (hover: hover) and (prefers-reduced-motion: no-preference) {
+      .tela:hover .pano:nth-child(1) { transform: rotate(1.2deg); }
+      .tela:hover .pano:nth-child(2) { transform: rotate(-.8deg); transition-delay: 40ms; }
+      .tela:hover .pano:nth-child(3) { transform: rotate(1deg); transition-delay: 80ms; }
     }
   `,
 })
 export class Noren {
-  protected readonly letras = [...'家系ラーメン'];
+  protected readonly panos = [0, 1, 2];
 }

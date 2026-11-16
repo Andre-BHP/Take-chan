@@ -1,75 +1,55 @@
 {
-  "fuente": "No hay menú público. Esta carta es una propuesta de estructura para llenar con el negocio.",
-  "regla": "Ningún nombre ni precio aquí es real. Los nombres son descripciones genéricas del estilo Iekei (confirmado: false) y los precios quedan en null. La interfaz muestra 'por confirmar' en todo lo que tenga confirmado: false.",
+  "fuente": "No hay menú público. Este es un menú de EJEMPLO con platillos típicos de una ramen-ya Iekei y precios dentro del rango público (100 a 200 MXN por persona).",
+  "regla": "Nada aquí es el menú real: confirmado es false en todo. La interfaz lo cubre con una sola nota por página. Las fotos son de Unsplash, rotuladas 'Imagen ilustrativa'.",
   "categorias": [
     {
       "id": "ramen",
       "nombre": "Ramen",
-      "nota": "Iekei: caldo de cerdo con soya y fideo grueso.",
+      "ja": "ラーメン",
       "items": [
-        {
-          "id": "iekei-clasico",
-          "nombre": "Iekei clásico",
-          "desc": "El tazón de la casa: caldo de cerdo con soya y fideo grueso.",
-          "precio": null,
-          "confirmado": false,
-          "protagonista": true,
-          "nota": "Nombre propuesto. Pedir al negocio el nombre real y los 3 ramen más vendidos."
-        },
-        {
-          "id": "ramen-2",
-          "nombre": "Segundo ramen de la casa",
-          "desc": "Espacio para el segundo más pedido.",
-          "precio": null,
-          "confirmado": false,
-          "hueco": true
-        },
-        {
-          "id": "ramen-3",
-          "nombre": "Tercer ramen de la casa",
-          "desc": "Espacio para el tercero más pedido.",
-          "precio": null,
-          "confirmado": false,
-          "hueco": true
-        }
+        { "id": "iekei-clasico", "nombre": "Iekei clásico", "desc": "Caldo de cerdo con soya, fideo grueso, chashu, espinaca y tres hojas de nori.", "precio": 165, "foto": "heroe-iekei", "confirmado": false, "protagonista": true },
+        { "id": "iekei-chashu", "nombre": "Iekei con chashu extra", "desc": "El clásico con tres rebanadas más de chashu.", "precio": 195, "foto": "chashu", "confirmado": false },
+        { "id": "iekei-huevo", "nombre": "Iekei con huevo marinado", "desc": "El clásico con un huevo marinado en soya.", "precio": 185, "foto": "huevo", "confirmado": false },
+        { "id": "iekei-picante", "nombre": "Iekei picante", "desc": "El clásico con pasta de chile.", "precio": 185, "foto": "picante", "confirmado": false }
       ]
     },
     {
       "id": "extras",
       "nombre": "Extras",
-      "nota": "Para agregar al tazón.",
+      "ja": "トッピング",
       "items": [
-        { "id": "panceta", "nombre": "Panceta extra", "desc": "La panceta es de lo más elogiado en las reseñas.", "precio": null, "confirmado": false },
-        { "id": "huevo", "nombre": "Huevo marinado", "desc": "Extra común en el ramen japonés.", "precio": null, "confirmado": false },
-        { "id": "fideo-extra", "nombre": "Fideo extra", "desc": "Otra porción de fideo grueso para el mismo caldo.", "precio": null, "confirmado": false }
+        { "id": "extra-chashu", "nombre": "Chashu", "desc": "Tres rebanadas.", "precio": 45, "foto": "chashu", "confirmado": false },
+        { "id": "extra-huevo", "nombre": "Huevo marinado", "desc": "Una pieza.", "precio": 25, "foto": "huevo", "confirmado": false },
+        { "id": "extra-fideo", "nombre": "Fideo extra", "desc": "Otra porción para el mismo caldo.", "precio": 30, "foto": "fideo", "confirmado": false },
+        { "id": "extra-nori", "nombre": "Nori", "desc": "Tres hojas.", "precio": 15, "foto": "tazon", "confirmado": false }
       ]
     },
     {
-      "id": "entradas",
-      "nombre": "Entradas",
-      "nota": "Por confirmar con el negocio.",
+      "id": "acompanar",
+      "nombre": "Para acompañar",
+      "ja": "サイド",
       "items": [
-        { "id": "entrada-1", "nombre": "Entrada de la casa", "desc": "Espacio para una entrada del menú real.", "precio": null, "confirmado": false, "hueco": true },
-        { "id": "arroz", "nombre": "Arroz blanco", "desc": "En muchas ramen-ya Iekei se acompaña con arroz. Confirmar si lo ofrecen.", "precio": null, "confirmado": false }
+        { "id": "gyoza", "nombre": "Gyoza", "desc": "Cinco piezas a la plancha.", "precio": 85, "foto": "gyoza", "confirmado": false },
+        { "id": "arroz", "nombre": "Arroz blanco", "desc": "Para el último sorbo de caldo.", "precio": 30, "foto": "arroz", "confirmado": false }
       ]
     },
     {
       "id": "bebidas",
       "nombre": "Bebidas",
-      "nota": "Por confirmar con el negocio.",
+      "ja": "ドリンク",
       "items": [
-        { "id": "bebida-1", "nombre": "Bebida de la casa", "desc": "Espacio para las bebidas del menú real.", "precio": null, "confirmado": false, "hueco": true },
-        { "id": "agua", "nombre": "Agua embotellada", "desc": "Confirmar marcas y tamaños.", "precio": null, "confirmado": false }
+        { "id": "te", "nombre": "Té verde", "desc": "Caliente o frío.", "precio": 35, "foto": "te", "confirmado": false },
+        { "id": "refresco", "nombre": "Refresco", "desc": "De lata.", "precio": 35, "foto": null, "confirmado": false }
       ]
     }
   ],
   "alGusto": {
-    "nota": "En el estilo Iekei se suele elegir firmeza del fideo, intensidad del caldo y cantidad de grasa. Confirmar si Take-chan lo ofrece.",
+    "nota": "Como en las ramen-ya Iekei: se pide el fideo, el sabor y la grasa al gusto. Confirmar si Take-chan lo ofrece.",
     "confirmado": false,
     "opciones": [
-      { "id": "fideo", "nombre": "Fideo", "valores": ["Firme", "Normal", "Suave"], "omision": "Normal" },
-      { "id": "sabor", "nombre": "Sabor", "valores": ["Ligero", "Normal", "Intenso"], "omision": "Normal" },
-      { "id": "grasa", "nombre": "Grasa", "valores": ["Poca", "Normal", "Mucha"], "omision": "Normal" }
+      { "id": "fideo", "nombre": "Fideo", "valores": [{ "ja": "硬め", "es": "Firme" }, { "ja": "普通", "es": "Normal" }, { "ja": "柔らかめ", "es": "Suave" }], "omision": "Normal" },
+      { "id": "sabor", "nombre": "Sabor", "valores": [{ "ja": "濃いめ", "es": "Intenso" }, { "ja": "普通", "es": "Normal" }, { "ja": "薄め", "es": "Ligero" }], "omision": "Normal" },
+      { "id": "grasa", "nombre": "Grasa", "valores": [{ "ja": "多め", "es": "Mucha" }, { "ja": "普通", "es": "Normal" }, { "ja": "少なめ", "es": "Poca" }], "omision": "Normal" }
     ]
   },
   "recoger": {

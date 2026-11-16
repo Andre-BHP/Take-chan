@@ -8,13 +8,13 @@
         Solo la menciona un video de TikTok. Esta página queda lista para cuando el negocio confirme la dirección y el horario; mientras, no lleva datos estructurados.
       </p>
     }
-    <app-estado [turnos]="s.horario.turnos" [confirmado]="s.horario.confirmado" />
+    <app-estado [turnos]="s.horario.turnos" />
     <div class="acciones">
       <a class="boton boton-primario" routerLink="/menu">Arma tu pedido</a>
       <a class="boton boton-secundario" [href]="s.mapa" target="_blank" rel="noopener">Cómo llegar<span class="solo-lector"> (se abre Google Maps)</span></a>
     </div>
   </div>
-  <app-tazon class="tazon" etiqueta="Ilustración de un tazón de ramen Iekei" />
+  <app-foto class="tazon" [nombre]="s.id === 'tlaquepaque' ? 'local-noche' : 'entrada-noche'" sizes="(min-width: 900px) 40vw, 100vw" />
 </section>
 
 <div class="envoltura datos">
@@ -23,7 +23,6 @@
     <p class="t-dato">{{ direccion }}</p>
     @if (s.direccion.referencia) { <p class="t-dato tenue">{{ s.direccion.referencia }}</p> }
     @if (!s.direccion.confirmado) { <p><span class="por-confirmar">dirección por confirmar</span></p> }
-    <app-hueco-foto class="foto" texto="Foto de la fachada pendiente: se toma en el local" />
   </section>
 
   <section class="ficha" aria-labelledby="horario-titulo">

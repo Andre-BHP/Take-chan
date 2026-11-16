@@ -40,13 +40,14 @@ export interface Platillo {
   desc: string;
   precio: number | null;
   confirmado: boolean;
+  foto: string | null;
   protagonista?: boolean;
-  hueco?: boolean;
 }
 
-export interface Categoria { id: string; nombre: string; nota: string; items: Platillo[] }
+export interface Categoria { id: string; nombre: string; ja: string; items: Platillo[] }
 
-export interface OpcionAlGusto { id: string; nombre: string; valores: string[]; omision: string }
+export interface ValorAlGusto { ja: string; es: string }
+export interface OpcionAlGusto { id: string; nombre: string; valores: ValorAlGusto[]; omision: string }
 
 interface Menu {
   categorias: Categoria[];
@@ -63,11 +64,15 @@ export const sucursal = (id: string) => SUCURSALES.find((s) => s.id === id)!;
 export const PLATILLOS = MENU.categorias.flatMap((c) => c.items);
 const porId = new Map(PLATILLOS.map((p) => [p.id, p]));
 export const platillo = (id: string) => porId.get(id)!;
+export const esRamen = (p: Platillo) => MENU.categorias[0].items.includes(p);
 
 /** Dirección en una línea, sin los campos vacíos. */
 export const direccionCorta = (s: Sucursal) => [s.direccion.calle, s.direccion.colonia].filter(Boolean).join(', ');
 export const direccionCompleta = (s: Sucursal) =>
   [s.direccion.calle, s.direccion.colonia, s.direccion.cp, s.direccion.ciudad, s.direccion.estado].filter(Boolean).join(', ');
 
-/** Precio en pesos, o null si no está confirmado. */
-export const pesos = (v: number | null) => (v == null ? null : `$${v.toLocaleString('es-MX')}`);
+/** Precio en pesos (de ejemplo mientras el negocio no confirme el suyo). */
+export const pesos = (v: number | null) => (v == null ? '' : '$' + v.toLocaleString('es-MX'));
+
+/** La nota única de cada página (CLAUDE.md, "Datos de ejemplo"). */
+export const NOTA_EJEMPLO = 'Propuesta: menú, precios y fotos de ejemplo hasta que Take-chan confirme los suyos.';

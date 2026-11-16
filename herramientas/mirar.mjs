@@ -8,7 +8,13 @@ const errores = [];
 p.on('console', (m) => m.type() === 'error' && errores.push(m.text()));
 p.on('pageerror', (e) => errores.push(e.message));
 await p.goto(url, { waitUntil: 'networkidle' });
-await p.waitForTimeout(500);
+  await p.evaluate(async () => {
+    document.querySelectorAll('img[loading=lazy]').forEach((i) => (i.loading = 'eager'));
+    await Promise.all([...document.images].map((i) => (i.complete ? null : new Promise((r) => { i.onload = i.onerror = r; }))));
+    scrollTo(0, 0);
+  });
+  await p.waitForLoadState('networkidle');
+  await p.waitForTimeout(500);
 await p.screenshot({ path: salida, fullPage: completa === '1' });
 console.log(salida, 'sw', await p.evaluate(() => document.documentElement.scrollWidth), 'alto', await p.evaluate(() => document.documentElement.scrollHeight), errores.length ? 'ERRORES: ' + errores.join(' | ') : '');
 await b.close();

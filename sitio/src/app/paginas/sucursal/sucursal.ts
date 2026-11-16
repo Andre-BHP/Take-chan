@@ -4,8 +4,7 @@ import { NEGOCIO, direccionCompleta, sucursal } from '../../servicios/datos';
 import { Seo } from '../../servicios/seo';
 import { restaurante } from '../../servicios/esquema';
 import { Estado } from '../../componentes/estado';
-import { HuecoFoto } from '../../componentes/hueco-foto';
-import { Tazon } from '../../componentes/tazon';
+import { Foto } from '../../componentes/foto';
 
 const DIAS = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo'];
 const INDICE = [1, 2, 3, 4, 5, 6, 0];
@@ -13,7 +12,7 @@ const INDICE = [1, 2, 3, 4, 5, 6, 0];
 @Component({
   selector: 'app-sucursal',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [RouterLink, Estado, HuecoFoto, Tazon],
+  imports: [RouterLink, Estado, Foto],
   templateUrl: './sucursal.html',
   styleUrl: './sucursal.css',
 })

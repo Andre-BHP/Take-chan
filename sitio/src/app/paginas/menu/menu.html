@@ -23,23 +23,16 @@
       <section class="categoria" [id]="'cat-' + c.id" [attr.data-seccion]="c.id" tabindex="-1" [attr.aria-labelledby]="'tit-' + c.id">
         <div class="categoria-cabeza">
           <h2 class="t-subtitulo" [id]="'tit-' + c.id">{{ c.nombre }}</h2>
-          <p class="tenue">{{ c.nota }}</p>
+          <p class="tenue" lang="ja">{{ c.ja }}</p>
         </div>
         <div class="teclas" [class.ramen]="c.id === 'ramen'">
           @for (p of c.items; track p.id) {
-            @if (p.hueco) {
-              <button type="button" class="tecla apagada" disabled>
-                <span class="nombre">Por definir</span>
-                <span class="sub">{{ p.nombre }}</span>
-              </button>
-            } @else {
               <button type="button" class="tecla" [class.elegida]="pedido.cantidad(p.id) > 0" [class.pulsada]="pulsada() === p.id"
                 (click)="presionar(p.id)" [attr.aria-label]="'Agregar ' + p.nombre + '. En el ticket: ' + pedido.cantidad(p.id)">
                 <span class="nombre">{{ p.nombre }}</span>
-                <span class="sub">{{ pesos(p.precio) ?? 'precio por confirmar' }}</span>
+                <span class="sub">{{ pesos(p.precio) }}</span>
                 @if (pedido.cantidad(p.id) > 0) { <span class="cuenta" aria-hidden="true">{{ pedido.cantidad(p.id) }}</span> }
               </button>
-            }
           }
         </div>
       </section>
@@ -54,11 +47,11 @@
         <fieldset class="segmentos">
           <legend>{{ o.nombre }}</legend>
           <div>
-            @for (v of o.valores; track v) {
+            @for (v of o.valores; track v.es) {
               <label>
-                <input type="radio" [name]="'gusto-' + o.id" [value]="v" [checked]="pedido.alGusto()[o.id] === v"
-                  (change)="pedido.elegirGusto(o.id, v)" />
-                <span>{{ v }}</span>
+                <input type="radio" [name]="'gusto-' + o.id" [value]="v.es" [checked]="pedido.alGusto()[o.id] === v.es"
+                  (change)="pedido.elegirGusto(o.id, v.es)" />
+                <span>{{ v.es }}</span>
               </label>
             }
           </div>
@@ -129,7 +122,7 @@
           <p class="t-dato">N.º {{ pedido.folio() }} · {{ pedido.sucursal().nombre }}</p>
           <hr />
           @for (l of pedido.lineas(); track l.platillo.id) {
-            <p class="ticket-linea"><span>{{ l.cantidad }} × {{ l.platillo.nombre }}</span><span>{{ pesos(l.platillo.precio) ?? '—' }}</span></p>
+            <p class="ticket-linea"><span>{{ l.cantidad }} × {{ l.platillo.nombre }}</span><span>{{ pesos(l.platillo.precio) }}</span></p>
           }
           @if (pedido.lleva()) {
             <p class="t-dato gusto">
@@ -139,7 +132,7 @@
           <hr />
           <p class="ticket-linea"><span>Recoger</span><span>{{ pedido.hora() === 'pronto' ? 'lo antes posible' : pedido.hora() }}</span></p>
           @if (pedido.nombre().trim()) { <p class="ticket-linea"><span>A nombre de</span><span>{{ pedido.nombre().trim() }}</span></p> }
-          <p class="ticket-linea total"><span>Total</span><span>{{ pedido.total() == null ? 'por confirmar' : pesos(pedido.total()) }}</span></p>
+          <p class="ticket-linea total"><span>Total</span><span>{{ pesos(pedido.total()) }}</span></p>
           <p class="t-dato nota">Ticket de demostración: no es un pedido real.</p>
         </div>
         <button type="button" class="boton boton-primario" (click)="enviar()">

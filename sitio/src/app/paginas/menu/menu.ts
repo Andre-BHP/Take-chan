@@ -50,7 +50,7 @@ export class Menu {
     });
     afterNextRender(() => {
       const id = ruta.snapshot.queryParamMap.get('ramen');
-      if (id && MENU.categorias[0].items.some((p) => p.id === id && !p.hueco) && this.pedido.cantidad(id) === 0) this.pedido.sumar(id);
+      if (id && MENU.categorias[0].items.some((p) => p.id === id) && this.pedido.cantidad(id) === 0) this.pedido.sumar(id);
       const observador = new IntersectionObserver(
         (entradas) => {
           const visible = entradas.filter((e) => e.isIntersecting).sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top)[0];
