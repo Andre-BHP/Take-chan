@@ -41,6 +41,9 @@ export class Movimiento {
     const [{ default: Lenis }, { gsap, ScrollTrigger }] = await Promise.all([import('lenis'), this.herramientas()]);
     this.lenis = new Lenis({ lerp: 0.1, smoothWheel: true, anchors: { offset: -96 } });
     this.lenis.on('scroll', ScrollTrigger.update);
+    // Enlace directo con ancla (/#sucursales): Lenis empieza ahí, no arriba.
+    const ancla = location.hash && document.querySelector<HTMLElement>(location.hash);
+    if (ancla) this.lenis.scrollTo(ancla, { offset: -96, immediate: true });
     gsap.ticker.add((t) => this.lenis?.raf(t * 1000));
     gsap.ticker.lagSmoothing(0);
   }
@@ -51,6 +54,11 @@ export class Movimiento {
     this.lenis?.scrollTo(0, { immediate: true });
     const { ScrollTrigger } = await this.herramientas();
     requestAnimationFrame(() => ScrollTrigger.refresh());
+  }
+
+  /** Al volver atrás: Lenis toma la posición que restauró el navegador. */
+  sincronizar() {
+    if (this.lenis) requestAnimationFrame(() => this.lenis?.scrollTo(scrollY, { immediate: true }));
   }
 
   irA(objetivo: HTMLElement) {

@@ -14,13 +14,13 @@ import { Router } from '@angular/router';
     <div class="vara" aria-hidden="true"></div>
     <a class="tela" href="menu" (click)="entrar($event)" (pointermove)="mecer($event)" (pointerleave)="soltar($event)" aria-label="Entrar al menú y pedido">
       @for (i of panos; track i) {
-        <span class="pano" aria-hidden="true" [style.--i]="i"><span class="letras" lang="ja">家系ラーメン</span></span>
+        <span class="pano" aria-hidden="true" [style.--i]="i"><span class="letras" lang="ja">{{ grupos[i] }}</span></span>
       }
       <span class="pista-tela" aria-hidden="true">Entra al menú</span>
     </a>
   `,
   styles: `
-    :host { display: block; padding-inline: var(--gutter); --x: 0; }
+    :host { display: block; padding-inline: var(--gutter); --x: 0; overflow-x: clip; }
     .vara { height: 12px; max-width: 64rem; margin: 0 auto; border-radius: 6px; background: linear-gradient(#6b5442, #2c211a); box-shadow: 0 8px 14px -8px rgba(0, 0, 0, .9); position: relative; z-index: 1; }
     .tela { position: relative; max-width: 62rem; margin: -3px auto 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; text-decoration: none; color: inherit; }
     .pano {
@@ -37,8 +37,7 @@ import { Router } from '@angular/router';
       transition: transform 700ms var(--ease-tela);
     }
     .letras {
-      position: absolute; top: 50%; left: calc(var(--i) * -100% - var(--i) * 8px);
-      width: calc(300% + 16px); transform: translateY(-50%);
+      position: absolute; inset: 0; display: grid; place-items: center;
       text-align: center; color: var(--washi); font: 800 clamp(2rem, 6.6vw, 5rem)/1 var(--mincho); letter-spacing: .14em; white-space: nowrap;
     }
     .pista-tela { position: absolute; left: 50%; bottom: var(--e-3); translate: -50% 0; font: 500 .8125rem/1 var(--sans); color: rgba(243, 238, 228, .7); letter-spacing: .08em; }
@@ -53,6 +52,8 @@ import { Router } from '@angular/router';
 export class Noren {
   private readonly router = inject(Router);
   protected readonly panos = [0, 1, 2];
+  /** Dos caracteres por paño: las aberturas caen entre caracteres, no a la mitad de uno. */
+  protected readonly grupos = ['家系', 'ラー', 'メン'];
   protected readonly abierta = signal(false);
 
   protected mecer(e: PointerEvent) {
@@ -71,6 +72,6 @@ export class Noren {
     e.preventDefault();
     const reducir = matchMedia('(prefers-reduced-motion: reduce)').matches;
     this.abierta.set(true);
-    setTimeout(() => this.router.navigateByUrl('/menu'), reducir ? 0 : 380);
+    setTimeout(() => this.router.navigateByUrl('/menu'), reducir ? 0 : 220);
   }
 }

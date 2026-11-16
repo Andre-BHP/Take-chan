@@ -30,7 +30,7 @@
               @for (p of c.items; track p.id; let pi = $index) {
                 <button type="button" class="tecla" [class.elegida]="pedido.cantidad(p.id) > 0" [class.pulsada]="pulsada() === p.id"
                   (click)="presionar(p.id, $event)" [style.--n]="ci * 4 + pi" [attr.aria-label]="'Agregar ' + p.nombre + ', ' + pesos(p.precio) + '. En el pedido: ' + pedido.cantidad(p.id)">
-                  <span class="ventana" [style.view-transition-name]="'plato-' + p.id">
+                  <span class="ventana" [style.view-transition-name]="p.id === preseleccion ? 'plato-' + p.id : null">
                     @if (p.foto) { <app-foto [nombre]="p.foto" sizes="(min-width: 1000px) 12rem, 45vw" [rotulo]="false" alt="" /> }
                     @else { <span class="sin-foto" lang="ja" aria-hidden="true">{{ c.ja }}</span> }
                   </span>
@@ -51,7 +51,7 @@
           <div class="pieza charola"><span class="bandeja"></span><span class="etiqueta"><span lang="ja">おつり</span>Cambio</span></div>
         </div>
       </div>
-      <div class="boca" aria-hidden="true" [class.imprimiendo]="imprimiendo()"><span class="boca-ranura"></span><span class="etiqueta"><span lang="ja">発券口</span>Salida del ticket</span></div>
+      <div class="boca" aria-hidden="true"><span class="boca-ranura"></span><span class="etiqueta"><span lang="ja">発券口</span>Salida del ticket</span></div>
       <p class="rotulo-fotos">Fotos de las teclas: imágenes ilustrativas.</p>
     </div>
 
@@ -133,7 +133,7 @@
       @if (!pedido.piezas()) { <p class="ayuda tenue">Agrega al menos un platillo para imprimir.</p> }
     } @else {
       <div class="salida">
-        <div class="ranura" aria-hidden="true"></div>
+        <div class="ranura-salida" aria-hidden="true" [class.imprimiendo]="imprimiendo()"><span class="ranura"></span><span class="etiqueta-salida" lang="ja">発券口</span></div>
         <div class="ticket" tabindex="-1" role="group" aria-label="Ticket impreso" [class.cortado]="cortado()">
           <p class="ticket-marca"><span lang="ja">食券</span> TAKE-CHAN RAMEN</p>
           <p class="ticket-meta"><span>N.º {{ pedido.folio() }}</span><span>{{ pedido.sucursal().nombre }}</span></p>

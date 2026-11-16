@@ -247,7 +247,7 @@
   .tecla:not(:active):not(.pulsada) { transition: transform 260ms var(--ease-tela), box-shadow 200ms var(--ease-out), border-color var(--t-2) var(--ease-out); }
 
   /* Imprimir (momento firma): la luz de 発券口 parpadea, el papel avanza en tres jalones con un leve rizo y las líneas se imprimen una por una. */
-  .boca.imprimiendo .boca-ranura { animation: boca-luz 1.2s steps(2) both; }
+  .ranura-salida.imprimiendo .ranura { animation: boca-luz 1.2s steps(2) both; }
   @keyframes boca-luz { 0%, 50% { box-shadow: inset 0 0 12px rgba(255, 179, 71, .9), 0 0 0 6px #3a3c40, 0 0 0 7px var(--metal-claro), 0 0 18px rgba(255, 179, 71, .5); } }
   .ticket { animation: ticket-sale 1100ms linear both; transform-origin: 50% 0; }
   @keyframes ticket-sale {
@@ -287,3 +287,9 @@
     @keyframes hoja-sube { from { transform: translateY(100%); } }
   }
 }
+
+.salida { perspective: 600px; }
+
+.ranura-salida { display: grid; gap: 4px; justify-items: center; }
+.ranura-salida .ranura { width: 100%; }
+.etiqueta-salida { font: 700 .75rem/1 var(--mincho); color: var(--ceniza); letter-spacing: .1em; }

@@ -62,7 +62,7 @@ for (const modo of ['no-preference', 'reduce']) {
   const p = await ctx.newPage();
   await p.goto(base + '/', { waitUntil: 'networkidle' });
   const r = await p.evaluate(() => {
-    const v = document.querySelector('app-vapor path');
+    const v = document.querySelector('app-vapor .v');
     const animadas = document.getAnimations().filter((a) => a.playState === 'running' && a.effect?.getComputedTiming().iterations === Infinity).length;
     return { animacion: v ? getComputedStyle(v).animationName : 'sin vapor', opacidad: v ? getComputedStyle(v).opacity : '-', bucles: animadas };
   });

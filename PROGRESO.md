@@ -2,7 +2,7 @@
 
 - **Pages:** https://andre-bhp.github.io/Take-chan/
 - **Repositorio:** https://github.com/Andre-BHP/Take-chan
-- **Última subida:** 2026-11-16 15:14 (hora de Guadalajara)
+- **Última subida:** 2026-11-16 15:30 (hora de Guadalajara)
 
 ## Rediseño (2026-11-15)
 André revisó la primera versión: "quedó muy feo y muy mal". Este rediseño cambia la dirección a "una ramen-ya de Yokohama de noche": fotos de ejemplo rotuladas, negro sumi y papel washi, 家系 vertical y un solo acento bermellón.
@@ -26,7 +26,7 @@ André: "mejor animación, más transiciones, mejor diseño, mejor todo". Metáf
 - [x] M3. Washi rasgado, "Qué es el Iekei", prueba social y bento con la transición hacia `/menu`
 - [x] M4. Medidor del tazón en "Cómo se hace", sucursales y noren final de tela
 - [x] M5. `/menu` física: encendido, vuelo al pedido, odómetro, indicadores e impresión y corte del ticket
-- [ ] M6. Revisiones de impeccable y design-taste-frontend
+- [x] M6. Revisiones de impeccable y design-taste-frontend
 - [ ] M7. Pruebas: axe, 360 px, peso, LCP con intro, CLS 0, 60 fps, reduced-motion
 - [ ] M8. Videos, GIF, capturas de visita y reporte
 
@@ -34,14 +34,14 @@ André: "mejor animación, más transiciones, mejor diseño, mejor todo". Metáf
 Repositorio, Pages, datos, inicio, máquina de tickets, sucursales con JSON-LD, pruebas y lista para el negocio. Capturas en `entregables/avances/antes/`.
 
 ## Último paso
-**M5.** `/menu` se siente física: la máquina sube y se enciende (las teclas se iluminan en cascada y el LED parpadea dos veces); la tecla se hunde y rebota, su miniatura vuela al pedido y el contador rebota (vibración corta en Android); el total en LED rueda como odómetro; el marco bermellón de "al gusto" y el punto del índice se deslizan. Momento firma: la luz de 発券口 parpadea, el ticket sale en tres jalones con un leve rizo y sus líneas se imprimen una por una; al enviarlo por WhatsApp se corta por la línea dentada. En celular, la barra sube con resorte y abre "Tu pedido" como hoja inferior.
+**M6.** Revisiones de impeccable y design-taste-frontend, con videos a 10 fps. Arreglos: la transición entre páginas ahora es un telón de noren de tela de verdad (tres paños índigo bajan escalonados, la página cambia debajo y se separan hacia los lados); solo vuela la foto del platillo tocado y solo en escritorio, con la ruta del menú precargada; la cifra de Google rueda de 4.0 a 4.8 (nunca desde 0) y se lee completa con lector de pantalla; el medidor avanza con el scroll vertical en celular; la luz de 発券口 está en la ranura de donde sale el papel; el 家系 de la intro se dibuja completo y se desvanece antes de abrir los paños; el botón "Saltar" desaparece al terminar; el vapor ya no fuerza recálculos en cada cuadro y se pausa fuera de vista; el latido de "abierto" late 3 veces; los enlaces con ancla y el botón Atrás respetan la posición; la noren final pone dos caracteres por paño. Medido: CLS 0, scroll a 59 fps sin tareas largas.
 
 ## Sigue
-M6: revisiones de impeccable y design-taste-frontend.
+M7: pruebas completas.
 
 ## Capturas más recientes
-| Máquina, 390 px | Máquina, 1440 px |
+| Telón entre páginas, 1440 px | Medidor en celular |
 |---|---|
-| <img src="entregables/avances/video/2026-11-16_M5_menu_390.gif" width="220"> | <img src="entregables/avances/video/2026-11-16_M5_menu_1440.gif" width="420"> |
+| <img src="entregables/avances/video/2026-11-16_M6_transicion_1440.gif" width="420"> | <img src="entregables/avances/video/2026-11-16_M6_medidor_390.gif" width="200"> |
 
-Videos: [390 px](entregables/avances/video/2026-11-16_M5_menu_390.mp4) · [1440 px](entregables/avances/video/2026-11-16_M5_menu_1440.mp4)
+Videos: [transición 1440](entregables/avances/video/2026-11-16_M6_transicion_1440.mp4) · [transición 390](entregables/avances/video/2026-11-16_M6_transicion_390.mp4) · [intro 390](entregables/avances/video/2026-11-16_M6_intro_390.mp4) · [menú 390](entregables/avances/video/2026-11-16_M6_menu_390.mp4)

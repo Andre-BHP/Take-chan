@@ -32,7 +32,7 @@ import { filter } from 'rxjs';
     li a.activo { color: var(--washi); }
     ul { position: relative; }
     /* Subrayado bermellón que se desliza al enlace activo (dis-077). */
-    .indicador { position: absolute; left: 0; bottom: 0; height: 2px; width: var(--w, 0); background: var(--bermellon); transform: translateX(var(--x, 0)); opacity: var(--o, 0); pointer-events: none; transition: transform var(--t-3) var(--ease-out), width var(--t-3) var(--ease-out), opacity var(--t-2) var(--ease-out); }
+    .indicador { position: absolute; left: 0; bottom: 0; height: 2px; width: 1px; background: var(--bermellon); transform-origin: 0 0; transform: translateX(var(--x, 0)) scaleX(var(--w, 0)); opacity: var(--o, 0); pointer-events: none; transition: transform var(--t-3) var(--ease-out), opacity var(--t-2) var(--ease-out); }
     @media (max-width: 479px) { .largo { display: none; } }
     @media (max-width: 359px) { .marca { font-size: .9375rem; gap: var(--e-1); } li a { padding: 0 6px; font-size: .875rem; } ul { gap: 0; } }
   `,
@@ -49,7 +49,7 @@ export class Cabecera {
         ul.style.setProperty('--o', activo ? '1' : '0');
         if (activo) {
           ul.style.setProperty('--x', activo.offsetLeft + 'px');
-          ul.style.setProperty('--w', activo.offsetWidth + 'px');
+          ul.style.setProperty('--w', String(activo.offsetWidth));
         }
       });
       medir();

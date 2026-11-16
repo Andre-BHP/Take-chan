@@ -1,5 +1,7 @@
 import { ApplicationConfig, provideBrowserGlobalErrorListeners } from '@angular/core';
-import { provideRouter, withInMemoryScrolling, withViewTransitions } from '@angular/router';
+import { PreloadAllModules, provideRouter, withInMemoryScrolling, withPreloading, withViewTransitions } from '@angular/router';
+import { inject } from '@angular/core';
+import { Telon } from './componentes/telon';
 import { provideClientHydration, withEventReplay } from '@angular/platform-browser';
 import { routes } from './app.routes';
 
@@ -9,11 +11,14 @@ export const appConfig: ApplicationConfig = {
     provideRouter(
       routes,
       withInMemoryScrolling({ anchorScrolling: 'enabled', scrollPositionRestoration: 'enabled' }),
-      // Transición entre páginas: la noren cae en tres paños (styles.css). Sin animación con movimiento reducido.
+      withPreloading(PreloadAllModules),
+      // View Transitions solo para el elemento compartido (foto del bento → tecla). Las demás navegaciones usan el telón de noren.
       withViewTransitions({
         skipInitialTransition: true,
         onViewTransitionCreated: ({ transition }) => {
-          if (matchMedia('(prefers-reduced-motion: reduce)').matches) transition.skipTransition();
+          const telon = inject(Telon);
+          if (!telon.compartido || matchMedia('(prefers-reduced-motion: reduce)').matches) transition.skipTransition();
+          transition.finished.finally(() => (telon.compartido = false));
         },
       }),
     ),

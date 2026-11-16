@@ -11,6 +11,7 @@ import { Estado } from '../../componentes/estado';
 import { NotaEjemplo } from '../../componentes/nota-ejemplo';
 import { Medidor } from '../../componentes/medidor';
 import { Movimiento } from '../../servicios/movimiento';
+import { Telon } from '../../componentes/telon';
 
 @Component({
   selector: 'app-inicio',
@@ -44,6 +45,17 @@ export class Inicio {
     });
   }
 
+  private readonly telon = inject(Telon);
+
+  /** Escritorio: la foto de la tarjeta tocada vuela y se convierte en su tecla en /menu (dis-034). */
+  protected volar(e: PointerEvent, id: string) {
+    if (!matchMedia('(min-width: 1100px)').matches || matchMedia('(prefers-reduced-motion: reduce)').matches || !('startViewTransition' in document)) return;
+    const foto = (e.currentTarget as HTMLElement).querySelector<HTMLElement>('app-foto');
+    if (!foto) return;
+    foto.style.setProperty('view-transition-name', 'plato-' + id);
+    this.telon.compartido = true;
+  }
+
   /** Paralaje leve de la foto del bento con el puntero (dis-032). */
   protected seguir(e: PointerEvent) {
     if (e.pointerType !== 'mouse') return;
@@ -71,9 +83,14 @@ export class Inicio {
       raiz.querySelectorAll<HTMLElement>('[data-contar]').forEach((el) => {
         const fin = Number(el.dataset['contar']);
         const dec = Number(el.dataset['decimales'] ?? 0);
-        const obj = { v: 0 };
-        el.textContent = (0).toFixed(dec);
-        gsap.to(obj, { v: fin, duration: 1.4, ease: 'power2.out', scrollTrigger: { trigger: el, start: 'top 85%', once: true }, onUpdate: () => { el.textContent = obj.v.toFixed(dec); } });
+        el.style.display = 'inline-block';
+        el.style.minWidth = el.offsetWidth + 'px';
+        el.setAttribute('aria-hidden', 'true');
+        el.insertAdjacentHTML('afterend', '<span class="solo-lector">' + el.dataset['contar'] + '</span>');
+        const desde = Number(el.dataset['desde'] ?? 0);
+        const obj = { v: desde };
+        el.textContent = desde.toFixed(dec);
+        gsap.to(obj, { v: fin, duration: 0.56, ease: 'power2.out', scrollTrigger: { trigger: el, start: 'top 85%', once: true }, onUpdate: () => { el.textContent = obj.v.toFixed(dec); } });
       });
     }, raiz);
     destruir.onDestroy(() => { ctx.revert(); deshacerRevelar(); });

@@ -45,6 +45,8 @@ export class Menu {
   private get reducir() { return matchMedia('(prefers-reduced-motion: reduce)').matches; }
   private readonly host = inject<ElementRef<HTMLElement>>(ElementRef);
   private readonly movimiento = inject(Movimiento);
+  /** Platillo que llega desde el bento (?ramen=id): su tecla recibe la foto que vuela. */
+  protected readonly preseleccion = inject(ActivatedRoute).snapshot.queryParamMap.get('ramen');
 
   constructor() {
     inject(Seo).establecer({
@@ -153,6 +155,9 @@ export class Menu {
   protected enviar() {
     this.cortado.set(true);
     this.contacto.enviarWhatsapp(this.pedido.mensaje());
-    setTimeout(() => this.host.nativeElement.querySelector<HTMLElement>('.burbuja')?.scrollIntoView({ block: 'nearest', behavior: 'smooth' }), 0);
+    setTimeout(() => {
+      const b = this.host.nativeElement.querySelector<HTMLElement>('.burbuja');
+      if (b && b.getBoundingClientRect().bottom > innerHeight) b.scrollIntoView({ block: 'end', behavior: this.reducir ? 'auto' : 'smooth' });
+    }, 0);
   }
 }

@@ -35,9 +35,9 @@
 
 <section class="social envoltura" aria-labelledby="social-titulo">
   <h2 id="social-titulo" class="solo-lector">Lo que dicen en Google</h2>
-  <p class="cifra" data-revelar><span class="numero-grande" data-contar="4.8" data-decimales="1">4.8</span><span class="de">de 5 en Google</span></p>
+  <p class="cifra" data-revelar><span class="numero-grande" data-contar="4.8" data-desde="4" data-decimales="1">4.8</span><span class="de">de 5 en Google</span></p>
   <div class="social-texto" data-revelar="grupo">
-    <p class="t-dato tenue"><span data-contar="140">140</span> reseñas, según su ficha pública.</p>
+    <p class="t-dato tenue">140 reseñas, según su ficha pública.</p>
     <p class="elogio">Lo que más elogian quienes ya fueron: <strong>el caldo</strong> y <strong>la panceta</strong>.</p>
     <a class="enlace" [href]="tlaquepaque.mapa" target="_blank" rel="noopener">Ver la ficha en Google Maps<span class="solo-lector"> (se abre en otra pestaña)</span></a>
   </div>
@@ -49,8 +49,8 @@
     <a class="enlace" routerLink="/menu">Ver todo el menú</a>
   </div>
   <div class="bento" data-revelar="grupo">
-    <a class="celda grande" routerLink="/menu" [queryParams]="{ ramen: clasico.id }" (pointermove)="seguir($event)">
-      <app-foto [nombre]="clasico.foto!" [style.view-transition-name]="'plato-' + clasico.id" sizes="(min-width: 900px) 50vw, 100vw" />
+    <a class="celda grande" routerLink="/menu" [queryParams]="{ ramen: clasico.id }" (pointermove)="seguir($event)" (pointerdown)="volar($event, clasico.id)">
+      <app-foto [nombre]="clasico.foto!" sizes="(min-width: 900px) 50vw, 100vw" />
       <div class="celda-texto">
         <h3 class="t-titulo">{{ clasico.nombre }}</h3>
         <p class="desc">{{ clasico.desc }}</p>
@@ -59,8 +59,8 @@
       </div>
     </a>
     @for (p of extras; track p.id) {
-      <a class="celda" routerLink="/menu" [queryParams]="{ ramen: p.id }" (pointermove)="seguir($event)">
-        <app-foto [nombre]="p.foto!" [style.view-transition-name]="'plato-' + p.id" sizes="(min-width: 900px) 25vw, 50vw" />
+      <a class="celda" routerLink="/menu" [queryParams]="{ ramen: p.id }" (pointermove)="seguir($event)" (pointerdown)="volar($event, p.id)">
+        <app-foto [nombre]="p.foto!" sizes="(min-width: 900px) 25vw, 50vw" />
         <div class="celda-texto">
           <h3 class="t-subtitulo">{{ p.nombre }}</h3>
           <p class="precio t-dato">{{ pesos(p.precio) }}</p>

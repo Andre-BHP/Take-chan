@@ -124,23 +124,20 @@ p { text-wrap: pretty; }
 .salto { position: absolute; left: var(--e-3); top: -100px; z-index: 50; background: var(--washi); color: var(--tinta); padding: var(--e-2) var(--e-3); border-radius: var(--r-s); }
 .salto:focus { top: var(--e-2); }
 
-/* Transición entre páginas: la página nueva entra como una noren de tres paños que caen escalonados. */
-::view-transition-old(root) { animation: 560ms var(--ease-in-out) both vt-atras; }
-::view-transition-new(root) { animation: 600ms var(--ease-in-out) both vt-noren; }
-@keyframes vt-atras { to { opacity: .35; transform: scale(.985); } }
-@keyframes vt-noren {
-  0% { clip-path: polygon(0 0, 100% 0, 100% 0, 66.6% 0, 66.6% 0, 33.3% 0, 33.3% 0, 0 0); }
-  45% { clip-path: polygon(0 0, 100% 0, 100% 18%, 66.6% 18%, 66.6% 52%, 33.3% 52%, 33.3% 86%, 0 86%); }
-  100% { clip-path: polygon(0 0, 100% 0, 100% 100%, 66.6% 100%, 66.6% 100%, 33.3% 100%, 33.3% 100%, 0 100%); }
-}
+/* View Transitions: solo vuela la foto compartida; la página cambia debajo sin fundido. */
+::view-transition-old(root), ::view-transition-new(root) { animation: none; mix-blend-mode: normal; }
+::view-transition-group(*) { animation-duration: 480ms; animation-timing-function: var(--ease-out); }
 
 @media (prefers-reduced-motion: reduce) {
   ::view-transition-group(*), ::view-transition-old(*), ::view-transition-new(*) { animation: none !important; }
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
 }
 
-/* "Abierto ahora": el punto late suave solo si está abierto. */
+/* "Abierto ahora": un anillo late tres veces, solo si está abierto (transform y opacity). */
+.estado { position: relative; }
+.estado.abierto::after { content: ''; position: absolute; left: 0; top: 50%; width: 7px; height: 7px; margin-top: -3.5px; border-radius: 50%; border: 1.5px solid currentColor; opacity: 0; pointer-events: none; }
 @media (prefers-reduced-motion: no-preference) {
-  .estado.abierto::before { animation: latido 2.4s var(--ease-in-out) infinite; }
-  @keyframes latido { 0%, 100% { box-shadow: 0 0 0 0 rgba(243, 238, 228, .45); } 50% { box-shadow: 0 0 0 5px rgba(243, 238, 228, 0); } }
+  .estado.abierto::after { animation: latido 2.4s var(--ease-out) 1s 3; }
+  @keyframes latido { 0% { transform: scale(1); opacity: .7; } 100% { transform: scale(2.6); opacity: 0; } }
 }
+@property --rasgado { syntax: '<number>'; inherits: false; initial-value: 1; }

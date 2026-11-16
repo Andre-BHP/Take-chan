@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, DestroyRef, ElementRef, PLATFORM_ID, afterNextRender, inject, signal } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
+import { Movimiento } from '../servicios/movimiento';
 
 /**
  * "Cómo se hace un Iekei" como medidor narrativo (dis-070, dis-001, dis-028): un tazón dibujado se llena
@@ -18,6 +19,7 @@ import { isPlatformBrowser } from '@angular/common';
         </defs>
         <g clip-path="url(#md-interior)">
           <rect class="capa caldo" x="0" y="96" width="320" height="170" />
+          <g class="capa brillo"><ellipse cx="110" cy="104" rx="46" ry="5" /><ellipse cx="214" cy="110" rx="30" ry="4" /><circle cx="170" cy="100" r="3" /><circle cx="80" cy="114" r="2.5" /><circle cx="246" cy="102" r="2" /></g>
           <path class="capa tare" d="M0 150c60-14 110 14 160 0s110-14 160 0v120H0z" />
           <g class="capa fideo">
             @for (y of [118, 128, 138, 148]; track y) { <path [attr.d]="'M54 ' + y + 'c40 -10 80 10 120 0s70 -10 96 0'" /> }
@@ -63,11 +65,27 @@ export class Medidor {
     if (!isPlatformBrowser(inject(PLATFORM_ID))) return;
     const host = inject<ElementRef<HTMLElement>>(ElementRef).nativeElement;
     const destruir = inject(DestroyRef);
-    afterNextRender(() => {
+    const movimiento = inject(Movimiento);
+    afterNextRender(async () => {
       if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
       const horizontal = matchMedia('(max-width: 899px)').matches;
       const lista = host.querySelector<HTMLElement>('.pasos');
       this.paso.set(1);
+      if (horizontal && lista) {
+        // Celular: el paso avanza con el scroll vertical y la tira de pasos se sincroniza; deslizarla sigue funcionando.
+        const { ScrollTrigger } = await movimiento.herramientas();
+        const st = ScrollTrigger.create({
+          trigger: host, start: 'top 70%', end: 'bottom 40%',
+          onUpdate: (s) => {
+            const n = 1 + Math.floor(s.progress * 3.99);
+            if (n === this.paso()) return;
+            this.paso.set(n);
+            const tarjeta = host.querySelector<HTMLElement>('.paso[data-i="' + n + '"]');
+            if (tarjeta) lista.scrollTo({ left: tarjeta.offsetLeft - 16, behavior: 'smooth' });
+          },
+        });
+        destruir.onDestroy(() => st.kill());
+      }
       const io = new IntersectionObserver(
         (entradas) => {
           const visible = entradas.filter((e) => e.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
