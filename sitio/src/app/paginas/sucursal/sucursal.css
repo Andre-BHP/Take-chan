@@ -1,0 +1,24 @@
+.cabeza { padding-block: var(--e-6) var(--e-5); display: grid; gap: var(--e-5); align-items: center; }
+.texto { display: grid; gap: var(--e-3); justify-items: start; }
+.texto a { color: var(--texto-tenue); }
+h1 .nombre { display: block; font-size: clamp(2.25rem, .5rem + 8.5vw, 6rem); line-height: .9; overflow-wrap: anywhere; }
+.texto { min-width: 0; }
+.aviso-tentativa { display: grid; gap: var(--e-2); justify-items: start; max-width: 52ch; color: var(--texto-tenue); font-size: .9375rem; border: 1px dashed var(--texto-tenue); border-radius: var(--r-m); padding: var(--e-3); }
+.acciones { display: flex; flex-wrap: wrap; gap: var(--e-2) var(--e-3); margin-top: var(--e-2); }
+.tazon { width: min(280px, 70%); justify-self: center; }
+@media (min-width: 900px) {
+  .cabeza { grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); padding-block: var(--e-8) var(--e-6); }
+  .tazon { width: min(380px, 100%); }
+}
+
+.datos { display: grid; gap: var(--e-3); grid-template-columns: repeat(auto-fit, minmax(min(18rem, 100%), 1fr)); }
+.ficha { background: var(--madera); border: 1px solid var(--borde); border-radius: var(--r-m); padding: var(--e-4); display: grid; gap: var(--e-2); align-content: start; }
+.foto { margin-top: var(--e-3); }
+.horario { border-collapse: collapse; width: 100%; }
+.horario th, .horario td { padding: var(--e-2) 0; border-bottom: 1px solid var(--borde); text-align: left; font-weight: 400; }
+.horario td { text-align: right; }
+.nota { font-size: .8125rem; margin-top: var(--e-2); }
+dl { display: grid; gap: var(--e-3); margin-bottom: var(--e-2); }
+dt { font-weight: 700; }
+dd { color: var(--texto-tenue); display: flex; flex-wrap: wrap; gap: var(--e-2); align-items: center; }
+.enlace { font-weight: 700; }

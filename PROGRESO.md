@@ -4,7 +4,7 @@ Propuesta no oficial de sitio para Take-chan Ramen.
 
 - **Pages:** https://andre-bhp.github.io/SENSEI/
 - **Repositorio:** https://github.com/Andre-BHP/SENSEI
-- **Última subida:** 2026-11-16 00:45 (hora de Guadalajara)
+- **Última subida:** 2026-11-15 23:20 (hora de Guadalajara)
 
 ## Pasos
 - [x] 0. Repositorio, Pages "en construcción" (aviso y `noindex`) y este archivo
@@ -13,18 +13,18 @@ Propuesta no oficial de sitio para Take-chan Ramen.
 - [x] 3. Datos (`negocio.json` y `menu.json`)
 - [x] 4. Inicio
 - [x] 5. Menú y máquina de tickets
-- [ ] 6. Sucursales y JSON-LD
+- [x] 6. Sucursales y JSON-LD
 - [ ] 7. Pruebas, axe y capturas
 - [ ] 8. Entregables
 - [ ] 9. Push y Pages final
 
 ## Último paso
-**Paso 5.** `/menu` con la máquina de tickets (食券): teclas de washi que se hunden, contador en rojo laca, teclas apagadas para los platillos que faltan, "al gusto" del Iekei (fideo, sabor, grasa), índice que sigue el scroll, sucursal, hora para recoger y nombre. "Imprimir ticket" saca el ticket de la ranura y "Enviar por WhatsApp" muestra el mensaje en modo demostración. Total: "por confirmar".
+**Paso 6.** `/tlaquepaque` y `/americana` con estado "abierto ahora", horario por día, dirección, hueco para la foto de la fachada y "Cómo llegar". JSON-LD `Restaurant` en Tlaquepaque (y en el inicio) con los mismos datos que se ven en pantalla. La Americana queda marcada "por confirmar" y **sin** JSON-LD hasta que el negocio la confirme.
 
 ## Sigue
-Paso 6: páginas `/tlaquepaque` y `/americana` con JSON-LD `Restaurant`.
+Paso 7: pruebas, axe, rendimiento y capturas.
 
 ## Capturas más recientes
-| Menú 360 px | Menú 1440 px | Ticket 390 px |
+| Tlaquepaque 360 px | Tlaquepaque 1440 px | Americana 360 px |
 |---|---|---|
-| <img src="entregables/avances/2026-11-15_paso-5_menu_360.png" width="180"> | <img src="entregables/avances/2026-11-15_paso-5_menu_1440.png" width="360"> | <img src="entregables/avances/2026-11-15_paso-5_ticket_390.png" width="180"> |
+| <img src="entregables/avances/2026-11-15_paso-6_tlaquepaque_360.png" width="180"> | <img src="entregables/avances/2026-11-15_paso-6_tlaquepaque_1440.png" width="360"> | <img src="entregables/avances/2026-11-15_paso-6_americana_360.png" width="180"> |

@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { NEGOCIO, SUCURSALES, direccionCorta, platillo } from '../../servicios/datos';
 import { Seo } from '../../servicios/seo';
+import { restaurante } from '../../servicios/esquema';
 import { Tazon } from '../../componentes/tazon';
 import { Noren } from '../../componentes/noren';
 import { Estado } from '../../componentes/estado';
@@ -29,6 +30,7 @@ export class Inicio {
       titulo: 'Take-chan Ramen · Ramen Iekei en Tlaquepaque',
       descripcion: 'Ramen japonés estilo Iekei en Calz. Córdoba 24, Tlaquepaque. Caldo de cerdo con soya y fideo grueso, hechos en Japón según su ficha. Propuesta no oficial de sitio.',
       ruta: '/',
+      esquema: SUCURSALES.map(restaurante).filter((e): e is object => !!e),
     });
   }
 }

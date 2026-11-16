@@ -17,7 +17,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
     </nav>
   `,
   styles: `
-    :host { --ancho: 96rem; display: block; position: sticky; top: 0; z-index: 20; background: color-mix(in srgb, var(--carbon) 94%, transparent); border-bottom: 1px solid var(--borde); }
+    :host { display: block; position: sticky; top: 0; z-index: 20; background: color-mix(in srgb, var(--carbon) 94%, transparent); border-bottom: 1px solid var(--borde); }
     .aviso { background: var(--madera); border-bottom: 1px solid var(--borde); text-align: center; font: 500 .75rem/1.3 var(--sans); padding: 6px var(--gutter); letter-spacing: .01em; }
     .barra { display: flex; align-items: center; justify-content: space-between; gap: var(--e-3); min-height: 52px; }
     .marca { font: 400 1.125rem/1 var(--display); letter-spacing: -.01em; text-decoration: none; white-space: nowrap; }

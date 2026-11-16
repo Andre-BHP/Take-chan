@@ -1,0 +1,51 @@
+<section class="envoltura cabeza" aria-labelledby="sucursal-titulo">
+  <div class="texto">
+    <p class="t-dato tenue"><a routerLink="/" fragment="sucursales">Sucursales</a> / {{ s.nombre }}</p>
+    <h1 id="sucursal-titulo" class="t-titulo">Take-chan Ramen <span class="nombre">{{ s.nombre }}</span></h1>
+    @if (!s.confirmada) {
+      <p class="aviso-tentativa">
+        <span class="por-confirmar">sucursal por confirmar</span>
+        Solo la menciona un video de TikTok. Esta página queda lista para cuando el negocio confirme la dirección y el horario; mientras, no lleva datos estructurados.
+      </p>
+    }
+    <app-estado [turnos]="s.horario.turnos" [confirmado]="s.horario.confirmado" />
+    <div class="acciones">
+      <a class="boton boton-primario" routerLink="/menu">Arma tu pedido</a>
+      <a class="boton boton-secundario" [href]="s.mapa" target="_blank" rel="noopener">Cómo llegar<span class="solo-lector"> (se abre Google Maps)</span></a>
+    </div>
+  </div>
+  <app-tazon class="tazon" etiqueta="Ilustración de un tazón de ramen Iekei" />
+</section>
+
+<div class="envoltura datos">
+  <section class="ficha" aria-labelledby="direccion-titulo">
+    <h2 id="direccion-titulo" class="t-subtitulo">Dirección</h2>
+    <p class="t-dato">{{ direccion }}</p>
+    @if (s.direccion.referencia) { <p class="t-dato tenue">{{ s.direccion.referencia }}</p> }
+    @if (!s.direccion.confirmado) { <p><span class="por-confirmar">dirección por confirmar</span></p> }
+    <app-hueco-foto class="foto" texto="Foto de la fachada pendiente: se toma en el local" />
+  </section>
+
+  <section class="ficha" aria-labelledby="horario-titulo">
+    <h2 id="horario-titulo" class="t-subtitulo">Horario</h2>
+    <table class="horario">
+      <caption class="solo-lector">Horario de {{ s.nombre }}</caption>
+      <tbody>
+        @for (d of semana; track d.dia) {
+          <tr><th scope="row">{{ d.dia }}</th><td class="t-dato">{{ d.horas }}</td></tr>
+        }
+      </tbody>
+    </table>
+    @if (!s.horario.confirmado) { <p class="nota tenue">{{ s.horario.nota }}</p> }
+  </section>
+
+  <section class="ficha" aria-labelledby="info-titulo">
+    <h2 id="info-titulo" class="t-subtitulo">Para saber</h2>
+    <dl>
+      <div><dt>Cocina</dt><dd>Ramen japonés estilo Iekei</dd></div>
+      <div><dt>Precio</dt><dd class="t-dato">De {{ precio.min }} a {{ precio.max }} MXN por persona</dd></div>
+      <div><dt>Pedidos</dt><dd>Para recoger, por WhatsApp <span class="por-confirmar">por confirmar</span></dd></div>
+    </dl>
+    <a class="enlace" routerLink="/menu" [queryParams]="{ ramen: 'iekei-clasico' }">¿Primera vez? Empieza por el Iekei clásico</a>
+  </section>
+</div>
