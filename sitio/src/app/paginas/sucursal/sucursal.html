@@ -1,32 +1,29 @@
-<section class="envoltura cabeza" aria-labelledby="sucursal-titulo">
-  <div class="texto">
-    <p class="t-dato tenue"><a routerLink="/" fragment="sucursales">Sucursales</a> / {{ s.nombre }}</p>
-    <h1 id="sucursal-titulo" class="t-titulo">Take-chan Ramen <span class="nombre">{{ s.nombre }}</span></h1>
+<section class="cabeza" aria-labelledby="sucursal-titulo">
+  <app-foto class="cabeza-foto" [nombre]="s.id === 'tlaquepaque' ? 'barra' : 'tazon'" [prioridad]="true" sizes="100vw" />
+  <div class="envoltura cabeza-texto">
+    <p class="migas t-pequeno"><a routerLink="/" fragment="sucursales">Sucursales</a> / {{ s.nombre }}</p>
+    <h1 id="sucursal-titulo" class="t-display"><span class="pre">Take-chan Ramen</span> {{ s.nombre }}</h1>
     @if (!s.confirmada) {
-      <p class="aviso-tentativa">
-        <span class="por-confirmar">sucursal por confirmar</span>
-        Solo la menciona un video de TikTok. Esta página queda lista para cuando el negocio confirme la dirección y el horario; mientras, no lleva datos estructurados.
-      </p>
+      <p class="tentativa"><span class="marca-tentativa">Sucursal por confirmar</span> Solo la menciona un video de TikTok. Esta página queda lista para cuando el negocio confirme dirección y horario; mientras, no lleva datos estructurados.</p>
     }
     <app-estado [turnos]="s.horario.turnos" />
     <div class="acciones">
       <a class="boton boton-primario" routerLink="/menu">Arma tu pedido</a>
-      <a class="boton boton-secundario" [href]="s.mapa" target="_blank" rel="noopener">Cómo llegar<span class="solo-lector"> (se abre Google Maps)</span></a>
+      <a class="boton boton-contorno" [href]="s.mapa" target="_blank" rel="noopener">Cómo llegar<span class="solo-lector"> (se abre Google Maps)</span></a>
     </div>
   </div>
-  <app-foto class="tazon" [nombre]="s.id === 'tlaquepaque' ? 'local-noche' : 'entrada-noche'" sizes="(min-width: 900px) 40vw, 100vw" />
 </section>
 
 <div class="envoltura datos">
   <section class="ficha" aria-labelledby="direccion-titulo">
-    <h2 id="direccion-titulo" class="t-subtitulo">Dirección</h2>
+    <h2 id="direccion-titulo" class="t-titulo">Dirección</h2>
     <p class="t-dato">{{ direccion }}</p>
-    @if (s.direccion.referencia) { <p class="t-dato tenue">{{ s.direccion.referencia }}</p> }
-    @if (!s.direccion.confirmado) { <p><span class="por-confirmar">dirección por confirmar</span></p> }
+    @if (s.direccion.referencia) { <p class="tenue">{{ s.direccion.referencia }}</p> }
+    <a class="enlace" [href]="s.mapa" target="_blank" rel="noopener">Abrir en Google Maps<span class="solo-lector"> (se abre en otra pestaña)</span></a>
   </section>
 
   <section class="ficha" aria-labelledby="horario-titulo">
-    <h2 id="horario-titulo" class="t-subtitulo">Horario</h2>
+    <h2 id="horario-titulo" class="t-titulo">Horario</h2>
     <table class="horario">
       <caption class="solo-lector">Horario de {{ s.nombre }}</caption>
       <tbody>
@@ -35,15 +32,14 @@
         }
       </tbody>
     </table>
-    @if (!s.horario.confirmado) { <p class="nota tenue">{{ s.horario.nota }}</p> }
   </section>
 
   <section class="ficha" aria-labelledby="info-titulo">
-    <h2 id="info-titulo" class="t-subtitulo">Para saber</h2>
+    <h2 id="info-titulo" class="t-titulo">Para saber</h2>
     <dl>
       <div><dt>Cocina</dt><dd>Ramen japonés estilo Iekei</dd></div>
-      <div><dt>Precio</dt><dd class="t-dato">De {{ precio.min }} a {{ precio.max }} MXN por persona</dd></div>
-      <div><dt>Pedidos</dt><dd>Para recoger, por WhatsApp <span class="por-confirmar">por confirmar</span></dd></div>
+      <div><dt>Precio</dt><dd>De {{ precio.min }} a {{ precio.max }} MXN por persona</dd></div>
+      <div><dt>Pedidos</dt><dd>Para recoger: se arma en la máquina de tickets y se manda por WhatsApp (propuesta)</dd></div>
     </dl>
     <a class="enlace" routerLink="/menu" [queryParams]="{ ramen: 'iekei-clasico' }">¿Primera vez? Empieza por el Iekei clásico</a>
   </section>

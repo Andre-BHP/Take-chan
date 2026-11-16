@@ -10,7 +10,7 @@ import { Seo } from '../servicios/seo';
     <section class="envoltura">
       <h1 class="t-titulo">Esta página no existe</h1>
       <p class="tenue">Puede que el enlace esté mal escrito o que la página todavía no esté en la propuesta.</p>
-      <a class="boton boton-secundario" routerLink="/">Volver al inicio</a>
+      <a class="boton boton-contorno" routerLink="/">Volver al inicio</a>
     </section>
   `,
   styles: `section { padding-block: var(--e-8); display: grid; gap: var(--e-4); justify-items: start; }`,

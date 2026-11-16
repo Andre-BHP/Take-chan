@@ -4,6 +4,8 @@ Fotos de [Unsplash](https://unsplash.com/license) (licencia libre: uso comercial
 
 En el sitio cada foto lleva el rótulo "Imagen ilustrativa": **no son platillos ni locales de Take-chan**. Se reemplazan por las fotos que tome André en el local.
 
+Se descartaron dos fotos de fachadas porque mostraban marcas reales de otros negocios y un término ofensivo en un letrero.
+
 | Archivo | Uso | Autor | Foto |
 |---|---|---|---|
 | `heroe-iekei` | Héroe de la portada | [Kouji Tsuru](https://unsplash.com/@pafuxu) | [unsplash.com/photos/cM_4SQ5fyrk](https://unsplash.com/photos/cM_4SQ5fyrk) |
@@ -16,9 +18,8 @@ En el sitio cada foto lleva el rótulo "Imagen ilustrativa": **no son platillos 
 | `tare` | Paso 2: tare de soya | [akhmad jazuli](https://unsplash.com/@djazz356) | [unsplash.com/photos/AiL8i9P_NtA](https://unsplash.com/photos/AiL8i9P_NtA) |
 | `fideo` | Qué es Iekei y paso 3: fideo | [Nahima Aparicio](https://unsplash.com/@nahimaaparicio) | [unsplash.com/photos/6esxgklFkQs](https://unsplash.com/photos/6esxgklFkQs) |
 | `tazon` | Paso 4: tazón armado | [Kouji Tsuru](https://unsplash.com/@pafuxu) | [unsplash.com/photos/T_B8nPvDWNk](https://unsplash.com/photos/T_B8nPvDWNk) |
-| `local-noche` | Sucursal Tlaquepaque | [Dao En Wong](https://unsplash.com/@xen13) | [unsplash.com/photos/H0yI-8zL5TM](https://unsplash.com/photos/H0yI-8zL5TM) |
-| `entrada-noche` | Sucursal Americana | [ayumi kubo](https://unsplash.com/@ayumikubo) | [unsplash.com/photos/4dJBC13qfEs](https://unsplash.com/photos/4dJBC13qfEs) |
 | `te` | Té (menú) | [Stanislav Rozhkov](https://unsplash.com/@stas_r) | [unsplash.com/photos/2HRYV-72Ohg](https://unsplash.com/photos/2HRYV-72Ohg) |
 | `arroz` | Arroz (menú) | [Vinn Koonyosying](https://unsplash.com/@mggbox) | [unsplash.com/photos/zXNC_lBBVGE](https://unsplash.com/photos/zXNC_lBBVGE) |
+| `barra` | Sucursales (barra de cocina) | [Mesh](https://unsplash.com/@crypticsy) | [unsplash.com/photos/QiA43Y5AJCU](https://unsplash.com/photos/QiA43Y5AJCU) |
 
 Procesado: `herramientas/procesar-fotos.mjs` (AVIF y WebP a 480, 960 y 1600 px, color promedio y miniatura borrosa). Originales en `fuentes-fotos/` (no se suben).

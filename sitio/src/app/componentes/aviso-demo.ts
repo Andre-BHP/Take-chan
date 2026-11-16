@@ -14,7 +14,7 @@ import { Contacto } from '../servicios/contacto';
           @if (a.mensaje) {
             <pre class="mensaje" aria-label="Mensaje de WhatsApp">{{ a.mensaje }}</pre>
           }
-          <form method="dialog"><button class="boton boton-secundario">Entendido</button></form>
+          <form method="dialog"><button class="boton boton-contorno">Entendido</button></form>
         </div>
       }
     </dialog>
@@ -22,11 +22,11 @@ import { Contacto } from '../servicios/contacto';
   styles: `
     dialog { margin: auto; border: 0; padding: 0; background: transparent; color: var(--tinta); max-width: min(30rem, calc(100vw - 32px)); width: 100%; }
     dialog::backdrop { background: rgba(10, 7, 5, .72); }
-    .hoja { background: var(--washi) var(--fibra); border-radius: var(--r-m); padding: var(--e-4); display: grid; gap: var(--e-3); box-shadow: var(--sombra-ticket); }
+    .hoja { background: var(--washi) var(--grano); border-radius: var(--r-m); padding: var(--e-4); display: grid; gap: var(--e-3); box-shadow: 0 20px 40px -16px rgba(0, 0, 0, .8); }
     p { color: var(--tinta-2); }
     .mensaje { font: 400 .8125rem/1.6 var(--mono); white-space: pre-wrap; background: var(--washi-2); border-radius: var(--r-s); padding: var(--e-3); max-height: 50vh; overflow: auto; }
-    .boton-secundario { color: var(--tinta); border-color: var(--tinta-2); width: 100%; }
-    .boton-secundario:hover { border-color: var(--tinta); }
+    .boton-contorno { color: var(--tinta); border-color: var(--tinta-2); width: 100%; }
+    .boton-contorno:hover { border-color: var(--tinta); }
     @media (prefers-reduced-motion: no-preference) {
       dialog[open] .hoja { animation: entra var(--lento) var(--salida); }
       @keyframes entra { from { opacity: 0; transform: translateY(12px); } }

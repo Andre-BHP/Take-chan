@@ -99,26 +99,6 @@
     "usuario": "pafuxu",
     "id": "T_B8nPvDWNk"
   },
-  "local-noche": {
-    "ancho": 2400,
-    "alto": 1600,
-    "color": "#180808",
-    "lqip": "data:image/webp;base64,UklGRm4AAABXRUJQVlA4IGIAAACQBACdASoYABAAPu1oqk6ppiQiMAgBMB2JZgCdMoLUABMsWpDB6tH7PReqv6AA/uvgPR0z9M6ruG5eQONNa1n3Gjz5nkMgX/tFKylY38SAxfyPJ6SUhBSeE8aUT0bwbwAAAA==",
-    "alt": "Fachada de una ramen-ya iluminada de noche",
-    "autor": "Dao En Wong",
-    "usuario": "xen13",
-    "id": "H0yI-8zL5TM"
-  },
-  "entrada-noche": {
-    "ancho": 2400,
-    "alto": 3600,
-    "color": "#081818",
-    "lqip": "data:image/webp;base64,UklGRqoAAABXRUJQVlA4IJ4AAADwBQCdASoYACQAPuFipE2opiOiNVv4ARAcCWYAuwAeBE6vlhsishCBFaxxRKR2WLfoA3Z00xAosAD+5BqaezspH8f6CA/D4bS7aydTnEqGcOxxKfG38hxDDuX/8rfXk5HwHz9ai1sdT4xtIZ88Yn8Wmzm4H0Dgl2ntORcraYpSSamUkaXY1nykGRSRopFE/wdIWdhKh3HjGYiI3AAAAA==",
-    "alt": "Entrada de un restaurante japonés de noche",
-    "autor": "ayumi kubo",
-    "usuario": "ayumikubo",
-    "id": "4dJBC13qfEs"
-  },
   "te": {
     "ancho": 2400,
     "alto": 2819,
@@ -138,5 +118,15 @@
     "autor": "Vinn Koonyosying",
     "usuario": "mggbox",
     "id": "zXNC_lBBVGE"
+  },
+  "barra": {
+    "ancho": 2400,
+    "alto": 1347,
+    "color": "#481808",
+    "lqip": "data:image/webp;base64,UklGRlwAAABXRUJQVlA4IFAAAADwAwCdASoYAA0APu1kqU2ppaQiMAgBMB2JQBOgA7vNgJzLQ9f6hUF4AP7jSyueXc+mkyjR18KnWtyBTFnp2mezcmd68jtMGvT5KAD9A8lwAA==",
+    "alt": "Barra de cocina de una ramen-ya con tazones apilados y palillos",
+    "autor": "Mesh",
+    "usuario": "crypticsy",
+    "id": "QiA43Y5AJCU"
   }
 }
