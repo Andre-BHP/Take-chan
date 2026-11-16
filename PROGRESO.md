@@ -4,11 +4,11 @@ Propuesta no oficial de sitio para Take-chan Ramen.
 
 - **Pages:** https://andre-bhp.github.io/SENSEI/
 - **Repositorio:** https://github.com/Andre-BHP/SENSEI
-- **Última subida:** 2026-11-15 22:55 (hora de Guadalajara)
+- **Última subida:** 2026-11-15 23:05 (hora de Guadalajara)
 
 ## Pasos
 - [x] 0. Repositorio, Pages "en construcción" (aviso y `noindex`) y este archivo
-- [ ] 1. Leer fuentes
+- [x] 1. Leer fuentes
 - [ ] 2. `DESIGN.md` con impeccable
 - [ ] 3. Datos (`negocio.json` y `menu.json`)
 - [ ] 4. Inicio
@@ -19,10 +19,10 @@ Propuesta no oficial de sitio para Take-chan Ramen.
 - [ ] 9. Push y Pages final
 
 ## Último paso
-**Paso 0.** Página "en construcción" con el aviso fijo, `noindex` y `robots.txt` que bloquea todo. La GitHub Action publica en la rama `gh-pages`.
+**Paso 1.** Fuentes leídas (auditoría y plan de HERA, consulta de Arthemis, Arleth y 18 cartas de Gambit). Resumen de lo confirmado y lo que no en [`entregables/fuentes.md`](entregables/fuentes.md). Sin cambio visual.
 
 ## Sigue
-Paso 1: leer la auditoría de HERA, el plan, la consulta de Arthemis, el proyecto Arleth y las cartas de Gambit.
+Paso 2: `DESIGN.md` con tokens (impeccable).
 
 ## Capturas más recientes
 | 360 px | 1440 px |
