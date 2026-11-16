@@ -6,27 +6,55 @@
 <meta name="robots" content="noindex, nofollow">
 <title>Take-chan Ramen · propuesta en construcción</title>
 <meta name="description" content="Propuesta no oficial de sitio para Take-chan Ramen. En construcción.">
+<link rel="preload" href="fuentes/dela-gothic-one.woff2" as="font" type="font/woff2" crossorigin>
 <style>
-  :root { --carbon: #161311; --barra: #221c18; --papel: #efe7da; --tenue: #b5a99a; --laca: #e5533f; }
+  @font-face { font-family: 'Dela Gothic One'; src: url(fuentes/dela-gothic-one.woff2) format('woff2'); font-display: swap; }
+  @font-face { font-family: 'Zen Kaku Gothic New'; font-weight: 400; src: url(fuentes/zen-kaku-400.woff2) format('woff2'); font-display: swap; }
+  @font-face { font-family: 'Zen Kaku Gothic New'; font-weight: 700; src: url(fuentes/zen-kaku-700.woff2) format('woff2'); font-display: swap; }
+  @font-face { font-family: 'Martian Mono'; font-weight: 400; src: url(fuentes/martian-mono-400.woff2) format('woff2'); font-display: swap; }
+  :root {
+    --carbon: #17120f; --madera: #221a15; --madera-canto: #0d0907; --borde: #3e3027;
+    --texto: #f0e7d8; --texto-tenue: #bcae9c; --washi: #efe6d6; --tinta: #1c1612; --tinta-2: #5b4d42;
+    --laca: #c22f28; --laca-texto: #ec5b47;
+    --display: 'Dela Gothic One', 'Arial Black', sans-serif; --sans: 'Zen Kaku Gothic New', system-ui, sans-serif; --mono: 'Martian Mono', ui-monospace, monospace;
+    --gutter: clamp(16px, 4vw, 48px);
+  }
   * { box-sizing: border-box; margin: 0; }
-  body { min-height: 100svh; background: var(--carbon); color: var(--papel); font: 400 1rem/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; display: flex; flex-direction: column; }
-  .aviso { background: var(--barra); color: var(--papel); font: 500 .8125rem/1.4 ui-monospace, "Cascadia Mono", Consolas, monospace; text-align: center; padding: .625rem 1rem; border-bottom: 1px solid #3a302a; }
-  main { flex: 1; display: grid; place-content: center; gap: 1.5rem; padding: 3rem 1rem; max-width: 40rem; margin: 0 auto; }
-  .marca { font: 800 clamp(3rem, 14vw, 6.5rem)/.9 system-ui, sans-serif; letter-spacing: -.03em; }
-  .marca span { color: var(--laca); }
-  p { color: var(--tenue); max-width: 34rem; }
-  .estado { font: 500 .875rem/1.4 ui-monospace, Consolas, monospace; color: var(--papel); border: 1px solid #3a302a; border-radius: 4px; padding: .5rem .75rem; justify-self: start; }
-  footer { padding: 1.5rem 1rem; text-align: center; color: var(--tenue); font-size: .8125rem; }
-  @media (prefers-reduced-motion: no-preference) { main { animation: entra .25s ease-out both; } @keyframes entra { from { opacity: 0; transform: translateY(8px); } } }
+  ::selection { background: var(--laca); color: var(--washi); }
+  body { min-height: 100svh; background: var(--carbon); color: var(--texto); font: 400 1rem/1.6 var(--sans); display: flex; flex-direction: column; }
+  .aviso { background: var(--madera); font: 400 .75rem/1.4 var(--mono); text-align: center; padding: 8px var(--gutter); border-bottom: 1px solid var(--borde); }
+  main { flex: 1; width: 100%; max-width: 72rem; margin: 0 auto; padding: 48px var(--gutter) 64px; display: grid; gap: 32px; align-content: center; }
+  .marca { font: 400 clamp(4.25rem, 24vw, 7rem)/.86 var(--display); letter-spacing: -.02em; }
+  .marca span { display: block; }
+  @media (min-width: 900px) { .marca { font-size: clamp(6rem, 11.5vw, 12rem); } .marca span { display: inline; } }
+  .ja { font: 400 1.25rem/1 var(--display); color: var(--texto-tenue); letter-spacing: .08em; }
+  .frase { font-size: clamp(1.125rem, 1rem + .5vw, 1.375rem); line-height: 1.45; max-width: 34rem; }
+  .muestras { display: flex; flex-wrap: wrap; gap: 8px; }
+  .muestra { width: 48px; height: 48px; border-radius: 4px; border: 1px solid var(--borde); }
+  .fila { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; }
+  .tecla { font: 700 1rem/1.2 var(--sans); background: var(--washi); color: var(--tinta); border: 0; border-radius: 6px; padding: 14px 20px; box-shadow: 0 4px 0 var(--madera-canto), 0 8px 16px -6px rgba(0,0,0,.55); }
+  .tecla small { display: block; font: 400 .6875rem/1.4 var(--mono); color: var(--tinta-2); }
+  .dato { font: 400 .8125rem/1.4 var(--mono); color: var(--texto-tenue); }
+  .estado { font: 400 .8125rem/1.4 var(--mono); border: 1px dashed var(--texto-tenue); color: var(--texto-tenue); border-radius: 4px; padding: 6px 10px; }
+  footer { padding: 24px var(--gutter); color: var(--texto-tenue); font-size: .8125rem; border-top: 1px solid var(--borde); }
+  @media (prefers-reduced-motion: no-preference) { main { animation: entra .25s cubic-bezier(.23,1,.32,1) both; } @keyframes entra { from { opacity: 0; transform: translateY(8px); } } }
 </style>
 </head>
 <body>
   <div class="aviso" role="note">Propuesta no oficial de sitio para Take-chan Ramen</div>
   <main>
-    <h1 class="marca">TAKE-CHAN<br><span>RAMEN</span></h1>
-    <p>Ramen Iekei en Guadalajara. Esta es una propuesta de sitio en construcción, hecha por un estudiante para enseñársela al negocio. No es el sitio oficial ni recibe pedidos.</p>
-    <p class="estado">En construcción</p>
+    <p class="ja" lang="ja">家系ラーメン</p>
+    <h1 class="marca"><span>TAKE-</span><span>CHAN</span></h1>
+    <p class="frase">Ramen Iekei en Guadalajara. Caldo y fideo traídos de Japón.</p>
+    <div class="fila">
+      <span class="tecla">Iekei clásico<small>precio por confirmar</small></span>
+      <span class="estado">En construcción · paso 2 de 9</span>
+    </div>
+    <div class="muestras" aria-label="Paleta: carbón, madera, washi y rojo laca">
+      <span class="muestra" style="background:#17120f"></span><span class="muestra" style="background:#221a15"></span><span class="muestra" style="background:#3e3027"></span><span class="muestra" style="background:#bcae9c"></span><span class="muestra" style="background:#efe6d6"></span><span class="muestra" style="background:#c22f28"></span>
+    </div>
+    <p class="dato">Calz. Córdoba 24, Tlaquepaque · 12:00 a 17:00</p>
   </main>
-  <footer>Prototipo sin datos de contacto reales.</footer>
+  <footer>Prototipo hecho por un estudiante para enseñárselo al negocio. Sin datos de contacto reales; no recibe pedidos.</footer>
 </body>
 </html>
