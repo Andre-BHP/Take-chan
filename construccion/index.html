@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="es-MX">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Take-chan Ramen · propuesta en construcción</title>
+<meta name="description" content="Propuesta no oficial de sitio para Take-chan Ramen. En construcción.">
+<style>
+  :root { --carbon: #161311; --barra: #221c18; --papel: #efe7da; --tenue: #b5a99a; --laca: #e5533f; }
+  * { box-sizing: border-box; margin: 0; }
+  body { min-height: 100svh; background: var(--carbon); color: var(--papel); font: 400 1rem/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; display: flex; flex-direction: column; }
+  .aviso { background: var(--barra); color: var(--papel); font: 500 .8125rem/1.4 ui-monospace, "Cascadia Mono", Consolas, monospace; text-align: center; padding: .625rem 1rem; border-bottom: 1px solid #3a302a; }
+  main { flex: 1; display: grid; place-content: center; gap: 1.5rem; padding: 3rem 1rem; max-width: 40rem; margin: 0 auto; }
+  .marca { font: 800 clamp(3rem, 14vw, 6.5rem)/.9 system-ui, sans-serif; letter-spacing: -.03em; }
+  .marca span { color: var(--laca); }
+  p { color: var(--tenue); max-width: 34rem; }
+  .estado { font: 500 .875rem/1.4 ui-monospace, Consolas, monospace; color: var(--papel); border: 1px solid #3a302a; border-radius: 4px; padding: .5rem .75rem; justify-self: start; }
+  footer { padding: 1.5rem 1rem; text-align: center; color: var(--tenue); font-size: .8125rem; }
+  @media (prefers-reduced-motion: no-preference) { main { animation: entra .25s ease-out both; } @keyframes entra { from { opacity: 0; transform: translateY(8px); } } }
+</style>
+</head>
+<body>
+  <div class="aviso" role="note">Propuesta no oficial de sitio para Take-chan Ramen</div>
+  <main>
+    <h1 class="marca">TAKE-CHAN<br><span>RAMEN</span></h1>
+    <p>Ramen Iekei en Guadalajara. Esta es una propuesta de sitio en construcción, hecha por un estudiante para enseñársela al negocio. No es el sitio oficial ni recibe pedidos.</p>
+    <p class="estado">En construcción</p>
+  </main>
+  <footer>Prototipo sin datos de contacto reales.</footer>
+</body>
+</html>

@@ -1,0 +1,18 @@
+# Dependencias y builds
+node_modules/
+dist/
+.angular/
+*.tmp.mjs
+
+# Configuración local
+.claude/
+sitio/.claude/
+.vscode/
+.env
+.env.*
+sitio/.impeccable/review/
+sitio/.impeccable/hook.cache.json
+
+# Instrucciones internas (no se publican)
+CLAUDE.md
+PROMPT_INICIAL.md
