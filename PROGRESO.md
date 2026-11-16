@@ -2,7 +2,7 @@
 
 - **Pages:** https://andre-bhp.github.io/Take-chan/
 - **Repositorio:** https://github.com/Andre-BHP/Take-chan
-- **Última subida:** 2026-11-16 16:30 (hora de Guadalajara)
+- **Última subida:** 2026-11-16 16:40 (hora de Guadalajara)
 
 ## Rediseño (2026-11-15)
 André revisó la primera versión: "quedó muy feo y muy mal". Este rediseño cambia la dirección a "una ramen-ya de Yokohama de noche": fotos de ejemplo rotuladas, negro sumi y papel washi, 家系 vertical y un solo acento bermellón.
@@ -23,7 +23,7 @@ Plan de Arthemis para pasar de "bien hecho" a "de premio".
 - [x] N0. Crítica y diferencias con el plan (`entregables/N0_critica.md`)
 - [x] N1. Una sola mirada fotográfica: tratamiento de color, grano y viñeta
 - [x] N2. Mapas propios de OpenStreetMap en lugar de fotos de las sucursales
-- [ ] N3. "Cómo se hace un Iekei": tazón visto desde arriba y pasos 一二三四
+- [x] N3. "Cómo se hace un Iekei": tazón visto desde arriba y pasos 一二三四
 - [ ] N4. Sello hanko de la propuesta
 - [ ] N5. Héroe legible y saludo いらっしゃいませ
 - [ ] N6. Ritmo editorial: títulos, 4.8 con sección propia y pausa a sangre
@@ -49,12 +49,12 @@ André: "mejor animación, más transiciones, mejor diseño, mejor todo". Metáf
 Repositorio, Pages, datos, inicio, máquina de tickets, sucursales con JSON-LD, pruebas y lista para el negocio. Capturas en `entregables/avances/antes/`.
 
 ## Último paso
-**N2.** Mapas propios con datos de OpenStreetMap (`herramientas/mapas.mjs`): calles en tonos de sumi, las calles clave en claro con su nombre y "© OpenStreetMap" con enlace. Tlaquepaque marca la esquina real de Calzada Córdoba y Niños Héroes, sacada de los nodos de OSM. La Americana va como "Ubicación aproximada", estimada por la numeración vecina de Prisciliano Sánchez. El sello 家 en bermellón cae una vez al entrar en vista (quieto con movimiento reducido). Reemplazan las fotos en las tarjetas de la portada y en la cabeza de cada sucursal; la foto de la barra se quitó. axe limpio, sin scroll a 360, portada de 415 KB.
+**N3.** "Cómo se hace un Iekei" rehecho: tazón visto desde arriba en SVG por capas (caldo cremoso con gotas de grasa, tare en remolino, 13 fideos rectos, espinaca, chashu en dos rebanadas, medio huevo marinado y tres hojas de nori de pie en el borde), con textura y el mismo grano de las fotos. Cada capa entra con su propio movimiento: el caldo se derrama del centro, el tare gira, los fideos se trazan y los toppings caen con un rebote leve. Pasos con 一二三四 de 160 px en escritorio, texto en washi, activo al 100 % y los demás al 35 %. Rotulado "Ilustración del estilo". Se corrigió un scroll horizontal a 360 que hacía cargar el bento de más. axe limpio y portada de 422 KB. El LCP sigue alto en esta máquina (se ataca en N5). La crítica prefiere la opción B (sumi-e), que necesita el visto bueno de André.
 
 ## Sigue
-N3: "Cómo se hace un Iekei" con el tazón visto desde arriba y los pasos 一二三四.
+N4: sello hanko de la propuesta (favicon, héroe, pie y estampado en el ticket).
 
 ## Capturas más recientes
-| Tlaquepaque 360 | Tlaquepaque 1440 | Americana 1440 | Video |
-|---|---|---|---|
-| ![360](entregables/avances/2026-11-16_paso-N2_tlaquepaque_360.png) | ![1440](entregables/avances/2026-11-16_paso-N2_tlaquepaque_1440.png) | ![Americana](entregables/avances/2026-11-16_paso-N2_americana_1440.png) | [GIF 390](entregables/avances/video/2026-11-16_N2_sucursales_390.gif) · [MP4 1440](entregables/avances/video/2026-11-16_N2_sucursales_1440.mp4) |
+| Sección 360 | Sección 1440 | Video |
+|---|---|---|
+| ![360](entregables/avances/2026-11-16_paso-N3_como_360.png) | ![1440](entregables/avances/2026-11-16_paso-N3_como_1440.png) | [GIF 390](entregables/avances/video/2026-11-16_N3_medidor_390.gif) · [MP4 1440](entregables/avances/video/2026-11-16_N3_medidor_1440.mp4) |

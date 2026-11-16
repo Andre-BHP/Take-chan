@@ -136,7 +136,7 @@
 }
 
 /* ---------- Cómo se hace un Iekei: medidor narrativo (componentes/medidor) ---------- */
-.como { background: var(--sumi-2); border-block: 1px solid var(--linea); padding-block: var(--e-7); display: grid; gap: var(--e-5); }
+.como { background: var(--sumi-2); border-block: 1px solid var(--linea); padding-block: var(--e-7); display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--e-5); }
 .como-cabeza { display: grid; gap: var(--e-2); }
 @media (min-width: 900px) { .como { padding-block: var(--e-8); } }
 

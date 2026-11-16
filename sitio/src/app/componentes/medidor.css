@@ -1,46 +1,63 @@
-:host { display: grid; gap: var(--e-5); }
+:host { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--e-5); }
 
-.tazon-fijo { display: grid; justify-items: center; gap: var(--e-2); }
-svg { width: min(78vw, 340px); height: auto; overflow: visible; }
-.borde { fill: #2a2724; stroke: var(--washi-2); stroke-width: 2; }
-.cuerpo, .pie { fill: none; stroke: var(--washi-2); stroke-width: 2.5; stroke-linecap: round; }
-.leyenda { color: var(--ceniza); }
+.tazon-fijo { display: grid; justify-items: center; gap: var(--e-2); padding-inline: var(--gutter); }
+.lienzo { position: relative; width: min(84vw, 360px); aspect-ratio: 1; border-radius: 50%; }
+/* El mismo grano de película que las fotos, para que la ilustración no se vea plana. */
+.lienzo::after {
+  content: ''; position: absolute; inset: 0; border-radius: 50%; pointer-events: none;
+  background: url('./grano.png') 0 0 / 96px 96px; mix-blend-mode: overlay; opacity: .5;
+}
+svg { display: block; width: 100%; height: 100%; overflow: visible; filter: drop-shadow(0 30px 40px rgba(0, 0, 0, .55)); }
+.leyenda { color: var(--washi-2); display: flex; align-items: center; gap: .4em; }
+.desliza { display: inline-flex; align-items: center; gap: .3em; }
+.desliza svg { width: 1em; height: 1em; filter: none; }
+.aviso-ilustracion { font: 500 .6875rem/1.4 var(--sans); color: var(--ceniza); }
 @media (min-width: 900px) { .desliza { display: none; } }
 
-/* Capas: cada una aparece cuando su paso está activo y se queda. */
-.capa { transition: transform var(--t-4) var(--ease-out), opacity var(--t-4) var(--ease-out); }
-.caldo { fill: #d9b98e; transform-box: fill-box; transform-origin: 50% 100%; transform: scaleY(0); }
-.tare { fill: #8a5a33; opacity: 0; }
-.brillo { fill: #f6e3bf; opacity: 0; }
-:host([data-paso]) .brillo { opacity: .55; }
-:host([data-paso='1']) .brillo { opacity: .7; }
-.fideo path { fill: none; stroke: #f1d79a; stroke-width: 5; stroke-linecap: round; }
-.fideo { opacity: 0; transform: translateY(-14px); }
-.toppings { opacity: 0; transform: translateY(-18px); }
-.nori { fill: #1d231f; stroke: #2d3530; }
-.espinaca { fill: #3e5a32; }
-.chashu { fill: #b07a5e; }
-.chashu-borde { fill: none; stroke: #e7c9ad; stroke-width: 5; }
+/* Capas: con todo visible por defecto (prerender, sin JavaScript, movimiento reducido). */
+.caldo, .tono, .remolino { transform-box: view-box; transform-origin: 50% 50%; }
+.tono { opacity: .22; mix-blend-mode: multiply; }
+.remolino { opacity: .38; stroke-dasharray: 1; stroke-dashoffset: 0; }
+.fideo-sombra { stroke: #9a7140; stroke-width: 8.5; stroke-dasharray: 1; stroke-dashoffset: 0; }
+.fideo { stroke: #ecca86; stroke-width: 5.6; stroke-dasharray: 1; stroke-dashoffset: 0; }
+.top { transform-box: view-box; transform-origin: 50% 50%; }
 
-:host([data-paso='1']) .caldo, :host([data-paso='2']) .caldo, :host([data-paso='3']) .caldo, :host([data-paso='4']) .caldo { transform: scaleY(1); }
-:host([data-paso='2']) .tare, :host([data-paso='3']) .tare, :host([data-paso='4']) .tare { opacity: .55; }
-:host([data-paso='3']) .fideo, :host([data-paso='4']) .fideo { opacity: 1; transform: none; }
-:host([data-paso='4']) .toppings { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: no-preference) {
+  .caldo { transition: transform 900ms var(--ease-out), opacity 400ms var(--ease-out); }
+  .gotas { transition: opacity 700ms var(--ease-out) 450ms; }
+  .tono { transition: opacity 900ms var(--ease-out); }
+  .remolino { transition: stroke-dashoffset 1100ms var(--ease-in-out), transform 1100ms var(--ease-out), opacity 600ms var(--ease-out); }
+  .fideo, .fideo-sombra { transition: stroke-dashoffset 900ms var(--ease-in-out) calc(var(--i) * 60ms); }
+  .top { transition: transform 620ms var(--ease-tela) calc(var(--i) * 110ms), opacity 300ms var(--ease-out) calc(var(--i) * 110ms); }
 
-.pasos { list-style: none; padding: 0 var(--gutter); margin: 0; display: flex; gap: var(--e-3); overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding-inline: var(--gutter); scrollbar-width: none; }
-.paso { flex: 0 0 min(80vw, 22rem); scroll-snap-align: start; display: grid; gap: var(--e-2); align-content: start; padding: var(--e-4); border: 1px solid var(--linea); border-radius: var(--r-l); background: var(--sumi); transition: border-color var(--t-3) var(--ease-out), opacity var(--t-3) var(--ease-out); }
-.paso p { color: var(--ceniza); max-width: 36ch; }
-.numero { color: var(--ceniza); }
-.paso.activo { border-color: var(--washi-2); }
-.paso.activo .numero { color: var(--washi); }
-
-/* Escritorio: el tazón queda fijo a la izquierda y los pasos pasan a la derecha. */
-@media (min-width: 900px) {
-  :host { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: start; max-width: var(--ancho); margin-inline: auto; padding-inline: var(--gutter); column-gap: var(--e-8); }
-  .tazon-fijo { position: sticky; top: calc(50vh - 180px); }
-  svg { width: min(100%, 420px); }
-  .pasos { display: grid; gap: 0; overflow: visible; padding: 0; scroll-snap-type: none; }
-  .paso { min-height: 55vh; align-content: center; border: 0; background: none; padding: 0 0 0 var(--e-4); border-left: 1px solid var(--linea); opacity: .4; }
-  .paso.activo { opacity: 1; border-left-color: var(--washi-2); }
+  :host(:not(.p1)) .caldo { transform: scale(0); opacity: 0; }
+  :host(:not(.p1)) .gotas { opacity: 0; }
+  :host(:not(.p2)) .tono { opacity: 0; }
+  :host(:not(.p2)) .remolino { stroke-dashoffset: 1; transform: rotate(-60deg); opacity: 0; }
+  :host(:not(.p3)) .fideo, :host(:not(.p3)) .fideo-sombra { stroke-dashoffset: 1; }
+  :host(:not(.p4)) .top { transform: translateY(-26px) scale(1.12); opacity: 0; }
 }
-@media (min-width: 900px) and (prefers-reduced-motion: reduce) { .paso { opacity: 1; min-height: 0; padding-block: var(--e-4); } }
+
+/* Pasos: número japonés grande y texto en washi; el activo al 100 % y los otros al 35 %. */
+.pasos { position: relative; list-style: none; padding: 0 var(--gutter); margin: 0; display: flex; gap: var(--e-3); overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding-inline: var(--gutter); scrollbar-width: none; }
+.paso {
+  flex: 0 0 min(80vw, 22rem); scroll-snap-align: start; display: grid; gap: var(--e-2); align-content: start;
+  padding: var(--e-4); border: 1px solid var(--linea); border-radius: var(--r-l); background: var(--sumi);
+  opacity: .35; transition: opacity var(--t-3) var(--ease-out), border-color var(--t-3) var(--ease-out);
+}
+.paso.activo { opacity: 1; border-color: var(--washi-2); }
+.numero { font: 800 3.5rem/1 var(--mincho); color: var(--washi); }
+.paso-texto { display: grid; gap: var(--e-2); }
+.paso p { color: var(--washi); max-width: 36ch; }
+
+/* Escritorio: el tazón fijo a la izquierda y los pasos a la derecha, con el número como marca de agua. */
+@media (min-width: 900px) {
+  :host { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: start; max-width: var(--ancho); margin-inline: auto; padding-inline: var(--gutter); column-gap: var(--e-7); }
+  .tazon-fijo { position: sticky; top: calc(50vh - 260px); padding: 0; }
+  .lienzo { width: min(100%, 480px); }
+  .pasos { display: grid; gap: 0; overflow: visible; padding: 0; scroll-snap-type: none; }
+  .paso { min-height: 44vh; grid-template-columns: auto 1fr; align-content: center; align-items: center; border: 0; background: none; padding: 0; column-gap: var(--e-5); }
+  .numero { font-size: 10rem; width: 1.05em; text-align: center; }
+}
+@media (min-width: 900px) and (prefers-reduced-motion: reduce) { .paso { opacity: 1; min-height: 0; padding-block: var(--e-5); } }
+@media (prefers-reduced-motion: reduce) { .paso { opacity: 1; } }
