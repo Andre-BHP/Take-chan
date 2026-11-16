@@ -26,8 +26,14 @@
   --ancho: 76rem;
   --r-s: 3px; --r-m: 6px; --r-l: 12px;
 
-  --rapido: 150ms; --base: 200ms; --lento: 250ms;
-  --salida: cubic-bezier(.23, 1, .32, 1);
+  /* Movimiento (PLAN_MOVIMIENTO): cinco duraciones y tres curvas para todo el sitio. */
+  --t-1: 120ms; --t-2: 200ms; --t-3: 320ms; --t-4: 560ms; --t-5: 900ms;
+  --ease-out: cubic-bezier(.22, 1, .36, 1);
+  --ease-in-out: cubic-bezier(.65, 0, .35, 1);
+  --ease-tela: cubic-bezier(.33, 1.3, .5, 1);
+  /* Alias de la primera versión */
+  --rapido: var(--t-1); --base: var(--t-2); --lento: var(--t-3);
+  --salida: var(--ease-out);
   --pulsar: cubic-bezier(.3, .7, .4, 1);
 
   /* Grano de papel washi: ruido SVG en línea (dis-009). */
@@ -40,7 +46,13 @@
 *, *::before, *::after { box-sizing: border-box; }
 * { margin: 0; }
 html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; scroll-padding-top: 88px; }
-@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+@media (prefers-reduced-motion: no-preference) { html:not(.lenis) { scroll-behavior: smooth; } }
+/* Lenis */
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-stopped { overflow: clip; }
+/* Líneas de SplitText con máscara */
+.linea { display: block; }
 
 body {
   background: var(--sumi);

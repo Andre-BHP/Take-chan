@@ -153,3 +153,10 @@ Diferencias con los tokens de arriba, después de las revisiones de impeccable, 
 - **Mono:** solo horario, estado y precios; las direcciones van en Geist.
 - **Pesos cargados:** Shippori 700 y 800, Geist 400, 500 y 600 (las negritas usan 600), Geist Mono 500. El subconjunto japonés se arma solo con los caracteres de `sitio/src`.
 - **Sucursal Americana:** solo la marca "por confirmar"; sin estado abierto o cerrado, sin horario supuesto y sin JSON-LD.
+
+## Sistema de movimiento (PLAN_MOVIMIENTO, 2026-11-16)
+dis-023 se reinterpreta: **un momento firma por página** (la noren que se abre al entrar; el ticket que se imprime y se corta en `/menu`) dentro de un sistema de movimiento con los mismos tokens.
+- **Duraciones:** `--t-1` 120 ms, `--t-2` 200 ms, `--t-3` 320 ms, `--t-4` 560 ms, `--t-5` 900 ms.
+- **Curvas:** `--ease-out: cubic-bezier(.22, 1, .36, 1)` (entradas), `--ease-in-out: cubic-bezier(.65, 0, .35, 1)` (cortinas y transiciones), `--ease-tela: cubic-bezier(.33, 1.3, .5, 1)` (rebote leve de la tela). En GSAP: `expo.out` y `back.out(1.3)`.
+- **Base:** Lenis (`lerp` 0.1) y GSAP con ScrollTrigger y SplitText, cargados solo en el navegador cuando la página ya terminó de cargar (`servicios/movimiento.ts`). Nada de esto existe en el prerender.
+- **Reglas:** solo `transform`, `opacity` y `clip-path`; el contenido es visible por defecto; con `prefers-reduced-motion` no se carga Lenis ni GSAP y todo queda quieto.
