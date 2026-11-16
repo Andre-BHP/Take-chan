@@ -216,3 +216,74 @@
   .burbuja-texto { animation: llega var(--lento) var(--salida) both; }
   @keyframes llega { from { opacity: 0; transform: translateY(6px); } }
 }
+
+
+/* ================= Movimiento de la máquina (PLAN_MOVIMIENTO, M5) ================= */
+
+/* Índice: un solo punto bermellón que se desliza entre secciones (escritorio). */
+.indice ul { position: relative; }
+.indice .punto { display: none; }
+@media (min-width: 1100px) {
+  .indice .punto { display: block; position: absolute; left: 8px; top: 19px; width: 6px; height: 6px; border-radius: 50%; background: var(--bermellon); transform: translateY(calc(var(--i, 0) * 48px)); transition: transform var(--t-3) var(--ease-out); }
+  .indice ul { gap: 4px; }
+  .indice a.activa::before { background: transparent; }
+}
+
+/* Al gusto: el marco bermellón se desliza entre opciones. */
+.sellos { position: relative; }
+.marco-gusto { position: absolute; z-index: 1; top: 0; left: 0; bottom: 0; width: calc((100% - 2 * var(--e-2)) / 3); border: 2px solid var(--bermellon); border-radius: var(--r-m); pointer-events: none; transform: translateX(calc(var(--i, 1) * (100% + var(--e-2)))); transition: transform var(--t-3) var(--ease-out); }
+.sello:has(input:checked) { border: 1px solid var(--washi-linea); background: rgba(255, 255, 255, .7); }
+
+@media (prefers-reduced-motion: no-preference) {
+  /* Entrada: la máquina sube y se enciende; las teclas se iluminan en cascada y el LED parpadea dos veces. */
+  .maquina { animation: maq-sube var(--t-5) var(--ease-out) both; }
+  .tecla { animation: tecla-luz var(--t-4) var(--ease-out) both; animation-delay: calc(240ms + var(--n, 0) * 40ms); }
+  .pantalla { animation: led-parpadeo 900ms steps(1) 300ms both; }
+  @keyframes maq-sube { from { transform: translateY(24px); opacity: 0; } }
+  @keyframes tecla-luz { from { filter: brightness(.35) saturate(.4); } 60% { filter: brightness(1.15); } }
+  @keyframes led-parpadeo { 0%, 30%, 60% { opacity: .15; } 15%, 45%, 100% { opacity: 1; } }
+
+  /* Rebote de la tecla al soltarla */
+  .tecla:not(:active):not(.pulsada) { transition: transform 260ms var(--ease-tela), box-shadow 200ms var(--ease-out), border-color var(--t-2) var(--ease-out); }
+
+  /* Imprimir (momento firma): la luz de 発券口 parpadea, el papel avanza en tres jalones con un leve rizo y las líneas se imprimen una por una. */
+  .boca.imprimiendo .boca-ranura { animation: boca-luz 1.2s steps(2) both; }
+  @keyframes boca-luz { 0%, 50% { box-shadow: inset 0 0 12px rgba(255, 179, 71, .9), 0 0 0 6px #3a3c40, 0 0 0 7px var(--metal-claro), 0 0 18px rgba(255, 179, 71, .5); } }
+  .ticket { animation: ticket-sale 1100ms linear both; transform-origin: 50% 0; }
+  @keyframes ticket-sale {
+    0% { clip-path: inset(0 0 100% 0); transform: translateY(-30px) rotateX(18deg); }
+    22% { clip-path: inset(0 0 66% 0); transform: translateY(-20px) rotateX(12deg); }
+    34% { clip-path: inset(0 0 66% 0); transform: translateY(-20px) rotateX(12deg); }
+    56% { clip-path: inset(0 0 33% 0); transform: translateY(-10px) rotateX(6deg); }
+    68% { clip-path: inset(0 0 33% 0); transform: translateY(-10px) rotateX(6deg); }
+    100% { clip-path: inset(0 0 -20px 0); transform: none; }
+  }
+  .ticket > * { animation: linea-imprime 260ms var(--ease-out) both; }
+  .ticket > :nth-child(1) { animation-delay: 160ms; } .ticket > :nth-child(2) { animation-delay: 220ms; }
+  .ticket > :nth-child(3) { animation-delay: 280ms; } .ticket > :nth-child(4) { animation-delay: 340ms; }
+  .ticket > :nth-child(5) { animation-delay: 400ms; } .ticket > :nth-child(6) { animation-delay: 460ms; }
+  .ticket > :nth-child(7) { animation-delay: 520ms; } .ticket > :nth-child(8) { animation-delay: 580ms; }
+  .ticket > :nth-child(9) { animation-delay: 640ms; } .ticket > :nth-child(10) { animation-delay: 700ms; }
+  .ticket > :nth-child(n+11) { animation-delay: 760ms; }
+  @keyframes linea-imprime { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0 0 0); } }
+
+  /* Al enviarlo, el ticket se corta por la línea dentada y cae un poco. */
+  .ticket.cortado { animation: ticket-corte 520ms var(--ease-out) both; }
+  @keyframes ticket-corte { 0% { transform: none; } 40% { transform: translateY(6px) rotate(-1deg); } 100% { transform: translateY(10px) rotate(-2.5deg); } }
+
+  /* Barra de celular: sube con resorte al agregar el primer platillo. */
+  .barra-movil { animation: barra-sube var(--t-4) var(--ease-tela) both; }
+  @keyframes barra-sube { from { transform: translateY(120%); } }
+}
+.ticket.cortado::before { content: ''; position: absolute; left: -6px; right: -6px; top: -2px; border-top: 2px dashed var(--tinta-2); }
+
+/* Hoja inferior de "Tu pedido" en celular */
+.velo { position: fixed; inset: 0; z-index: 39; background: rgba(10, 9, 8, .6); }
+.cerrar-hoja { justify-self: end; min-height: 44px; padding: 0 var(--e-3); border: 1px solid var(--linea); border-radius: var(--r-m); background: var(--sumi-3); cursor: pointer; }
+@media (max-width: 1099px) {
+  .panel.hoja { position: fixed; left: 0; right: 0; bottom: 0; z-index: 40; max-height: 86svh; overflow: auto; border-radius: 16px 16px 0 0; box-shadow: 0 -20px 50px rgba(0, 0, 0, .7); }
+  @media (prefers-reduced-motion: no-preference) {
+    .panel.hoja { animation: hoja-sube var(--t-4) var(--ease-out) both; }
+    @keyframes hoja-sube { from { transform: translateY(100%); } }
+  }
+}

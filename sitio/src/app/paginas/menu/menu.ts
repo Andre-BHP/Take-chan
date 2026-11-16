@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, DestroyRef, ElementRef, PLATFORM_ID, afterNextRender, effect, inject, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, DestroyRef, ElementRef, PLATFORM_ID, afterNextRender, computed, effect, inject, signal } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { MENU, SUCURSALES, direccionCorta, pesos } from '../../servicios/datos';
@@ -7,11 +7,13 @@ import { Contacto } from '../../servicios/contacto';
 import { Seo } from '../../servicios/seo';
 import { Foto } from '../../componentes/foto';
 import { NotaEjemplo } from '../../componentes/nota-ejemplo';
+import { Odometro } from '../../componentes/odometro';
+import { Movimiento } from '../../servicios/movimiento';
 
 @Component({
   selector: 'app-menu',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [Foto, NotaEjemplo],
+  imports: [Foto, NotaEjemplo, Odometro],
   templateUrl: './menu.html',
   styleUrl: './menu.css',
 })
@@ -32,7 +34,17 @@ export class Menu {
   protected readonly pulsada = signal<string | null>(null);
   /** En celular, la barra inferior se esconde cuando el panel del pedido ya está a la vista. */
   protected readonly panelVisible = signal(false);
+  /** Índice de la sección activa, para el punto bermellón que se desliza (dis-044). */
+  protected readonly indiceActivo = computed(() => Math.max(0, this.secciones.findIndex((s) => s.id === this.activa())));
+  /** La luz de 発券口 parpadea mientras sale el ticket. */
+  protected readonly imprimiendo = signal(false);
+  /** El ticket se corta al enviarlo por WhatsApp. */
+  protected readonly cortado = signal(false);
+  /** En celular, "Tu pedido" se abre como hoja inferior. */
+  protected readonly hoja = signal(false);
+  private get reducir() { return matchMedia('(prefers-reduced-motion: reduce)').matches; }
   private readonly host = inject<ElementRef<HTMLElement>>(ElementRef);
+  private readonly movimiento = inject(Movimiento);
 
   constructor() {
     inject(Seo).establecer({
@@ -73,19 +85,61 @@ export class Menu {
     e.preventDefault();
     const destino = this.host.nativeElement.querySelector<HTMLElement>(`#cat-${id}`);
     if (!destino) return;
-    destino.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' });
+    this.movimiento.irA(destino);
     destino.focus({ preventScroll: true });
     this.activa.set(id);
   }
 
-  protected presionar(id: string) {
+  /** Índice de la opción elegida de "al gusto", para el marco que se desliza (dis-077). */
+  protected indiceGusto(id: string) {
+    const o = MENU.alGusto.opciones.find((x) => x.id === id)!;
+    return Math.max(0, o.valores.findIndex((v) => v.es === this.pedido.alGusto()[id]));
+  }
+
+  /** La tecla se hunde, la miniatura vuela al pedido (FLIP) y el contador rebota (dis-071, dis-059). */
+  protected presionar(id: string, e?: Event) {
+    const primera = this.pedido.piezas() === 0;
     this.pedido.sumar(id);
     this.pulsada.set(id);
     setTimeout(() => this.pulsada() === id && this.pulsada.set(null), 160);
+    if (!e || this.reducir) return;
+    (navigator as Navigator & { vibrate?: (n: number) => boolean }).vibrate?.(10);
+    const tecla = e.currentTarget as HTMLElement;
+    const img = tecla.querySelector<HTMLImageElement>('.ventana img');
+    const destino = this.host.nativeElement.querySelector<HTMLElement>(matchMedia('(min-width: 1100px)').matches ? '#ticket-titulo' : '.barra-movil') ?? this.host.nativeElement.querySelector<HTMLElement>('#ticket-titulo');
+    if (img && destino) {
+      const a = img.getBoundingClientRect();
+      const b = destino.getBoundingClientRect();
+      if (b.bottom > 0 && b.top < innerHeight) {
+        const copia = img.cloneNode(true) as HTMLImageElement;
+        Object.assign(copia.style, { position: 'fixed', left: a.left + 'px', top: a.top + 'px', width: a.width + 'px', height: a.height + 'px', objectFit: 'cover', borderRadius: '6px', zIndex: '60', pointerEvents: 'none' });
+        document.body.appendChild(copia);
+        const dx = b.left + b.width / 2 - (a.left + a.width / 2);
+        const dy = b.top + b.height / 2 - (a.top + a.height / 2);
+        copia.animate(
+          [{ transform: 'translate(0, 0) scale(1)', opacity: 1 }, { transform: `translate(${dx * 0.5}px, ${dy * 0.5 - 60}px) scale(.6)`, opacity: 1, offset: 0.5 }, { transform: `translate(${dx}px, ${dy}px) scale(.18)`, opacity: 0.2 }],
+          { duration: 480, easing: 'cubic-bezier(.22, 1, .36, 1)' },
+        ).onfinish = () => copia.remove();
+      }
+    }
+    requestAnimationFrame(() => {
+      tecla.querySelector('.cuenta')?.animate([{ transform: 'scale(1)' }, { transform: 'scale(1.35)' }, { transform: 'scale(1)' }], { duration: 320, easing: 'cubic-bezier(.33, 1.3, .5, 1)' });
+      if (primera) return;
+      this.host.nativeElement.querySelector('.barra-movil')?.animate([{ transform: 'scale(1)' }, { transform: 'scale(1.03)' }, { transform: 'scale(1)' }], { duration: 260, easing: 'cubic-bezier(.33, 1.3, .5, 1)' });
+    });
+  }
+
+  protected abrirHoja(e: Event) {
+    e.preventDefault();
+    this.hoja.set(true);
+    setTimeout(() => this.host.nativeElement.querySelector<HTMLElement>('.cerrar-hoja')?.focus(), 0);
   }
 
   protected imprimir() {
     this.contacto.aviso.set(null);
+    this.cortado.set(false);
+    this.imprimiendo.set(true);
+    setTimeout(() => this.imprimiendo.set(false), this.reducir ? 0 : 1400);
     this.pedido.imprimir();
     setTimeout(() => this.host.nativeElement.querySelector<HTMLElement>('.ticket')?.focus(), 0);
   }
@@ -97,6 +151,7 @@ export class Menu {
   }
 
   protected enviar() {
+    this.cortado.set(true);
     this.contacto.enviarWhatsapp(this.pedido.mensaje());
     setTimeout(() => this.host.nativeElement.querySelector<HTMLElement>('.burbuja')?.scrollIntoView({ block: 'nearest', behavior: 'smooth' }), 0);
   }

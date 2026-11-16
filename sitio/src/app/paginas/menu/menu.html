@@ -6,7 +6,8 @@
 
 <div class="envoltura disposicion">
   <nav class="indice" aria-label="Secciones del menú">
-    <ul>
+    <ul [style.--i]="indiceActivo()">
+      <li class="punto" aria-hidden="true"></li>
       @for (s of secciones; track s.id) {
         <li><a [href]="'menu#cat-' + s.id" [class.activa]="activa() === s.id" [attr.aria-current]="activa() === s.id ? 'true' : null" (click)="ir($event, s.id)">{{ s.nombre }}</a></li>
       }
@@ -22,13 +23,13 @@
 
       <div class="cuerpo">
         <div class="frente">
-        @for (c of menu.categorias; track c.id) {
+        @for (c of menu.categorias; track c.id; let ci = $index) {
           <section class="categoria" [id]="'cat-' + c.id" [attr.data-seccion]="c.id" tabindex="-1" [attr.aria-labelledby]="'tit-' + c.id">
             <h2 class="categoria-titulo" [id]="'tit-' + c.id"><span lang="ja">{{ c.ja }}</span> {{ c.nombre }}</h2>
             <div class="teclas">
-              @for (p of c.items; track p.id) {
+              @for (p of c.items; track p.id; let pi = $index) {
                 <button type="button" class="tecla" [class.elegida]="pedido.cantidad(p.id) > 0" [class.pulsada]="pulsada() === p.id"
-                  (click)="presionar(p.id)" [attr.aria-label]="'Agregar ' + p.nombre + ', ' + pesos(p.precio) + '. En el pedido: ' + pedido.cantidad(p.id)">
+                  (click)="presionar(p.id, $event)" [style.--n]="ci * 4 + pi" [attr.aria-label]="'Agregar ' + p.nombre + ', ' + pesos(p.precio) + '. En el pedido: ' + pedido.cantidad(p.id)">
                   <span class="ventana" [style.view-transition-name]="'plato-' + p.id">
                     @if (p.foto) { <app-foto [nombre]="p.foto" sizes="(min-width: 1000px) 12rem, 45vw" [rotulo]="false" alt="" /> }
                     @else { <span class="sin-foto" lang="ja" aria-hidden="true">{{ c.ja }}</span> }
@@ -45,12 +46,12 @@
         <div class="cobro" aria-hidden="true">
           <div class="pieza"><span class="ranura-billete"></span><span class="etiqueta"><span lang="ja">千円札</span>Billetes</span></div>
           <div class="pieza"><span class="ranura-moneda"></span><span class="etiqueta"><span lang="ja">硬貨</span>Monedas</span></div>
-          <div class="pieza"><span class="pantalla"><span lang="ja">合計</span> {{ pesos(pedido.total()) || '$0' }}</span></div>
+          <div class="pieza"><span class="pantalla"><span lang="ja">合計</span> <app-odometro [valor]="pesos(pedido.total()) || '$0'" /></span></div>
           <div class="pieza"><span class="palanca"></span><span class="etiqueta"><span lang="ja">返却</span>Devolución</span></div>
           <div class="pieza charola"><span class="bandeja"></span><span class="etiqueta"><span lang="ja">おつり</span>Cambio</span></div>
         </div>
       </div>
-      <div class="boca" aria-hidden="true"><span class="boca-ranura"></span><span class="etiqueta"><span lang="ja">発券口</span>Salida del ticket</span></div>
+      <div class="boca" aria-hidden="true" [class.imprimiendo]="imprimiendo()"><span class="boca-ranura"></span><span class="etiqueta"><span lang="ja">発券口</span>Salida del ticket</span></div>
       <p class="rotulo-fotos">Fotos de las teclas: imágenes ilustrativas.</p>
     </div>
 
@@ -60,7 +61,8 @@
       @for (o of menu.alGusto.opciones; track o.id) {
         <fieldset class="fila">
           <legend>{{ o.nombre }}</legend>
-          <div class="sellos">
+          <div class="sellos" [style.--i]="indiceGusto(o.id)">
+            <span class="marco-gusto" aria-hidden="true"></span>
             @for (v of o.valores; track v.es) {
               <label class="sello">
                 <input type="radio" [name]="'gusto-' + o.id" [value]="v.es" [checked]="pedido.alGusto()[o.id] === v.es" (change)="pedido.elegirGusto(o.id, v.es)" />
@@ -74,7 +76,9 @@
     </section>
   </div>
 
-  <aside id="ticket" class="panel" aria-labelledby="ticket-titulo">
+  @if (hoja()) { <div class="velo" (click)="hoja.set(false)" aria-hidden="true"></div> }
+  <aside id="ticket" class="panel" aria-labelledby="ticket-titulo" [class.hoja]="hoja()">
+    @if (hoja()) { <button type="button" class="cerrar-hoja" (click)="hoja.set(false)">Cerrar</button> }
     <h2 id="ticket-titulo" class="t-titulo">Tu pedido</h2>
 
     @if (pedido.lineas().length) {
@@ -130,7 +134,7 @@
     } @else {
       <div class="salida">
         <div class="ranura" aria-hidden="true"></div>
-        <div class="ticket" tabindex="-1" role="group" aria-label="Ticket impreso">
+        <div class="ticket" tabindex="-1" role="group" aria-label="Ticket impreso" [class.cortado]="cortado()">
           <p class="ticket-marca"><span lang="ja">食券</span> TAKE-CHAN RAMEN</p>
           <p class="ticket-meta"><span>N.º {{ pedido.folio() }}</span><span>{{ pedido.sucursal().nombre }}</span></p>
           <hr />
@@ -166,8 +170,8 @@
 </div>
 
 @if (pedido.piezas()) {
-  <a class="barra-movil" href="menu#ticket" [class.oculta]="panelVisible()" [attr.tabindex]="panelVisible() ? -1 : null" [attr.aria-hidden]="panelVisible() ? 'true' : null">
+  <a class="barra-movil" href="menu#ticket" (click)="abrirHoja($event)" [class.oculta]="panelVisible() || hoja()" [attr.tabindex]="panelVisible() || hoja() ? -1 : null" [attr.aria-hidden]="panelVisible() || hoja() ? 'true' : null">
     <span class="t-dato">{{ pedido.piezas() }} {{ pedido.piezas() === 1 ? 'ticket' : 'tickets' }} · {{ pesos(pedido.total()) }}</span>
-    <span>Ver pedido</span>
+    <span>{{ pedido.folio() ? 'Ver ticket' : 'Imprimir' }}</span>
   </a>
 }
