@@ -83,6 +83,15 @@ export class Inicio {
     });
   }
 
+  /** Paralaje leve de la foto del bento con el puntero (dis-032). */
+  protected seguir(e: PointerEvent) {
+    if (e.pointerType !== 'mouse') return;
+    const el = e.currentTarget as HTMLElement;
+    const r = el.getBoundingClientRect();
+    el.style.setProperty('--x', ((e.clientX - r.left) / r.width - 0.5).toFixed(3));
+    el.style.setProperty('--y', ((e.clientY - r.top) / r.height - 0.5).toFixed(3));
+  }
+
   /** Paralaje del héroe y apariciones al hacer scroll. Solo en navegador y sin movimiento reducido. */
   private async animar(raiz: HTMLElement, movimiento: Movimiento, destruir: DestroyRef) {
     if (movimiento.reducir) return;
@@ -93,6 +102,18 @@ export class Inicio {
       const disparo = { trigger: '.heroe', start: 'top top', end: 'bottom top', scrub: true };
       gsap.to('.heroe-visual', { yPercent: 18, ease: 'none', scrollTrigger: disparo });
       gsap.to('.heroe-capa', { y: -60, opacity: 0, ease: 'none', scrollTrigger: { ...disparo, end: '70% top' } });
+      // Paralaje interno de la foto de "Qué es el Iekei".
+      gsap.fromTo('.iekei-foto', { yPercent: -6 }, { yPercent: 6, ease: 'none', scrollTrigger: { trigger: '.iekei-marco', start: 'top bottom', end: 'bottom top', scrub: true } });
+      // El borde de washi rasgado se abre con el scroll (dis-047).
+      gsap.fromTo('.iekei', { '--rasgado': 0 }, { '--rasgado': 1, ease: 'none', scrollTrigger: { trigger: '.iekei', start: 'top bottom', end: 'top 55%', scrub: true } });
+      // Las cifras reales se cuentan solas al entrar (dis-069).
+      raiz.querySelectorAll<HTMLElement>('[data-contar]').forEach((el) => {
+        const fin = Number(el.dataset['contar']);
+        const dec = Number(el.dataset['decimales'] ?? 0);
+        const obj = { v: 0 };
+        el.textContent = (0).toFixed(dec);
+        gsap.to(obj, { v: fin, duration: 1.4, ease: 'power2.out', scrollTrigger: { trigger: el, start: 'top 85%', once: true }, onUpdate: () => { el.textContent = obj.v.toFixed(dec); } });
+      });
     }, raiz);
     destruir.onDestroy(() => { ctx.revert(); deshacerRevelar(); });
   }

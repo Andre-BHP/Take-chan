@@ -59,4 +59,4 @@ Cada página lo dice una sola vez: "Propuesta: menú, precios y fotos de ejemplo
 
 ## Lo que no se usa aunque sea público
 - El título de "Presidente de la Asociación Internacional de Ramen" de su TikTok: no está verificado.
-- Las calificaciones (4.8 en Google, 3.0 en TripAdvisor): se guardan en `negocio.json` pero no se muestran hasta que el dueño lo apruebe.
+- La calificación de TripAdvisor (3.0). En la portada sí se muestra el 4.8 de Google con 140 reseñas, que es público; si el dueño prefiere no mostrarlo, se quita.

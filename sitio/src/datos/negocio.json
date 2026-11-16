@@ -5,7 +5,7 @@
   "estilo": { "valor": "Ramen japonés estilo Iekei: caldo de cerdo con soya y fideo grueso", "confirmado": true },
   "origen": { "valor": "Fideo y caldo hechos en Japón e importados", "confirmado": true, "nota": "Según su ficha de TripAdvisor. Confirmar la redacción con el dueño." },
   "precioPorPersona": { "min": 100, "max": 200, "moneda": "MXN", "confirmado": true, "nota": "Rango público de Restaurant Guru, no precios de platillos." },
-  "calificacion": { "google": 4.8, "resenas": 140, "confirmado": true, "nota": "Según Restaurant Guru. No se muestra en pantalla hasta que el dueño lo apruebe." },
+  "calificacion": { "google": 4.8, "resenas": 140, "confirmado": true, "nota": "Según Restaurant Guru (ficha de Google). Se muestra en la portada como prueba social, sin citar reseñas textuales." },
   "redes": {
     "tiktok": { "usuario": "@take_chan_sensei", "url": "https://www.tiktok.com/@take_chan_sensei", "confirmado": true, "nota": "Cuenta que etiquetan los creadores; confirmar que es la oficial." },
     "instagram": { "valor": null, "confirmado": false }

@@ -2,7 +2,7 @@
 
 - **Pages:** https://andre-bhp.github.io/Take-chan/
 - **Repositorio:** https://github.com/Andre-BHP/Take-chan
-- **Última subida:** 2026-11-16 10:57 (hora de Guadalajara)
+- **Última subida:** 2026-11-16 11:00 (hora de Guadalajara)
 
 ## Rediseño (2026-11-15)
 André revisó la primera versión: "quedó muy feo y muy mal". Este rediseño cambia la dirección a "una ramen-ya de Yokohama de noche": fotos de ejemplo rotuladas, negro sumi y papel washi, 家系 vertical y un solo acento bermellón.
@@ -23,7 +23,7 @@ André: "mejor animación, más transiciones, mejor diseño, mejor todo". Metáf
 - [x] M0. Tokens de movimiento, Lenis y GSAP (solo en navegador), reduced-motion y grabación de video
 - [x] M1. Intro de la noren y transición entre páginas
 - [x] M2. Héroe a sangre, titular por líneas, 家系 con trazo y paralaje
-- [ ] M3. Washi rasgado, "Qué es el Iekei", prueba social y bento con la transición hacia `/menu`
+- [x] M3. Washi rasgado, "Qué es el Iekei", prueba social y bento con la transición hacia `/menu`
 - [ ] M4. Medidor del tazón en "Cómo se hace", sucursales y noren final de tela
 - [ ] M5. `/menu` física: encendido, vuelo al pedido, odómetro, indicadores e impresión y corte del ticket
 - [ ] M6. Revisiones de impeccable y design-taste-frontend
@@ -34,14 +34,14 @@ André: "mejor animación, más transiciones, mejor diseño, mejor todo". Metáf
 Repositorio, Pages, datos, inicio, máquina de tickets, sucursales con JSON-LD, pruebas y lista para el negocio. Capturas en `entregables/avances/antes/`.
 
 ## Último paso
-**M2.** Héroe a sangre de borde a borde con velo oscuro a la izquierda. Entrada en CSS desde el primer pintado (sin parpadeo y sin depender de JavaScript): la foto pasa de 1.08 a 1 en 1.4 s, el titular entra por líneas con máscara, 家系 se revela como un trazo de pincel y el estado y los botones suben al final; si hay intro, esperan a que se abra la noren. Al hacer scroll, la foto va más lenta (paralaje) y el texto se desvanece. El vapor sigue en bucle.
+**M3.** Borde de papel washi rasgado que se abre con el scroll al pasar de sumi a "Qué es el Iekei" (una sola vez en el sitio). Títulos que entran por líneas (SplitText), definiciones escalonadas y foto que se descubre de abajo hacia arriba con paralaje interno. Prueba social nueva con datos reales: 4.8 de 5 en Google con 140 reseñas (las cifras se cuentan solas) y paráfrasis de lo que elogian, el caldo y la panceta, sin citar reseñas. Bento con entrada escalonada, zoom lento y paralaje con el puntero; al tocar un platillo, su foto vuela y se convierte en su tecla en `/menu`, que queda preseleccionada.
 
 ## Sigue
-M3: washi rasgado, "Qué es el Iekei", prueba social y bento con la transición hacia `/menu`.
+M4: medidor del tazón en "Cómo se hace un Iekei", sucursales y noren final de tela.
 
 ## Capturas más recientes
-| Héroe y scroll, 390 px | Héroe y scroll, 1440 px |
-|---|---|
-| <img src="entregables/avances/video/2026-11-16_M2_inicio_390.gif" width="220"> | <img src="entregables/avances/video/2026-11-16_M2_inicio_1440.gif" width="420"> |
+| Bento → tecla de la máquina, 1440 px |
+|---|
+| <img src="entregables/avances/video/2026-11-16_M3_navegar_1440.gif" width="480"> |
 
-Videos: [390 px](entregables/avances/video/2026-11-16_M2_inicio_390.mp4) · [1440 px](entregables/avances/video/2026-11-16_M2_inicio_1440.mp4)
+Video: [1440 px](entregables/avances/video/2026-11-16_M3_navegar_1440.mp4)

@@ -69,20 +69,36 @@
 /* ---------- Nota única ---------- */
 .nota { padding-block: var(--e-5); }
 
-/* ---------- Qué es Iekei (washi) ---------- */
-.iekei { padding-block: var(--e-7); }
+/* ---------- Qué es Iekei (washi) con borde de papel rasgado ---------- */
+.iekei { position: relative; padding-block: var(--e-7); --rasgado: 1; }
+.iekei::before {
+  content: ''; position: absolute; left: 0; right: 0; bottom: 100%; height: 34px;
+  background: var(--washi) var(--grano);
+  clip-path: polygon(0 100%, 0 70%, 3% 58%, 7% 74%, 11% 46%, 16% 64%, 21% 38%, 26% 60%, 31% 42%, 37% 68%, 42% 34%, 48% 56%, 53% 40%, 58% 66%, 64% 36%, 69% 58%, 74% 30%, 80% 62%, 85% 44%, 90% 70%, 95% 50%, 100% 64%, 100% 100%);
+  transform-origin: 50% 100%; transform: scaleY(var(--rasgado));
+}
+.iekei-marco { border-radius: var(--r-l); overflow: hidden; }
 .iekei-rejilla { display: grid; gap: var(--e-6); align-items: center; }
 .iekei-texto { display: grid; gap: var(--e-5); }
 .iekei dl { display: grid; gap: var(--e-4); }
 .iekei dt { font: 700 1.25rem/1.2 var(--mincho); }
 .iekei dd { margin-top: var(--e-1); color: var(--tinta-2); max-width: 46ch; }
 .iekei .origen { font-size: .875rem; color: var(--tinta-2); border-top: 1px solid var(--washi-linea); padding-top: var(--e-3); max-width: 50ch; }
-.iekei-foto { aspect-ratio: 3 / 2; border-radius: var(--r-l); }
+.iekei-foto { aspect-ratio: 3 / 2; display: block; scale: 1.14; }
 @media (min-width: 900px) {
   .iekei { padding-block: var(--e-9); }
   .iekei-rejilla { grid-template-columns: 1.1fr .9fr; gap: var(--e-8); }
   .iekei-foto { aspect-ratio: 4 / 5; max-height: 70vh; }
 }
+
+/* ---------- Prueba social (datos reales: Google, según su ficha) ---------- */
+.social { padding-block: var(--e-8) 0; display: grid; gap: var(--e-4); align-items: end; }
+.cifra { display: flex; align-items: baseline; gap: var(--e-3); flex-wrap: wrap; }
+.numero-grande { font: 800 clamp(5rem, 3rem + 10vw, 10rem)/.9 var(--mincho); font-variant-numeric: tabular-nums; letter-spacing: -.02em; }
+.de { font: 600 1.125rem/1.2 var(--sans); color: var(--washi-2); }
+.social-texto { display: grid; gap: var(--e-2); justify-items: start; max-width: 40ch; }
+.elogio { font-size: 1.25rem; line-height: 1.45; }
+@media (min-width: 900px) { .social { grid-template-columns: auto 1fr; column-gap: var(--e-8); } }
 
 /* ---------- Bento con fotos (dis-040, dis-032, dis-073) ---------- */
 .pedir { padding-block: var(--e-7); display: grid; gap: var(--e-5); }
@@ -104,8 +120,10 @@
 .primera { font-size: .9375rem; color: var(--washi); }
 .celda:last-child { grid-column: 1 / -1; }
 @media (hover: hover) and (prefers-reduced-motion: no-preference) {
-  .celda app-foto { transition: transform 600ms var(--salida); }
-  .celda:hover app-foto { transform: scale(1.03); }
+  .celda app-foto { transition: transform var(--t-5) var(--ease-out); }
+  .celda:hover app-foto { transform: scale(1.04) translate3d(calc(var(--x, 0) * -10px), calc(var(--y, 0) * -10px), 0); }
+  .celda-texto { transition: transform var(--t-3) var(--ease-out); }
+  .celda:hover .celda-texto { transform: translateY(-4px); }
 }
 .celda:focus-visible { outline-offset: 4px; }
 @media (min-width: 900px) {

@@ -21,26 +21,36 @@
 <section class="iekei washi" aria-labelledby="iekei-titulo">
   <div class="envoltura iekei-rejilla">
     <div class="iekei-texto">
-      <h2 id="iekei-titulo" class="t-titulo">Qué es el Iekei</h2>
-      <dl>
+      <h2 id="iekei-titulo" class="t-titulo" data-revelar="lineas">Qué es el Iekei</h2>
+      <dl data-revelar="grupo">
         <div><dt>El caldo</dt><dd>Hueso de cerdo hervido hasta que se vuelve cremoso, con soya y una capa de grasa encima.</dd></div>
         <div><dt>El fideo</dt><dd>Grueso y recto, para que el caldo se le pegue en cada bocado.</dd></div>
         <div><dt>El nombre</dt><dd><span lang="ja">家系</span> (iekei) viene de las ramen-ya de Yokohama cuyo nombre termina en <span lang="ja">家</span>, «casa».</dd></div>
       </dl>
       <p class="origen">Según su ficha, en Take-chan el fideo y el caldo se hacen en Japón y se importan.</p>
     </div>
-    <app-foto class="iekei-foto" nombre="clasico" sizes="(min-width: 900px) 40vw, 100vw" />
+    <div class="iekei-marco" data-revelar="cortina"><app-foto class="iekei-foto" nombre="fideo" sizes="(min-width: 900px) 40vw, 100vw" /></div>
+  </div>
+</section>
+
+<section class="social envoltura" aria-labelledby="social-titulo">
+  <h2 id="social-titulo" class="solo-lector">Lo que dicen en Google</h2>
+  <p class="cifra" data-revelar><span class="numero-grande" data-contar="4.8" data-decimales="1">4.8</span><span class="de">de 5 en Google</span></p>
+  <div class="social-texto" data-revelar="grupo">
+    <p class="t-dato tenue"><span data-contar="140">140</span> reseñas, según su ficha pública.</p>
+    <p class="elogio">Lo que más elogian quienes ya fueron: <strong>el caldo</strong> y <strong>la panceta</strong>.</p>
+    <a class="enlace" [href]="tlaquepaque.mapa" target="_blank" rel="noopener">Ver la ficha en Google Maps<span class="solo-lector"> (se abre en otra pestaña)</span></a>
   </div>
 </section>
 
 <section class="pedir envoltura" aria-labelledby="pedir-titulo">
   <div class="encabezado">
-    <h2 id="pedir-titulo" class="t-titulo">Para pedir</h2>
+    <h2 id="pedir-titulo" class="t-titulo" data-revelar="lineas">Para pedir</h2>
     <a class="enlace" routerLink="/menu">Ver todo el menú</a>
   </div>
-  <div class="bento">
-    <a class="celda grande" routerLink="/menu" [queryParams]="{ ramen: clasico.id }">
-      <app-foto [nombre]="clasico.foto!" sizes="(min-width: 900px) 50vw, 100vw" />
+  <div class="bento" data-revelar="grupo">
+    <a class="celda grande" routerLink="/menu" [queryParams]="{ ramen: clasico.id }" (pointermove)="seguir($event)">
+      <app-foto [nombre]="clasico.foto!" [style.view-transition-name]="'plato-' + clasico.id" sizes="(min-width: 900px) 50vw, 100vw" />
       <div class="celda-texto">
         <h3 class="t-titulo">{{ clasico.nombre }}</h3>
         <p class="desc">{{ clasico.desc }}</p>
@@ -49,8 +59,8 @@
       </div>
     </a>
     @for (p of extras; track p.id) {
-      <a class="celda" routerLink="/menu">
-        <app-foto [nombre]="p.foto!" sizes="(min-width: 900px) 25vw, 50vw" />
+      <a class="celda" routerLink="/menu" [queryParams]="{ ramen: p.id }" (pointermove)="seguir($event)">
+        <app-foto [nombre]="p.foto!" [style.view-transition-name]="'plato-' + p.id" sizes="(min-width: 900px) 25vw, 50vw" />
         <div class="celda-texto">
           <h3 class="t-subtitulo">{{ p.nombre }}</h3>
           <p class="precio t-dato">{{ pesos(p.precio) }}</p>

@@ -29,7 +29,7 @@
               @for (p of c.items; track p.id) {
                 <button type="button" class="tecla" [class.elegida]="pedido.cantidad(p.id) > 0" [class.pulsada]="pulsada() === p.id"
                   (click)="presionar(p.id)" [attr.aria-label]="'Agregar ' + p.nombre + ', ' + pesos(p.precio) + '. En el pedido: ' + pedido.cantidad(p.id)">
-                  <span class="ventana">
+                  <span class="ventana" [style.view-transition-name]="'plato-' + p.id">
                     @if (p.foto) { <app-foto [nombre]="p.foto" sizes="(min-width: 1000px) 12rem, 45vw" [rotulo]="false" alt="" /> }
                     @else { <span class="sin-foto" lang="ja" aria-hidden="true">{{ c.ja }}</span> }
                   </span>
