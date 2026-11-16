@@ -9,6 +9,7 @@ import { Vapor } from '../../componentes/vapor';
 import { Noren } from '../../componentes/noren';
 import { Estado } from '../../componentes/estado';
 import { NotaEjemplo } from '../../componentes/nota-ejemplo';
+import { Movimiento } from '../../servicios/movimiento';
 
 @Component({
   selector: 'app-inicio',
@@ -40,10 +41,12 @@ export class Inicio {
     });
 
     // "Cómo se hace un Iekei" (dis-028): en escritorio la sección queda fija y la pista avanza en horizontal.
+    const movimiento = inject(Movimiento);
     if (!isPlatformBrowser(inject(PLATFORM_ID))) return;
     const host = inject<ElementRef<HTMLElement>>(ElementRef);
     const destruir = inject(DestroyRef);
     afterNextRender(() => {
+      this.animar(host.nativeElement, movimiento, destruir);
       const seccion = host.nativeElement.querySelector<HTMLElement>('.como');
       const pista = host.nativeElement.querySelector<HTMLElement>('.pista');
       if (!seccion || !pista) return;
@@ -78,5 +81,19 @@ export class Inicio {
         ancho.removeEventListener('change', medir);
       });
     });
+  }
+
+  /** Paralaje del héroe y apariciones al hacer scroll. Solo en navegador y sin movimiento reducido. */
+  private async animar(raiz: HTMLElement, movimiento: Movimiento, destruir: DestroyRef) {
+    if (movimiento.reducir) return;
+    await new Promise<void>((listo) => (document.readyState === 'complete' ? listo() : addEventListener('load', () => listo(), { once: true })));
+    const { gsap } = await movimiento.herramientas();
+    const deshacerRevelar = await movimiento.revelar(raiz);
+    const ctx = gsap.context(() => {
+      const disparo = { trigger: '.heroe', start: 'top top', end: 'bottom top', scrub: true };
+      gsap.to('.heroe-visual', { yPercent: 18, ease: 'none', scrollTrigger: disparo });
+      gsap.to('.heroe-capa', { y: -60, opacity: 0, ease: 'none', scrollTrigger: { ...disparo, end: '70% top' } });
+    }, raiz);
+    destruir.onDestroy(() => { ctx.revert(); deshacerRevelar(); });
   }
 }

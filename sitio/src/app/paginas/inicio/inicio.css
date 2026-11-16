@@ -30,22 +30,40 @@
 .acciones { grid-area: acciones; display: flex; flex-wrap: wrap; gap: var(--e-3); }
 .acciones .boton { flex: 1 1 10rem; }
 
-/* Escritorio: la foto ocupa la derecha a sangre y se funde hacia el texto. */
+/* Escritorio: foto a sangre de borde a borde con velo oscuro a la izquierda (dis-102). */
 @media (min-width: 900px) {
-  .heroe-visual {
-    inset: 0 0 0 46%;
-    -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 22%);
-    mask-image: linear-gradient(to right, transparent 0%, #000 22%);
-  }
-  .heroe-foto { --enfoque: 50% 50%; }
+  .heroe-visual { inset: 0; -webkit-mask-image: none; mask-image: none; }
+  .heroe-visual::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(18, 17, 16, .94) 0%, rgba(18, 17, 16, .82) 30%, rgba(18, 17, 16, .25) 58%, rgba(18, 17, 16, 0) 72%), linear-gradient(0deg, rgba(18, 17, 16, .6) 0%, rgba(18, 17, 16, 0) 30%); }
+  .heroe-foto { --enfoque: 70% 50%; }
   .heroe-foto ::ng-deep .rotulo { top: auto; bottom: var(--e-3); right: var(--e-3); }
-  .heroe-vapor { left: 26%; bottom: 52%; width: 48%; height: 50%; }
+  .heroe-vapor { left: 50%; bottom: 50%; width: 32%; height: 48%; z-index: 1; }
   .heroe-capa {
     grid-template-columns: auto minmax(0, 30rem) 1fr;
     grid-template-areas: 'kanji texto .' 'kanji acciones .';
-    column-gap: var(--e-6); padding-block: var(--e-8) var(--e-7);
+    column-gap: var(--e-7); padding-block: var(--e-9) var(--e-8);
   }
   .acciones .boton { flex: 0 0 auto; }
+}
+
+/* Titular por líneas con máscara y 家系 que se revela como un trazo de pincel (dis-079, dis-037).
+   CSS puro desde el primer pintado: sin parpadeo y sin depender de JavaScript. Si hay intro, espera a que se abra la noren. */
+.heroe { --retraso: .1s; }
+:root.con-intro .heroe { --retraso: 1.05s; }
+.heroe .l { display: block; overflow: hidden; padding-bottom: .06em; margin-bottom: -.06em; }
+.heroe .l > span { display: block; }
+@media (prefers-reduced-motion: no-preference) {
+  .heroe-foto { animation: heroe-foto 1400ms var(--ease-out) var(--retraso) both; }
+  .heroe .l > span { animation: heroe-linea 900ms var(--ease-out) both; }
+  .heroe .l:nth-of-type(2) > span { animation-delay: calc(var(--retraso) + .18s); }
+  .heroe .l:nth-of-type(3) > span { animation-delay: calc(var(--retraso) + .26s); }
+  .heroe .l:nth-of-type(4) > span { animation-delay: calc(var(--retraso) + .34s); }
+  .heroe .l:nth-of-type(5) > span { animation-delay: calc(var(--retraso) + .42s); }
+  .kanji { animation: heroe-trazo 900ms var(--ease-in-out) var(--retraso) both; }
+  .heroe-estado, .acciones { animation: heroe-sube var(--t-4) var(--ease-out) calc(var(--retraso) + .55s) both; }
+  @keyframes heroe-foto { from { transform: scale(1.08); } }
+  @keyframes heroe-linea { from { transform: translateY(108%); } }
+  @keyframes heroe-trazo { from { clip-path: inset(0 0 100% 0); } to { clip-path: inset(0 0 0 0); } }
+  @keyframes heroe-sube { from { opacity: 0; transform: translateY(12px); } }
 }
 
 /* ---------- Nota única ---------- */
