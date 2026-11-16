@@ -13,6 +13,7 @@ const b = await chromium.launch({ executablePath: 'C:/Program Files (x86)/Micros
 
 async function pantalla(preparar) {
   const ctx = await b.newContext({ viewport: { width: 390, height: 844 }, deviceScaleFactor: 2, reducedMotion: 'reduce', isMobile: true, hasTouch: true });
+  await ctx.addInitScript(() => { try { sessionStorage.setItem('take-intro', '1'); } catch (e) {} });
   const p = await ctx.newPage();
   // Hora fija de la captura: 13:20 en Guadalajara, para mostrar el estado "abierto ahora".
   await p.clock.setFixedTime(new Date('2026-11-14T19:20:00Z'));
@@ -65,6 +66,7 @@ for (const [archivo, titulo, texto, preparar] of escenas) {
   <div class="escena"><div class="telefono"><img src="data:image/png;base64,${img}" alt=""></div>
   <div class="pie"><h1>${titulo}</h1><p>${texto}</p></div></div></body></html>`;
   const ctx = await b.newContext({ viewport: { width: 1080, height: 1350 } });
+  await ctx.addInitScript(() => { try { sessionStorage.setItem('take-intro', '1'); } catch (e) {} });
   const p = await ctx.newPage();
   await p.setContent(html, { waitUntil: 'load' });
   await p.waitForTimeout(300);

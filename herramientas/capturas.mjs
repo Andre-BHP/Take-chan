@@ -11,6 +11,7 @@ const b = await chromium.launch({ executablePath: 'C:/Program Files (x86)/Micros
 for (const ruta of ['/', '/menu', '/tlaquepaque', '/americana']) {
   for (const w of [360, 390, 1440]) {
     const ctx = await b.newContext({ viewport: { width: w, height: w < 800 ? 800 : 900 }, reducedMotion: 'reduce' });
+  await ctx.addInitScript(() => { try { sessionStorage.setItem('take-intro', '1'); } catch (e) {} });
     const p = await ctx.newPage();
     await p.goto(base + ruta, { waitUntil: 'networkidle' });
       await p.evaluate(async () => {

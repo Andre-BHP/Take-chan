@@ -2,7 +2,9 @@
 import { chromium } from 'playwright-core';
 const [url, ancho = '360'] = process.argv.slice(2);
 const b = await chromium.launch({ executablePath: 'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe' });
-const p = await (await b.newContext({ viewport: { width: Number(ancho), height: 800 } })).newPage();
+const ctxI = await b.newContext({ viewport: { width: Number(ancho), height: 800 } });
+await ctxI.addInitScript(() => { try { sessionStorage.setItem('take-intro', '1'); } catch (e) {} });
+const p = await ctxI.newPage();
 await p.goto(url, { waitUntil: 'networkidle' });
 console.log(await p.evaluate(() => {
   const w = document.documentElement.clientWidth;

@@ -124,6 +124,17 @@ p { text-wrap: pretty; }
 .salto { position: absolute; left: var(--e-3); top: -100px; z-index: 50; background: var(--washi); color: var(--tinta); padding: var(--e-2) var(--e-3); border-radius: var(--r-s); }
 .salto:focus { top: var(--e-2); }
 
+/* Transición entre páginas: la página nueva entra como una noren de tres paños que caen escalonados. */
+::view-transition-old(root) { animation: 560ms var(--ease-in-out) both vt-atras; }
+::view-transition-new(root) { animation: 600ms var(--ease-in-out) both vt-noren; }
+@keyframes vt-atras { to { opacity: .35; transform: scale(.985); } }
+@keyframes vt-noren {
+  0% { clip-path: polygon(0 0, 100% 0, 100% 0, 66.6% 0, 66.6% 0, 33.3% 0, 33.3% 0, 0 0); }
+  45% { clip-path: polygon(0 0, 100% 0, 100% 18%, 66.6% 18%, 66.6% 52%, 33.3% 52%, 33.3% 86%, 0 86%); }
+  100% { clip-path: polygon(0 0, 100% 0, 100% 100%, 66.6% 100%, 66.6% 100%, 33.3% 100%, 33.3% 100%, 0 100%); }
+}
+
 @media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*), ::view-transition-old(*), ::view-transition-new(*) { animation: none !important; }
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
 }

@@ -10,6 +10,7 @@ const sufijo = ruta === '/' ? '' : '_' + ruta.replace(/\W+/g, '');
 const b = await chromium.launch({ executablePath: 'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe' });
 for (const w of [360, 1440]) {
   const ctx = await b.newContext({ viewport: { width: w, height: w < 800 ? 780 : 900 }, reducedMotion: 'reduce' });
+  await ctx.addInitScript(() => { try { sessionStorage.setItem('take-intro', '1'); } catch (e) {} });
   const p = await ctx.newPage();
   await p.goto(base.replace(/\/$/, '') + ruta, { waitUntil: 'networkidle' });
   await p.addStyleTag({ content: '* { content-visibility: visible !important; }' });

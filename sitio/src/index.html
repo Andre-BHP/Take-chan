@@ -19,8 +19,34 @@
     @font-face { font-family: 'Geist'; font-weight: 600; font-display: swap; src: url(fuentes/geist-600.woff2) format('woff2'); }
     @font-face { font-family: 'Geist Mono'; font-weight: 500; font-display: swap; src: url(fuentes/geist-mono-500.woff2) format('woff2'); }
   </style>
+  <script>
+    /* Intro de la noren: solo la primera visita de la sesión y nunca con movimiento reducido. */
+    (function () { try { if (!sessionStorage.getItem('take-intro') && !matchMedia('(prefers-reduced-motion: reduce)').matches) { document.documentElement.classList.add('con-intro'); sessionStorage.setItem('take-intro', '1'); } } catch (e) {} })();
+  </script>
+  <style>
+    #intro { display: none; }
+    .con-intro #intro { display: block; position: fixed; inset: 0; z-index: 100; pointer-events: none; animation: intro-fin 1ms linear 1.25s forwards; }
+    #intro .mitad { position: absolute; top: 0; bottom: 0; width: 50.5%; background: #1b1917; box-shadow: inset 0 0 120px rgba(0, 0, 0, .55); animation: 560ms cubic-bezier(.33, 1.3, .5, 1) .68s both; }
+    #intro .izq { left: 0; border-right: 1px solid #262320; animation-name: intro-izq; transform-origin: 0 0; }
+    #intro .der { right: 0; animation-name: intro-der; transform-origin: 100% 0; }
+    #intro svg { position: absolute; left: 50%; top: 50%; width: min(34vw, 180px); translate: -50% -52%; overflow: visible; animation: intro-kanji 320ms ease .66s both; }
+    #intro text { font: 800 160px/1 'Shippori Mincho B1', 'Yu Mincho', serif; fill: #f3eee4; fill-opacity: 0; stroke: #f3eee4; stroke-width: 2; stroke-dasharray: 900; stroke-dashoffset: 900; animation: intro-trazo 620ms cubic-bezier(.65, 0, .35, 1) .05s forwards, intro-tinta 260ms ease .45s forwards; }
+    #intro button { position: absolute; right: 16px; bottom: 16px; pointer-events: auto; min-height: 44px; padding: 0 16px; border: 1px solid rgba(243, 238, 228, .45); border-radius: 6px; background: transparent; color: #f3eee4; font: 500 .875rem/1 'Geist', system-ui, sans-serif; cursor: pointer; animation: intro-kanji 200ms ease .6s both; }
+    @keyframes intro-trazo { to { stroke-dashoffset: 0; } }
+    @keyframes intro-tinta { to { fill-opacity: 1; } }
+    @keyframes intro-kanji { to { opacity: 0; } }
+    @keyframes intro-izq { to { transform: translateX(-102%) skewY(4deg); } }
+    @keyframes intro-der { to { transform: translateX(102%) skewY(-4deg); } }
+    @keyframes intro-fin { to { visibility: hidden; } }
+    .intro-saltada #intro { display: none !important; }
+  </style>
 </head>
 <body>
+  <div id="intro">
+    <div class="mitad izq"></div><div class="mitad der"></div>
+    <svg viewBox="0 0 160 330" aria-hidden="true" focusable="false"><text x="0" y="140">家</text><text x="0" y="310">系</text></svg>
+    <button type="button" onclick="document.documentElement.classList.add('intro-saltada')">Saltar</button>
+  </div>
   <app-root></app-root>
 </body>
 </html>

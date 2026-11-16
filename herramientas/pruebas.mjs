@@ -13,6 +13,7 @@ let fallas = 0;
 for (const ruta of rutas) {
   for (const w of [390, 1440]) {
     const ctx = await b.newContext({ viewport: { width: w, height: 900 }, reducedMotion: 'reduce' });
+  await ctx.addInitScript(() => { try { sessionStorage.setItem('take-intro', '1'); } catch (e) {} });
     const p = await ctx.newPage();
     await p.goto(base + ruta, { waitUntil: 'networkidle' });
     await p.addScriptTag({ content: axe });
@@ -22,6 +23,7 @@ for (const ruta of rutas) {
     await ctx.close();
   }
   const ctx = await b.newContext({ viewport: { width: 360, height: 780 } });
+  await ctx.addInitScript(() => { try { sessionStorage.setItem('take-intro', '1'); } catch (e) {} });
   const p = await ctx.newPage();
   await p.goto(base + ruta, { waitUntil: 'networkidle' });
   const sw = await p.evaluate(() => document.documentElement.scrollWidth);
@@ -56,6 +58,7 @@ for (const ruta of rutas) {
 // Movimiento: el vapor se anima normalmente y se detiene con prefers-reduced-motion.
 for (const modo of ['no-preference', 'reduce']) {
   const ctx = await b.newContext({ viewport: { width: 1440, height: 900 }, reducedMotion: modo });
+  await ctx.addInitScript(() => { try { sessionStorage.setItem('take-intro', '1'); } catch (e) {} });
   const p = await ctx.newPage();
   await p.goto(base + '/', { waitUntil: 'networkidle' });
   const r = await p.evaluate(() => {
