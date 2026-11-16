@@ -23,7 +23,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       height: clamp(64px, 9vw, 112px);
       background: var(--madera-canto) var(--fibra);
       border: 1px solid var(--borde); border-top: 0;
-      border-radius: 0 0 6px 6px;
+      border-radius: 0 0 var(--r-boton) var(--r-boton);
       font: 400 clamp(1.5rem, 3.6vw, 3rem)/1 var(--display);
       color: var(--washi);
       box-shadow: inset 0 10px 12px -8px rgba(0, 0, 0, .8);

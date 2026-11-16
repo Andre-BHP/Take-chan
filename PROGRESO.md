@@ -4,7 +4,7 @@ Propuesta no oficial de sitio para Take-chan Ramen.
 
 - **Pages:** https://andre-bhp.github.io/Take-chan/ (falta activarlo: Settings → Pages → rama `gh-pages`)
 - **Repositorio:** https://github.com/Andre-BHP/Take-chan
-- **Última subida:** 2026-11-15 23:25 (hora de Guadalajara)
+- **Última subida:** 2026-11-15 23:32 (hora de Guadalajara)
 
 ## Pasos
 - [x] 0. Repositorio, Pages "en construcción" (aviso y `noindex`) y este archivo
@@ -16,13 +16,15 @@ Propuesta no oficial de sitio para Take-chan Ramen.
 - [x] 6. Sucursales y JSON-LD
 - [x] 7. Pruebas, axe y capturas
 - [x] 8. Entregables
-- [ ] 9. Push y Pages final
+- [x] 9. Push y Pages final (falta que André active Pages)
 
 ## Último paso
-**Paso 8.** [`entregables/PEDIR_AL_NEGOCIO.md`](entregables/PEDIR_AL_NEGOCIO.md) con los 8 puntos para la visita y la tabla de todo lo que dice "por confirmar". Capturas para enseñar en el celular, en mockup (dis-020): [`entregables/capturas-visita/`](entregables/capturas-visita/) (portada, máquina de tickets y ticket armado).
+**Paso 9.** Revisión final de diseño (impeccable) y arreglos: noren de tela con 家系ラーメン, "horario por confirmar" también en el pie, sin rótulo encima del título, teclas "Por definir" legibles y pestañas del menú que siguen al scroll en celular. [`DESIGN.md`](DESIGN.md) reescrito según lo construido. axe, peso y LCP siguen en orden ([`entregables/pruebas.txt`](entregables/pruebas.txt)). Todo subido; la Action publica en `gh-pages`.
 
 ## Sigue
-Paso 9: revisión final de diseño, `DESIGN.md` al día y Pages final.
+1. **André:** activar Pages en Settings → Pages → Deploy from a branch → `gh-pages` / `(root)`.
+2. Visita al local con [`entregables/PEDIR_AL_NEGOCIO.md`](entregables/PEDIR_AL_NEGOCIO.md) y las [capturas de visita](entregables/capturas-visita/).
+3. Con lo que dé el negocio: llenar `negocio.json` y `menu.json`, tomar las fotos y quitar los "por confirmar".
 
 ## Capturas más recientes
 | Visita: portada | Visita: máquina | Visita: ticket |

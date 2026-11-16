@@ -1,0 +1,482 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-16T05:31:31.239Z",
+  "title": "Design System: Take-chan Ramen (propuesta no oficial)",
+  "extensions": {
+    "colorMeta": {
+      "carbon": {
+        "role": "neutral",
+        "displayName": "Carbón cálido",
+        "canonical": "#17120f",
+        "tonalRamp": [
+          "#292422",
+          "#413d3a",
+          "#595553",
+          "#716d6c",
+          "#888684",
+          "#a7a5a4",
+          "#c9c7c7",
+          "#e8e7e7"
+        ]
+      },
+      "madera": {
+        "role": "neutral",
+        "displayName": "Madera",
+        "canonical": "#221a15",
+        "tonalRamp": [
+          "#2c2420",
+          "#443d39",
+          "#5b5551",
+          "#736e6a",
+          "#8a8683",
+          "#a9a6a4",
+          "#cac8c6",
+          "#e8e7e7"
+        ]
+      },
+      "madera-veta": {
+        "role": "neutral",
+        "displayName": "Veta",
+        "canonical": "#2c211a",
+        "tonalRamp": [
+          "#2f241d",
+          "#463d37",
+          "#5e5550",
+          "#756e69",
+          "#8c8682",
+          "#aaa6a3",
+          "#cbc8c6",
+          "#e9e8e7"
+        ]
+      },
+      "madera-canto": {
+        "role": "neutral",
+        "displayName": "Canto",
+        "canonical": "#0d0907",
+        "tonalRamp": [
+          "#282422",
+          "#403c3b",
+          "#585553",
+          "#6f6d6c",
+          "#878584",
+          "#a6a5a4",
+          "#c8c7c7",
+          "#e7e7e6"
+        ]
+      },
+      "borde": {
+        "role": "neutral",
+        "displayName": "Borde",
+        "canonical": "#3e3027",
+        "tonalRamp": [
+          "#2f241e",
+          "#4a3d34",
+          "#61554e",
+          "#786e68",
+          "#8f8681",
+          "#aca6a2",
+          "#ccc9c6",
+          "#eae8e7"
+        ]
+      },
+      "texto": {
+        "role": "neutral",
+        "displayName": "Texto",
+        "canonical": "#f0e7d8",
+        "tonalRamp": [
+          "#282624",
+          "#42403b",
+          "#5c5953",
+          "#77726b",
+          "#918c83",
+          "#b4ada2",
+          "#d8d0c3",
+          "#f6f1e9"
+        ]
+      },
+      "texto-tenue": {
+        "role": "neutral",
+        "displayName": "Texto tenue",
+        "canonical": "#bcae9c",
+        "tonalRamp": [
+          "#292622",
+          "#443f39",
+          "#60584f",
+          "#7b7266",
+          "#968b7d",
+          "#baac9a",
+          "#d7cec4",
+          "#f1efeb"
+        ]
+      },
+      "washi": {
+        "role": "neutral",
+        "displayName": "Washi",
+        "canonical": "#efe6d6",
+        "tonalRamp": [
+          "#282623",
+          "#42403b",
+          "#5c5953",
+          "#77726a",
+          "#918c82",
+          "#b4ada1",
+          "#d9d0c2",
+          "#f6f1e8"
+        ]
+      },
+      "washi-2": {
+        "role": "neutral",
+        "displayName": "Washi 2",
+        "canonical": "#e3d6c0",
+        "tonalRamp": [
+          "#282622",
+          "#433f39",
+          "#5e5950",
+          "#797266",
+          "#948b7d",
+          "#b7ac9b",
+          "#ddd0bb",
+          "#f5f0e9"
+        ]
+      },
+      "washi-fibra": {
+        "role": "neutral",
+        "displayName": "Fibra",
+        "canonical": "#d5c6ad",
+        "tonalRamp": [
+          "#292621",
+          "#443f37",
+          "#5f594d",
+          "#7b7264",
+          "#968b7a",
+          "#b9ac96",
+          "#dccfbb",
+          "#f4f0e9"
+        ]
+      },
+      "tinta": {
+        "role": "neutral",
+        "displayName": "Tinta",
+        "canonical": "#1c1612",
+        "tonalRamp": [
+          "#2a2521",
+          "#423d3a",
+          "#5a5552",
+          "#716e6b",
+          "#898684",
+          "#a8a6a4",
+          "#c9c8c7",
+          "#e8e7e7"
+        ]
+      },
+      "tinta-2": {
+        "role": "neutral",
+        "displayName": "Tinta 2",
+        "canonical": "#5b4d42",
+        "tonalRamp": [
+          "#2c2520",
+          "#493e35",
+          "#64574c",
+          "#7b6f66",
+          "#918880",
+          "#aea8a2",
+          "#cecac7",
+          "#eceae9"
+        ]
+      },
+      "laca": {
+        "role": "primary",
+        "displayName": "Rojo laca",
+        "canonical": "#c22f28",
+        "tonalRamp": [
+          "#5f1714",
+          "#9f2721",
+          "#c63c35",
+          "#ce5853",
+          "#d67570",
+          "#e19a96",
+          "#edc1bf",
+          "#f8e6e6"
+        ]
+      },
+      "laca-hundida": {
+        "role": "primary",
+        "displayName": "Laca hundida",
+        "canonical": "#a3261f",
+        "tonalRamp": [
+          "#611713",
+          "#a2261f",
+          "#af413b",
+          "#ba5d57",
+          "#c67874",
+          "#d59c99",
+          "#e5c3c1",
+          "#f5e6e6"
+        ]
+      },
+      "laca-texto": {
+        "role": "primary",
+        "displayName": "Laca para texto",
+        "canonical": "#ec5b47",
+        "tonalRamp": [
+          "#4b1d17",
+          "#7d3026",
+          "#af4335",
+          "#e15744",
+          "#ef7261",
+          "#f3988c",
+          "#f8c2ba",
+          "#fce8e5"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "gigante": {
+        "displayName": "Gigante",
+        "purpose": "Solo TAKE-CHAN en el héroe, dos líneas en celular."
+      },
+      "gigante-ancho": {
+        "displayName": "Gigante ancho",
+        "purpose": "TAKE-CHAN en una línea desde 900 px."
+      },
+      "titulo": {
+        "displayName": "Título",
+        "purpose": "Títulos de sección y platillo protagonista."
+      },
+      "subtitulo": {
+        "displayName": "Subtítulo",
+        "purpose": "Categorías, celdas chicas, columnas del pie."
+      },
+      "entrada": {
+        "displayName": "Entrada",
+        "purpose": "Frase del héroe y entrada del menú."
+      },
+      "cuerpo": {
+        "displayName": "Cuerpo",
+        "purpose": "Texto corrido, hasta 70ch."
+      },
+      "dato": {
+        "displayName": "Dato",
+        "purpose": "Horario, dirección, precios, ticket."
+      },
+      "dato-chico": {
+        "displayName": "Dato chico",
+        "purpose": "Por confirmar, sub-línea de tecla, notas del ticket."
+      }
+    },
+    "shadows": [
+      {
+        "name": "sombra-tarjeta",
+        "value": "0 1px 0 rgba(255, 240, 220, .04) inset, 0 8px 24px -12px rgba(0, 0, 0, .6)",
+        "purpose": "Celdas del bento y máquina."
+      },
+      {
+        "name": "sombra-boton",
+        "value": "0 4px 0 var(--madera-canto), 0 8px 16px -6px rgba(0, 0, 0, .55)",
+        "purpose": "Canto físico de teclas y botón principal."
+      },
+      {
+        "name": "sombra-boton-hundido",
+        "value": "0 1px 0 var(--madera-canto), 0 2px 6px -2px rgba(0, 0, 0, .5)",
+        "purpose": "Tecla o botón presionado (baja 3 px)."
+      },
+      {
+        "name": "sombra-ticket",
+        "value": "0 10px 30px -10px rgba(0, 0, 0, .7)",
+        "purpose": "Ticket, diálogo y barra del pedido en celular."
+      },
+      {
+        "name": "ranura",
+        "value": "inset 0 2px 4px rgba(0, 0, 0, .8)",
+        "purpose": "Ranura de la máquina."
+      }
+    ],
+    "motion": [
+      {
+        "name": "rapido",
+        "value": "150ms",
+        "purpose": "Presión de teclas y botones, color de enlaces."
+      },
+      {
+        "name": "base",
+        "value": "200ms",
+        "purpose": "Fondos y bordes, segmento activo."
+      },
+      {
+        "name": "lento",
+        "value": "250ms",
+        "purpose": "Entrada del diálogo de demostración."
+      },
+      {
+        "name": "salida",
+        "value": "cubic-bezier(.23, 1, .32, 1)",
+        "purpose": "Curva por defecto de transiciones y del ticket."
+      },
+      {
+        "name": "pulsar",
+        "value": "cubic-bezier(.3, .7, .4, 1)",
+        "purpose": "Hundir teclas y botón principal."
+      },
+      {
+        "name": "imprimir",
+        "value": "420ms salida; clip-path inset(0 0 100% 0) a inset(0), translateY(-16px) a 0",
+        "purpose": "Momento animado de /menu: el ticket sale de la ranura."
+      },
+      {
+        "name": "vapor",
+        "value": "3 volutas, 5.6s a 7s lineal en bucle, transform y opacity",
+        "purpose": "Momento animado de la portada."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "tarjetas",
+        "value": "720px"
+      },
+      {
+        "name": "heroe",
+        "value": "900px"
+      },
+      {
+        "name": "menu",
+        "value": "1000px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Botón primario",
+      "kind": "button",
+      "refersTo": "boton-primario",
+      "description": "Acción principal en laca con canto; uno por pantalla.",
+      "html": "<button class=\"ds-boton ds-boton-primario\">Arma tu pedido</button>",
+      "css": ".ds-boton{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 24px;border-radius:var(--r-boton);border:0;font:700 1rem/1 var(--sans);cursor:pointer;transition:transform var(--rapido) var(--pulsar),box-shadow var(--rapido) var(--pulsar),background-color var(--base) var(--salida)}.ds-boton-primario{background:var(--laca);color:#fff;box-shadow:var(--sombra-boton)}.ds-boton-primario:hover{background:var(--laca-hundida)}.ds-boton-primario:active{transform:translateY(3px);box-shadow:var(--sombra-boton-hundido)}.ds-boton:focus-visible{outline:2px solid var(--texto);outline-offset:2px}"
+    },
+    {
+      "name": "Botón secundario",
+      "kind": "button",
+      "refersTo": "boton-secundario",
+      "description": "Contorno tenue para acciones secundarias.",
+      "html": "<button class=\"ds-boton2\">Cómo llegar</button>",
+      "css": ".ds-boton2{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 24px;border-radius:var(--r-boton);background:transparent;color:var(--texto);border:1.5px solid var(--texto-tenue);font:700 1rem/1 var(--sans);cursor:pointer;transition:border-color var(--base) var(--salida),transform var(--rapido) var(--pulsar)}.ds-boton2:hover{border-color:var(--texto)}.ds-boton2:active{transform:translateY(1px)}.ds-boton2:focus-visible{outline:2px solid var(--texto);outline-offset:2px}"
+    },
+    {
+      "name": "Tecla de máquina",
+      "kind": "custom",
+      "refersTo": "tecla-maquina",
+      "description": "Tecla washi con canto que se hunde; elegida con borde laca y contador.",
+      "html": "<button class=\"ds-tecla ds-elegida\"><span class=\"ds-n\">Iekei clásico</span><span class=\"ds-s\">precio por confirmar</span><span class=\"ds-cuenta\">1</span></button>",
+      "css": ".ds-tecla{position:relative;display:grid;gap:4px;text-align:left;min-height:76px;min-width:180px;padding:16px 48px 16px 16px;background:var(--washi) var(--fibra);color:var(--tinta);border:2px solid transparent;border-radius:var(--r-boton);box-shadow:var(--sombra-boton);cursor:pointer;transition:transform var(--rapido) var(--pulsar),box-shadow var(--rapido) var(--pulsar),border-color var(--base) var(--salida)}.ds-tecla:hover{border-color:var(--washi-fibra)}.ds-tecla:active{transform:translateY(3px);box-shadow:var(--sombra-boton-hundido)}.ds-tecla.ds-elegida{border-color:var(--laca)}.ds-tecla:focus-visible{outline:2px solid var(--texto);outline-offset:3px}.ds-n{font:700 1rem/1.2 var(--sans)}.ds-s{font:400 .6875rem/1.4 var(--mono);color:var(--tinta-2)}.ds-cuenta{position:absolute;top:8px;right:8px;min-width:26px;height:26px;padding:0 6px;border-radius:13px;display:grid;place-items:center;background:var(--laca);color:#fff;font:500 .75rem/1 var(--mono)}"
+    },
+    {
+      "name": "Control segmentado",
+      "kind": "chip",
+      "refersTo": "segmentos",
+      "description": "Al gusto: tres opciones sobre pista de canto; la elegida en washi.",
+      "html": "<div class=\"ds-seg\"><label><input type=\"radio\" name=\"ds-g\" checked><span>Suave</span></label><label><input type=\"radio\" name=\"ds-g\"><span>Normal</span></label><label><input type=\"radio\" name=\"ds-g\"><span>Fuerte</span></label></div>",
+      "css": ".ds-seg{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));background:var(--madera-canto);border-radius:var(--r-boton);padding:4px;gap:4px;width:300px}.ds-seg label{position:relative}.ds-seg input{position:absolute;inset:0;opacity:0;margin:0;cursor:pointer}.ds-seg span{display:grid;place-items:center;min-height:44px;border-radius:var(--r-s);font:700 .9375rem var(--sans);color:var(--texto-tenue);transition:background-color var(--base) var(--salida),color var(--base) var(--salida)}.ds-seg input:checked+span{background:var(--washi);color:var(--tinta)}.ds-seg input:focus-visible+span{outline:2px solid var(--texto);outline-offset:2px}"
+    },
+    {
+      "name": "Ticket",
+      "kind": "card",
+      "refersTo": "ticket",
+      "description": "Papel washi en mono con borde dentado; se imprime en 420 ms.",
+      "html": "<div class=\"ds-ticket\"><p class=\"ds-marca\">TAKE-CHAN RAMEN <span lang=\"ja\">食券</span></p><p>N.º 0042 · Tlaquepaque</p><hr><p class=\"ds-l\"><span>1 × Iekei clásico</span><span>—</span></p><p class=\"ds-l\"><span>Total</span><span>por confirmar</span></p></div>",
+      "css": ".ds-ticket{width:280px;background:var(--washi) var(--fibra);color:var(--tinta);padding:24px 16px 32px;box-shadow:var(--sombra-ticket);display:grid;gap:8px;font:400 .8125rem/1.5 var(--mono);-webkit-mask:radial-gradient(6px at 50% calc(100% + 1px),#0000 98%,#000) 50%/14px 100% repeat-x;mask:radial-gradient(6px at 50% calc(100% + 1px),#0000 98%,#000) 50%/14px 100% repeat-x}.ds-ticket p{margin:0}.ds-marca{font:400 1.125rem/1.1 var(--display)}.ds-ticket hr{border:0;border-top:1px dashed var(--tinta-2);margin:4px 0}.ds-l{display:flex;justify-content:space-between;gap:16px}"
+    },
+    {
+      "name": "Tarjeta de madera",
+      "kind": "card",
+      "refersTo": "tarjeta-madera",
+      "description": "Sucursal, panel y celdas: madera con borde de 1 px.",
+      "html": "<article class=\"ds-tarjeta\"><h3>Tlaquepaque</h3><p class=\"ds-dato\">Calz. Córdoba 24</p></article>",
+      "css": ".ds-tarjeta{background:var(--madera);color:var(--texto);border:1px solid var(--borde);border-radius:var(--r-m);padding:24px;display:grid;gap:8px;width:280px}.ds-tarjeta h3{margin:0;font:700 1.25rem/1.25 var(--sans)}.ds-dato{margin:0;font:400 .8125rem/1.5 var(--mono)}"
+    },
+    {
+      "name": "Por confirmar",
+      "kind": "chip",
+      "refersTo": "por-confirmar",
+      "description": "Etiqueta discreta junto a todo dato no confirmado.",
+      "html": "<span class=\"ds-pc\">precio por confirmar</span>",
+      "css": ".ds-pc{display:inline-flex;align-items:center;padding:2px 8px;border:1px dashed currentColor;border-radius:var(--r-s);font:400 .6875rem/1.5 var(--mono);white-space:nowrap;color:var(--texto-tenue)}"
+    },
+    {
+      "name": "Campo",
+      "kind": "input",
+      "refersTo": "campo",
+      "description": "Select o texto sobre carbón; el foco cambia el borde.",
+      "html": "<input class=\"ds-campo\" placeholder=\"A nombre de\">",
+      "css": ".ds-campo{min-height:48px;padding:0 16px;background:var(--carbon);color:var(--texto);border:1.5px solid var(--borde);border-radius:var(--r-s);font:400 1rem var(--sans)}.ds-campo:focus-visible{border-color:var(--texto);outline:none}"
+    },
+    {
+      "name": "Navegación",
+      "kind": "nav",
+      "refersTo": "",
+      "description": "Aviso de prototipo y enlaces tenues; activo con subrayado laca.",
+      "html": "<header class=\"ds-cab\"><p class=\"ds-aviso\">Propuesta no oficial de sitio para Take-chan Ramen</p><nav class=\"ds-nav\"><a class=\"ds-marca2\" href=\"#\">TAKE-CHAN<span> RAMEN</span></a><span><a href=\"#\" class=\"ds-act\">Menú</a><a href=\"#\">Sucursales</a></span></nav></header>",
+      "css": ".ds-cab{background:var(--carbon);border-bottom:1px solid var(--borde);color:var(--texto)}.ds-aviso{margin:0;background:var(--madera);border-bottom:1px solid var(--borde);text-align:center;font:500 .75rem/1.3 var(--sans);padding:6px 16px}.ds-nav{display:flex;justify-content:space-between;align-items:center;min-height:52px;padding:0 16px}.ds-nav a{color:var(--texto-tenue);text-decoration:none;font:700 .9375rem var(--sans);display:inline-flex;align-items:center;min-height:44px;padding:0 8px;transition:color var(--rapido) var(--salida)}.ds-nav a:hover{color:var(--texto)}.ds-nav a.ds-act{color:var(--texto);box-shadow:inset 0 -2px 0 var(--laca)}.ds-nav .ds-marca2{font:400 1.125rem/1 var(--display);color:var(--texto);padding:0}.ds-marca2 span{color:var(--texto-tenue)}"
+    },
+    {
+      "name": "Noren",
+      "kind": "custom",
+      "refersTo": "pano-noren",
+      "description": "Separador de seis paños oscuros con 家系ラーメン, un carácter por paño.",
+      "html": "<div class=\"ds-noren\" aria-hidden=\"true\"><div class=\"ds-barra\"></div><div class=\"ds-panos\" lang=\"ja\"><span>家</span><span>系</span><span>ラ</span><span>ー</span><span>メ</span><span>ン</span></div></div>",
+      "css": ".ds-noren{width:480px}.ds-barra{height:8px;background:var(--madera-veta);box-shadow:0 1px 0 var(--borde),0 4px 8px -2px rgba(0,0,0,.6);position:relative;z-index:1}.ds-panos{display:grid;grid-template-columns:repeat(6,1fr);gap:3px;padding:0 3px}.ds-panos span{display:grid;place-items:center;height:80px;background:var(--madera-canto) var(--fibra);border:1px solid var(--borde);border-top:0;border-radius:0 0 6px 6px;font:400 1.75rem/1 var(--display);color:var(--washi);box-shadow:inset 0 10px 12px -8px rgba(0,0,0,.8)}"
+    }
+  ],
+  "narrative": {
+    "northStar": "La barra de una ramen-ya Iekei",
+    "overview": "El sitio se lee como sentarse en la barra: madera oscura con veta como suelo, papel washi para todo lo que se \"imprime\" o se lee de cerca, la cortina *noren* que separa la portada del pie y, para pedir, la máquina de tickets (食券機) que en Japón está en la entrada. Se elige el platillo con teclas de máquina, sale un ticket de papel por una ranura y ese ticket es el mensaje de WhatsApp (en modo demostración).\n\nLa densidad es baja en la portada (una palabra gigante, un tazón, una frase, dos botones) y media en `/menu`, que es una herramienta: índice, teclas, panel del pedido. El texto y las sucursales son tipografía limpia; la metáfora vive en piezas concretas (noren, teclas, ticket), no en todo.\n\nDocumentado sobre lo construido el 2026-11-15. Ya no es el plan de tokens previo: donde el plan y el código difieren, manda el código.",
+    "keyCharacteristics": [
+      "Suelo carbón y madera con grano SVG en línea; superficies washi con fibra.",
+      "Un solo acento: rojo laca, en el botón principal y en lo activo.",
+      "TAKE-CHAN gigante en Dela Gothic One; mono solo para datos.",
+      "Profundidad física: teclas con canto que se hunden 3 px, ticket con sombra y borde dentado.",
+      "Un momento animado por página: vapor en la portada, impresión del ticket en el menú."
+    ],
+    "rules": [
+      {
+        "name": "The Un Solo Rojo Rule",
+        "body": "El rojo laca marca acción o estado activo y nada más; ningún fondo de sección, título ni ilustración lo usa como decoración.",
+        "section": "colors"
+      },
+      {
+        "name": "The Sin Verde Rule",
+        "body": "El estado abierto/cerrado se dice con un punto lleno o hueco en el color del texto, nunca con verde ni rojo semáforo.",
+        "section": "colors"
+      },
+      {
+        "name": "The Mono Es Dato Rule",
+        "body": "Martian Mono solo lleva información que se lee como dato (hora, dirección, precio, folio, estado de confirmación). Nunca títulos ni párrafos.",
+        "section": "typography"
+      },
+      {
+        "name": "The Japonés Con Sentido Rule",
+        "body": "Japonés solo donde nombra algo real: 家系 y 家 en la explicación del Iekei, 家系ラーメン en el noren y el pie, 食券 en el rótulo de la máquina y en el ticket. Siempre con `lang=\"ja\"`; nunca como rótulo decorativo sobre un título.",
+        "section": "typography"
+      },
+      {
+        "name": "The Canto Solo En Teclas Rule",
+        "body": "La sombra con desplazamiento marcado (canto) es exclusiva de lo que se presiona como tecla de máquina: botón principal y teclas. Tarjetas, hojas y avisos no la usan.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "**Do** tomar todo color, espacio, radio, sombra y curva de las variables de `sitio/src/styles.css`.",
+      "**Do** usar un solo `boton-primario` por pantalla; lo demás en contorno.",
+      "**Do** marcar todo dato no confirmado con la etiqueta \"por confirmar\" junto al dato, en mono chico y borde punteado.",
+      "**Do** limitar el movimiento a un momento por página (vapor en portada, impresión del ticket en menú) y a transiciones de 150 a 250 ms con `salida` o `pulsar`; respetar `prefers-reduced-motion`.",
+      "**Do** dar a lo tentativo borde punteado y fondo transparente.",
+      "**Do** mantener objetivos táctiles de 44 px o más."
+    ],
+    "donts": [
+      "**Don't** usar vidrio, `backdrop-filter`, carruseles, 3D, partículas ni cursores especiales.",
+      "**Don't** introducir un segundo color de acento ni verde para \"abierto\".",
+      "**Don't** poner el canto (sombra de 4 px) fuera de teclas y botón principal.",
+      "**Don't** usar fotos de TikTok ni de directorios; las ilustraciones y huecos rotulados ocupan su lugar.",
+      "**Don't** usar tipografías caricaturescas \"estilo oriental\" ni japonés decorativo sin significado.",
+      "**Don't** usar emojis."
+    ]
+  }
+}
