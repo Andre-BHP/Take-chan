@@ -45,18 +45,17 @@ Lista para la visita. Cada punto dice dónde entra en el sitio. Todo lo que hoy 
 
 ---
 
-## Lo que hoy dice "por confirmar" en el sitio
+## Lo que hoy es de ejemplo en el sitio
+Cada página lo dice una sola vez: "Propuesta: menú, precios y fotos de ejemplo hasta que Take-chan confirme los suyos".
+
 | Dato | Dónde se ve |
 |---|---|
-| Nombres de platillos (Iekei clásico, panceta extra, huevo marinado, fideo extra, arroz, agua) | Inicio (bento), menú y ticket |
-| Todos los precios y el total del ticket | Inicio, menú y ticket |
-| Segundo y tercer ramen, entrada y bebida de la casa | Teclas apagadas del menú |
-| Elegir fideo, sabor y grasa | Menú, "Al gusto" |
-| Pedidos para recoger | Menú y páginas de sucursal |
-| Horario (12:00 a 17:00 diario) | Inicio, sucursales, pie |
-| Sucursal de la Americana (dirección y horario) | Inicio, `/americana`, pie y pedido |
-| WhatsApp, teléfono, Instagram | Pie (el pedido funciona en modo demostración) |
-| Fotos | Recuadros punteados |
+| Menú completo (Iekei clásico, con chashu, con huevo, picante, extras, gyoza, arroz, té) y sus precios | Portada (bento), máquina de tickets y ticket |
+| Elegir fideo, sabor y grasa (硬め, 普通, 柔らかめ…) | Hoja "al gusto" del menú |
+| Pedidos para recoger por WhatsApp | Menú y páginas de sucursal (modo demostración) |
+| Fotos (Unsplash, rotuladas "Imagen ilustrativa") | Todo el sitio; créditos en `entregables/fotos-creditos.md` |
+| Sucursal Americana (dirección y horario) | Única marca "por confirmar"; sin horario ni estado abierto/cerrado |
+| Horario de Tlaquepaque (12:00 a 17:00 diario) | Se muestra como real porque coinciden Google y TikTok; conviene confirmarlo |
 
 ## Lo que no se usa aunque sea público
 - El título de "Presidente de la Asociación Internacional de Ramen" de su TikTok: no está verificado.
