@@ -2,7 +2,7 @@
 
 - **Pages:** https://andre-bhp.github.io/Take-chan/
 - **Repositorio:** https://github.com/Andre-BHP/Take-chan
-- **Última subida:** 2026-11-16 16:40 (hora de Guadalajara)
+- **Última subida:** 2026-11-16 16:44 (hora de Guadalajara)
 
 ## Rediseño (2026-11-15)
 André revisó la primera versión: "quedó muy feo y muy mal". Este rediseño cambia la dirección a "una ramen-ya de Yokohama de noche": fotos de ejemplo rotuladas, negro sumi y papel washi, 家系 vertical y un solo acento bermellón.
@@ -24,7 +24,7 @@ Plan de Arthemis para pasar de "bien hecho" a "de premio".
 - [x] N1. Una sola mirada fotográfica: tratamiento de color, grano y viñeta
 - [x] N2. Mapas propios de OpenStreetMap en lugar de fotos de las sucursales
 - [x] N3. "Cómo se hace un Iekei": tazón visto desde arriba y pasos 一二三四
-- [ ] N4. Sello hanko de la propuesta
+- [x] N4. Sello hanko de la propuesta
 - [ ] N5. Héroe legible y saludo いらっしゃいませ
 - [ ] N6. Ritmo editorial: títulos, 4.8 con sección propia y pausa a sangre
 - [ ] N7. Menú que vende: sugerencia, detalle de tecla y vista de lista
@@ -49,12 +49,12 @@ André: "mejor animación, más transiciones, mejor diseño, mejor todo". Metáf
 Repositorio, Pages, datos, inicio, máquina de tickets, sucursales con JSON-LD, pruebas y lista para el negocio. Capturas en `entregables/avances/antes/`.
 
 ## Último paso
-**N3.** "Cómo se hace un Iekei" rehecho: tazón visto desde arriba en SVG por capas (caldo cremoso con gotas de grasa, tare en remolino, 13 fideos rectos, espinaca, chashu en dos rebanadas, medio huevo marinado y tres hojas de nori de pie en el borde), con textura y el mismo grano de las fotos. Cada capa entra con su propio movimiento: el caldo se derrama del centro, el tare gira, los fideos se trazan y los toppings caen con un rebote leve. Pasos con 一二三四 de 160 px en escritorio, texto en washi, activo al 100 % y los demás al 35 %. Rotulado "Ilustración del estilo". Se corrigió un scroll horizontal a 360 que hacía cargar el bento de más. axe limpio y portada de 422 KB. El LCP sigue alto en esta máquina (se ataca en N5). La crítica prefiere la opción B (sumi-e), que necesita el visto bueno de André.
+**N4.** Sello hanko de la propuesta: cuadrado bermellón con 家系 en blanco (estilo 白文), borde irregular y poros de tinta. Se dibuja en Edge con la fuente real y se guarda como raster (`herramientas/sello.mjs`; 7 KB a 96 px). Está en el favicon (PNG de 32 px y el ícono de iPhone), en la esquina del héroe, en el pie y estampado en el ticket: al terminar de imprimir baja de 1.3 a 1 con un giro leve y la tinta se mezcla con el papel. Queda anotado en `PEDIR_AL_NEGOCIO.md` como logo de propuesta.
 
 ## Sigue
-N4: sello hanko de la propuesta (favicon, héroe, pie y estampado en el ticket).
+N5: héroe más legible en celular, "Take-chan Ramen" chico en el héroe, saludo いらっしゃいませ en la intro y bajar el LCP.
 
 ## Capturas más recientes
-| Sección 360 | Sección 1440 | Video |
-|---|---|---|
-| ![360](entregables/avances/2026-11-16_paso-N3_como_360.png) | ![1440](entregables/avances/2026-11-16_paso-N3_como_1440.png) | [GIF 390](entregables/avances/video/2026-11-16_N3_medidor_390.gif) · [MP4 1440](entregables/avances/video/2026-11-16_N3_medidor_1440.mp4) |
+| Héroe 1440 | Ticket con sello | 360 | Video |
+|---|---|---|---|
+| ![1440](entregables/avances/2026-11-16_paso-N4_1440.png) | ![ticket](entregables/avances/2026-11-16_paso-N4_ticket_1440.png) | ![360](entregables/avances/2026-11-16_paso-N4_360.png) | [GIF 390](entregables/avances/video/2026-11-16_N4_menu_390.gif) · [MP4 1440](entregables/avances/video/2026-11-16_N4_menu_1440.mp4) |

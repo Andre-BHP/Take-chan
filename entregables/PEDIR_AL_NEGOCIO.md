@@ -17,7 +17,8 @@ Lista para la visita. Cada punto dice dónde entra en el sitio. Todo lo que hoy 
 
 ## 3. Logo y colores
 - Logo en vector (SVG, PDF o AI) o la mejor imagen que tengan.
-- Su color de marca, si hay. Sustituye al rojo laca de la propuesta (`--laca` en `sitio/src/styles.css`).
+- **Logo de propuesta:** mientras tanto, el sitio usa un sello hanko bermellón con 家系, hecho para la propuesta (`herramientas/sello.mjs`). Aparece en el favicon, la esquina del héroe, el pie y estampado en el ticket. No es su logo y se cambia por el suyo si existe.
+- Su color de marca, si hay. Sustituye al bermellón de la propuesta (`--bermellon` en `sitio/src/styles.css`).
 - Si el nombre se escribe con kanji o kana, cómo exactamente.
 
 ## 4. Horario real por sucursal

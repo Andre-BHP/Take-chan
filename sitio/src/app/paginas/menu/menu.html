@@ -151,6 +151,7 @@
           @if (pedido.nombre().trim()) { <p class="ticket-linea"><span>A nombre de</span><span>{{ pedido.nombre().trim() }}</span></p> }
           <p class="ticket-linea total"><span>Total de ejemplo</span><span>{{ pesos(pedido.total()) }}</span></p>
           <p class="ticket-nota">Ticket de demostración: no es un pedido real.</p>
+          <img class="ticket-sello" src="sello-192.webp" width="76" height="76" alt="" />
         </div>
         <button type="button" class="boton boton-primario ancho" (click)="enviar()">
           <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 20l1.3-3.9A8 8 0 1 1 8 19z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>

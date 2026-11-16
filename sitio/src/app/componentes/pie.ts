@@ -13,7 +13,7 @@ import { FOTOS } from './foto';
     <footer>
       <div class="envoltura rejilla">
         <div class="firma">
-          <p class="marca"><span lang="ja">家系</span> TAKE-CHAN RAMEN</p>
+          <p class="marca"><img class="sello" src="sello-96.webp" srcset="sello-96.webp 96w, sello-192.webp 192w" sizes="48px" width="48" height="48" alt="" /><span><span lang="ja">家系</span> TAKE-CHAN RAMEN</span></p>
           <p class="tenue">Ramen japonés estilo Iekei. De {{ precio.min }} a {{ precio.max }} MXN por persona.</p>
           <p><a class="enlace" [href]="tiktok.url" target="_blank" rel="noopener">TikTok {{ tiktok.usuario }}<span class="solo-lector"> (se abre en otra pestaña)</span></a></p>
         </div>
@@ -41,7 +41,8 @@ import { FOTOS } from './foto';
     footer { border-top: 1px solid var(--linea); padding-block: var(--e-7) var(--e-5); background: var(--sumi-2); }
     .rejilla { display: grid; gap: var(--e-5); grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); }
     .rejilla > div { display: grid; gap: var(--e-1); align-content: start; }
-    .marca { font: 700 1.25rem/1.2 var(--mincho); letter-spacing: .03em; }
+    .marca { display: flex; align-items: center; gap: var(--e-3); font: 700 1.25rem/1.2 var(--mincho); letter-spacing: .03em; }
+    .sello { width: 48px; height: 48px; rotate: -4deg; flex: none; }
     .t-subtitulo { display: flex; gap: var(--e-2); align-items: center; flex-wrap: wrap; }
     .t-subtitulo a { text-decoration: none; }
     .t-subtitulo a:hover { text-decoration: underline; }

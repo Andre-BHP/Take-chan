@@ -12,6 +12,9 @@
 }
 .heroe-foto { position: absolute; inset: 0; --enfoque: 50% 50%; }
 .heroe-foto ::ng-deep .rotulo { bottom: auto; top: var(--e-2); }
+/* Sello de la propuesta en la esquina del héroe (logo de propuesta, no el del negocio). */
+.heroe-sello { position: absolute; top: var(--e-4); right: max(var(--gutter), calc((100% - var(--ancho)) / 2 + var(--gutter))); z-index: 1; width: 52px; height: 52px; rotate: -5deg; opacity: .92; }
+@media (min-width: 900px) { .heroe-sello { width: 72px; height: 72px; top: var(--e-6); } }
 .heroe-vapor { position: absolute; left: 22%; bottom: 46%; width: 56%; height: 54%; }
 .heroe-capa {
   display: grid; grid-template-columns: auto minmax(0, 1fr);
