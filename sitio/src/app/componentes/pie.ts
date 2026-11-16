@@ -27,6 +27,7 @@ import { Noren } from './noren';
             <p class="t-dato">{{ direccion(s) }}</p>
             @if (s.direccion.referencia) { <p class="t-dato tenue">{{ s.direccion.referencia }}</p> }
             <p class="t-dato">{{ horario(s) }}</p>
+            @if (!s.horario.confirmado) { <p><span class="por-confirmar">horario por confirmar</span></p> }
             <p><a class="enlace" [href]="s.mapa" target="_blank" rel="noopener">Abrir en Google Maps<span class="solo-lector"> (se abre en otra pestaña)</span></a></p>
           </div>
         }

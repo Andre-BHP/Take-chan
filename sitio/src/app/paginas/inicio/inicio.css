@@ -2,9 +2,8 @@
 .heroe { padding-block: var(--e-4) var(--e-6); overflow-x: clip; }
 .heroe-rejilla {
   display: grid;
-  grid-template-areas: 'ja' 'titulo' 'tazon' 'texto';
+  grid-template-areas: 'titulo' 'tazon' 'texto';
 }
-.ja { grid-area: ja; font: 400 1.125rem/1 var(--display); letter-spacing: .12em; color: var(--texto-tenue); margin-bottom: var(--e-2); }
 .gigante {
   grid-area: titulo; position: relative; z-index: 0;
   font: 400 clamp(3.5rem, 21vw, 7rem)/.86 var(--display);
@@ -25,7 +24,7 @@
   .heroe { padding-block: var(--e-6) var(--e-8); }
   .heroe-rejilla {
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-    grid-template-areas: 'ja ja' 'titulo titulo' 'texto tazon';
+    grid-template-areas: 'titulo titulo' 'texto tazon';
     column-gap: var(--e-6);
   }
   .heroe .envoltura { max-width: 96rem; }

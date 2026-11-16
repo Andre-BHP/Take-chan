@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, DestroyRef, ElementRef, PLATFORM_ID, afterNextRender, inject, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, DestroyRef, ElementRef, PLATFORM_ID, afterNextRender, effect, inject, signal } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { MENU, SUCURSALES, direccionCorta, pesos } from '../../servicios/datos';
@@ -40,6 +40,14 @@ export class Menu {
     const ruta = inject(ActivatedRoute);
     const destruir = inject(DestroyRef);
     if (!isPlatformBrowser(inject(PLATFORM_ID))) return;
+    // En celular el índice es horizontal: la pestaña activa se desliza a la vista sin mover la página.
+    effect(() => {
+      const id = this.activa();
+      const lista = this.host.nativeElement.querySelector<HTMLElement>('.indice ul');
+      const a = lista?.querySelector<HTMLElement>(`a[href$="#cat-${id}"]`);
+      if (!lista || !a || lista.scrollWidth <= lista.clientWidth) return;
+      lista.scrollTo({ left: a.offsetLeft - lista.clientWidth / 2 + a.offsetWidth / 2, behavior: 'smooth' });
+    });
     afterNextRender(() => {
       const id = ruta.snapshot.queryParamMap.get('ramen');
       if (id && MENU.categorias[0].items.some((p) => p.id === id && !p.hueco) && this.pedido.cantidad(id) === 0) this.pedido.sumar(id);

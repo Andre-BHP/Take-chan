@@ -1,33 +1,35 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
-/** Cortina noren (のれん) como separador: barra de madera y paños con cortes. Decorativa. */
+/**
+ * Cortina noren (のれん) como separador: barra de madera y paños de tela oscura con 家系ラーメン,
+ * un carácter por paño, como en la entrada de una ramen-ya. Decorativa: el término ya está en el texto.
+ */
 @Component({
   selector: 'app-noren',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  host: { 'aria-hidden': 'true' },
   template: `
-    <svg viewBox="0 0 1200 84" preserveAspectRatio="none" aria-hidden="true" focusable="false">
-      <rect x="0" y="0" width="1200" height="8" fill="var(--madera-canto)" />
-      @for (i of panos; track i) {
-        <path [attr.d]="pano(i)" fill="var(--madera-veta)" />
-        <path [attr.d]="pliegue(i)" stroke="var(--carbon)" stroke-width="2" opacity=".5" fill="none" />
-      }
-    </svg>
+    <div class="barra"></div>
+    <div class="panos" lang="ja">
+      @for (c of letras; track $index) { <span class="pano">{{ c }}</span> }
+    </div>
   `,
   styles: `
-    :host { display: block; width: 100%; height: clamp(48px, 7vw, 84px); }
-    svg { width: 100%; height: 100%; }
+    :host { display: block; width: 100%; overflow: hidden; }
+    .barra { height: 8px; background: var(--madera-veta); box-shadow: 0 1px 0 var(--borde), 0 4px 8px -2px rgba(0, 0, 0, .6); position: relative; z-index: 1; }
+    .panos { display: grid; grid-template-columns: repeat(6, 1fr); gap: 3px; padding-inline: 3px; }
+    .pano {
+      display: grid; place-items: center;
+      height: clamp(64px, 9vw, 112px);
+      background: var(--madera-canto) var(--fibra);
+      border: 1px solid var(--borde); border-top: 0;
+      border-radius: 0 0 6px 6px;
+      font: 400 clamp(1.5rem, 3.6vw, 3rem)/1 var(--display);
+      color: var(--washi);
+      box-shadow: inset 0 10px 12px -8px rgba(0, 0, 0, .8);
+    }
   `,
 })
 export class Noren {
-  protected readonly panos = [0, 1, 2, 3, 4];
-  private readonly ancho = 1200 / 5;
-  protected pano(i: number) {
-    const x = i * this.ancho + 3;
-    const w = this.ancho - 6;
-    return `M${x} 8h${w}v66q${-w / 2} 10 ${-w} 0z`;
-  }
-  protected pliegue(i: number) {
-    const x = i * this.ancho + this.ancho / 2;
-    return `M${x - 40} 16v52M${x + 40} 16v52`;
-  }
+  protected readonly letras = [...'家系ラーメン'];
 }

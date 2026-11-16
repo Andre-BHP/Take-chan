@@ -29,8 +29,8 @@
           @for (p of c.items; track p.id) {
             @if (p.hueco) {
               <button type="button" class="tecla apagada" disabled>
-                <span class="nombre">{{ p.nombre }}</span>
-                <span class="sub">por definir con el negocio</span>
+                <span class="nombre">Por definir</span>
+                <span class="sub">{{ p.nombre }}</span>
               </button>
             } @else {
               <button type="button" class="tecla" [class.elegida]="pedido.cantidad(p.id) > 0" [class.pulsada]="pulsada() === p.id"
