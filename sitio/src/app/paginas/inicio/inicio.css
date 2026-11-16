@@ -132,29 +132,10 @@
   .celda:last-child { grid-column: 2 / 4; }
 }
 
-/* ---------- Cómo se hace un Iekei (dis-028) ---------- */
-.como { background: var(--sumi-2); border-block: 1px solid var(--linea); }
-.como-fijo { padding-block: var(--e-7); display: grid; gap: var(--e-5); overflow: hidden; }
+/* ---------- Cómo se hace un Iekei: medidor narrativo (componentes/medidor) ---------- */
+.como { background: var(--sumi-2); border-block: 1px solid var(--linea); padding-block: var(--e-7); display: grid; gap: var(--e-5); }
 .como-cabeza { display: grid; gap: var(--e-2); }
-.pista {
-  list-style: none; margin: 0; display: flex; gap: var(--e-3);
-  padding: 0 var(--gutter); scroll-padding-inline: var(--gutter); overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none;
-}
-.paso { flex: 0 0 min(82vw, 22rem); scroll-snap-align: start; display: grid; gap: var(--e-3); align-content: start; }
-.paso app-foto { aspect-ratio: 4 / 3; border-radius: var(--r-l); }
-.paso-texto { display: grid; gap: var(--e-1); }
-.paso-texto p { color: var(--ceniza); max-width: 34ch; }
-.numero { color: var(--ceniza); }
-@media (min-width: 900px) and (prefers-reduced-motion: no-preference) {
-  .como { height: var(--alto, auto); }
-  .como-fijo { position: sticky; top: 87px; min-height: calc(100vh - 87px); align-content: center; }
-  .pista { overflow: visible; scroll-snap-type: none; padding-left: max(var(--gutter), calc((100vw - var(--ancho)) / 2 + var(--gutter))); padding-right: 8vw; will-change: transform; }
-  .paso { flex-basis: min(30vw, 26rem); }
-  .paso app-foto { aspect-ratio: 4 / 4.4; max-height: 52vh; }
-}
-@media (min-width: 900px) and (prefers-reduced-motion: reduce) {
-  .pista { display: grid; grid-template-columns: repeat(4, 1fr); max-width: var(--ancho); margin-inline: auto; overflow: visible; }
-}
+@media (min-width: 900px) { .como { padding-block: var(--e-8); } }
 
 /* ---------- Noren (una sola vez) ---------- */
 .noren { margin-block: var(--e-5) var(--e-8); }
@@ -171,3 +152,7 @@
 .sucursal h3 a:hover { text-decoration: underline; }
 .sucursal .marca-tentativa { color: var(--ceniza); }
 .acciones-sucursal { display: flex; flex-wrap: wrap; gap: var(--e-3); align-items: center; margin-top: var(--e-2); }
+
+/* Flecha de "Cómo llegar" que se desliza al pasar el cursor */
+.con-flecha svg { transition: transform var(--t-2) var(--ease-out); }
+@media (hover: hover) { .con-flecha:hover svg { transform: translateX(4px); } }

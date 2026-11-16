@@ -41,7 +41,7 @@
     "url": "https://images.unsplash.com/photo-1749361219832-9a14affc2d8c",
     "autor": "Kouji Tsuru",
     "usuario": "pafuxu",
-    "uso": "Iekei picante y sucursal Americana",
+    "uso": "Iekei picante",
     "alt": "Ramen picante con huevo y cebollín en tazón negro"
   },
   {
@@ -68,7 +68,7 @@
     "url": "https://images.unsplash.com/photo-1666307628741-c65334fed027",
     "autor": "Nahima Aparicio",
     "usuario": "nahimaaparicio",
-    "uso": "Qué es Iekei y paso 3: fideo",
+    "uso": "Qué es el Iekei y fideo extra",
     "alt": "Fideos levantados con palillos sobre un tazón"
   },
   {
@@ -108,21 +108,12 @@
     "alt": "Barra de cocina de una ramen-ya con tazones apilados y palillos"
   },
   {
-    "nombre": "olla",
-    "id": "WLDy6dh7CPo",
-    "url": "https://images.unsplash.com/photo-1713279714088-89834c1e6a83",
-    "autor": "sehoon ye",
-    "usuario": "_3bread",
-    "uso": "Paso 1: caldo de la olla",
-    "alt": "Caldo servido de la olla sobre un tazón de fideos"
-  },
-  {
-    "nombre": "soya",
-    "id": "hm1arTdhkiY",
-    "url": "https://images.unsplash.com/photo-1615203508881-9e7e357c0cc1",
-    "autor": "Gerard M. C.",
-    "usuario": "g_designer",
-    "uso": "Paso 2: tare de soya",
-    "alt": "Palillos sobre un cuenco con salsa de soya"
+    "nombre": "guadalajara",
+    "id": "8N8LwHeSRM0",
+    "url": "https://images.unsplash.com/photo-1708733968596-b5a5b1cdfdd0",
+    "autor": "Sergio Rodríguez",
+    "usuario": "sergiordgz",
+    "uso": "Sucursal Americana (calle de Guadalajara)",
+    "alt": "Centro de Guadalajara al anochecer, con la catedral al fondo"
   }
 ]

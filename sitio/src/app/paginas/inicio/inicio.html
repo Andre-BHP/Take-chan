@@ -71,39 +71,26 @@
 </section>
 
 <section class="como" aria-labelledby="como-titulo">
-  <div class="como-fijo">
-    <div class="envoltura como-cabeza">
-      <h2 id="como-titulo" class="t-titulo">Cómo se hace un Iekei</h2>
-      <p class="tenue">Cuatro pasos del estilo, como en Yokohama.</p>
-    </div>
-    <ol class="pista" tabindex="0" aria-label="Pasos para hacer un Iekei">
-      @for (p of pasos; track p.foto; let i = $index) {
-        <li class="paso">
-          <app-foto [nombre]="p.foto" sizes="(min-width: 900px) 34vw, 82vw" />
-          <div class="paso-texto">
-            <span class="numero t-dato">{{ i + 1 }} / 4</span>
-            <h3 class="t-subtitulo">{{ p.titulo }}</h3>
-            <p>{{ p.texto }}</p>
-          </div>
-        </li>
-      }
-    </ol>
+  <div class="envoltura como-cabeza">
+    <h2 id="como-titulo" class="t-titulo" data-revelar="lineas">Cómo se hace un Iekei</h2>
+    <p class="tenue">Cuatro pasos del estilo, como en Yokohama.</p>
   </div>
+  <app-medidor />
 </section>
 
 <section id="sucursales" class="sucursales envoltura" aria-labelledby="sucursales-titulo">
   <h2 id="sucursales-titulo" class="t-titulo">Sucursales</h2>
-  <div class="tarjetas">
+  <div class="tarjetas" data-revelar="grupo">
     @for (s of sucursales; track s.id) {
       <article class="sucursal">
-        <app-foto [nombre]="s.id === 'tlaquepaque' ? 'barra' : 'picante'" sizes="(min-width: 720px) 45vw, 100vw" />
+        <app-foto [nombre]="s.id === 'tlaquepaque' ? 'barra' : 'guadalajara'" sizes="(min-width: 720px) 45vw, 100vw" />
         <div class="sucursal-texto">
           <h3 class="t-titulo"><a [routerLink]="'/' + s.id">{{ s.nombre }}</a></h3>
           @if (!s.confirmada) { <p class="marca-tentativa">Sucursal por confirmar</p> }
           @if (s.confirmada) { <app-estado [turnos]="s.horario.turnos" /> }
           <p class="t-pequeno tenue">{{ direccion(s) }}</p>
           <div class="acciones-sucursal">
-            <a class="boton boton-contorno" [href]="s.mapa" target="_blank" rel="noopener">Cómo llegar<span class="solo-lector"> a {{ s.nombre }} (se abre Google Maps)</span></a>
+            <a class="boton boton-contorno con-flecha" [href]="s.mapa" target="_blank" rel="noopener">Cómo llegar<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h13m-5-5 5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="solo-lector"> a {{ s.nombre }} (se abre Google Maps)</span></a>
             <a class="enlace" [routerLink]="'/' + s.id">Ver sucursal<span class="solo-lector"> {{ s.nombre }}</span></a>
           </div>
         </div>

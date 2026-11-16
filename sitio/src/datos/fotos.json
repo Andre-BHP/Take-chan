@@ -119,24 +119,14 @@
     "usuario": "crypticsy",
     "id": "QiA43Y5AJCU"
   },
-  "olla": {
+  "guadalajara": {
     "ancho": 2400,
-    "alto": 3600,
-    "color": "#080808",
-    "lqip": "data:image/webp;base64,UklGRpYAAABXRUJQVlA4IIoAAADwBQCdASoYACQAPu1ur1IppiQiqrgIATAdiWMA0Bhc3akekWjFFLNverLdCAHmHYXN1MPOgXfcgAD+++B2aGkm9FRLPBVxTAFjAiVg64jPlQjWK8b0l3E+NyAEEvX1M3hV5OsEYfPnJOxXVBSHB1fKTkVLt2s9seIetzsI+00tI7T4UTR4p0AAAAA=",
-    "alt": "Caldo servido de la olla sobre un tazón de fideos",
-    "autor": "sehoon ye",
-    "usuario": "_3bread",
-    "id": "WLDy6dh7CPo"
-  },
-  "soya": {
-    "ancho": 2400,
-    "alto": 1592,
-    "color": "#f8f8f8",
-    "lqip": "data:image/webp;base64,UklGRlYAAABXRUJQVlA4IEoAAADQAwCdASoYABAAPu1krU2ppaSiMAgBMB2JZQDCgCHf1nATBgc68MAA/vHDCoS+/b4v+doQM1lUfc/4CHuAHpz+t2y1IBERjm0AAA==",
-    "alt": "Palillos sobre un cuenco con salsa de soya",
-    "autor": "Gerard M. C.",
-    "usuario": "g_designer",
-    "id": "hm1arTdhkiY"
+    "alto": 1800,
+    "color": "#8898b8",
+    "lqip": "data:image/webp;base64,UklGRm4AAABXRUJQVlA4IGIAAAAQBACdASoYABIAPu1gp02ppaOiMAgBMB2JQBOgBDDCgKDBN9t7ToGaAAD8evN22Kmu3TcxuRHZ9kilGxEFzcC2dCGaJnt7VCjtVYZxGm8gwH+YKbyjkCG+ZXss/H+xGGrYAA==",
+    "alt": "Centro de Guadalajara al anochecer, con la catedral al fondo",
+    "autor": "Sergio Rodríguez",
+    "usuario": "sergiordgz",
+    "id": "8N8LwHeSRM0"
   }
 }
