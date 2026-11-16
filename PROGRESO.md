@@ -2,7 +2,7 @@
 
 - **Pages:** https://andre-bhp.github.io/Take-chan/
 - **Repositorio:** https://github.com/Andre-BHP/Take-chan
-- **Última subida:** 2026-11-16 15:39 (hora de Guadalajara)
+- **Última subida:** 2026-11-16 16:10 (hora de Guadalajara)
 
 ## Rediseño (2026-11-15)
 André revisó la primera versión: "quedó muy feo y muy mal". Este rediseño cambia la dirección a "una ramen-ya de Yokohama de noche": fotos de ejemplo rotuladas, negro sumi y papel washi, 家系 vertical y un solo acento bermellón.
@@ -16,6 +16,21 @@ André revisó la primera versión: "quedó muy feo y muy mal". Este rediseño c
 - [x] R6. Revisión de impeccable y design-taste-frontend, y correcciones
 - [x] R7. Pruebas, comparativa antes y después, mockups de visita
 - [x] R8. Reporte
+
+## Nivel 3 (2026-11-16)
+Plan de Arthemis para pasar de "bien hecho" a "de premio".
+
+- [x] N0. Crítica y diferencias con el plan (`entregables/N0_critica.md`)
+- [ ] N1. Una sola mirada fotográfica: tratamiento de color, grano y viñeta
+- [ ] N2. Mapas propios de OpenStreetMap en lugar de fotos de las sucursales
+- [ ] N3. "Cómo se hace un Iekei": tazón visto desde arriba y pasos 一二三四
+- [ ] N4. Sello hanko de la propuesta
+- [ ] N5. Héroe legible y saludo いらっしゃいませ
+- [ ] N6. Ritmo editorial: títulos, 4.8 con sección propia y pausa a sangre
+- [ ] N7. Menú que vende: sugerencia, detalle de tecla y vista de lista
+- [ ] N8. Reloj en vivo, TikTok bajo demanda, contraste AA y detalles
+- [ ] N9. Guion de fotos para André
+- [ ] N10. Pruebas, pulido, videos y reporte
 
 ## Movimiento (2026-11-16)
 André: "mejor animación, más transiciones, mejor diseño, mejor todo". Metáfora: entrar a la ramen-ya apartando la noren. Cada paso con video (MP4) y GIF en `entregables/avances/video/`.
@@ -34,14 +49,10 @@ André: "mejor animación, más transiciones, mejor diseño, mejor todo". Metáf
 Repositorio, Pages, datos, inicio, máquina de tickets, sucursales con JSON-LD, pruebas y lista para el negocio. Capturas en `entregables/avances/antes/`.
 
 ## Último paso
-**M8.** Video final de la portada a 390 y 1440 px, capturas de visita nuevas en [`entregables/capturas-visita/`](entregables/capturas-visita/), `DESIGN.md` con el movimiento construido y [`entregables/REPORTE_MOVIMIENTO.md`](entregables/REPORTE_MOVIMIENTO.md).
+**N0.** Crítica de impeccable sobre el sitio de M8. Coincide en la Catedral, el tazón de clip-art y las fotos sin mirada común. Difiere en los antetítulos (el kanji irá vertical), en el velo del héroe (solo falta en celular) y en la cantidad de movimiento. Diferencias y decisiones en `entregables/N0_critica.md`.
 
 ## Sigue
-Visita al local.
+N1: un solo tratamiento de color para todas las fotos, grano y viñeta; fuera la Catedral y la foto del té.
 
 ## Capturas más recientes
-| Portada final, 390 px | Portada final, 1440 px |
-|---|---|
-| <img src="entregables/avances/video/2026-11-16_M8_inicio_390.gif" width="220"> | <img src="entregables/avances/video/2026-11-16_M8_inicio_1440.gif" width="420"> |
-
-Videos: [390 px](entregables/avances/video/2026-11-16_M8_inicio_390.mp4) · [1440 px](entregables/avances/video/2026-11-16_M8_inicio_1440.mp4)
+Sin capturas nuevas en este paso (solo documento).
