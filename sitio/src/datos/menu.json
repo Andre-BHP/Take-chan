@@ -1,0 +1,81 @@
+{
+  "fuente": "No hay menú público. Esta carta es una propuesta de estructura para llenar con el negocio.",
+  "regla": "Ningún nombre ni precio aquí es real. Los nombres son descripciones genéricas del estilo Iekei (confirmado: false) y los precios quedan en null. La interfaz muestra 'por confirmar' en todo lo que tenga confirmado: false.",
+  "categorias": [
+    {
+      "id": "ramen",
+      "nombre": "Ramen",
+      "nota": "Iekei: caldo de cerdo con soya y fideo grueso.",
+      "items": [
+        {
+          "id": "iekei-clasico",
+          "nombre": "Iekei clásico",
+          "desc": "El tazón de la casa: caldo de cerdo con soya y fideo grueso.",
+          "precio": null,
+          "confirmado": false,
+          "protagonista": true,
+          "nota": "Nombre propuesto. Pedir al negocio el nombre real y los 3 ramen más vendidos."
+        },
+        {
+          "id": "ramen-2",
+          "nombre": "Segundo ramen de la casa",
+          "desc": "Espacio para el segundo más pedido.",
+          "precio": null,
+          "confirmado": false,
+          "hueco": true
+        },
+        {
+          "id": "ramen-3",
+          "nombre": "Tercer ramen de la casa",
+          "desc": "Espacio para el tercero más pedido.",
+          "precio": null,
+          "confirmado": false,
+          "hueco": true
+        }
+      ]
+    },
+    {
+      "id": "extras",
+      "nombre": "Extras",
+      "nota": "Para agregar al tazón.",
+      "items": [
+        { "id": "panceta", "nombre": "Panceta extra", "desc": "La panceta es de lo más elogiado en las reseñas.", "precio": null, "confirmado": false },
+        { "id": "huevo", "nombre": "Huevo marinado", "desc": "Extra común en el ramen japonés.", "precio": null, "confirmado": false },
+        { "id": "fideo-extra", "nombre": "Fideo extra", "desc": "Otra porción de fideo grueso para el mismo caldo.", "precio": null, "confirmado": false }
+      ]
+    },
+    {
+      "id": "entradas",
+      "nombre": "Entradas",
+      "nota": "Por confirmar con el negocio.",
+      "items": [
+        { "id": "entrada-1", "nombre": "Entrada de la casa", "desc": "Espacio para una entrada del menú real.", "precio": null, "confirmado": false, "hueco": true },
+        { "id": "arroz", "nombre": "Arroz blanco", "desc": "En muchas ramen-ya Iekei se acompaña con arroz. Confirmar si lo ofrecen.", "precio": null, "confirmado": false }
+      ]
+    },
+    {
+      "id": "bebidas",
+      "nombre": "Bebidas",
+      "nota": "Por confirmar con el negocio.",
+      "items": [
+        { "id": "bebida-1", "nombre": "Bebida de la casa", "desc": "Espacio para las bebidas del menú real.", "precio": null, "confirmado": false, "hueco": true },
+        { "id": "agua", "nombre": "Agua embotellada", "desc": "Confirmar marcas y tamaños.", "precio": null, "confirmado": false }
+      ]
+    }
+  ],
+  "alGusto": {
+    "nota": "En el estilo Iekei se suele elegir firmeza del fideo, intensidad del caldo y cantidad de grasa. Confirmar si Take-chan lo ofrece.",
+    "confirmado": false,
+    "opciones": [
+      { "id": "fideo", "nombre": "Fideo", "valores": ["Firme", "Normal", "Suave"], "omision": "Normal" },
+      { "id": "sabor", "nombre": "Sabor", "valores": ["Ligero", "Normal", "Intenso"], "omision": "Normal" },
+      { "id": "grasa", "nombre": "Grasa", "valores": ["Poca", "Normal", "Mucha"], "omision": "Normal" }
+    ]
+  },
+  "recoger": {
+    "nota": "Horas cada 15 minutos dentro del horario. Confirmar si aceptan pedidos para recoger.",
+    "confirmado": false,
+    "cadaMinutos": 15,
+    "margenCierreMinutos": 30
+  }
+}

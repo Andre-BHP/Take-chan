@@ -4,13 +4,13 @@ Propuesta no oficial de sitio para Take-chan Ramen.
 
 - **Pages:** https://andre-bhp.github.io/SENSEI/
 - **Repositorio:** https://github.com/Andre-BHP/SENSEI
-- **Última subida:** 2026-11-15 23:25 (hora de Guadalajara)
+- **Última subida:** 2026-11-15 23:40 (hora de Guadalajara)
 
 ## Pasos
 - [x] 0. Repositorio, Pages "en construcción" (aviso y `noindex`) y este archivo
 - [x] 1. Leer fuentes
 - [x] 2. `DESIGN.md` con impeccable
-- [ ] 3. Datos (`negocio.json` y `menu.json`)
+- [x] 3. Datos (`negocio.json` y `menu.json`)
 - [ ] 4. Inicio
 - [ ] 5. Menú y máquina de tickets
 - [ ] 6. Sucursales y JSON-LD
@@ -19,10 +19,10 @@ Propuesta no oficial de sitio para Take-chan Ramen.
 - [ ] 9. Push y Pages final
 
 ## Último paso
-**Paso 2.** [`DESIGN.md`](DESIGN.md) con tokens (color, tipografía de 6 niveles, espaciado de 8 px, radios, sombras y tiempos) y la carta que justifica cada decisión. [`PRODUCT.md`](PRODUCT.md) con lo confirmado. Fuentes autohospedadas en subconjunto (unos 47 KB). La página en construcción ya muestra la paleta y la tipografía.
+**Paso 3.** Proyecto Angular 22 con prerender en `sitio/` (configuración copiada de Arleth, con `baseHref /SENSEI/` para Pages). Datos en [`sitio/src/datos/negocio.json`](sitio/src/datos/negocio.json) y [`menu.json`](sitio/src/datos/menu.json): cada dato con `confirmado`. No hay ningún precio: todos quedan en `null` y se verán "por confirmar". Servicios de horario ("abierto ahora" con la hora de Guadalajara) y de contacto en modo demostración. Sin cambio visual todavía.
 
 ## Sigue
-Paso 3: datos (`negocio.json` y `menu.json` con `confirmado` por dato).
+Paso 4: inicio (héroe con TAKE-CHAN gigante y el tazón con vapor, Iekei, favoritos en bento, primera vez, sucursales y pie).
 
 ## Capturas más recientes
 | 360 px | 1440 px |
