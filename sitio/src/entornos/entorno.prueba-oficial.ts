@@ -8,6 +8,7 @@ export const ENTORNO: Entorno = {
   modo: 'oficial',
   whatsapp: '5210000000000',
   dominio: 'https://ejemplo.test',
+  publico: '',
   goatcounter: '',
   hojaUrl: '',
 };

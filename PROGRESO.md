@@ -2,7 +2,7 @@
 
 - **Pages:** https://andre-bhp.github.io/Take-chan/
 - **Repositorio:** https://github.com/Andre-BHP/Take-chan
-- **Última subida:** 2026-11-16 20:57 (hora de Guadalajara)
+- **Última subida:** 2026-11-16 21:03 (hora de Guadalajara)
 
 ## Rediseño (2026-11-15)
 André revisó la primera versión: "quedó muy feo y muy mal". Este rediseño cambia la dirección a "una ramen-ya de Yokohama de noche": fotos de ejemplo rotuladas, negro sumi y papel washi, 家系 vertical y un solo acento bermellón.
@@ -21,7 +21,7 @@ André revisó la primera versión: "quedó muy feo y muy mal". Este rediseño c
 Plan de Arthemis: todo lo que no depende del negocio, para publicar el sitio oficial en menos de una hora.
 
 - [x] P0. Interruptor de modo, propuesta u oficial
-- [ ] P1. Vista previa al compartir y `/links`
+- [x] P1. Vista previa al compartir y `/links`
 - [ ] P2. Datos editables desde CSV, aviso y agotado 売切
 - [ ] P3. Preguntas frecuentes y SEO local
 - [ ] P4. Versión en inglés
@@ -63,12 +63,12 @@ André: "mejor animación, más transiciones, mejor diseño, mejor todo". Metáf
 Repositorio, Pages, datos, inicio, máquina de tickets, sucursales con JSON-LD, pruebas y lista para el negocio. Capturas en `entregables/avances/antes/`.
 
 ## Último paso
-**P0.** Un solo interruptor de modo, propuesta u oficial (`sitio/src/entornos/`), con WhatsApp, dominio, GoatCounter y hoja en el mismo archivo. Hay tres builds: `build:pages` (la propuesta), `build:oficial` (se llena el día del sí) y `build:prueba-oficial` (ensayo con el número 5210000000000 y el dominio ejemplo.test, nunca se publica). `scripts/preparar.mjs` ajusta cada build según el modo: noindex, robots y aviso en la propuesta; index, sitemap, canónica y sin rastros de la propuesta en el oficial. `herramientas/modos.mjs` comprueba la tabla del plan en los dos builds (aviso, nota, robots, canónica, sitemap, rótulos, estadísticas, "Total" y WhatsApp real a wa.me): todo en orden. Primera versión de `GUIA_PUBLICAR.md`.
+**P1.** Vista previa al compartir: una imagen de 1200 × 630 por página y por modo (`herramientas/og.mjs`), con la foto tratada o el mapa, el sello, el nombre y la frase; las de la propuesta dicen "Propuesta no oficial" y llevan el rótulo de imagen ilustrativa. Cada página lleva og:image absoluta, og:site_name y la tarjeta grande de X. `/links` para la biografía de TikTok: página estática generada en el build desde `negocio.json` (`sitio/scripts/links.mjs`), con el sello, el estado de hoy y botones grandes (Menú y pedido, Cómo llegar, Americana por confirmar, Reseñas y TikTok). Pesa 94 KB (límite 150) y no lleva la intro. `herramientas/compartir.mjs` revisa etiquetas, imágenes, peso y axe en los dos modos: todo en orden. Falta probar el enlace en WhatsApp de verdad desde un celular (André); la captura es una simulación con las etiquetas reales.
 
 ## Sigue
-P1: vista previa al compartir (imagen de 1200 × 630 por página) y la página `/links` para la biografía de TikTok.
+P2: menú, horario y aviso editables desde una hoja de Google en CSV (con respaldo en los JSON), banda de aviso y platillo agotado 売切.
 
 ## Capturas más recientes
-| Propuesta y oficial (390) |
-|---|
-| ![modos](entregables/avances/2026-11-16_paso-P0_modos.png) |
+| /links (390) | Vista previa (simulación con las etiquetas reales) |
+|---|---|
+| ![links](entregables/avances/2026-11-16_paso-P1_links_390.png) | ![vista previa](entregables/avances/2026-11-16_paso-P1_vista-previa.png) |

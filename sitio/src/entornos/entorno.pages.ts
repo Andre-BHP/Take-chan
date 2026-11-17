@@ -8,6 +8,7 @@ export const ENTORNO: Entorno = {
   modo: 'propuesta',
   whatsapp: '',
   dominio: '',
+  publico: 'https://andre-bhp.github.io/Take-chan',
   goatcounter: '',
   hojaUrl: '',
 };

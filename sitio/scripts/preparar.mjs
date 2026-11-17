@@ -5,6 +5,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { generarLinks } from './links.mjs';
 
 const [raiz = 'dist/pages/browser', config = 'pages'] = process.argv.slice(2);
 const sitio = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -29,6 +30,8 @@ const ruta = (f) => '/' + f.replace(/(^|\/)index\.html$/, '').replace(/\.html$/,
 // Rutas desconocidas: GitHub Pages (y la mayoría de los hostings estáticos) sirven 404.html.
 if (fs.existsSync(path.join(raiz, 'index.csr.html'))) fs.copyFileSync(path.join(raiz, 'index.csr.html'), path.join(raiz, '404.html'));
 escribir('.nojekyll', '');
+// /links: página estática y ligera para la biografía de TikTok (scripts/links.mjs).
+generarLinks({ raiz, modo, dominio, publico: campo('publico') });
 const AVISO = 'Propuesta no oficial de sitio para Take-chan Ramen';
 
 if (modo === 'propuesta') {

@@ -8,6 +8,7 @@ export const ENTORNO: Entorno = {
   modo: 'oficial',
   whatsapp: '',
   dominio: '',
+  publico: '',
   goatcounter: '',
   hojaUrl: '',
 };

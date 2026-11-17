@@ -10,6 +10,8 @@ export interface Entorno {
   whatsapp: string;
   /** Dominio público sin diagonal final (https://take-chan.mx). Da la URL canónica y el sitemap. */
   dominio: string;
+  /** Dónde se sirve este build si no hay dominio (la propuesta en GitHub Pages). Solo para las imágenes al compartir. */
+  publico: string;
   /** Código de GoatCounter (el "xxx" de xxx.goatcounter.com). Vacío: sin estadísticas. */
   goatcounter: string;
   /** URL de la hoja de Google publicada como CSV. Vacío: se usan los JSON del build. */

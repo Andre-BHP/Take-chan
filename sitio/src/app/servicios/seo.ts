@@ -6,6 +6,10 @@ import { OFICIAL } from '../../entornos/modo';
 
 /** Dominio público del entorno; en la propuesta, uno de ejemplo (.test, reservado) solo para el JSON-LD. */
 export const BASE = ENTORNO.dominio || 'https://take-chan-ramen.test';
+/** Raíz absoluta para las imágenes al compartir (WhatsApp y X las piden con dominio). */
+const PUBLICO = ENTORNO.dominio || ENTORNO.publico;
+/** Imagen de 1200 × 630 de cada página (herramientas/og.mjs), con su versión de propuesta u oficial. */
+const IMAGENES: Record<string, string> = { '/': 'inicio', '/menu': 'menu', '/tlaquepaque': 'tlaquepaque', '/americana': 'americana', '/links': 'links' };
 
 /**
  * Título, descripción, canónico y JSON-LD de cada página.
@@ -26,6 +30,18 @@ export class Seo {
     this.meta.updateTag({ property: 'og:description', content: opc.descripcion });
     this.meta.updateTag({ property: 'og:type', content: 'website' });
     this.meta.updateTag({ property: 'og:locale', content: 'es_MX' });
+    this.meta.updateTag({ property: 'og:site_name', content: 'Take-chan Ramen' });
+    this.meta.updateTag({ name: 'twitter:card', content: 'summary_large_image' });
+    this.meta.updateTag({ name: 'twitter:title', content: opc.titulo });
+    this.meta.updateTag({ name: 'twitter:description', content: opc.descripcion });
+    const imagen = `${PUBLICO}/og/${OFICIAL ? 'oficial' : 'propuesta'}/${IMAGENES[opc.ruta] ?? 'inicio'}.jpg`;
+    if (PUBLICO) {
+      this.meta.updateTag({ property: 'og:image', content: imagen });
+      this.meta.updateTag({ property: 'og:image:width', content: '1200' });
+      this.meta.updateTag({ property: 'og:image:height', content: '630' });
+      this.meta.updateTag({ property: 'og:image:alt', content: opc.titulo });
+      this.meta.updateTag({ name: 'twitter:image', content: imagen });
+    }
 
     let canonico = this.doc.head.querySelector<HTMLLinkElement>('link[rel=canonical]');
     if (OFICIAL) {
