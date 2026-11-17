@@ -2,7 +2,7 @@
 
 - **Pages:** https://andre-bhp.github.io/Take-chan/
 - **Repositorio:** https://github.com/Andre-BHP/Take-chan
-- **Última subida:** 2026-11-16 20:27 (hora de Guadalajara)
+- **Última subida:** 2026-11-16 20:28 (hora de Guadalajara)
 
 ## Rediseño (2026-11-15)
 André revisó la primera versión: "quedó muy feo y muy mal". Este rediseño cambia la dirección a "una ramen-ya de Yokohama de noche": fotos de ejemplo rotuladas, negro sumi y papel washi, 家系 vertical y un solo acento bermellón.
@@ -29,7 +29,7 @@ Plan de Arthemis para pasar de "bien hecho" a "de premio".
 - [x] N6. Ritmo editorial: títulos, 4.8 con sección propia y pausa a sangre
 - [x] N7. Menú que vende: sugerencia, detalle de tecla y vista de lista
 - [x] N8. Reloj en vivo, TikTok bajo demanda, contraste AA y detalles
-- [ ] N9. Guion de fotos para André
+- [x] N9. Guion de fotos para André
 - [ ] N10. Pruebas, pulido, videos y reporte
 
 ## Movimiento (2026-11-16)
@@ -49,12 +49,10 @@ André: "mejor animación, más transiciones, mejor diseño, mejor todo". Metáf
 Repositorio, Pages, datos, inicio, máquina de tickets, sucursales con JSON-LD, pruebas y lista para el negocio. Capturas en `entregables/avances/antes/`.
 
 ## Último paso
-**N8.** Detalles. Reloj vivo: "Abierto ahora · cierra en 2 h 13 min", que cambia justo al empezar cada minuto; cerrado: "Cerrado · abre mañana a las 12:00". TikTok con fachada: "Míralos en TikTok" no pide nada a TikTok hasta que se toca, y entonces carga el embed oficial de @take_chan_sensei, sin el título no verificado. En escritorio, una etiqueta "Ver en el menú" sigue al puntero dentro de cada tarjeta del bento. El gris secundario sube a #bdb4a8 (AA de sobra). Los rótulos "Imagen ilustrativa" van siempre arriba a la derecha (abajo están los textos). El pedido vacío tiene una mini máquina dibujada. La ficha de Tlaquepaque junta los 7 días iguales en "Todos los días". Revisión nueva `herramientas/detalles.mjs` (reloj con hora fija, cero pedidos a TikTok antes del clic): todo en orden. axe limpio, portada de 472 KB, LCP de 1.2 s y CLS de 0.003.
+**N9.** `entregables/GUION_FOTOS.md`: 12 tomas para la visita, con formato (vertical u horizontal), hora (al abrir, con luz natural), sin flash, mesa limpia, el orden para que el tazón no se enfríe y la foto del dueño solo con su permiso. Cada toma dice qué foto de ejemplo reemplaza, y al final van los pasos para cambiarlas con el mismo tratamiento de color. `PEDIR_AL_NEGOCIO.md` al día: enlaza el guion, ya no menciona los recuadros "Foto pendiente", y agrega como datos de ejemplo la sugerencia de huevo, la ubicación aproximada de la Americana, el sello y la confirmación del TikTok.
 
 ## Sigue
-N9: GUION_FOTOS.md con las 12 tomas y PEDIR_AL_NEGOCIO.md al día.
+N10: pruebas completas, pulido (impeccable y design-taste-frontend), videos, capturas de visita y reporte del nivel 3.
 
 ## Capturas más recientes
-| TikTok | Bento con etiqueta | Pedido vacío | 360 | 1440 |
-|---|---|---|---|---|
-| ![tiktok](entregables/avances/2026-11-16_paso-N8_tiktok_1440.png) | ![bento](entregables/avances/2026-11-16_paso-N8_bento_1440.png) | ![vacío](entregables/avances/2026-11-16_paso-N8_vacio_390.png) | ![360](entregables/avances/2026-11-16_paso-N8_360.png) | ![1440](entregables/avances/2026-11-16_paso-N8_1440.png) |
+Sin capturas nuevas en este paso (solo documentos): [GUION_FOTOS.md](entregables/GUION_FOTOS.md) · [PEDIR_AL_NEGOCIO.md](entregables/PEDIR_AL_NEGOCIO.md)

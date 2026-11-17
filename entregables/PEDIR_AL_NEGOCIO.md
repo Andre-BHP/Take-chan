@@ -10,10 +10,11 @@ Lista para la visita. Cada punto dice dónde entra en el sitio. Todo lo que hoy 
 - Dónde entra: `sitio/src/datos/menu.json`. Con precio y `confirmado: true` desaparece el "por confirmar" y el ticket calcula el total.
 
 ## 2. Fotos
-- Permiso para tomar fotos en el local: tazón (cenital y de lado), panceta, fideo, barra, fachada y la máquina de tickets si tienen.
+- Permiso para tomar fotos en el local. El guion de 12 tomas (formato, hora, sin flash, mesa limpia) está en `entregables/GUION_FOTOS.md`.
 - O fotos propias en alta resolución.
 - No se usan fotos de TikTok ni de directorios sin permiso.
-- Dónde entra: los recuadros punteados "Foto real pendiente" del inicio y de cada sucursal.
+- Dónde entra: hoy todas las fotos son de Unsplash con el rótulo "Imagen ilustrativa" (héroe, bento, teclas del menú, "Qué es el Iekei" y la pausa a sangre). Se reemplazan una por una con `herramientas/procesar-fotos.mjs`, que les da el mismo tratamiento de color.
+- Las sucursales ya no usan fotos: llevan mapas propios hechos con OpenStreetMap. Con la foto de la fachada (toma 9), se puede poner junto al mapa.
 
 ## 3. Logo y colores
 - Logo en vector (SVG, PDF o AI) o la mejor imagen que tengan.
@@ -36,7 +37,7 @@ Lista para la visita. Cada punto dice dónde entra en el sitio. Todo lo que hoy 
 
 ## 7. Permiso para usar la marca
 - Autorización por escrito (basta un mensaje) para usar el nombre Take-chan Ramen y, después, publicar el sitio en un dominio suyo.
-- Confirmar que TikTok `@take_chan_sensei` es la cuenta oficial y si tienen Instagram.
+- Confirmar que TikTok `@take_chan_sensei` es la cuenta oficial y si tienen Instagram. La portada ofrece cargar sus videos (solo al tocar), así que conviene confirmarlo antes de publicar.
 - Cómo quiere que se describa el origen: hoy dice "según su ficha, el fideo y el caldo se hacen en Japón y se importan".
 
 ## 8. Acceso a sus fichas de Google
@@ -57,6 +58,9 @@ Cada página lo dice una sola vez: "Propuesta: menú, precios y fotos de ejemplo
 | Fotos (Unsplash, rotuladas "Imagen ilustrativa") | Todo el sitio; créditos en `entregables/fotos-creditos.md` |
 | Sucursal Americana (dirección y horario) | Única marca "por confirmar"; sin horario ni estado abierto/cerrado |
 | Horario de Tlaquepaque (12:00 a 17:00 diario) | Se muestra como real porque coinciden Google y TikTok; conviene confirmarlo |
+| Sugerencia "¿Le agregas huevo marinado? +$25" | Menú, después del primer ramen; precio de ejemplo |
+| Ubicación de la Americana en el mapa | Aproximada, estimada por la numeración de Prisciliano Sánchez en OpenStreetMap |
+| Sello hanko 家系 | Logo de propuesta (ver punto 3) |
 
 ## Lo que no se usa aunque sea público
 - El título de "Presidente de la Asociación Internacional de Ramen" de su TikTok: no está verificado.
