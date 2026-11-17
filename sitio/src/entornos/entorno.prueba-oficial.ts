@@ -10,5 +10,6 @@ export const ENTORNO: Entorno = {
   dominio: 'https://ejemplo.test',
   publico: '',
   goatcounter: '',
-  hojaUrl: '',
+  // Ensayo: las pestañas de ejemplo del propio build (public/datos-ejemplo/), con un platillo agotado y un aviso.
+  hoja: { menu: 'datos-ejemplo/menu.csv', horario: 'datos-ejemplo/horario.csv', aviso: 'datos-ejemplo/aviso.csv' },
 };

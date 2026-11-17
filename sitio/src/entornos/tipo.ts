@@ -14,6 +14,9 @@ export interface Entorno {
   publico: string;
   /** Código de GoatCounter (el "xxx" de xxx.goatcounter.com). Vacío: sin estadísticas. */
   goatcounter: string;
-  /** URL de la hoja de Google publicada como CSV. Vacío: se usan los JSON del build. */
-  hojaUrl: string;
+  /**
+   * Pestañas de la hoja de Google publicadas como CSV (Archivo → Compartir → Publicar en la Web → CSV), una URL por pestaña.
+   * Vacías: se usan los JSON del build. Formato de cada pestaña: GUIA_EDITAR.md.
+   */
+  hoja: { menu: string; horario: string; aviso: string };
 }

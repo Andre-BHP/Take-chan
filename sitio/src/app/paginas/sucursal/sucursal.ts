@@ -1,7 +1,7 @@
 import { PROPUESTA } from '../../../entornos/modo';
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, computed } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
-import { NEGOCIO, direccionCompleta, sucursal } from '../../servicios/datos';
+import { NEGOCIO, direccionCompleta, sucursal, VERSION_DATOS } from '../../servicios/datos';
 import { Seo } from '../../servicios/seo';
 import { restaurante } from '../../servicios/esquema';
 import { Estado } from '../../componentes/estado';
@@ -18,12 +18,15 @@ const INDICE = [1, 2, 3, 4, 5, 6, 0];
   styleUrl: './sucursal.css',
 })
 export class SucursalPagina {
+  /** Se lee en la plantilla: si la hoja de Google cambia los datos, la página se vuelve a dibujar. */
+  protected readonly version = VERSION_DATOS;
   protected readonly propuesta = PROPUESTA;
   protected readonly s = sucursal(inject(ActivatedRoute).snapshot.data['sucursal']);
   protected readonly direccion = direccionCompleta(this.s);
   protected readonly precio = NEGOCIO.precioPorPersona;
   /** Días seguidos con el mismo horario van en una sola fila ("Todos los días", "Lunes a viernes"). */
-  protected readonly semana = (() => {
+  protected readonly semana = computed(() => {
+    VERSION_DATOS();
     const dias = INDICE.map((d, i) => {
       const t = this.s.horario.turnos.find((x) => x.dias.includes(d));
       return { dia: DIAS[i], horas: t ? `${t.abre} a ${t.cierra}` : 'Cerrado' };
@@ -37,7 +40,7 @@ export class SucursalPagina {
       i = j + 1;
     }
     return grupos;
-  })();
+  });
   protected readonly conEsquema = !!restaurante(this.s);
 
   constructor() {

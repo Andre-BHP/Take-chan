@@ -10,5 +10,5 @@ export const ENTORNO: Entorno = {
   dominio: '',
   publico: '',
   goatcounter: '',
-  hojaUrl: '',
+  hoja: { menu: '', horario: '', aviso: '' },
 };

@@ -1,3 +1,4 @@
+@let datos = version();
 <section class="cabeza" aria-labelledby="sucursal-titulo">
   <app-mapa class="cabeza-foto" [sucursal]="s.id" [alt]="'Mapa de las calles alrededor de ' + s.direccion.calle" [aproximada]="!s.confirmada" [prioridad]="true" />
   <div class="envoltura cabeza-texto">
@@ -28,7 +29,7 @@
     <table class="horario">
       <caption class="solo-lector">Horario de {{ s.nombre }}</caption>
       <tbody>
-        @for (d of semana; track d.dia) {
+        @for (d of semana(); track d.dia) {
           <tr><th scope="row">{{ d.dia }}</th><td class="t-dato">{{ d.horas }}</td></tr>
         }
       </tbody>

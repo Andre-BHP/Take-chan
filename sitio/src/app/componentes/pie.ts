@@ -1,7 +1,7 @@
 import { PROPUESTA } from '../../entornos/modo';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { NEGOCIO, SUCURSALES, direccionCorta } from '../servicios/datos';
+import { NEGOCIO, SUCURSALES, VERSION_DATOS, direccionCorta } from '../servicios/datos';
 import { horarioTexto } from '../servicios/horario';
 import { FOTOS } from './foto';
 
@@ -11,6 +11,7 @@ import { FOTOS } from './foto';
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [RouterLink],
   template: `
+    @let datos = version();
     <footer>
       <div class="envoltura rejilla">
         <div class="firma">
@@ -58,6 +59,7 @@ import { FOTOS } from './foto';
   `,
 })
 export class Pie {
+  protected readonly version = VERSION_DATOS;
   protected readonly propuesta = PROPUESTA;
   protected readonly sucursales = SUCURSALES;
   protected readonly precio = NEGOCIO.precioPorPersona;

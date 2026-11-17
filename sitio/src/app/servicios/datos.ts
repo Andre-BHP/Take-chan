@@ -1,3 +1,4 @@
+import { signal } from '@angular/core';
 import negocioJson from '../../datos/negocio.json';
 import menuJson from '../../datos/menu.json';
 
@@ -32,6 +33,7 @@ interface Negocio {
   redes: { tiktok: { usuario: string; url: string; confirmado: boolean } };
   contacto: { whatsapp: Dato<string | null>; telefono: Dato<string | null>; correo: Dato<string | null> };
   sucursales: Sucursal[];
+  avisos: Aviso[];
 }
 
 export interface Platillo {
@@ -42,7 +44,12 @@ export interface Platillo {
   confirmado: boolean;
   foto: string | null;
   protagonista?: boolean;
+  /** false: agotado hoy (la tecla se apaga con 売切). Sale de la hoja; en los JSON no se usa. */
+  disponible?: boolean;
 }
+
+/** Aviso temporal ("Hoy cerramos a las 15:00"), con fechas desde y hasta (AAAA-MM-DD o AAAA-MM-DD HH:MM). */
+export interface Aviso { texto: string; desde: string; hasta: string }
 
 export interface Categoria { id: string; nombre: string; ja: string; items: Platillo[] }
 
@@ -61,9 +68,20 @@ export const MENU = menuJson as unknown as Menu;
 export const SUCURSALES = NEGOCIO.sucursales;
 export const sucursal = (id: string) => SUCURSALES.find((s) => s.id === id)!;
 
-export const PLATILLOS = MENU.categorias.flatMap((c) => c.items);
-const porId = new Map(PLATILLOS.map((p) => [p.id, p]));
+/**
+ * Sube cada vez que la hoja de Google cambia el menú, el horario o el aviso (servicios/hoja.ts).
+ * Las plantillas y los cálculos que dependen de esos datos la leen para volver a dibujarse.
+ */
+export const VERSION_DATOS = signal(0);
+export const AVISO_JSON = NEGOCIO.avisos ?? [];
+
+let porId = new Map(MENU.categorias.flatMap((c) => c.items).map((p) => [p.id, p]));
+/** Después de cambiar el menú: vuelve a indexar los platillos por id. */
+export function reindexar() {
+  porId = new Map(MENU.categorias.flatMap((c) => c.items).map((p) => [p.id, p]));
+}
 export const platillo = (id: string) => porId.get(id)!;
+export const agotado = (p: Platillo | undefined) => p?.disponible === false;
 export const esRamen = (p: Platillo) => MENU.categorias[0].items.includes(p);
 
 /** Dirección en una línea, sin los campos vacíos. */

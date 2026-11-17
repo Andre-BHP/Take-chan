@@ -10,5 +10,5 @@ export const ENTORNO: Entorno = {
   dominio: '',
   publico: 'https://andre-bhp.github.io/Take-chan',
   goatcounter: '',
-  hojaUrl: '',
+  hoja: { menu: '', horario: '', aviso: '' },
 };

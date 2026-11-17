@@ -1,3 +1,4 @@
+@let datos = version();
 <section class="cabeza envoltura" aria-labelledby="menu-titulo">
   <h1 id="menu-titulo" class="t-display">Menú y pedido</h1>
   <p class="entrada">Como en una ramen-ya de Japón: presiona las teclas de la máquina, elige el fideo, el sabor y la grasa, y sale tu ticket listo para WhatsApp.</p>
@@ -35,9 +36,10 @@
             <div class="teclas">
               @for (p of c.items; track p.id; let pi = $index) {
                 <div class="tecla-caja">
-                <button type="button" class="tecla" [class.elegida]="pedido.cantidad(p.id) > 0" [class.pulsada]="pulsada() === p.id"
+                <button type="button" class="tecla" [class.elegida]="pedido.cantidad(p.id) > 0" [class.pulsada]="pulsada() === p.id" [class.agotada]="agotado(p)" [disabled]="agotado(p)"
                   (click)="presionar(p.id, $event)" (pointerdown)="empezarPresion(p, $event)" (pointerup)="soltarPresion()" (pointerleave)="soltarPresion()" (pointercancel)="soltarPresion()" (contextmenu)="$event.preventDefault()"
-                  [style.--n]="ci * 4 + pi" [attr.aria-label]="'Agregar ' + p.nombre + ', ' + pesos(p.precio) + '. En el pedido: ' + pedido.cantidad(p.id)">
+                  [style.--n]="ci * 4 + pi" [attr.aria-label]="agotado(p) ? p.nombre + ', agotado' : 'Agregar ' + p.nombre + ', ' + pesos(p.precio) + '. En el pedido: ' + pedido.cantidad(p.id)">
+                  @if (agotado(p)) { <span class="urikire" aria-hidden="true"><span lang="ja">売切</span>Agotado</span> }
                   <span class="ventana" [style.view-transition-name]="p.id === preseleccion ? 'plato-' + p.id : null">
                     @if (p.foto) { <app-foto [nombre]="p.foto" sizes="(min-width: 1000px) 12rem, 45vw" [rotulo]="false" alt="" /> }
                     @else { <span class="sin-foto" lang="ja" aria-hidden="true">{{ c.ja }}</span> }
@@ -79,9 +81,13 @@
                   <p class="lista-desc">{{ p.desc }}</p>
                 </div>
                 <span class="lista-precio t-dato">{{ pesos(p.precio) }}</span>
-                <button type="button" class="lista-agregar" (click)="presionar(p.id)" [attr.aria-label]="'Agregar ' + p.nombre + ', ' + pesos(p.precio) + '. En el pedido: ' + pedido.cantidad(p.id)">
-                  Agregar@if (pedido.cantidad(p.id) > 0) { <span class="t-dato" aria-hidden="true"> · {{ pedido.cantidad(p.id) }}</span> }
-                </button>
+                @if (agotado(p)) {
+                  <span class="lista-agotado"><span lang="ja">売切</span> Agotado</span>
+                } @else {
+                  <button type="button" class="lista-agregar" (click)="presionar(p.id)" [attr.aria-label]="'Agregar ' + p.nombre + ', ' + pesos(p.precio) + '. En el pedido: ' + pedido.cantidad(p.id)">
+                    Agregar@if (pedido.cantidad(p.id) > 0) { <span class="t-dato" aria-hidden="true"> · {{ pedido.cantidad(p.id) }}</span> }
+                  </button>
+                }
               </li>
             }
           </ul>
@@ -244,7 +250,8 @@
       <p>{{ d.desc }}</p>
       @if (esRamen(d)) { <p class="tenue">Se pide al gusto: fideo, sabor y grasa.</p> }
       <div class="detalle-acciones">
-        <button type="button" class="boton boton-primario" (click)="agregarDesdeDetalle(d)">Agregar · {{ pesos(d.precio) }}</button>
+        @if (agotado(d)) { <p class="detalle-agotado"><span lang="ja">売切</span> Agotado por hoy</p> }
+        @else { <button type="button" class="boton boton-primario" (click)="agregarDesdeDetalle(d)">Agregar · {{ pesos(d.precio) }}</button> }
         <button type="button" class="boton boton-contorno" (click)="cerrarDetalle()">Cerrar</button>
       </div>
     </div>

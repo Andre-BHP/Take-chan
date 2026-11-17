@@ -19,7 +19,10 @@
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,
-    "strictInputAccessModifiers": true
+    "strictInputAccessModifiers": true,
+    "extendedDiagnostics": {
+      "checks": { "unusedLetDeclaration": "suppress" }
+    }
   },
   "files": [],
   "references": [

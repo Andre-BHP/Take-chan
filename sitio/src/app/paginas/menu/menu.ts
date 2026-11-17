@@ -2,7 +2,7 @@ import { PROPUESTA } from '../../../entornos/modo';
 import { ApplicationRef, ChangeDetectionStrategy, Component, DestroyRef, ElementRef, PLATFORM_ID, afterNextRender, computed, effect, inject, signal, viewChild } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
-import { MENU, Platillo, SUCURSALES, direccionCorta, esRamen, pesos, platillo } from '../../servicios/datos';
+import { MENU, Platillo, SUCURSALES, agotado, direccionCorta, esRamen, pesos, platillo, VERSION_DATOS } from '../../servicios/datos';
 import { Pedido } from '../../servicios/pedido';
 import { Contacto } from '../../servicios/contacto';
 import { Seo } from '../../servicios/seo';
@@ -19,6 +19,8 @@ import { Movimiento } from '../../servicios/movimiento';
   styleUrl: './menu.css',
 })
 export class Menu {
+  /** Se lee en la plantilla: si la hoja de Google cambia los datos, la página se vuelve a dibujar. */
+  protected readonly version = VERSION_DATOS;
   protected readonly propuesta = PROPUESTA;
   protected readonly pedido = inject(Pedido);
   protected readonly contacto = inject(Contacto);
@@ -26,12 +28,13 @@ export class Menu {
   protected readonly sucursales = SUCURSALES;
   protected readonly direccion = direccionCorta;
   protected readonly pesos = pesos;
-  protected readonly secciones = [
-    ...MENU.categorias.map((c) => ({ id: c.id, nombre: c.nombre })),
-    { id: 'al-gusto', nombre: 'Al gusto' },
-  ];
+  protected readonly agotado = agotado;
+  /** Secciones del índice: las categorías vigentes (la hoja puede cambiarlas) y "Al gusto". */
+  protected get secciones() {
+    return [...MENU.categorias.map((c) => ({ id: c.id, nombre: c.nombre })), { id: 'al-gusto', nombre: 'Al gusto' }];
+  }
   /** Sección visible, para el índice que sigue el scroll (dis-044). */
-  protected readonly activa = signal(this.secciones[0].id);
+  protected readonly activa = signal(MENU.categorias[0].id);
   /** Tecla recién presionada: se hunde aunque se use el teclado (dis-059). */
   protected readonly pulsada = signal<string | null>(null);
   /** En celular, la barra inferior se esconde cuando el panel del pedido ya está a la vista. */

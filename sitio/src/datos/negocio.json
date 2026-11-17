@@ -1,30 +1,99 @@
 {
   "fuente": "Auditoría de HERA (her-003) del 2026-11-15: Google vía Restaurant Guru, TripAdvisor y TikTok. Resumen en entregables/fuentes.md.",
   "regla": "Cada dato lleva confirmado: true solo si viene de una fuente pública coherente. Con false, la interfaz muestra 'por confirmar'. Nada aquí se inventa: lo que falta queda en null.",
-  "nombre": { "valor": "Take-chan Ramen", "confirmado": true, "nota": "En Google aparece como TAKE-CHAN RAMEN." },
-  "estilo": { "valor": "Ramen japonés estilo Iekei: caldo de cerdo con soya y fideo grueso", "confirmado": true },
-  "origen": { "valor": "Fideo y caldo hechos en Japón e importados", "confirmado": true, "nota": "Según su ficha de TripAdvisor. Confirmar la redacción con el dueño." },
-  "precioPorPersona": { "min": 100, "max": 200, "moneda": "MXN", "confirmado": true, "nota": "Rango público de Restaurant Guru, no precios de platillos." },
-  "calificacion": { "google": 4.8, "resenas": 140, "confirmado": true, "nota": "Según Restaurant Guru (ficha de Google). Se muestra en la portada como prueba social, sin citar reseñas textuales." },
+  "nombre": {
+    "valor": "Take-chan Ramen",
+    "confirmado": true,
+    "nota": "En Google aparece como TAKE-CHAN RAMEN."
+  },
+  "estilo": {
+    "valor": "Ramen japonés estilo Iekei: caldo de cerdo con soya y fideo grueso",
+    "confirmado": true
+  },
+  "origen": {
+    "valor": "Fideo y caldo hechos en Japón e importados",
+    "confirmado": true,
+    "nota": "Según su ficha de TripAdvisor. Confirmar la redacción con el dueño."
+  },
+  "precioPorPersona": {
+    "min": 100,
+    "max": 200,
+    "moneda": "MXN",
+    "confirmado": true,
+    "nota": "Rango público de Restaurant Guru, no precios de platillos."
+  },
+  "calificacion": {
+    "google": 4.8,
+    "resenas": 140,
+    "confirmado": true,
+    "nota": "Según Restaurant Guru (ficha de Google). Se muestra en la portada como prueba social, sin citar reseñas textuales."
+  },
   "redes": {
-    "tiktok": { "usuario": "@take_chan_sensei", "url": "https://www.tiktok.com/@take_chan_sensei", "confirmado": true, "nota": "Cuenta que etiquetan los creadores; confirmar que es la oficial." },
-    "instagram": { "valor": null, "confirmado": false }
+    "tiktok": {
+      "usuario": "@take_chan_sensei",
+      "url": "https://www.tiktok.com/@take_chan_sensei",
+      "confirmado": true,
+      "nota": "Cuenta que etiquetan los creadores; confirmar que es la oficial."
+    },
+    "instagram": {
+      "valor": null,
+      "confirmado": false
+    }
   },
   "contacto": {
-    "whatsapp": { "valor": null, "confirmado": false, "nota": "No existe público. Mientras sea null, el pedido funciona en modo demostración." },
-    "telefono": { "valor": null, "confirmado": false },
-    "correo": { "valor": null, "confirmado": false }
+    "whatsapp": {
+      "valor": null,
+      "confirmado": false,
+      "nota": "No existe público. Mientras sea null, el pedido funciona en modo demostración."
+    },
+    "telefono": {
+      "valor": null,
+      "confirmado": false
+    },
+    "correo": {
+      "valor": null,
+      "confirmado": false
+    }
   },
-  "logo": { "valor": null, "confirmado": false },
-  "colorMarca": { "valor": null, "confirmado": false, "nota": "Si el negocio tiene color, sustituye a --laca." },
+  "logo": {
+    "valor": null,
+    "confirmado": false
+  },
+  "colorMarca": {
+    "valor": null,
+    "confirmado": false,
+    "nota": "Si el negocio tiene color, sustituye a --laca."
+  },
   "sucursales": [
     {
       "id": "tlaquepaque",
       "nombre": "Tlaquepaque",
       "confirmada": true,
-      "direccion": { "calle": "Calz. Córdoba 24", "colonia": "Super Manzana El Álamo", "referencia": "Esquina con Niños Héroes", "cp": "45560", "ciudad": "San Pedro Tlaquepaque", "estado": "Jalisco", "confirmado": true },
+      "direccion": {
+        "calle": "Calz. Córdoba 24",
+        "colonia": "Super Manzana El Álamo",
+        "referencia": "Esquina con Niños Héroes",
+        "cp": "45560",
+        "ciudad": "San Pedro Tlaquepaque",
+        "estado": "Jalisco",
+        "confirmado": true
+      },
       "horario": {
-        "turnos": [{ "dias": [0, 1, 2, 3, 4, 5, 6], "abre": "12:00", "cierra": "17:00" }],
+        "turnos": [
+          {
+            "dias": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6
+            ],
+            "abre": "12:00",
+            "cierra": "17:00"
+          }
+        ],
         "confirmado": false,
         "nota": "Google y TikTok dicen 12:00 a 17:00 todos los días; TripAdvisor muestra otro. Confirmar días de descanso."
       },
@@ -35,14 +104,38 @@
       "id": "americana",
       "nombre": "Americana",
       "confirmada": false,
-      "direccion": { "calle": "Prisciliano Sánchez 1110", "colonia": "Americana", "referencia": null, "cp": null, "ciudad": "Guadalajara", "estado": "Jalisco", "confirmado": false },
+      "direccion": {
+        "calle": "Prisciliano Sánchez 1110",
+        "colonia": "Americana",
+        "referencia": null,
+        "cp": null,
+        "ciudad": "Guadalajara",
+        "estado": "Jalisco",
+        "confirmado": false
+      },
       "horario": {
-        "turnos": [{ "dias": [0, 1, 2, 3, 4, 5, 6], "abre": "12:00", "cierra": "17:00" }],
+        "turnos": [
+          {
+            "dias": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6
+            ],
+            "abre": "12:00",
+            "cierra": "17:00"
+          }
+        ],
         "confirmado": false,
         "nota": "Se supone igual a Tlaquepaque. Solo la menciona un video de TikTok (apertura el 16 de mayo)."
       },
       "mapa": "https://www.google.com/maps/search/?api=1&query=Prisciliano%20S%C3%A1nchez%201110%2C%20Americana%2C%20Guadalajara",
       "coordenadas": null
     }
-  ]
+  ],
+  "avisos": [],
+  "avisosNota": "Avisos temporales {texto, desde, hasta}. Con la hoja de Google se editan ahí (pestaña aviso)."
 }

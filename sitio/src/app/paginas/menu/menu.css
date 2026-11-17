@@ -373,3 +373,16 @@
   .sugerencia { animation: sugerencia-entra 420ms var(--ease-tela) both; }
   @keyframes sugerencia-entra { from { opacity: 0; transform: translateY(16px) scale(.97); } }
 }
+
+
+/* ---------- Agotado (売切): la tecla se apaga, como en las máquinas de Japón ---------- */
+.tecla.agotada { cursor: not-allowed; filter: grayscale(1) brightness(.55); border-color: #3d3f43; box-shadow: inset 0 1px 0 rgba(255, 255, 255, .3); }
+.tecla.agotada .led { color: #6b6156; text-decoration: line-through; }
+.urikire {
+  position: absolute; z-index: 3; left: 50%; top: 38%; translate: -50% -50%; rotate: -8deg;
+  display: grid; justify-items: center; padding: 4px 10px 6px; border: 2px solid var(--bermellon); border-radius: 4px;
+  background: rgba(251, 249, 244, .94); color: var(--bermellon-hundido); font: 600 .6875rem/1.1 var(--sans); letter-spacing: .06em;
+}
+.urikire [lang] { font: 800 1.25rem/1.1 var(--mincho); letter-spacing: .08em; }
+.lista-agotado, .detalle-agotado { grid-area: boton; justify-self: end; display: inline-flex; gap: 6px; align-items: center; min-height: 40px; color: var(--ceniza); font: 600 .875rem/1 var(--sans); }
+.lista-agotado [lang], .detalle-agotado [lang] { font: 800 1rem/1 var(--mincho); color: var(--bermellon); }

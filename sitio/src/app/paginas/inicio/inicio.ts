@@ -2,7 +2,7 @@ import { PROPUESTA } from '../../../entornos/modo';
 import { ChangeDetectionStrategy, Component, DestroyRef, ElementRef, PLATFORM_ID, afterNextRender, inject, signal } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { RouterLink } from '@angular/router';
-import { NEGOCIO, SUCURSALES, direccionCorta, pesos, platillo } from '../../servicios/datos';
+import { NEGOCIO, SUCURSALES, direccionCorta, pesos, platillo, VERSION_DATOS } from '../../servicios/datos';
 import { Seo } from '../../servicios/seo';
 import { restaurante } from '../../servicios/esquema';
 import { Foto } from '../../componentes/foto';
@@ -23,6 +23,8 @@ import { Telon } from '../../componentes/telon';
   styleUrl: './inicio.css',
 })
 export class Inicio {
+  /** Se lee en la plantilla: si la hoja de Google cambia los datos, la página se vuelve a dibujar. */
+  protected readonly version = VERSION_DATOS;
   protected readonly propuesta = PROPUESTA;
   protected readonly tlaquepaque = SUCURSALES[0];
   protected readonly sucursales = SUCURSALES;

@@ -2,7 +2,7 @@
 
 - **Pages:** https://andre-bhp.github.io/Take-chan/
 - **Repositorio:** https://github.com/Andre-BHP/Take-chan
-- **Última subida:** 2026-11-16 21:03 (hora de Guadalajara)
+- **Última subida:** 2026-11-16 21:11 (hora de Guadalajara)
 
 ## Rediseño (2026-11-15)
 André revisó la primera versión: "quedó muy feo y muy mal". Este rediseño cambia la dirección a "una ramen-ya de Yokohama de noche": fotos de ejemplo rotuladas, negro sumi y papel washi, 家系 vertical y un solo acento bermellón.
@@ -22,7 +22,7 @@ Plan de Arthemis: todo lo que no depende del negocio, para publicar el sitio ofi
 
 - [x] P0. Interruptor de modo, propuesta u oficial
 - [x] P1. Vista previa al compartir y `/links`
-- [ ] P2. Datos editables desde CSV, aviso y agotado 売切
+- [x] P2. Datos editables desde CSV, aviso y agotado 売切
 - [ ] P3. Preguntas frecuentes y SEO local
 - [ ] P4. Versión en inglés
 - [ ] P5. PWA y menú sin conexión
@@ -63,12 +63,12 @@ André: "mejor animación, más transiciones, mejor diseño, mejor todo". Metáf
 Repositorio, Pages, datos, inicio, máquina de tickets, sucursales con JSON-LD, pruebas y lista para el negocio. Capturas en `entregables/avances/antes/`.
 
 ## Último paso
-**P1.** Vista previa al compartir: una imagen de 1200 × 630 por página y por modo (`herramientas/og.mjs`), con la foto tratada o el mapa, el sello, el nombre y la frase; las de la propuesta dicen "Propuesta no oficial" y llevan el rótulo de imagen ilustrativa. Cada página lleva og:image absoluta, og:site_name y la tarjeta grande de X. `/links` para la biografía de TikTok: página estática generada en el build desde `negocio.json` (`sitio/scripts/links.mjs`), con el sello, el estado de hoy y botones grandes (Menú y pedido, Cómo llegar, Americana por confirmar, Reseñas y TikTok). Pesa 94 KB (límite 150) y no lleva la intro. `herramientas/compartir.mjs` revisa etiquetas, imágenes, peso y axe en los dos modos: todo en orden. Falta probar el enlace en WhatsApp de verdad desde un celular (André); la captura es una simulación con las etiquetas reales.
+**P2.** Menú, horario y aviso editables desde una hoja de Google publicada como CSV, sin servidor (`sitio/src/app/servicios/hoja.ts`). Se lee al abrir, con 3 s de espera y una copia guardada por 10 min; si falla, usa la copia o los JSON del build. El prerender y el SEO siguen con los JSON. Hoy no hay hoja (necesita cuenta): las tres URL del entorno están vacías y hay pestañas de ejemplo en `public/datos-ejemplo/` (generadas con `herramientas/hoja-ejemplo.mjs`), que usa el ensayo oficial. Platillo agotado: la tecla se apaga con 売切 Agotado y no se puede pedir (también en la lista y el detalle). La banda de aviso sale arriba solo entre las fechas desde y hasta, y se cierra con la ✕. `herramientas/hoja.mjs` prueba agotado, cambio de precio, falla y espera de la hoja, copia guardada, aviso vigente, vencido y futuro, y horario con un día de descanso: todo en orden. `GUIA_EDITAR.md` para el dueño, con capturas y sin palabras técnicas. Portada de 476 KB y CLS de 0.0004.
 
 ## Sigue
-P2: menú, horario y aviso editables desde una hoja de Google en CSV (con respaldo en los JSON), banda de aviso y platillo agotado 売切.
+P3: preguntas frecuentes (solo con respuestas reales o genéricas) con FAQPage y revisión de SEO local.
 
 ## Capturas más recientes
-| /links (390) | Vista previa (simulación con las etiquetas reales) |
-|---|---|
-| ![links](entregables/avances/2026-11-16_paso-P1_links_390.png) | ![vista previa](entregables/avances/2026-11-16_paso-P1_vista-previa.png) |
+| Agotado 売切 | Banda de aviso (390) | Pestaña menú (ejemplo) |
+|---|---|---|
+| ![agotado](entregables/avances/2026-11-16_paso-P2_agotado_1440.png) | ![aviso](entregables/avances/2026-11-16_paso-P2_aviso_390.png) | ![hoja](entregables/guias/hoja-menu.png) |

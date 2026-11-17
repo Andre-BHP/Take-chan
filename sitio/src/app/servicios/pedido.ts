@@ -1,6 +1,6 @@
 import { PROPUESTA } from '../../entornos/modo';
 import { Injectable, computed, signal } from '@angular/core';
-import { MENU, Platillo, SUCURSALES, esRamen, platillo, pesos, sucursal } from './datos';
+import { MENU, Platillo, SUCURSALES, VERSION_DATOS, agotado, esRamen, platillo, pesos, sucursal } from './datos';
 import { aHora, aMin } from './horario';
 
 export interface Linea { platillo: Platillo; cantidad: number }
@@ -19,11 +19,12 @@ export class Pedido {
   /** Folio del último ticket impreso (null si no se ha impreso o si cambió el pedido). */
   readonly folio = signal<string | null>(null);
 
-  readonly lineas = computed<Linea[]>(() =>
-    Object.entries(this.cantidades())
-      .filter(([, n]) => n > 0)
-      .map(([id, cantidad]) => ({ platillo: platillo(id), cantidad })),
-  );
+  readonly lineas = computed<Linea[]>(() => {
+    VERSION_DATOS();
+    return Object.entries(this.cantidades())
+      .filter(([id, n]) => n > 0 && platillo(id))
+      .map(([id, cantidad]) => ({ platillo: platillo(id), cantidad }));
+  });
   readonly piezas = computed(() => this.lineas().reduce((s, l) => s + l.cantidad, 0));
   readonly lleva = computed(() => this.lineas().some((l) => esRamen(l.platillo)));
   readonly sucursal = computed(() => sucursal(this.sucursalId()));
@@ -31,7 +32,9 @@ export class Pedido {
 
   /** Horas para recoger cada 15 minutos hasta media hora antes del cierre. */
   readonly horas = computed(() => {
+    VERSION_DATOS();
     const t = this.sucursal().horario.turnos[0];
+    if (!t) return [];
     const fin = aMin(t.cierra) - MENU.recoger.margenCierreMinutos;
     const lista: string[] = [];
     for (let m = aMin(t.abre); m <= fin; m += MENU.recoger.cadaMinutos) lista.push(aHora(m));
@@ -43,6 +46,7 @@ export class Pedido {
   }
 
   sumar(id: string, n = 1) {
+    if (n > 0 && agotado(platillo(id))) return;
     this.cantidades.update((c) => ({ ...c, [id]: Math.max(0, Math.min(20, (c[id] ?? 0) + n)) }));
     this.folio.set(null);
   }
