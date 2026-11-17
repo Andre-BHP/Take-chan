@@ -2,7 +2,7 @@
 
 - **Pages:** https://andre-bhp.github.io/Take-chan/
 - **Repositorio:** https://github.com/Andre-BHP/Take-chan
-- **Última subida:** 2026-11-16 21:33 (hora de Guadalajara)
+- **Última subida:** 2026-11-16 21:35 (hora de Guadalajara)
 
 ## Rediseño (2026-11-15)
 André revisó la primera versión: "quedó muy feo y muy mal". Este rediseño cambia la dirección a "una ramen-ya de Yokohama de noche": fotos de ejemplo rotuladas, negro sumi y papel washi, 家系 vertical y un solo acento bermellón.
@@ -26,7 +26,7 @@ Plan de Arthemis: todo lo que no depende del negocio, para publicar el sitio ofi
 - [x] P3. Preguntas frecuentes y SEO local
 - [x] P4. Versión en inglés
 - [x] P5. PWA y menú sin conexión
-- [ ] P6. Impresos con QR
+- [x] P6. Impresos con QR
 - [ ] P7. Estadísticas preparadas y plantilla de reporte
 - [ ] P8. Privacidad, accesibilidad y créditos
 - [ ] P9. Calidad final, guías probadas y reporte
@@ -63,12 +63,12 @@ André: "mejor animación, más transiciones, mejor diseño, mejor todo". Metáf
 Repositorio, Pages, datos, inicio, máquina de tickets, sucursales con JSON-LD, pruebas y lista para el negocio. Capturas en `entregables/avances/antes/`.
 
 ## Último paso
-**P5.** PWA con el service worker de Angular: el sitio se instala en el celular (manifest con el sello sobre sumi en 192, 512 y maskable, y atajo a "Menú y pedido") y el menú abre sin internet. La navegación usa la red primero, así que con conexión llega la página prerenderizada y sin conexión, la app. El service worker se registra 5 s después de que la página queda estable, para no competir con la portada (485 KB). Al enviar sin señal, en modo oficial avisa que el pedido quedó listo y no abre WhatsApp. `preparar.mjs` recalcula los hashes de `ngsw.json` de lo que toca después del build. `herramientas/pwa.mjs` prueba manifest, service worker, instalabilidad sin errores (perfil normal, no incógnito), `/menu` y `/en/menu` sin red, el pedido armado sin red y el aviso al enviar: todo en orden. Detalle en `entregables/PWA.md`; falta probar la instalación en un celular físico.
+**P6.** Impresos con QR en PDF listos para imprimir (`entregables/impresos/`), generados con `herramientas/impresos.mjs`: tent card de mesa (A5 que se dobla en dos caras A6, la de arriba girada para que ambas queden derechas; QR a `/menu?utm_source=mesa`), calcomanía de 10 × 10 cm para la puerta o la caja (QR a `/links`) y tarjeta de presentación de André (85 × 55 mm, QR al sitio). Llevan el sello y las fuentes del sitio, y en modo propuesta dicen "Propuesta no oficial". El QR usa corrección de errores M y margen de 4 módulos; cada QR se vuelve a leer de una captura (jsQR), como lo haría una cámara, y los cuatro dan la URL correcta. Hoy apuntan a la propuesta en Pages; con el dominio en el entorno oficial se rehacen con el mismo comando (paso añadido a `GUIA_PUBLICAR.md`). La página de impresos queda en `entregables/` y no se publica.
 
 ## Sigue
-P6: impresos con QR (tent card de mesa, calcomanía y tarjeta de André) en PDF.
+P7: estadísticas sin cookies (GoatCounter) preparadas y apagadas, eventos y plantilla de reporte mensual.
 
 ## Capturas más recientes
-| Menú sin red (390) | Ícono |
-|---|---|
-| ![sin red](entregables/avances/2026-11-16_paso-P5_sin-red_390.png) | ![icono](entregables/avances/2026-11-16_paso-P5_icono.png) |
+| Tent card (doblez al centro) | Calcomanía 10 × 10 | Tarjeta |
+|---|---|---|
+| ![tent](entregables/avances/2026-11-16_paso-P6_tent-card-mesa.png) | ![calcomania](entregables/avances/2026-11-16_paso-P6_calcomania-10x10.png) | ![tarjeta](entregables/avances/2026-11-16_paso-P6_tarjeta-andre.png) |

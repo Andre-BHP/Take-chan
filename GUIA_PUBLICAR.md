@@ -70,5 +70,6 @@ La carpeta que se sube es `sitio/dist/oficial/browser` (sitio estático, sin ser
 ## Paso 5. Después de publicar
 - Abrir el dominio en el celular y compartir el enlace por WhatsApp para ver la tarjeta.
 - Dar de alta el sitio en Google Search Console con el `sitemap.xml`.
-- Poner el enlace en la ficha de Google Maps y en la biografía de TikTok.
+- Poner el enlace en la ficha de Google Maps y en la biografía de TikTok (`/links`).
+- **Impresos:** con el dominio ya en `entorno.oficial.ts`, correr `node herramientas/impresos.mjs`. Rehace los PDF de `entregables/impresos/` (tent card de mesa, calcomanía y tarjeta) con el QR al dominio y lee cada QR de vuelta para comprobarlo. Imprimir a tamaño real (100 %), sin "ajustar a la página".
 - La propuesta en GitHub Pages se puede borrar o dejar; sigue con `noindex`.
