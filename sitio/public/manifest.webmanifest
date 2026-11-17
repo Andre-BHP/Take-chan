@@ -1,0 +1,20 @@
+{
+  "name": "Take-chan Ramen",
+  "short_name": "Take-chan",
+  "description": "Ramen Iekei en Tlaquepaque: menú, pedido para recoger y cómo llegar.",
+  "lang": "es-MX",
+  "start_url": "./?utm_source=pwa",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#121110",
+  "theme_color": "#121110",
+  "icons": [
+    { "src": "iconos/icono-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "iconos/icono-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "iconos/icono-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "shortcuts": [
+    { "name": "Menú y pedido", "url": "./menu?utm_source=pwa", "icons": [{ "src": "iconos/icono-192.png", "sizes": "192x192" }] }
+  ]
+}

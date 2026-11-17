@@ -1,4 +1,5 @@
-import { ApplicationConfig, provideBrowserGlobalErrorListeners } from '@angular/core';
+import { ApplicationConfig, isDevMode, provideBrowserGlobalErrorListeners } from '@angular/core';
+import { provideServiceWorker } from '@angular/service-worker';
 import { PreloadAllModules, provideRouter, withInMemoryScrolling, withPreloading, withViewTransitions } from '@angular/router';
 import { inject } from '@angular/core';
 import { Telon } from './componentes/telon';
@@ -23,5 +24,8 @@ export const appConfig: ApplicationConfig = {
       }),
     ),
     provideClientHydration(withEventReplay()),
+    // PWA: el menú abre sin conexión. Se registra 5 s después de que la app queda estable,
+    // para que la descarga en segundo plano no compita con la carga de la portada.
+    provideServiceWorker('ngsw-worker.js', { enabled: !isDevMode(), registrationStrategy: 'registerWithDelay:5000' }),
   ],
 };

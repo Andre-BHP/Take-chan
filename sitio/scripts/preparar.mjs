@@ -3,6 +3,7 @@
 //   oficial (oficial, prueba-oficial): index, robots.txt con el sitemap, sitemap.xml con el dominio y sin el aviso de propuesta.
 // Uso: node scripts/preparar.mjs dist/<config>/browser <config>
 import fs from 'node:fs';
+import crypto from 'node:crypto';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { generarLinks } from './links.mjs';
@@ -77,5 +78,20 @@ if (modo === 'propuesta') {
     if (t.includes('noindex')) falla(`${f}: todavía lleva noindex`);
     if (!t.includes(`rel="canonical" href="${dominio}`)) falla(`${f}: falta la URL canónica con ${dominio}`);
   }
+}
+// El service worker comprueba cada archivo con el hash de ngsw.json: los que se tocaron aquí se vuelven a calcular.
+const ngsw = path.join(raiz, 'ngsw.json');
+if (fs.existsSync(ngsw)) {
+  const m = JSON.parse(fs.readFileSync(ngsw, 'utf8'));
+  const prefijo = (fs.readFileSync(path.join(raiz, 'index.html'), 'utf8').match(/<base href="([^"]*)"/)?.[1] ?? '/');
+  let cambiados = 0;
+  for (const url of Object.keys(m.hashTable)) {
+    const f = path.join(raiz, url.slice(prefijo.length));
+    if (!fs.existsSync(f)) continue;
+    const h = crypto.createHash('sha1').update(fs.readFileSync(f)).digest('hex');
+    if (h !== m.hashTable[url]) { m.hashTable[url] = h; cambiados++; }
+  }
+  fs.writeFileSync(ngsw, JSON.stringify(m, null, 2));
+  if (cambiados) console.log(`ngsw.json: ${cambiados} hash(es) actualizados`);
 }
 console.log(`Build "${config}" (modo ${modo}) listo y revisado: ${publicas().length} páginas públicas.`);

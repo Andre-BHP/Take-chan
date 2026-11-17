@@ -218,7 +218,7 @@
         </button>
         @if (contacto.aviso(); as a) {
           <div class="burbuja" role="status">
-            <p class="burbuja-titulo">{{ t('Modo demostración: este mensaje le llegaría a Take-chan por WhatsApp. No se envió nada.') }}</p>
+            <p class="burbuja-titulo">{{ a.tipo === 'sin-red' ? t('Sin conexión: tu pedido quedó listo. Envíalo cuando vuelva la señal.') : t('Modo demostración: este mensaje le llegaría a Take-chan por WhatsApp. No se envió nada.') }}</p>
             <p class="burbuja-texto">{{ a.mensaje }}</p>
           </div>
         } @else {

@@ -1,0 +1,30 @@
+{
+  "$schema": "./node_modules/@angular/service-worker/config/schema.json",
+  "index": "/index.csr.html",
+  "navigationRequestStrategy": "freshness",
+  "navigationUrls": ["/**", "!/**/*.*", "!/**/*__*", "!/**/*__*/**", "!/links", "!/links/"],
+  "assetGroups": [
+    {
+      "name": "app",
+      "installMode": "prefetch",
+      "resources": {
+        "files": ["/index.csr.html", "/manifest.webmanifest", "/*.css", "/*.js", "/favicon-32.png", "/sello-96.webp", "/sello-192.webp", "/media/*", "/fuentes/*.woff2"]
+      }
+    },
+    {
+      "name": "imagenes",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "resources": {
+        "files": ["/fotos/**", "/mapas/**", "/iconos/**", "/apple-touch-icon.png"]
+      }
+    }
+  ],
+  "dataGroups": [
+    {
+      "name": "hoja",
+      "urls": ["/datos-ejemplo/**", "https://docs.google.com/spreadsheets/**"],
+      "cacheConfig": { "strategy": "freshness", "maxSize": 10, "maxAge": "7d", "timeout": "3s" }
+    }
+  ]
+}

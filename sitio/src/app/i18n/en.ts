@@ -139,6 +139,7 @@ export const EN: Record<string, string> = {
   "Modo demostración: este mensaje le llegaría a Take-chan por WhatsApp. No se envió nada.": 'Demo mode: this message would reach Take-chan on WhatsApp. Nothing was sent.',
   "Modo demostración: se muestra el mensaje, no se envía.": 'Demo mode: the message is shown, not sent.',
   "Se abre WhatsApp con tu pedido escrito; solo falta enviarlo.": 'WhatsApp opens with your order written out; you just need to send it.',
+  "Sin conexión: tu pedido quedó listo. Envíalo cuando vuelva la señal.": 'No connection: your order is ready. Send it when you’re back online.',
   "El mensaje va en español para el local.": 'The message is written in Spanish for the restaurant.',
   "Se pide al gusto: fideo, sabor y grasa.": 'Ordered your way: noodles, flavor and fat.',
   "Total de ejemplo": 'Sample total',

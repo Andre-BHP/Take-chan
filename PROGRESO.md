@@ -2,7 +2,7 @@
 
 - **Pages:** https://andre-bhp.github.io/Take-chan/
 - **Repositorio:** https://github.com/Andre-BHP/Take-chan
-- **Última subida:** 2026-11-16 21:26 (hora de Guadalajara)
+- **Última subida:** 2026-11-16 21:33 (hora de Guadalajara)
 
 ## Rediseño (2026-11-15)
 André revisó la primera versión: "quedó muy feo y muy mal". Este rediseño cambia la dirección a "una ramen-ya de Yokohama de noche": fotos de ejemplo rotuladas, negro sumi y papel washi, 家系 vertical y un solo acento bermellón.
@@ -25,7 +25,7 @@ Plan de Arthemis: todo lo que no depende del negocio, para publicar el sitio ofi
 - [x] P2. Datos editables desde CSV, aviso y agotado 売切
 - [x] P3. Preguntas frecuentes y SEO local
 - [x] P4. Versión en inglés
-- [ ] P5. PWA y menú sin conexión
+- [x] P5. PWA y menú sin conexión
 - [ ] P6. Impresos con QR
 - [ ] P7. Estadísticas preparadas y plantilla de reporte
 - [ ] P8. Privacidad, accesibilidad y créditos
@@ -63,12 +63,12 @@ André: "mejor animación, más transiciones, mejor diseño, mejor todo". Metáf
 Repositorio, Pages, datos, inicio, máquina de tickets, sucursales con JSON-LD, pruebas y lista para el negocio. Capturas en `entregables/avances/antes/`.
 
 ## Último paso
-**P4.** Versión en inglés: `/en`, `/en/menu`, `/en/tlaquepaque` y `/en/americana`, prerenderizadas, con el selector ES · EN en el encabezado (lleva a la misma página en el otro idioma sin recargar), `lang`, `og:locale` y `hreflang` (es-MX, en y x-default). Los textos se escriben en español y pasan por `t()`. El diccionario (`sitio/src/app/i18n/en.ts`, 211 textos con traducción natural: "Build your order", "Ticket machine", "First time? Get the classic") solo se descarga en `/en`, así que la portada en español no crece. El japonés queda igual; el mensaje de WhatsApp va en español para el local, y así se le avisa al turista. El aviso de propuesta es bilingüe. `herramientas/llaves-idioma.mjs` lista los textos sin traducir (0) y `herramientas/idiomas.mjs` prueba el selector, la navegación dentro de `/en` y que no quede español suelto: todo en orden. La cabecera se compactó para no desbordar a 360 con el selector. axe limpio en las 8 rutas; portada de 483 KB.
+**P5.** PWA con el service worker de Angular: el sitio se instala en el celular (manifest con el sello sobre sumi en 192, 512 y maskable, y atajo a "Menú y pedido") y el menú abre sin internet. La navegación usa la red primero, así que con conexión llega la página prerenderizada y sin conexión, la app. El service worker se registra 5 s después de que la página queda estable, para no competir con la portada (485 KB). Al enviar sin señal, en modo oficial avisa que el pedido quedó listo y no abre WhatsApp. `preparar.mjs` recalcula los hashes de `ngsw.json` de lo que toca después del build. `herramientas/pwa.mjs` prueba manifest, service worker, instalabilidad sin errores (perfil normal, no incógnito), `/menu` y `/en/menu` sin red, el pedido armado sin red y el aviso al enviar: todo en orden. Detalle en `entregables/PWA.md`; falta probar la instalación en un celular físico.
 
 ## Sigue
-P5: PWA (manifest e íconos del sello) y el menú sin conexión con el service worker de Angular.
+P6: impresos con QR (tent card de mesa, calcomanía y tarjeta de André) en PDF.
 
 ## Capturas más recientes
-| /en (1440) | /en (360) | /en/menu (360) |
-|---|---|---|
-| ![en](entregables/avances/2026-11-16_paso-P4_en_1440.png) | ![en 360](entregables/avances/2026-11-16_paso-P4_en_360.png) | ![menu 360](entregables/avances/2026-11-16_paso-P4_en_menu_360.png) |
+| Menú sin red (390) | Ícono |
+|---|---|
+| ![sin red](entregables/avances/2026-11-16_paso-P5_sin-red_390.png) | ![icono](entregables/avances/2026-11-16_paso-P5_icono.png) |

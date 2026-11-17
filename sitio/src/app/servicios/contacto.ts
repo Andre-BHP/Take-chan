@@ -3,7 +3,7 @@ import { isPlatformBrowser } from '@angular/common';
 import { ENTORNO } from '../../entornos/entorno';
 import { PROPUESTA } from '../../entornos/modo';
 
-export interface AvisoDemo { titulo: string; texto: string; mensaje?: string }
+export interface AvisoDemo { tipo: 'demo' | 'sin-red'; titulo: string; texto: string; mensaje?: string }
 
 /**
  * Todo contacto sale por aquí. En modo propuesta, o mientras el entorno no tenga número, nada se envía:
@@ -24,12 +24,19 @@ export class Contacto {
   enviarWhatsapp(mensaje: string) {
     if (this.demo) {
       this.aviso.set({
+        tipo: 'demo',
         titulo: 'Modo demostración',
         texto: 'Este es el mensaje que le llegaría a Take-chan por WhatsApp. No se envió nada: el negocio todavía no tiene un WhatsApp de pedidos publicado.',
         mensaje,
       });
       return;
     }
-    if (this.navegador) window.open(this.enlaceWhatsapp(mensaje), '_blank', 'noopener');
+    if (!this.navegador) return;
+    // Sin señal (por ejemplo, con el menú abierto sin conexión): el pedido queda armado y se avisa.
+    if (!navigator.onLine) {
+      this.aviso.set({ tipo: 'sin-red', titulo: 'Sin conexión', texto: 'Tu pedido quedó listo. Envíalo cuando vuelva la señal.', mensaje });
+      return;
+    }
+    window.open(this.enlaceWhatsapp(mensaje), '_blank', 'noopener');
   }
 }
