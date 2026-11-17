@@ -57,6 +57,9 @@ export class Inicio {
     this.telon.compartido = true;
   }
 
+  /** Estrella de cinco puntas (24 × 24). */
+  protected readonly estrella = 'M12 2.6l2.82 6.06 6.64.72-4.95 4.5 1.37 6.54L12 17.1l-5.88 3.32 1.37-6.54-4.95-4.5 6.64-.72z';
+
   /** Paralaje leve de la foto del bento con el puntero (dis-032). */
   protected seguir(e: PointerEvent) {
     if (e.pointerType !== 'mouse') return;
@@ -78,6 +81,8 @@ export class Inicio {
       gsap.to('.heroe-capa', { y: -60, opacity: 0, ease: 'none', scrollTrigger: { ...disparo, end: '70% top' } });
       // Paralaje interno de la foto de "Qué es el Iekei".
       gsap.fromTo('.iekei-foto', { yPercent: -6 }, { yPercent: 6, ease: 'none', scrollTrigger: { trigger: '.iekei-marco', start: 'top bottom', end: 'bottom top', scrub: true } });
+      // Pausa a sangre: paralaje lento de la foto.
+      gsap.fromTo('.pausa-foto', { yPercent: -8 }, { yPercent: 8, ease: 'none', scrollTrigger: { trigger: '.pausa', start: 'top bottom', end: 'bottom top', scrub: true } });
       // El borde de washi rasgado se abre con el scroll (dis-047).
       gsap.fromTo('.iekei', { '--rasgado': 0 }, { '--rasgado': 1, ease: 'none', scrollTrigger: { trigger: '.iekei', start: 'top bottom', end: 'top 55%', scrub: true } });
       // Las cifras reales se cuentan solas al entrar (dis-069).
@@ -91,7 +96,7 @@ export class Inicio {
         const desde = Number(el.dataset['desde'] ?? 0);
         const obj = { v: desde };
         el.textContent = desde.toFixed(dec);
-        gsap.to(obj, { v: fin, duration: 0.56, ease: 'power2.out', scrollTrigger: { trigger: el, start: 'top 85%', once: true }, onUpdate: () => { el.textContent = obj.v.toFixed(dec); } });
+        gsap.to(obj, { v: fin, duration: 0.56, ease: 'power2.out', scrollTrigger: { trigger: el, start: 'top 85%', once: true }, onUpdate: () => { el.textContent = obj.v.toFixed(dec); el.closest<HTMLElement>('.social')?.style.setProperty('--llenado', String(obj.v / 5)); } });
       });
     }, raiz);
     destruir.onDestroy(() => { ctx.revert(); deshacerRevelar(); });

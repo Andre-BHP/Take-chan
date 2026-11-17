@@ -1,3 +1,4 @@
+// Revisión de CLS (no se sube a avances): lista qué elementos se recorren al cargar la portada a 390 px.
 import { chromium } from 'playwright-core';
 const b = await chromium.launch({ executablePath: 'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe' });
 for (let k = 0; k < 3; k++) {

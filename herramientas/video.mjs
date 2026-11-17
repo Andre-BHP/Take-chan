@@ -1,5 +1,5 @@
 // Video del movimiento con Playwright (recordVideo) y GIF con ffmpeg.
-// Uso: node herramientas/video.mjs <url-base> <paso> <escena: intro|transicion|social|medidor|sucursales|inicio|menu|navegar> [anchos=1440,390] [reducir=0]
+// Uso: node herramientas/video.mjs <url-base> <paso> <escena: intro|transicion|social|ritmo|medidor|sucursales|inicio|menu|navegar> [anchos=1440,390] [reducir=0]
 // Salida: entregables/avances/video/AAAA-MM-DD_<paso>_<escena>_<ancho>.mp4 y .gif (MP4 se ve en GitHub desde el celular)
 import { chromium } from 'playwright-core';
 import fs from 'node:fs';
@@ -30,6 +30,12 @@ const escenas = {
     await p.addInitScript(() => { try { sessionStorage.setItem('take-intro', '1'); } catch (e) {} });
     await p.goto(url('/'), { waitUntil: 'load' }); await espera(p, 1500);
     await p.evaluate(() => document.querySelector('.social').scrollIntoView({ block: 'center' })); await espera(p, 2200);
+  },
+  async ritmo(p) {
+    await p.addInitScript(() => { try { sessionStorage.setItem('take-intro', '1'); } catch (e) {} });
+    await p.goto(url('/'), { waitUntil: 'load' }); await espera(p, 1500);
+    await p.evaluate(() => document.querySelector('.iekei').scrollIntoView({ block: 'start' })); await espera(p, 900);
+    await deslizar(p, 3600, 45, 110); await espera(p, 600);
   },
   async medidor(p) {
     await p.addInitScript(() => { try { sessionStorage.setItem('take-intro', '1'); } catch (e) {} });
