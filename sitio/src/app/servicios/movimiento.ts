@@ -83,7 +83,9 @@ export class Movimiento {
         const tipo = el.dataset['revelar'];
         const disparo = { trigger: el, start: 'top 88%', once: true };
         if (tipo === 'lineas') {
-          const s = SplitText.create(el, { type: 'lines', mask: 'lines', linesClass: 'linea' });
+          // aria: 'none': solo se parten líneas (las palabras quedan enteras), así que el lector de pantalla lee el texto igual;
+          // con 'auto', SplitText pondría aria-label en <p>, donde está prohibido.
+          const s = SplitText.create(el, { type: 'lines', mask: 'lines', linesClass: 'linea', aria: 'none' });
           divisiones.push(s);
           gsap.from(s.lines, { yPercent: 105, duration: 0.9, stagger: 0.08, scrollTrigger: disparo });
         } else if (tipo === 'grupo') {

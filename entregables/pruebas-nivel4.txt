@@ -1,0 +1,270 @@
+Resumen
+ok    Calidad: axe en 11 rutas, 360 px, peso, LCP y movimiento reducido (propuesta)
+ok    CLS y fps a 390 px
+ok    CLS y fps a 1440 px
+ok    Recorrido 1 y 6: modos propuesta y oficial (pedido demo y WhatsApp real simulado)
+ok    Recorrido 1: menú (sugerencia, detalle, lista) con axe
+ok    Recorrido 2: cambiar de idioma y sin español suelto en /en
+ok    Recorrido 3: menú sin red (PWA)
+ok    Recorridos 4 y 5: agotado y aviso vigente y vencido (hoja CSV)
+ok    Detalles: reloj, TikTok bajo demanda, horario y pedido vacío
+ok    Compartir y /links (propuesta)
+ok    Compartir y /links (ensayo oficial)
+ok    SEO local (propuesta)
+ok    SEO local (ensayo oficial)
+ok    Estadísticas sin cookies
+ok    Textos sin traducir
+
+Pruebas del nivel 4 (2026-11-16 22:01:12)
+
+== Calidad: axe en 11 rutas, 360 px, peso, LCP y movimiento reducido (propuesta) (pruebas.mjs)
+axe / 390: sin violaciones
+axe / 1440: sin violaciones
+360 px /: scrollWidth 360 ok
+axe /menu 390: sin violaciones
+axe /menu 1440: sin violaciones
+360 px /menu: scrollWidth 360 ok
+axe /tlaquepaque 390: sin violaciones
+axe /tlaquepaque 1440: sin violaciones
+360 px /tlaquepaque: scrollWidth 360 ok
+axe /americana 390: sin violaciones
+axe /americana 1440: sin violaciones
+360 px /americana: scrollWidth 360 ok
+axe /en 390: sin violaciones
+axe /en 1440: sin violaciones
+360 px /en: scrollWidth 360 ok
+axe /en/menu 390: sin violaciones
+axe /en/menu 1440: sin violaciones
+360 px /en/menu: scrollWidth 360 ok
+axe /en/tlaquepaque 390: sin violaciones
+axe /en/tlaquepaque 1440: sin violaciones
+360 px /en/tlaquepaque: scrollWidth 360 ok
+axe /links 390: sin violaciones
+axe /links 1440: sin violaciones
+360 px /links: scrollWidth 360 ok
+axe /privacidad 390: sin violaciones
+axe /privacidad 1440: sin violaciones
+360 px /privacidad: scrollWidth 360 ok
+axe /en/accesibilidad 390: sin violaciones
+axe /en/accesibilidad 1440: sin violaciones
+360 px /en/accesibilidad: scrollWidth 360 ok
+axe /creditos 390: sin violaciones
+axe /creditos 1440: sin violaciones
+360 px /creditos: scrollWidth 360 ok
+portada: 466 KB transferidos (límite 500), LCP 1952 ms con 4G lenta y CPU 4x (límite 2500)
+movimiento no-preference: {"animacion":"subir","opacidad":"0.172899","bucles":3}
+movimiento reduce: {"animacion":"none","opacidad":"0.14","bucles":0}
+
+Todo en orden
+
+== CLS y fps a 390 px (rendimiento.mjs)
+390 px: CLS 0.0014 · tareas largas en la carga 2 · en el scroll 0 [] · 60 fps promedio · 0 de 369 cuadros de más de 34 ms
+
+== CLS y fps a 1440 px (rendimiento.mjs)
+1440 px: CLS 0.0005 · tareas largas en la carga 1 · en el scroll 0 [] · 59 fps promedio · 2 de 388 cuadros de más de 34 ms
+
+== Recorrido 1 y 6: modos propuesta y oficial (pedido demo y WhatsApp real simulado) (modos.mjs)
+ok    propuesta: aviso de propuesta presente
+ok    propuesta: nota de ejemplo 1
+ok    propuesta: robots "noindex, nofollow"
+ok    propuesta: canónica null
+ok    propuesta: robots.txt "User-agent: *\nDisallow: /"
+ok    propuesta: sitemap ausente
+ok    propuesta: rótulos "Imagen ilustrativa" en fotos de stock (7)
+ok    propuesta: sin estadísticas (sin código configurado)
+ok    propuesta: ticket dice "Total de ejemplo"
+ok    propuesta: WhatsApp en modo demostración (sin abrir nada)
+ok    oficial: aviso de propuesta ausente
+ok    oficial: nota de ejemplo 0
+ok    oficial: robots "index, follow"
+ok    oficial: canónica https://ejemplo.test/
+ok    oficial: robots.txt "User-agent: *\nAllow: /\n\nSitemap: https://ejemplo.test/sitemap.xml"
+ok    oficial: sitemap 15 URLs
+ok    oficial: rótulos "Imagen ilustrativa" en fotos de stock (7)
+ok    oficial: sin estadísticas (sin código configurado)
+ok    oficial: ticket dice "Total"
+ok    oficial: WhatsApp abre https://wa.me/5210000000000?text=Hola%2C%20Take-chan.%20Quie…
+
+Todo en orden
+
+== Recorrido 1: menú (sugerencia, detalle, lista) con axe (menu-estados.mjs)
+390 sugerencia visible: true
+axe sugerencia 390: sin violaciones
+390 huevo en el pedido: true · sugerencia oculta: true
+390 detalle abierto: true
+axe detalle 390: sin violaciones
+390 detalle cerrado con Esc: true
+390 presión larga abre detalle: true · no agregó arroz: true
+axe lista 390: sin violaciones
+390 lista recordada: true
+390 scrollWidth 390 ok
+1440 sugerencia visible: true
+axe sugerencia 1440: sin violaciones
+1440 huevo en el pedido: true · sugerencia oculta: true
+1440 detalle abierto: true
+axe detalle 1440: sin violaciones
+1440 detalle cerrado con Esc: true
+1440 presión larga abre detalle: true · no agregó arroz: true
+axe lista 1440: sin violaciones
+1440 lista recordada: true
+1440 scrollWidth 1440 ok
+
+Todo en orden
+
+== Recorrido 2: cambiar de idioma y sin español suelto en /en (idiomas.mjs)
+ok    portada en español: lang es-MX
+ok    al tocar EN: /en con lang en
+ok    titular en inglés: TAKE-CHAN RAMEN . Iekei ramen in Tlaquepaque.
+ok    Build your order lleva a /en/menu
+ok    al tocar ES: /menu en español
+ok    /en: sin español suelto
+ok    /en/menu: sin español suelto
+ok    /en/tlaquepaque: sin español suelto
+ok    /en/americana: sin español suelto
+ok    /en/privacidad: sin español suelto
+ok    /en/accesibilidad: sin español suelto
+ok    /en/creditos: sin español suelto
+
+Todo en orden
+
+== Recorrido 3: menú sin red (PWA) (pwa.mjs)
+ok    propuesta: manifest sin errores (manifest.webmanifest)
+ok    propuesta: service worker activo con su caché
+ok    propuesta: instalable ("Agregar a pantalla de inicio")
+ok    sin red: /menu abre con 11 teclas
+ok    sin red: el pedido se arma ($165)
+ok    sin red: /en/menu también abre
+ok    oficial: manifest sin errores (manifest.webmanifest)
+ok    oficial: service worker activo con su caché
+ok    oficial: instalable ("Agregar a pantalla de inicio")
+ok    sin red: avisa que el pedido quedó listo y no abre WhatsApp
+
+Todo en orden
+
+== Recorridos 4 y 5: agotado y aviso vigente y vencido (hoja CSV) (hoja.mjs)
+ok    arroz agotado: tecla deshabilitada
+ok    arroz agotado: etiqueta 売切
+ok    arroz agotado: el lector de pantalla dice "agotado"
+ok    arroz agotado también en la vista de lista
+ok    precio de la hoja en la tecla ($170)
+ok    precio de la hoja en el total
+ok    hoja falla: se usa el menú del build
+ok    hoja tarda 5 s: se usa el menú del build
+ok    segunda carga desde la copia guardada, sin pedir la hoja
+ok    aviso vigente: banda visible
+ok    la ✕ cierra la banda
+ok    cerrada, no vuelve al recargar
+ok    aviso vencido: sin banda
+ok    aviso futuro: sin banda
+ok    horario de la hoja: Lunes a sábado 12:00 a 17:00 | Domingo Cerrado
+
+Todo en orden
+
+== Detalles: reloj, TikTok bajo demanda, horario y pedido vacío (detalles.mjs)
+ok   reloj a las 14:47: Abierto ahora · cierra en 2 h 13 min
+ok   un minuto después: Abierto ahora · cierra en 2 h 12 min
+ok   sin pedidos a TikTok antes del clic (0)
+ok   al tocar aparece el embed oficial
+ok   y se pide embed.js de TikTok
+ok   etiqueta "Ver en el menú" visible al pasar el puntero
+ok   cerrado a las 20:30: Cerrado · abre mañana a las 12:00
+ok   horario en una fila: Todos los días 12:00 a 17:00
+ok   estado vacío con la mini máquina
+
+Todo en orden
+
+== Compartir y /links (propuesta) (compartir.mjs)
+ok    /: etiquetas completas (Take-chan Ramen · Ramen Iekei en Tlaquepaque)
+ok    /: imagen propuesta/inicio.jpg 1200×630, 69 KB
+ok    /menu: etiquetas completas (Menú y pedido · Take-chan Ramen)
+ok    /menu: imagen propuesta/menu.jpg 1200×630, 62 KB
+ok    /tlaquepaque: etiquetas completas (Take-chan Ramen Tlaquepaque · Ramen Iekei)
+ok    /tlaquepaque: imagen propuesta/tlaquepaque.jpg 1200×630, 52 KB
+ok    /americana: etiquetas completas (Take-chan Ramen Americana · Ramen Iekei (por confirmar))
+ok    /americana: imagen propuesta/americana.jpg 1200×630, 46 KB
+ok    /links: etiquetas completas (Take-chan Ramen · Menú, pedido y cómo llegar)
+ok    /links: imagen propuesta/links.jpg 1200×630, 51 KB
+ok    /links pesa 95 KB (límite 150)
+ok    /links abre sin la intro
+ok    /links axe: sin violaciones
+
+Todo en orden
+
+== Compartir y /links (ensayo oficial) (compartir.mjs)
+ok    /: etiquetas completas (Take-chan Ramen · Ramen Iekei en Tlaquepaque)
+ok    /: imagen oficial/inicio.jpg 1200×630, 67 KB
+ok    /menu: etiquetas completas (Menú y pedido · Take-chan Ramen)
+ok    /menu: imagen oficial/menu.jpg 1200×630, 60 KB
+ok    /tlaquepaque: etiquetas completas (Take-chan Ramen Tlaquepaque · Ramen Iekei)
+ok    /tlaquepaque: imagen oficial/tlaquepaque.jpg 1200×630, 50 KB
+ok    /americana: etiquetas completas (Take-chan Ramen Americana · Ramen Iekei (por confirmar))
+ok    /americana: imagen oficial/americana.jpg 1200×630, 43 KB
+ok    /links: etiquetas completas (Take-chan Ramen · Menú, pedido y cómo llegar)
+ok    /links: imagen oficial/links.jpg 1200×630, 49 KB
+ok    /links pesa 98 KB (límite 150)
+ok    /links abre sin la intro
+ok    /links axe: sin violaciones
+
+Todo en orden
+
+== SEO local (propuesta) (seo-local.mjs)
+Build sitio\dist\pages\browser (modo propuesta)
+ok    Restaurant de Tlaquepaque con nombre, dirección, CP, cocina, precios, menú e imagen
+ok    Restaurant con horario por días
+ok    sin Restaurant de la Americana (por confirmar)
+ok    sin teléfono ni coordenadas en el esquema (no son públicos)
+ok    FAQPage con 7 preguntas, iguales a las visibles
+ok    FAQPage sin las preguntas que dependen del negocio
+ok    /: nombre Take-chan
+ok    /: dirección "Calz. Córdoba 24"
+ok    /menu: nombre Take-chan
+ok    /tlaquepaque: nombre Take-chan
+ok    /tlaquepaque: dirección "Calz. Córdoba 24"
+ok    /americana: nombre Take-chan
+ok    /americana: dirección "Calz. Córdoba 24"
+ok    /links: nombre Take-chan
+ok    ficha de Tlaquepaque: horario, CP y referencia iguales al esquema
+ok    mismo Restaurant (dirección) en la portada y en la ficha
+ok    sitemap.xml ausente (propuesta)
+
+Todo en orden
+
+== SEO local (ensayo oficial) (seo-local.mjs)
+Build sitio\dist\prueba-oficial\browser (modo oficial)
+ok    Restaurant de Tlaquepaque con nombre, dirección, CP, cocina, precios, menú e imagen
+ok    Restaurant con horario por días
+ok    sin Restaurant de la Americana (por confirmar)
+ok    sin teléfono ni coordenadas en el esquema (no son públicos)
+ok    FAQPage con 7 preguntas, iguales a las visibles
+ok    FAQPage sin las preguntas que dependen del negocio
+ok    /: nombre Take-chan
+ok    /: dirección "Calz. Córdoba 24"
+ok    /menu: nombre Take-chan
+ok    /tlaquepaque: nombre Take-chan
+ok    /tlaquepaque: dirección "Calz. Córdoba 24"
+ok    /americana: nombre Take-chan
+ok    /americana: dirección "Calz. Córdoba 24"
+ok    /links: nombre Take-chan
+ok    ficha de Tlaquepaque: horario, CP y referencia iguales al esquema
+ok    mismo Restaurant (dirección) en la portada y en la ficha
+ok    sitemap.xml presente (oficial)
+
+Todo en orden
+
+== Estadísticas sin cookies (estadisticas.mjs)
+ok    propuesta: sin estadísticas (0 envíos)
+ok    oficial: visita a /menu con la campaña del QR de mesa (utm_source=mesa)
+ok    oficial: visita a la portada al navegar sin recargar
+ok    oficial: visita a /links
+ok    oficial: evento tecla/iekei-clasico
+ok    oficial: evento ticket-impreso
+ok    oficial: evento whatsapp-enviado
+ok    oficial: evento links/tiktok
+ok    oficial: sin cookies ni identificadores en los envíos
+  envíos: visita /menu ?utm_source=mesa | evento tecla/iekei-clasico | evento ticket-impreso | evento whatsapp-enviado | visita / | visita /links | evento links/tiktok
+
+Todo en orden
+
+== Textos sin traducir (llaves-idioma.mjs)
+215 textos; 0 sin traducir
+

@@ -2,7 +2,7 @@
 
 - **Pages:** https://andre-bhp.github.io/Take-chan/
 - **Repositorio:** https://github.com/Andre-BHP/Take-chan
-- **Última subida:** 2026-11-16 21:48 (hora de Guadalajara)
+- **Última subida:** 2026-11-16 22:05 (hora de Guadalajara)
 
 ## Rediseño (2026-11-15)
 André revisó la primera versión: "quedó muy feo y muy mal". Este rediseño cambia la dirección a "una ramen-ya de Yokohama de noche": fotos de ejemplo rotuladas, negro sumi y papel washi, 家系 vertical y un solo acento bermellón.
@@ -29,7 +29,7 @@ Plan de Arthemis: todo lo que no depende del negocio, para publicar el sitio ofi
 - [x] P6. Impresos con QR
 - [x] P7. Estadísticas preparadas y plantilla de reporte
 - [x] P8. Privacidad, accesibilidad y créditos
-- [ ] P9. Calidad final, guías probadas y reporte
+- [x] P9. Calidad final, guías probadas y reporte
 
 ## Nivel 3 (2026-11-16)
 Plan de Arthemis para pasar de "bien hecho" a "de premio".
@@ -63,12 +63,12 @@ André: "mejor animación, más transiciones, mejor diseño, mejor todo". Metáf
 Repositorio, Pages, datos, inicio, máquina de tickets, sucursales con JSON-LD, pruebas y lista para el negocio. Capturas en `entregables/avances/antes/`.
 
 ## Último paso
-**P8.** Aviso de privacidad (`/privacidad`), conforme a la Ley Federal de Protección de Datos Personales en Posesión de los Particulares. En la propuesta dice que el prototipo no guarda ni envía datos y explica qué queda en el navegador. En oficial es la plantilla con responsable, finalidad (preparar tu pedido), datos (nombre opcional y lo que escribas en WhatsApp), estadísticas sin cookies si están encendidas y derechos ARCO; el responsable y el contacto salen de `negocio.json → legal` y el build avisa si siguen por confirmar (agregado a `PEDIR_AL_NEGOCIO.md`). Página de accesibilidad (`/accesibilidad`): compromiso WCAG 2.2 AA, lo probado, las limitaciones conocidas y cómo reportar. Créditos (`/creditos`): fotos de Unsplash por autor, mapas © OpenStreetMap (ODbL), tipografías y sello; en el pie quedan una línea y los enlaces. Las tres páginas existen en español y en inglés. Además, la precarga se limitó al menú y se retrasó 3 s: la portada bajó de 491 a 466 KB. axe limpio en 11 rutas y sin español suelto en las páginas en inglés.
+**P9.** Cierre del nivel 4. Lighthouse sobre el ensayo oficial: accesibilidad, buenas prácticas y SEO en 100 en todas las páginas, y rendimiento en escritorio de 99 a 100. En celular, el rendimiento queda entre 77 y 83 (no llega a 95): Lighthouse simula 4G lenta y cuenta como críticas las 6 fuentes y el JS de Angular. Medido de verdad, el LCP es de 0.9 a 2.3 s y el CLS de 0.0014 como máximo; subirlo exige quitar pesos de fuente o retrasar GSAP y la intro, que es decisión de André. La propuesta da SEO 63 por el noindex, a propósito. Se corrigió un aria-label prohibido de SplitText y la foto del héroe pide 960 px en celular. `herramientas/recorridos.mjs` corre las 15 pruebas (los seis recorridos del plan más axe en 11 rutas, 360 px, peso, LCP, CLS, fps, compartir, SEO local, PWA, estadísticas y traducciones): todas en orden (`entregables/pruebas-nivel4.txt`). `GUIA_PUBLICAR.md` probada de punta a punta con el ensayo oficial sin publicar; el build oficial vacío se detiene pidiendo el dominio. Reporte en `entregables/REPORTE_NIVEL_4.md`.
 
 ## Sigue
-P9: calidad final (Lighthouse 95 o más, recorridos automáticos), guías probadas de punta a punta sin publicar y reporte del nivel 4.
+Nivel 4 terminado. Falta lo que depende del negocio o de cuentas (WhatsApp, dominio, hoja, GoatCounter, datos legales y fotos reales) y probar en un celular físico el enlace por WhatsApp y la instalación.
 
 ## Capturas más recientes
-| Privacidad (360) | Accesibilidad (360) | Créditos (360) |
+| Portada 360 | Portada 1440 | Lighthouse |
 |---|---|---|
-| ![privacidad](entregables/avances/2026-11-16_paso-P8_privacidad_360.png) | ![accesibilidad](entregables/avances/2026-11-16_paso-P8_accesibilidad_360.png) | ![créditos](entregables/avances/2026-11-16_paso-P8_creditos_360.png) |
+| ![360](entregables/avances/2026-11-16_paso-P9_360.png) | ![1440](entregables/avances/2026-11-16_paso-P9_1440.png) | [resumen](entregables/lighthouse/oficial-resumen.md) |

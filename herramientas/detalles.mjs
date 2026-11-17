@@ -14,7 +14,8 @@ const ok = (cond, txt) => { console.log((cond ? 'ok   ' : 'FALLA ') + txt); if (
 
 // Reloj: miércoles 14:47 en Guadalajara (20:47 UTC).
 {
-  const ctx = await b.newContext({ viewport: { width: 1440, height: 900 }, reducedMotion: 'reduce' });
+  // Sin service worker: lo que pasa por él no aparece en los eventos de la página.
+  const ctx = await b.newContext({ viewport: { width: 1440, height: 900 }, reducedMotion: 'reduce', serviceWorkers: 'block' });
   await ctx.addInitScript(() => { try { sessionStorage.setItem('take-intro', '1'); } catch (e) {} });
   const p = await ctx.newPage();
   await p.clock.install({ time: new Date('2026-11-18T20:47:00Z') });

@@ -178,3 +178,12 @@ dis-023 se reinterpreta: **un momento firma por página** (la noren que se abre 
 - **Noren índigo:** el azul (#1e2b45) queda fuera de la paleta sumi, washi y bermellón a propósito, porque es el color tradicional de la noren. Solo aparece en la tela (intro, cierre y telón).
 - **Fuentes:** sin precargas. En Edge las precargas bloquean el primer pintado: con ellas el LCP pasaba de 2.5 s y sin ellas queda en 1 a 2 s. Las fuentes de respaldo tienen `size-adjust` y `ascent-override`/`descent-override` medidos, y las medidas del héroe no dependen de la fuente, así que el CLS queda en menos de 0.002.
 - **Menú:** máquina o lista (se recuerda en el navegador), detalle de tecla en un `<dialog>` con View Transition, y la sugerencia de huevo después del primer ramen, que desaparece al imprimir.
+
+## Nivel 4 (PLAN_NIVEL_4, 2026-11-16): listo para ser el sitio real
+- **Modo:** `src/entornos/` decide propuesta u oficial; ningún componente pregunta por el dominio o el número, solo por `PROPUESTA`/`OFICIAL` y `ENTORNO`.
+- **Idiomas:** el texto fuente es el español de las plantillas; `t()` lo traduce con `i18n/en.ts`, que se carga solo en `/en`. El japonés no se traduce. El mensaje de WhatsApp siempre va en español (lo lee el local).
+- **Datos vivos:** la hoja de Google cambia los mismos objetos de `MENU` y `SUCURSALES` y sube `VERSION_DATOS`; las plantillas que leen datos declaran `@let datos = version()` para redibujarse.
+- **Agotado 売切:** la tecla se apaga en gris con un letrero bermellón girado, como el sello; no se puede pedir.
+- **Banda de aviso:** ámbar LED (el mismo de los precios), nunca bermellón: el rojo sigue siendo solo del botón principal y el sello.
+- **/links:** página estática fuera de Angular, para pesar menos de 150 KB.
+- **Precarga:** solo el menú, 3 s después de la carga; el resto se baja al visitarlo.
