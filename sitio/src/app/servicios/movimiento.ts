@@ -61,6 +61,10 @@ export class Movimiento {
     if (this.lenis) requestAnimationFrame(() => this.lenis?.scrollTo(scrollY, { immediate: true }));
   }
 
+  /** Detiene el scroll suave mientras hay un diálogo abierto (y lo reanuda al cerrarlo). */
+  pausar() { this.lenis?.stop(); }
+  reanudar() { this.lenis?.start(); }
+
   irA(objetivo: HTMLElement) {
     if (this.lenis) this.lenis.scrollTo(objetivo, { offset: -140 });
     else objetivo.scrollIntoView({ behavior: this.reducir ? 'auto' : 'smooth', block: 'start' });

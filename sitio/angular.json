@@ -30,7 +30,7 @@
             "production": {
               "budgets": [
                 { "type": "initial", "maximumWarning": "350kB", "maximumError": "500kB" },
-                { "type": "anyComponentStyle", "maximumWarning": "20kB", "maximumError": "24kB" }
+                { "type": "anyComponentStyle", "maximumWarning": "24kB", "maximumError": "28kB" }
               ],
               "outputHashing": "all"
             },
@@ -38,7 +38,7 @@
             "pages": {
               "budgets": [
                 { "type": "initial", "maximumWarning": "350kB", "maximumError": "500kB" },
-                { "type": "anyComponentStyle", "maximumWarning": "20kB", "maximumError": "24kB" }
+                { "type": "anyComponentStyle", "maximumWarning": "24kB", "maximumError": "28kB" }
               ],
               "outputHashing": "all",
               "baseHref": "/Take-chan/",

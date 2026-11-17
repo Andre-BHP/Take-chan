@@ -15,6 +15,12 @@
   </nav>
 
   <div class="columna">
+    <div class="vistas" role="group" aria-label="Cómo ver el menú">
+      <button type="button" [attr.aria-pressed]="vista() === 'maquina'" (click)="cambiarVista('maquina')">Máquina</button>
+      <button type="button" [attr.aria-pressed]="vista() === 'lista'" (click)="cambiarVista('lista')">Lista</button>
+    </div>
+
+    @if (vista() === 'maquina') {
     <div class="maquina">
       <div class="letrero">
         <span class="letrero-ja" lang="ja">食券</span>
@@ -28,8 +34,10 @@
             <h2 class="categoria-titulo" [id]="'tit-' + c.id"><span lang="ja">{{ c.ja }}</span> {{ c.nombre }}</h2>
             <div class="teclas">
               @for (p of c.items; track p.id; let pi = $index) {
+                <div class="tecla-caja">
                 <button type="button" class="tecla" [class.elegida]="pedido.cantidad(p.id) > 0" [class.pulsada]="pulsada() === p.id"
-                  (click)="presionar(p.id, $event)" [style.--n]="ci * 4 + pi" [attr.aria-label]="'Agregar ' + p.nombre + ', ' + pesos(p.precio) + '. En el pedido: ' + pedido.cantidad(p.id)">
+                  (click)="presionar(p.id, $event)" (pointerdown)="empezarPresion(p, $event)" (pointerup)="soltarPresion()" (pointerleave)="soltarPresion()" (pointercancel)="soltarPresion()" (contextmenu)="$event.preventDefault()"
+                  [style.--n]="ci * 4 + pi" [attr.aria-label]="'Agregar ' + p.nombre + ', ' + pesos(p.precio) + '. En el pedido: ' + pedido.cantidad(p.id)">
                   <span class="ventana" [style.view-transition-name]="p.id === preseleccion ? 'plato-' + p.id : null">
                     @if (p.foto) { <app-foto [nombre]="p.foto" sizes="(min-width: 1000px) 12rem, 45vw" [rotulo]="false" alt="" /> }
                     @else { <span class="sin-foto" lang="ja" aria-hidden="true">{{ c.ja }}</span> }
@@ -38,6 +46,10 @@
                   <span class="led" aria-hidden="true">{{ pesos(p.precio) }}</span>
                   @if (pedido.cantidad(p.id) > 0) { <span class="cuenta" aria-hidden="true">{{ pedido.cantidad(p.id) }}</span> }
                 </button>
+                <button type="button" class="info" (click)="abrirDetalle(p, $any($event.currentTarget).parentElement.querySelector('.ventana'))" [attr.aria-label]="'Ver detalle de ' + p.nombre">
+                  <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.8" /><path d="M12 11v6M12 7.5v.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" /></svg>
+                </button>
+                </div>
               }
             </div>
           </section>
@@ -52,8 +64,31 @@
         </div>
       </div>
       <div class="boca" aria-hidden="true"><span class="boca-ranura"></span><span class="etiqueta"><span lang="ja">発券口</span>Salida del ticket</span></div>
-      <p class="rotulo-fotos">Fotos de las teclas: imágenes ilustrativas.</p>
+      <p class="rotulo-fotos">Fotos de las teclas: imágenes ilustrativas. Mantén presionada una tecla para ver el detalle.</p>
     </div>
+    } @else {
+    <div class="lista">
+      @for (c of menu.categorias; track c.id) {
+        <section class="lista-cat" [id]="'cat-' + c.id" [attr.data-seccion]="c.id" tabindex="-1" [attr.aria-labelledby]="'lis-' + c.id">
+          <h2 class="categoria-titulo" [id]="'lis-' + c.id"><span lang="ja">{{ c.ja }}</span> {{ c.nombre }}</h2>
+          <ul>
+            @for (p of c.items; track p.id) {
+              <li class="lista-item">
+                <div class="lista-texto">
+                  <p class="lista-nombre">{{ p.nombre }}</p>
+                  <p class="lista-desc">{{ p.desc }}</p>
+                </div>
+                <span class="lista-precio t-dato">{{ pesos(p.precio) }}</span>
+                <button type="button" class="lista-agregar" (click)="presionar(p.id)" [attr.aria-label]="'Agregar ' + p.nombre + ', ' + pesos(p.precio) + '. En el pedido: ' + pedido.cantidad(p.id)">
+                  Agregar@if (pedido.cantidad(p.id) > 0) { <span class="t-dato" aria-hidden="true"> · {{ pedido.cantidad(p.id) }}</span> }
+                </button>
+              </li>
+            }
+          </ul>
+        </section>
+      }
+    </div>
+    }
 
     <section class="hoja washi" id="cat-al-gusto" data-seccion="al-gusto" tabindex="-1" aria-labelledby="tit-al-gusto">
       <h2 class="t-titulo" id="tit-al-gusto">Al gusto <span lang="ja">お好み</span></h2>
@@ -80,6 +115,14 @@
   <aside id="ticket" class="panel" aria-labelledby="ticket-titulo" [class.hoja]="hoja()">
     @if (hoja()) { <button type="button" class="cerrar-hoja" (click)="hoja.set(false)">Cerrar</button> }
     <h2 id="ticket-titulo" class="t-titulo">Tu pedido</h2>
+    @if (sugerir()) { <div class="sugerencia en-panel" role="status">
+      <app-foto class="sugerencia-foto" nombre="extra-huevo" sizes="56px" [rotulo]="false" alt="" />
+      <p class="sugerencia-texto"><strong>¿Le agregas huevo marinado?</strong> <span class="t-dato">+{{ pesos(huevo.precio) }}</span></p>
+      <div class="sugerencia-acciones">
+        <button type="button" class="boton boton-primario chico" (click)="agregarHuevo()">Agregar</button>
+        <button type="button" class="descartar" (click)="descartada.set(true)">No, gracias</button>
+      </div>
+    </div> }
 
     @if (pedido.lineas().length) {
       <ul class="lineas">
@@ -169,6 +212,34 @@
     }
   </aside>
 </div>
+
+@if (sugerir() && !hoja()) { <div class="sugerencia flotante" role="status">
+      <app-foto class="sugerencia-foto" nombre="extra-huevo" sizes="56px" [rotulo]="false" alt="" />
+      <p class="sugerencia-texto"><strong>¿Le agregas huevo marinado?</strong> <span class="t-dato">+{{ pesos(huevo.precio) }}</span></p>
+      <div class="sugerencia-acciones">
+        <button type="button" class="boton boton-primario chico" (click)="agregarHuevo()">Agregar</button>
+        <button type="button" class="descartar" (click)="descartada.set(true)">No, gracias</button>
+      </div>
+    </div> }
+
+<dialog #dialogo class="detalle" aria-labelledby="detalle-titulo" (close)="alCerrarDetalle()" (click)="clicDialogo($event)" data-lenis-prevent>
+  @if (detalle(); as d) {
+    <div class="detalle-foto">
+      @if (d.foto) { <app-foto [nombre]="d.foto" sizes="(min-width: 700px) 40rem, 100vw" /> }
+      @else { <span class="sin-foto" lang="ja" aria-hidden="true">{{ d.nombre }}</span> }
+    </div>
+    <div class="detalle-texto">
+      <h2 id="detalle-titulo" class="t-titulo">{{ d.nombre }}</h2>
+      <p class="detalle-precio t-dato">{{ pesos(d.precio) }}</p>
+      <p>{{ d.desc }}</p>
+      @if (esRamen(d)) { <p class="tenue">Se pide al gusto: fideo, sabor y grasa.</p> }
+      <div class="detalle-acciones">
+        <button type="button" class="boton boton-primario" (click)="agregarDesdeDetalle(d)">Agregar · {{ pesos(d.precio) }}</button>
+        <button type="button" class="boton boton-contorno" (click)="cerrarDetalle()">Cerrar</button>
+      </div>
+    </div>
+  }
+</dialog>
 
 @if (pedido.piezas()) {
   <a class="barra-movil" href="menu#ticket" (click)="abrirHoja($event)" [class.oculta]="panelVisible() || hoja()" [attr.tabindex]="panelVisible() || hoja() ? -1 : null" [attr.aria-hidden]="panelVisible() || hoja() ? 'true' : null">

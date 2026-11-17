@@ -18,10 +18,10 @@
       "nombre": "Extras",
       "ja": "トッピング",
       "items": [
-        { "id": "extra-chashu", "nombre": "Chashu", "desc": "Tres rebanadas.", "precio": 45, "foto": "chashu", "confirmado": false },
-        { "id": "extra-huevo", "nombre": "Huevo marinado", "desc": "Una pieza.", "precio": 25, "foto": "huevo", "confirmado": false },
-        { "id": "extra-fideo", "nombre": "Fideo extra", "desc": "Otra porción para el mismo caldo.", "precio": 30, "foto": "fideo", "confirmado": false },
-        { "id": "extra-nori", "nombre": "Nori", "desc": "Tres hojas.", "precio": 15, "foto": "tazon", "confirmado": false }
+        { "id": "extra-chashu", "nombre": "Chashu", "desc": "Tres rebanadas.", "precio": 45, "foto": "extra-chashu", "confirmado": false },
+        { "id": "extra-huevo", "nombre": "Huevo marinado", "desc": "Una pieza.", "precio": 25, "foto": "extra-huevo", "confirmado": false },
+        { "id": "extra-fideo", "nombre": "Fideo extra", "desc": "Otra porción para el mismo caldo.", "precio": 30, "foto": "extra-fideo", "confirmado": false },
+        { "id": "extra-nori", "nombre": "Nori", "desc": "Tres hojas.", "precio": 15, "foto": "extra-nori", "confirmado": false }
       ]
     },
     {

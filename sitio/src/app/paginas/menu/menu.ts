@@ -1,7 +1,7 @@
-import { ChangeDetectionStrategy, Component, DestroyRef, ElementRef, PLATFORM_ID, afterNextRender, computed, effect, inject, signal } from '@angular/core';
+import { ApplicationRef, ChangeDetectionStrategy, Component, DestroyRef, ElementRef, PLATFORM_ID, afterNextRender, computed, effect, inject, signal, viewChild } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
-import { MENU, SUCURSALES, direccionCorta, pesos } from '../../servicios/datos';
+import { MENU, Platillo, SUCURSALES, direccionCorta, esRamen, pesos, platillo } from '../../servicios/datos';
 import { Pedido } from '../../servicios/pedido';
 import { Contacto } from '../../servicios/contacto';
 import { Seo } from '../../servicios/seo';
@@ -45,6 +45,22 @@ export class Menu {
   private get reducir() { return matchMedia('(prefers-reduced-motion: reduce)').matches; }
   private readonly host = inject<ElementRef<HTMLElement>>(ElementRef);
   private readonly movimiento = inject(Movimiento);
+  /** Máquina para la experiencia o lista compacta para leer rápido (se recuerda en este navegador). */
+  protected readonly vista = signal<'maquina' | 'lista'>('maquina');
+  /** Sugerencia después del primer ramen: "¿Le agregas huevo marinado?". */
+  protected readonly huevo = platillo('extra-huevo');
+  protected readonly descartada = signal(false);
+  protected readonly sugerir = computed(() =>
+    !this.descartada() && this.pedido.lineas().some((l) => esRamen(l.platillo)) &&
+    !this.pedido.lineas().some((l) => l.platillo.id === 'extra-huevo' || l.platillo.id === 'iekei-huevo'));
+  /** Detalle de una tecla (mantener presionada o el botón "i"). */
+  protected readonly detalle = signal<Platillo | null>(null);
+  protected readonly esRamen = esRamen;
+  private readonly dialogo = viewChild<ElementRef<HTMLDialogElement>>('dialogo');
+  private readonly app = inject(ApplicationRef);
+  private presionLarga: ReturnType<typeof setTimeout> | null = null;
+  private fueLarga = false;
+  private observador: IntersectionObserver | null = null;
   /** Platillo que llega desde el bento (?ramen=id): su tecla recibe la foto que vuela. */
   protected readonly preseleccion = inject(ActivatedRoute).snapshot.queryParamMap.get('ramen');
 
@@ -68,13 +84,14 @@ export class Menu {
     afterNextRender(() => {
       const id = ruta.snapshot.queryParamMap.get('ramen');
       if (id && MENU.categorias.some((c) => c.items.some((p) => p.id === id)) && this.pedido.cantidad(id) === 0) this.pedido.sumar(id);
-      const observador = new IntersectionObserver(
+      try { if (localStorage.getItem('take-vista') === 'lista') this.vista.set('lista'); } catch { /* sin almacenamiento */ }
+      const observador = (this.observador = new IntersectionObserver(
         (entradas) => {
           const visible = entradas.filter((e) => e.isIntersecting).sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top)[0];
           if (visible) this.activa.set((visible.target as HTMLElement).dataset['seccion']!);
         },
         { rootMargin: '-35% 0px -55% 0px' },
-      );
+      ));
       this.host.nativeElement.querySelectorAll('[data-seccion]').forEach((s) => observador.observe(s));
       const panel = new IntersectionObserver(([e]) => this.panelVisible.set(e.isIntersecting), { rootMargin: '0px 0px -120px 0px' });
       const elPanel = this.host.nativeElement.querySelector('#ticket');
@@ -92,6 +109,75 @@ export class Menu {
     this.activa.set(id);
   }
 
+  protected cambiarVista(v: 'maquina' | 'lista') {
+    if (v === this.vista()) return;
+    this.vista.set(v);
+    try { localStorage.setItem('take-vista', v); } catch { /* sin almacenamiento */ }
+    // Las secciones se vuelven a crear: el índice las observa de nuevo.
+    setTimeout(() => {
+      this.observador?.disconnect();
+      this.host.nativeElement.querySelectorAll('[data-seccion]').forEach((s) => this.observador?.observe(s));
+    }, 0);
+  }
+
+  protected agregarHuevo() {
+    this.pedido.sumar('extra-huevo');
+    this.descartada.set(true);
+  }
+
+  /** Mantener presionada una tecla abre su detalle (y ese toque ya no agrega). */
+  protected empezarPresion(p: Platillo, e: PointerEvent) {
+    if (e.pointerType === 'mouse' && e.button !== 0) return;
+    this.fueLarga = false;
+    const tecla = e.currentTarget as HTMLElement;
+    this.presionLarga = setTimeout(() => {
+      this.fueLarga = true;
+      this.abrirDetalle(p, tecla.querySelector<HTMLElement>('.ventana'));
+    }, 480);
+  }
+
+  protected soltarPresion() {
+    if (this.presionLarga) clearTimeout(this.presionLarga);
+    this.presionLarga = null;
+  }
+
+  /** La foto de la tecla crece hasta el detalle (View Transition); sin soporte o con movimiento reducido, solo aparece. */
+  protected abrirDetalle(p: Platillo, origen: HTMLElement | null) {
+    const abrir = () => {
+      this.detalle.set(p);
+      this.app.tick();
+      const d = this.dialogo()?.nativeElement;
+      if (d && !d.open) d.showModal();
+      this.movimiento.pausar();
+    };
+    const doc = document as Document & { startViewTransition?: (f: () => void) => unknown };
+    if (!origen || !doc.startViewTransition || this.reducir) return abrir();
+    origen.style.viewTransitionName = 'detalle-foto';
+    doc.startViewTransition(() => {
+      origen.style.viewTransitionName = '';
+      abrir();
+    });
+  }
+
+  protected cerrarDetalle() {
+    this.dialogo()?.nativeElement.close();
+  }
+
+  protected alCerrarDetalle() {
+    this.detalle.set(null);
+    this.movimiento.reanudar();
+  }
+
+  /** Clic en el fondo oscuro del diálogo: se cierra. */
+  protected clicDialogo(e: MouseEvent) {
+    if (e.target === e.currentTarget) this.cerrarDetalle();
+  }
+
+  protected agregarDesdeDetalle(p: Platillo) {
+    this.pedido.sumar(p.id);
+    this.cerrarDetalle();
+  }
+
   /** Índice de la opción elegida de "al gusto", para el marco que se desliza (dis-077). */
   protected indiceGusto(id: string) {
     const o = MENU.alGusto.opciones.find((x) => x.id === id)!;
@@ -100,6 +186,7 @@ export class Menu {
 
   /** La tecla se hunde, la miniatura vuela al pedido (FLIP) y el contador rebota (dis-071, dis-059). */
   protected presionar(id: string, e?: Event) {
+    if (this.fueLarga) { this.fueLarga = false; return; }
     const primera = this.pedido.piezas() === 0;
     this.pedido.sumar(id);
     this.pulsada.set(id);

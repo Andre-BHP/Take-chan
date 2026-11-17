@@ -18,5 +18,9 @@ Se descartaron fotos de fachadas con marcas reales de otros negocios y un térmi
 | `fideo` | Qué es el Iekei y fideo extra | [Nahima Aparicio](https://unsplash.com/@nahimaaparicio) | [unsplash.com/photos/6esxgklFkQs](https://unsplash.com/photos/6esxgklFkQs) |
 | `tazon` | Paso 4: tazón armado | [Kouji Tsuru](https://unsplash.com/@pafuxu) | [unsplash.com/photos/T_B8nPvDWNk](https://unsplash.com/photos/T_B8nPvDWNk) |
 | `arroz` | Arroz (menú) | [Vinn Koonyosying](https://unsplash.com/@mggbox) | [unsplash.com/photos/zXNC_lBBVGE](https://unsplash.com/photos/zXNC_lBBVGE) |
+| `extra-huevo` | Extra: huevo marinado (recorte), de `huevo` | [Kouji Tsuru](https://unsplash.com/@pafuxu) | [unsplash.com/photos/YpgGpfZWV30](https://unsplash.com/photos/YpgGpfZWV30) |
+| `extra-chashu` | Extra: chashu (recorte), de `chashu` | [Kouji Tsuru](https://unsplash.com/@pafuxu) | [unsplash.com/photos/7k1E-aucIkU](https://unsplash.com/photos/7k1E-aucIkU) |
+| `extra-fideo` | Extra: fideo (recorte), de `fideo` | [Nahima Aparicio](https://unsplash.com/@nahimaaparicio) | [unsplash.com/photos/6esxgklFkQs](https://unsplash.com/photos/6esxgklFkQs) |
+| `extra-nori` | Extra: nori (recorte), de `heroe-iekei` | [Kouji Tsuru](https://unsplash.com/@pafuxu) | [unsplash.com/photos/cM_4SQ5fyrk](https://unsplash.com/photos/cM_4SQ5fyrk) |
 
 Procesado: `herramientas/procesar-fotos.mjs` (AVIF y WebP a 480, 960 y 1600 px, color promedio y miniatura borrosa). Originales en `fuentes-fotos/` (no se suben).

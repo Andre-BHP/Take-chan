@@ -106,5 +106,69 @@
     "usuario": "mggbox",
     "uso": "Arroz (menú)",
     "alt": "Arroz blanco con ajonjolí en tazón negro"
+  },
+  {
+    "nombre": "extra-huevo",
+    "fuente": "huevo",
+    "id": "YpgGpfZWV30",
+    "url": "https://images.unsplash.com/photo-1711255357866-f983ab685ffc",
+    "autor": "Kouji Tsuru",
+    "usuario": "pafuxu",
+    "uso": "Extra: huevo marinado (recorte)",
+    "alt": "Medio huevo marinado con la yema suave",
+    "recorte": {
+      "x": 0.14,
+      "y": 0.47,
+      "w": 0.34,
+      "h": 0.255
+    }
+  },
+  {
+    "nombre": "extra-chashu",
+    "fuente": "chashu",
+    "id": "7k1E-aucIkU",
+    "url": "https://images.unsplash.com/photo-1742710133012-a93d7a76e1bf",
+    "autor": "Kouji Tsuru",
+    "usuario": "pafuxu",
+    "uso": "Extra: chashu (recorte)",
+    "alt": "Rebanadas de chashu sobre el caldo",
+    "recorte": {
+      "x": 0.07,
+      "y": 0.47,
+      "w": 0.5,
+      "h": 0.25
+    }
+  },
+  {
+    "nombre": "extra-fideo",
+    "fuente": "fideo",
+    "id": "6esxgklFkQs",
+    "url": "https://images.unsplash.com/photo-1666307628741-c65334fed027",
+    "autor": "Nahima Aparicio",
+    "usuario": "nahimaaparicio",
+    "uso": "Extra: fideo (recorte)",
+    "alt": "Fideos levantados con palillos",
+    "recorte": {
+      "x": 0.28,
+      "y": 0.12,
+      "w": 0.5,
+      "h": 0.4
+    }
+  },
+  {
+    "nombre": "extra-nori",
+    "fuente": "heroe-iekei",
+    "id": "cM_4SQ5fyrk",
+    "url": "https://images.unsplash.com/photo-1736595100675-bbe60bc7ec1a",
+    "autor": "Kouji Tsuru",
+    "usuario": "pafuxu",
+    "uso": "Extra: nori (recorte)",
+    "alt": "Hoja de nori al borde del tazón",
+    "recorte": {
+      "x": 0.12,
+      "y": 0.04,
+      "w": 0.36,
+      "h": 0.45
+    }
   }
 ]

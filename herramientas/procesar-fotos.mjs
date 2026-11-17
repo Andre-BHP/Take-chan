@@ -13,7 +13,8 @@ const anchos = [480, 960, 1600];
 const datos = {};
 let total = 0;
 for (const f of lista) {
-  const origen = path.join(raiz, 'fuentes-fotos', f.nombre + '.jpg');
+  // Un recorte puede salir de la foto de otro (campo fuente): mismo autor y crédito, otro encuadre.
+  const origen = path.join(raiz, 'fuentes-fotos', (f.fuente ?? f.nombre) + '.jpg');
   // Recorte opcional (fracciones del original) para que el tazón llene el cuadro y no quede la mesa clara.
   let fuente = origen;
   if (f.recorte) {

@@ -302,3 +302,69 @@
 .ranura-salida { display: grid; gap: 4px; justify-items: center; }
 .ranura-salida .ranura { width: 100%; }
 .etiqueta-salida { font: 700 .75rem/1 var(--mincho); color: var(--ceniza); letter-spacing: .1em; }
+
+
+/* ---------- Máquina o lista ---------- */
+.vistas { display: inline-flex; gap: 2px; padding: 3px; margin-bottom: var(--e-3); border: 1px solid var(--linea); border-radius: 999px; background: var(--sumi-2); }
+.vistas button { min-height: 40px; padding: 0 var(--e-4); border: 0; border-radius: 999px; background: none; color: var(--washi-2); font: 600 .875rem/1 var(--sans); cursor: pointer; transition: background var(--t-2) var(--ease-out), color var(--t-2) var(--ease-out); }
+.vistas button[aria-pressed='true'] { background: var(--washi); color: var(--tinta); }
+.vistas button:focus-visible { outline: 2px solid var(--washi); outline-offset: 2px; }
+
+.lista { display: grid; gap: var(--e-6); }
+.lista-cat { display: grid; gap: var(--e-3); }
+.lista-cat ul { list-style: none; margin: 0; padding: 0; display: grid; }
+.lista-item { display: grid; grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: 'texto precio' 'texto boton'; gap: var(--e-1) var(--e-3); align-items: start; padding-block: var(--e-3); border-bottom: 1px solid var(--linea); }
+.lista-texto { grid-area: texto; }
+.lista-nombre { font: 600 1rem/1.3 var(--sans); }
+.lista-desc { color: var(--washi-2); font-size: .9375rem; max-width: 52ch; }
+.lista-precio { grid-area: precio; justify-self: end; color: var(--led); }
+.lista-agregar { grid-area: boton; justify-self: end; min-height: 40px; padding: 0 var(--e-3); border: 1px solid var(--washi-2); border-radius: var(--r-s); background: none; color: var(--washi); font: 600 .875rem/1 var(--sans); cursor: pointer; }
+.lista-agregar:hover { background: rgba(243, 238, 228, .08); }
+.lista-agregar:focus-visible { outline: 2px solid var(--washi); outline-offset: 2px; }
+
+/* ---------- Botón de detalle en cada tecla ---------- */
+.tecla-caja { position: relative; display: grid; }
+.info {
+  position: absolute; top: 9px; left: 9px; z-index: 2; display: grid; place-items: center;
+  width: 32px; height: 32px; padding: 0; border: 0; border-radius: 50%;
+  background: rgba(18, 17, 16, .72); color: var(--washi); cursor: pointer;
+}
+.info svg { width: 20px; height: 20px; }
+.info:focus-visible { outline: 2px solid var(--washi); outline-offset: 2px; }
+.tecla { -webkit-touch-callout: none; user-select: none; }
+
+/* ---------- Detalle de la tecla (diálogo) ---------- */
+.detalle { margin: auto; width: min(40rem, calc(100vw - 2 * var(--e-3))); max-height: calc(100svh - 2 * var(--e-4)); padding: 0; border: 1px solid var(--linea); border-radius: var(--r-l); background: var(--sumi-2); color: var(--washi); overflow: auto; }
+.detalle::backdrop { background: rgba(10, 9, 8, .78); }
+.detalle-foto { position: relative; aspect-ratio: 16 / 10; view-transition-name: detalle-foto; background: var(--sumi); }
+.detalle-foto app-foto { position: absolute; inset: 0; }
+.detalle-texto { display: grid; gap: var(--e-2); padding: var(--e-4); }
+.detalle-precio { color: var(--led); font-size: 1.125rem; }
+.detalle-acciones { display: flex; flex-wrap: wrap; gap: var(--e-3); margin-top: var(--e-2); }
+@media (prefers-reduced-motion: no-preference) {
+  .detalle[open] { animation: detalle-entra var(--t-3) var(--ease-out); }
+  @keyframes detalle-entra { from { opacity: 0; transform: translateY(12px) scale(.98); } }
+  ::view-transition-group(detalle-foto) { animation-duration: 420ms; animation-timing-function: cubic-bezier(.22, 1, .36, 1); }
+}
+
+/* ---------- Sugerencia: "¿Le agregas huevo marinado?" ---------- */
+.sugerencia {
+  display: grid; grid-template-columns: 56px minmax(0, 1fr); grid-template-areas: 'foto texto' 'foto acciones'; gap: var(--e-1) var(--e-3); align-items: center;
+  padding: var(--e-3); border: 1px solid var(--washi-2); border-radius: var(--r-m); background: var(--sumi-3, #24211e);
+}
+.sugerencia-foto { grid-area: foto; width: 56px; height: 56px; border-radius: var(--r-s); }
+.sugerencia-texto { grid-area: texto; font-size: .9375rem; }
+.sugerencia-texto .t-dato { color: var(--led); margin-left: .4em; white-space: nowrap; }
+.sugerencia-acciones { grid-area: acciones; display: flex; gap: var(--e-3); align-items: center; }
+.boton.chico { min-height: 40px; padding: 0 var(--e-4); font-size: .875rem; }
+.descartar { min-height: 40px; padding: 0; border: 0; background: none; color: var(--washi-2); font: 500 .875rem/1 var(--sans); text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+.sugerencia.flotante { position: fixed; left: var(--e-3); right: var(--e-3); bottom: calc(var(--e-3) + 64px); z-index: 16; box-shadow: 0 16px 34px -12px rgba(0, 0, 0, .9); }
+.sugerencia.en-panel { display: none; }
+@media (min-width: 1100px) {
+  .sugerencia.flotante { display: none; }
+  .sugerencia.en-panel { display: grid; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .sugerencia { animation: sugerencia-entra 420ms var(--ease-tela) both; }
+  @keyframes sugerencia-entra { from { opacity: 0; transform: translateY(16px) scale(.97); } }
+}

@@ -1,5 +1,5 @@
 // Video del movimiento con Playwright (recordVideo) y GIF con ffmpeg.
-// Uso: node herramientas/video.mjs <url-base> <paso> <escena: intro|transicion|social|ritmo|medidor|sucursales|inicio|menu|navegar> [anchos=1440,390] [reducir=0]
+// Uso: node herramientas/video.mjs <url-base> <paso> <escena: intro|transicion|social|ritmo|medidor|sucursales|inicio|menu|vende|navegar> [anchos=1440,390] [reducir=0]
 // Salida: entregables/avances/video/AAAA-MM-DD_<paso>_<escena>_<ancho>.mp4 y .gif (MP4 se ve en GitHub desde el celular)
 import { chromium } from 'playwright-core';
 import fs from 'node:fs';
@@ -65,6 +65,16 @@ const escenas = {
     await p.getByRole('button', { name: 'Imprimir ticket' }).click(); await espera(p, 2200);
     await p.locator('.salida').scrollIntoViewIfNeeded(); await espera(p, 500);
     await p.getByRole('button', { name: /Enviar por WhatsApp/ }).click(); await espera(p, 2000);
+  },
+  async vende(p, w) {
+    await p.addInitScript(() => { try { sessionStorage.setItem('take-intro', '1'); localStorage.removeItem('take-vista'); } catch (e) {} });
+    await p.goto(url('/menu'), { waitUntil: 'load' }); await espera(p, 1600);
+    await p.getByRole('button', { name: /^Agregar Iekei clásico/ }).click(); await espera(p, 1400);
+    await p.locator(w < 1100 ? '.sugerencia.flotante' : '.sugerencia.en-panel').getByRole('button', { name: 'Agregar' }).click(); await espera(p, 900);
+    const t = p.getByRole('button', { name: /^Agregar Gyoza/ }); await t.scrollIntoViewIfNeeded(); await espera(p, 500);
+    const c = await t.boundingBox(); await p.mouse.move(c.x + c.width / 2, c.y + c.height / 2); await p.mouse.down(); await espera(p, 650); await p.mouse.up(); await espera(p, 1500);
+    await p.keyboard.press('Escape'); await espera(p, 600);
+    await p.getByRole('button', { name: 'Lista' }).scrollIntoViewIfNeeded(); await p.getByRole('button', { name: 'Lista' }).click(); await espera(p, 1400);
   },
   async navegar(p) {
     await p.goto(url('/'), { waitUntil: 'load' }); await espera(p, 2400);

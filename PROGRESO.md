@@ -2,7 +2,7 @@
 
 - **Pages:** https://andre-bhp.github.io/Take-chan/
 - **Repositorio:** https://github.com/Andre-BHP/Take-chan
-- **Última subida:** 2026-11-16 20:16 (hora de Guadalajara)
+- **Última subida:** 2026-11-16 20:23 (hora de Guadalajara)
 
 ## Rediseño (2026-11-15)
 André revisó la primera versión: "quedó muy feo y muy mal". Este rediseño cambia la dirección a "una ramen-ya de Yokohama de noche": fotos de ejemplo rotuladas, negro sumi y papel washi, 家系 vertical y un solo acento bermellón.
@@ -27,7 +27,7 @@ Plan de Arthemis para pasar de "bien hecho" a "de premio".
 - [x] N4. Sello hanko de la propuesta
 - [x] N5. Héroe legible y saludo いらっしゃいませ
 - [x] N6. Ritmo editorial: títulos, 4.8 con sección propia y pausa a sangre
-- [ ] N7. Menú que vende: sugerencia, detalle de tecla y vista de lista
+- [x] N7. Menú que vende: sugerencia, detalle de tecla y vista de lista
 - [ ] N8. Reloj en vivo, TikTok bajo demanda, contraste AA y detalles
 - [ ] N9. Guion de fotos para André
 - [ ] N10. Pruebas, pulido, videos y reporte
@@ -49,12 +49,12 @@ André: "mejor animación, más transiciones, mejor diseño, mejor todo". Metáf
 Repositorio, Pages, datos, inicio, máquina de tickets, sucursales con JSON-LD, pruebas y lista para el negocio. Capturas en `entregables/avances/antes/`.
 
 ## Último paso
-**N6.** Ritmo editorial: títulos de sección grandes (hasta 64 px) con el kanji vertical al lado (注文, 作り方, 店舗), no encima. "Qué es el Iekei" lleva 家系ラーメンとは vertical al borde y la foto se sale de la retícula hasta el borde derecho. El 4.8 tiene sección propia: cifra de 240 px, estrellas que se llenan al contar, "140 reseñas en su ficha pública" en sans (ya no en mono), lo que elogian y "Ver en Google Maps" en contorno. "Para pedir" pone el título a la izquierda y el bento a sangre a la derecha. Pausa a sangre con los fideos y una frase, con paralaje lento. El borde de washi rasgado ahora es irregular, sin zigzag. axe limpio, portada de 460 KB, LCP de 1.7 s y CLS de 0.003.
+**N7.** Menú que vende. Después del primer ramen aparece "¿Le agregas huevo marinado? +$25", con Agregar y No, gracias (en celular flota sobre la barra; en escritorio va en Tu pedido). Cada tecla tiene un botón "i", y mantenerla presionada abre su detalle: la foto crece con View Transition y muestra la descripción, el precio y "Agregar"; se cierra con Esc o tocando fuera, y la presión larga ya no agrega. Interruptor Máquina / Lista: la lista es compacta y sirve para lector de pantalla; la elección se recuerda en el navegador. Los extras (chashu, huevo, fideo, nori) ya no repiten las fotos de los tazones: cada uno tiene su recorte del ingrediente. El sello en el ticket quedó en N4. Recorrido nuevo `herramientas/menu-estados.mjs`: axe sin violaciones en sugerencia, detalle y lista, a 390 y 1440.
 
 ## Sigue
-N7: menú que vende (sugerencia de huevo, detalle de tecla, vista de lista y recortes propios para los extras).
+N8: reloj vivo, TikTok bajo demanda, etiqueta en el bento, contraste AA, rótulos y estado vacío del pedido.
 
 ## Capturas más recientes
-| 360 | 1440 | Video |
-|---|---|---|
-| ![360](entregables/avances/2026-11-16_paso-N6_360.png) | ![1440](entregables/avances/2026-11-16_paso-N6_1440.png) | [GIF 390](entregables/avances/video/2026-11-16_N6_ritmo_390.gif) · [MP4 1440](entregables/avances/video/2026-11-16_N6_ritmo_1440.mp4) |
+| Sugerencia 390 | Detalle 390 | Lista 390 | Detalle 1440 | Video |
+|---|---|---|---|---|
+| ![sugerencia](entregables/avances/2026-11-16_paso-N7_sugerencia_390.png) | ![detalle](entregables/avances/2026-11-16_paso-N7_detalle_390.png) | ![lista](entregables/avances/2026-11-16_paso-N7_lista_390.png) | ![detalle 1440](entregables/avances/2026-11-16_paso-N7_detalle_1440.png) | [GIF 390](entregables/avances/video/2026-11-16_N7_vende_390.gif) · [MP4 1440](entregables/avances/video/2026-11-16_N7_vende_1440.mp4) |
