@@ -225,6 +225,8 @@ export class Menu {
   }
 
   protected imprimir() {
+    // Con el ticket impreso ya no se sugiere nada.
+    this.descartada.set(true);
     this.contacto.aviso.set(null);
     this.cortado.set(false);
     this.imprimiendo.set(true);

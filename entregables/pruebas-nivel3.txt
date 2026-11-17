@@ -1,0 +1,59 @@
+Pruebas del nivel 3 (2026-11-16 20:46, build de Pages en local, Edge sin interfaz)
+
+axe / 390: sin violaciones
+axe / 1440: sin violaciones
+360 px /: scrollWidth 360 ok
+axe /menu 390: sin violaciones
+axe /menu 1440: sin violaciones
+360 px /menu: scrollWidth 360 ok
+axe /tlaquepaque 390: sin violaciones
+axe /tlaquepaque 1440: sin violaciones
+360 px /tlaquepaque: scrollWidth 360 ok
+axe /americana 390: sin violaciones
+axe /americana 1440: sin violaciones
+360 px /americana: scrollWidth 360 ok
+portada: 472 KB transferidos (límite 500), LCP 844 ms con 4G lenta y CPU 4x (límite 2500)
+movimiento no-preference: {"animacion":"subir","opacidad":"0.178458","bucles":3}
+movimiento reduce: {"animacion":"none","opacidad":"0.14","bucles":0}
+
+Todo en orden
+
+320 px: CLS 0.0004 · tareas largas en la carga 0 · en el scroll 0 [] · 60 fps promedio · 0 de 361 cuadros de más de 34 ms
+390 px: CLS 0.0013 · tareas largas en la carga 0 · en el scroll 0 [] · 60 fps promedio · 0 de 366 cuadros de más de 34 ms
+768 px: CLS 0.0004 · tareas largas en la carga 2 · en el scroll 0 [] · 60 fps promedio · 1 de 370 cuadros de más de 34 ms
+1440 px: CLS 0.0001 · tareas largas en la carga 0 · en el scroll 0 [] · 59 fps promedio · 1 de 390 cuadros de más de 34 ms
+
+390 sugerencia visible: true
+axe sugerencia 390: sin violaciones
+390 huevo en el pedido: true · sugerencia oculta: true
+390 detalle abierto: true
+axe detalle 390: sin violaciones
+390 detalle cerrado con Esc: true
+390 presión larga abre detalle: true · no agregó arroz: true
+axe lista 390: sin violaciones
+390 lista recordada: true
+390 scrollWidth 390 ok
+1440 sugerencia visible: true
+axe sugerencia 1440: sin violaciones
+1440 huevo en el pedido: true · sugerencia oculta: true
+1440 detalle abierto: true
+axe detalle 1440: sin violaciones
+1440 detalle cerrado con Esc: true
+1440 presión larga abre detalle: true · no agregó arroz: true
+axe lista 1440: sin violaciones
+1440 lista recordada: true
+1440 scrollWidth 1440 ok
+
+Todo en orden
+
+ok   reloj a las 14:47: Abierto ahora · cierra en 2 h 13 min
+ok   un minuto después: Abierto ahora · cierra en 2 h 12 min
+ok   sin pedidos a TikTok antes del clic (0)
+ok   al tocar aparece el embed oficial
+ok   y se pide embed.js de TikTok
+ok   etiqueta "Ver en el menú" visible al pasar el puntero
+ok   cerrado a las 20:30: Cerrado · abre mañana a las 12:00
+ok   horario en una fila: Todos los días 12:00 a 17:00
+ok   estado vacío con la mini máquina
+
+Todo en orden

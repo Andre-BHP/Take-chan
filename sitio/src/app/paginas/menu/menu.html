@@ -223,7 +223,7 @@
   </aside>
 </div>
 
-@if (sugerir() && !hoja()) { <div class="sugerencia flotante" role="status">
+@if (sugerir() && !hoja() && !panelVisible() && !pedido.folio()) { <div class="sugerencia flotante" role="status">
       <app-foto class="sugerencia-foto" nombre="extra-huevo" sizes="56px" [rotulo]="false" alt="" />
       <p class="sugerencia-texto"><strong>¿Le agregas huevo marinado?</strong> <span class="t-dato">+{{ pesos(huevo.precio) }}</span></p>
       <div class="sugerencia-acciones">

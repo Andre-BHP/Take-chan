@@ -35,9 +35,9 @@
   .heroe-capa { min-height: calc(23.25rem + 25vw); align-content: end; }
   /* En celular la bajada ocupa dos líneas con Geist; se reservan antes de que llegue la fuente (CLS 0). */
   .bajada { min-height: 2.8em; }
-  /* "en Tlaquepaque." mide 8em en Shippori y la columna mide .74 del ancho menos 48 px: así cabe siempre en una línea,
+  /* "en Tlaquepaque." mide 8em en Shippori; con 8.6vw - 6px cabe en su columna de 320 a 899 px, en una línea,
      con la fuente final y con la de respaldo, y nada se recorre al llegar la fuente. */
-  .heroe .t-display { font-size: calc(9vw - 6px); }
+  .heroe .heroe-texto .t-display { font-size: calc(8.6vw - 6px); }
   .heroe .t-display .l { white-space: nowrap; }
 }
 @media (max-width: 599px) {
@@ -58,7 +58,7 @@
 /* Escritorio: foto a sangre de borde a borde con velo oscuro a la izquierda (dis-102). */
 @media (min-width: 900px) {
   .heroe-visual { inset: 0; -webkit-mask-image: none; mask-image: none; }
-  .heroe-visual::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(18, 17, 16, .94) 0%, rgba(18, 17, 16, .82) 30%, rgba(18, 17, 16, .25) 58%, rgba(18, 17, 16, 0) 72%), linear-gradient(0deg, rgba(18, 17, 16, .6) 0%, rgba(18, 17, 16, 0) 30%); }
+  .heroe-visual::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(18, 17, 16, .94) 0%, rgba(18, 17, 16, .86) 40%, rgba(18, 17, 16, .55) 62%, rgba(18, 17, 16, 0) 82%), linear-gradient(0deg, rgba(18, 17, 16, .6) 0%, rgba(18, 17, 16, 0) 30%); }
   .heroe-foto { --enfoque: 70% 50%; }
   .heroe-vapor { left: 50%; bottom: 50%; width: 32%; height: 48%; z-index: 1; }
   .kanji { font-size: clamp(13rem, 16vw, 15.5rem); }
@@ -76,7 +76,7 @@
    CSS puro desde el primer pintado: sin parpadeo y sin depender de JavaScript. Si hay intro, espera a que se abra la noren. */
 .heroe { --retraso: .1s; }
 :root.con-intro .heroe { --retraso: 1.05s; }
-.heroe .l { display: block; overflow: hidden; padding-bottom: .06em; margin-bottom: -.06em; }
+.heroe .l { display: block; overflow: hidden; padding: .2em .06em .18em; margin: -.2em -.06em -.18em; }
 .heroe .l > span { display: block; }
 @media (prefers-reduced-motion: no-preference) {
   .heroe-foto { animation: heroe-foto 1400ms var(--ease-out) var(--retraso) both; }

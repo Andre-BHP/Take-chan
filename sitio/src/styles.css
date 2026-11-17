@@ -53,6 +53,8 @@ html.lenis, html.lenis body { height: auto; }
 .lenis.lenis-stopped { overflow: clip; }
 /* Líneas de SplitText con máscara */
 .linea { display: block; }
+/* La máscara de cada línea deja aire para los rasgos que bajan (p, q, g) y para el remate de la última letra. */
+.linea-mask { padding: .14em .06em .16em; margin: -.14em -.06em -.16em; }
 
 body {
   background: var(--sumi);

@@ -2,7 +2,7 @@
 
 - **Pages:** https://andre-bhp.github.io/Take-chan/
 - **Repositorio:** https://github.com/Andre-BHP/Take-chan
-- **Última subida:** 2026-11-16 20:28 (hora de Guadalajara)
+- **Última subida:** 2026-11-16 20:49 (hora de Guadalajara)
 
 ## Rediseño (2026-11-15)
 André revisó la primera versión: "quedó muy feo y muy mal". Este rediseño cambia la dirección a "una ramen-ya de Yokohama de noche": fotos de ejemplo rotuladas, negro sumi y papel washi, 家系 vertical y un solo acento bermellón.
@@ -30,7 +30,7 @@ Plan de Arthemis para pasar de "bien hecho" a "de premio".
 - [x] N7. Menú que vende: sugerencia, detalle de tecla y vista de lista
 - [x] N8. Reloj en vivo, TikTok bajo demanda, contraste AA y detalles
 - [x] N9. Guion de fotos para André
-- [ ] N10. Pruebas, pulido, videos y reporte
+- [x] N10. Pruebas, pulido, videos y reporte
 
 ## Movimiento (2026-11-16)
 André: "mejor animación, más transiciones, mejor diseño, mejor todo". Metáfora: entrar a la ramen-ya apartando la noren. Cada paso con video (MP4) y GIF en `entregables/avances/video/`.
@@ -49,10 +49,12 @@ André: "mejor animación, más transiciones, mejor diseño, mejor todo". Metáf
 Repositorio, Pages, datos, inicio, máquina de tickets, sucursales con JSON-LD, pruebas y lista para el negocio. Capturas en `entregables/avances/antes/`.
 
 ## Último paso
-**N9.** `entregables/GUION_FOTOS.md`: 12 tomas para la visita, con formato (vertical u horizontal), hora (al abrir, con luz natural), sin flash, mesa limpia, el orden para que el tazón no se enfríe y la foto del dueño solo con su permiso. Cada toma dice qué foto de ejemplo reemplaza, y al final van los pasos para cambiarlas con el mismo tratamiento de color. `PEDIR_AL_NEGOCIO.md` al día: enlaza el guion, ya no menciona los recuadros "Foto pendiente", y agrega como datos de ejemplo la sugerencia de huevo, la ubicación aproximada de la Americana, el sello y la confirmación del TikTok.
+**N10.** Cierre del nivel 3. La revisión de terminado (verificador de design-taste-frontend) encontró y se corrigió: el titular que se salía del héroe en celular, rasgos y acentos cortados por las máscaras de línea, el velo de escritorio, el contraste de los pasos inactivos (50 %), la sugerencia que tapaba el ticket en celular, la foto de la gyoza pedida a menor tamaño y las métricas de las fuentes de respaldo. Pruebas: axe sin violaciones (incluidos los estados del menú), sin scroll a 360, portada de 472 KB, LCP de 0.8 a 2.3 s, CLS de 0.0013 como máximo, 59 a 60 fps y movimiento reducido en orden. Videos finales, capturas de visita, comparativa antes y después, y `entregables/REPORTE_NIVEL_3.md`.
 
 ## Sigue
-N10: pruebas completas, pulido (impeccable y design-taste-frontend), videos, capturas de visita y reporte del nivel 3.
+Nivel 4 (`PLAN_NIVEL_4.md`, P0 a P9): todo lo que no depende del negocio para publicar en menos de una hora el día que el dueño diga que sí.
 
 ## Capturas más recientes
-Sin capturas nuevas en este paso (solo documentos): [GUION_FOTOS.md](entregables/GUION_FOTOS.md) · [PEDIR_AL_NEGOCIO.md](entregables/PEDIR_AL_NEGOCIO.md)
+| Antes y después | Portada 360 | Portada 1440 | Menú 1440 | Videos |
+|---|---|---|---|---|
+| ![comparativa](entregables/avances/comparativa-nivel3.png) | ![360](entregables/avances/2026-11-16_paso-N10_360.png) | ![1440](entregables/avances/2026-11-16_paso-N10_1440.png) | ![menú](entregables/avances/2026-11-16_paso-N10_menu_1440.png) | [Portada GIF 390](entregables/avances/video/2026-11-16_N10_inicio_390.gif) · [Menú GIF 390](entregables/avances/video/2026-11-16_N10_menu_390.gif) · [Portada MP4 1440](entregables/avances/video/2026-11-16_N10_inicio_1440.mp4) |
