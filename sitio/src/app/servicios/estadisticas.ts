@@ -8,7 +8,7 @@ import { OFICIAL } from '../../entornos/modo';
  * No carga su script: usa su contador por URL (GET /count), así no entra código de terceros.
  * Solo en modo oficial y con código en el entorno (ENTORNO.goatcounter: "takechan" o una URL completa para pruebas).
  * Eventos: arma-tu-pedido, tecla/<platillo>, ticket-impreso, whatsapp-enviado, como-llegar/<sucursal>.
- * Las visitas desde el QR de mesa llegan con ?utm_source=mesa y GoatCounter las agrupa como campaña.
+ * Las visitas desde los QR llegan con ?ref=mesa, ?ref=calco, ?ref=tarjeta o ?ref=qr-web, y GoatCounter las toma como origen (campaña.
  */
 @Injectable({ providedIn: 'root' })
 export class Estadisticas {

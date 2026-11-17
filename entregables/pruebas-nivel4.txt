@@ -13,9 +13,11 @@ ok    Compartir y /links (ensayo oficial)
 ok    SEO local (propuesta)
 ok    SEO local (ensayo oficial)
 ok    Estadísticas sin cookies
+ok    QR web: se imprime en menos de 1.2 s, quieto con movimiento reducido, oculto en celular
+ok    Escaneo de todos los QR (impresos y web) a 2, 3 y 5 cm
 ok    Textos sin traducir
 
-Pruebas del nivel 4 (2026-11-16 22:01:12)
+Pruebas del nivel 4 (2026-11-17 13:17:11)
 
 == Calidad: axe en 11 rutas, 360 px, peso, LCP y movimiento reducido (propuesta) (pruebas.mjs)
 axe / 390: sin violaciones
@@ -51,17 +53,17 @@ axe /en/accesibilidad 1440: sin violaciones
 axe /creditos 390: sin violaciones
 axe /creditos 1440: sin violaciones
 360 px /creditos: scrollWidth 360 ok
-portada: 466 KB transferidos (límite 500), LCP 1952 ms con 4G lenta y CPU 4x (límite 2500)
-movimiento no-preference: {"animacion":"subir","opacidad":"0.172899","bucles":3}
+portada: 460 KB transferidos (límite 500), LCP 2084 ms con 4G lenta y CPU 4x (límite 2500)
+movimiento no-preference: {"animacion":"subir","opacidad":"0.178457","bucles":3}
 movimiento reduce: {"animacion":"none","opacidad":"0.14","bucles":0}
 
 Todo en orden
 
 == CLS y fps a 390 px (rendimiento.mjs)
-390 px: CLS 0.0014 · tareas largas en la carga 2 · en el scroll 0 [] · 60 fps promedio · 0 de 369 cuadros de más de 34 ms
+390 px: CLS 0.0013 · tareas largas en la carga 0 · en el scroll 0 [] · 57 fps promedio · 6 de 449 cuadros de más de 34 ms
 
 == CLS y fps a 1440 px (rendimiento.mjs)
-1440 px: CLS 0.0005 · tareas largas en la carga 1 · en el scroll 0 [] · 59 fps promedio · 2 de 388 cuadros de más de 34 ms
+1440 px: CLS 0.0001 · tareas largas en la carga 2 · en el scroll 0 [] · 57 fps promedio · 7 de 400 cuadros de más de 34 ms
 
 == Recorrido 1 y 6: modos propuesta y oficial (pedido demo y WhatsApp real simulado) (modos.mjs)
 ok    propuesta: aviso de propuesta presente
@@ -253,7 +255,7 @@ Todo en orden
 
 == Estadísticas sin cookies (estadisticas.mjs)
 ok    propuesta: sin estadísticas (0 envíos)
-ok    oficial: visita a /menu con la campaña del QR de mesa (utm_source=mesa)
+ok    oficial: visita a /menu con la campaña del QR de mesa (ref=mesa)
 ok    oficial: visita a la portada al navegar sin recargar
 ok    oficial: visita a /links
 ok    oficial: evento tecla/iekei-clasico
@@ -261,10 +263,29 @@ ok    oficial: evento ticket-impreso
 ok    oficial: evento whatsapp-enviado
 ok    oficial: evento links/tiktok
 ok    oficial: sin cookies ni identificadores en los envíos
-  envíos: visita /menu ?utm_source=mesa | evento tecla/iekei-clasico | evento ticket-impreso | evento whatsapp-enviado | visita / | visita /links | evento links/tiktok
+  envíos: visita /menu ?ref=mesa | evento tecla/iekei-clasico | evento ticket-impreso | evento whatsapp-enviado | visita / | visita /links | evento links/tiktok
 
 Todo en orden
 
+== QR web: se imprime en menos de 1.2 s, quieto con movimiento reducido, oculto en celular (qr-web.mjs)
+ok    /menu: se imprime fila por fila (48 animaciones, termina a los 1180 ms)
+ok    /menu (animado, ya impreso): QR leído https://andre-bhp.github.io/Take-chan/menu?ref=qr-web
+ok    /menu: con movimiento reducido no hay animación (0)
+ok    /menu (movimiento reducido, quieto): QR leído https://andre-bhp.github.io/Take-chan/menu?ref=qr-web
+ok    /en/menu (animado, ya impreso): QR leído https://andre-bhp.github.io/Take-chan/en/menu?ref=qr-web
+ok    celular: no se muestra ni se dibuja
+
+Todo en orden
+
+== Escaneo de todos los QR (impresos y web) a 2, 3 y 5 cm (escaneo.mjs)
+Tent card de mesa (cara de abajo): https://andre-bhp.github.io/Take-chan/menu?ref=mesa
+Tent card de mesa (cara de arriba, girada): https://andre-bhp.github.io/Take-chan/menu?ref=mesa
+Calcomanía: https://andre-bhp.github.io/Take-chan/links?ref=calco
+Tarjeta de André: https://andre-bhp.github.io/Take-chan/?ref=tarjeta
+QR web «Pídelo desde tu celular» (/menu): https://andre-bhp.github.io/Take-chan/menu?ref=qr-web
+
+120 de 120 lecturas correctas → entregables/impresos/PRUEBA_ESCANEO.md
+
 == Textos sin traducir (llaves-idioma.mjs)
-215 textos; 0 sin traducir
+218 textos; 0 sin traducir
 

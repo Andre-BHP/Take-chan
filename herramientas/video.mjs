@@ -1,5 +1,5 @@
 // Video del movimiento con Playwright (recordVideo) y GIF con ffmpeg.
-// Uso: node herramientas/video.mjs <url-base> <paso> <escena: intro|transicion|social|ritmo|medidor|sucursales|inicio|menu|vende|navegar> [anchos=1440,390] [reducir=0]
+// Uso: node herramientas/video.mjs <url-base> <paso> <escena: intro|transicion|social|ritmo|medidor|sucursales|inicio|menu|vende|qr|navegar> [anchos=1440,390] [reducir=0]
 // Salida: entregables/avances/video/AAAA-MM-DD_<paso>_<escena>_<ancho>.mp4 y .gif (MP4 se ve en GitHub desde el celular)
 import { chromium } from 'playwright-core';
 import fs from 'node:fs';
@@ -75,6 +75,10 @@ const escenas = {
     const c = await t.boundingBox(); await p.mouse.move(c.x + c.width / 2, c.y + c.height / 2); await p.mouse.down(); await espera(p, 650); await p.mouse.up(); await espera(p, 1500);
     await p.keyboard.press('Escape'); await espera(p, 600);
     await p.getByRole('button', { name: 'Lista' }).scrollIntoViewIfNeeded(); await p.getByRole('button', { name: 'Lista' }).click(); await espera(p, 1400);
+  },
+  async qr(p) {
+    await p.addInitScript(() => { try { sessionStorage.setItem('take-intro', '1'); } catch (e) {} });
+    await p.goto(url('/menu'), { waitUntil: 'commit' }); await espera(p, 3200);
   },
   async navegar(p) {
     await p.goto(url('/'), { waitUntil: 'load' }); await espera(p, 2400);

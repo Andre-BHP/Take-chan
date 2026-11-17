@@ -25,6 +25,8 @@ const pruebas = [
   ['SEO local (propuesta)', 'seo-local.mjs', ['sitio/dist/pages/browser']],
   ['SEO local (ensayo oficial)', 'seo-local.mjs', ['sitio/dist/prueba-oficial/browser']],
   ['Estadísticas sin cookies', 'estadisticas.mjs', [P, O]],
+  ['QR web: se imprime en menos de 1.2 s, quieto con movimiento reducido, oculto en celular', 'qr-web.mjs', [P]],
+  ['Escaneo de todos los QR (impresos y web) a 2, 3 y 5 cm', 'escaneo.mjs', []],
   ['Textos sin traducir', 'llaves-idioma.mjs', []],
 ];
 const registro = [`Pruebas del nivel 4 (${new Date().toLocaleString('sv-SE')})`, ''];

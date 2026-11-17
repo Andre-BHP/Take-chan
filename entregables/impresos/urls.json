@@ -1,0 +1,14 @@
+{
+  "modo": "propuesta",
+  "base": "https://andre-bhp.github.io/Take-chan",
+  "urls": {
+    "mesa": "https://andre-bhp.github.io/Take-chan/menu?ref=mesa",
+    "calcomania": "https://andre-bhp.github.io/Take-chan/links?ref=calco",
+    "tarjeta": "https://andre-bhp.github.io/Take-chan/?ref=tarjeta"
+  },
+  "tamanos": {
+    "tent-card-mesa": 4.6,
+    "calcomania-10x10": 4.8,
+    "tarjeta-andre": 2.9
+  }
+}

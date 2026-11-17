@@ -1,4 +1,10 @@
 .cabeza { padding-block: var(--e-6) var(--e-5); display: grid; gap: var(--e-3); }
+/* Escritorio: "Pídelo desde tu celular" a la derecha de la cabecera (carta dis-081). */
+@media (min-width: 900px) {
+  .cabeza { grid-template-columns: minmax(0, 1fr) auto; column-gap: var(--e-7); }
+  .cabeza > :not(.qr-cabeza) { grid-column: 1; }
+  .qr-cabeza { grid-column: 2; grid-row: 1 / span 3; align-self: end; }
+}
 .cabeza .entrada { font-size: clamp(1.0625rem, 1rem + .4vw, 1.25rem); line-height: 1.5; max-width: 48ch; color: var(--washi-2); }
 
 .disposicion { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--e-5); align-items: start; padding-bottom: var(--e-8); }

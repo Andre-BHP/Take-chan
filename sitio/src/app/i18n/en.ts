@@ -101,6 +101,9 @@ export const EN: Record<string, string> = {
 
   // Menú
   "Menú y pedido": 'Menu & order',
+  "Pídelo desde tu celular": 'Order from your phone',
+  "Código QR que abre este menú en tu celular": 'QR code that opens this menu on your phone',
+  "Escanéalo con la cámara y se abre este menú.": 'Scan it with your camera to open this menu.',
   "Como en una ramen-ya de Japón: presiona las teclas de la máquina, elige el fideo, el sabor y la grasa, y sale tu ticket listo para WhatsApp.": 'Just like a ramen shop in Japan: press the buttons on the ticket machine, choose your noodles, flavor and fat, and your ticket comes out ready for WhatsApp.',
   "Secciones del menú": 'Menu sections',
   "Cómo ver el menú": 'How to view the menu',

@@ -37,8 +37,8 @@ Cuenta los eventos (en GoatCounter aparecen como rutas sin diagonal inicial):
 |---|---|---|
 | TikTok | | Referencia `tiktok.com` o visitas a `/links` |
 | Google (búsqueda o Maps) | | Referencia `google.com` / `maps.google.com` |
-| QR de la mesa | | Campaña `mesa` (`?utm_source=mesa`) |
-| Calcomanía de la puerta | | Campaña `calcomania` |
+| QR de la mesa | | Origen `mesa` (`?ref=mesa`) |
+| Calcomanía de la puerta | | Origen `calco` (`?ref=calco`) |
 | Directo o WhatsApp | | Sin referencia |
 
 ## 5. Sucursal más buscada

@@ -2,7 +2,7 @@
 
 - **Pages:** https://andre-bhp.github.io/Take-chan/
 - **Repositorio:** https://github.com/Andre-BHP/Take-chan
-- **Última subida:** 2026-11-16 22:05 (hora de Guadalajara)
+- **Última subida:** 2026-11-17 13:21 (hora de Guadalajara)
 
 ## Rediseño (2026-11-15)
 André revisó la primera versión: "quedó muy feo y muy mal". Este rediseño cambia la dirección a "una ramen-ya de Yokohama de noche": fotos de ejemplo rotuladas, negro sumi y papel washi, 家系 vertical y un solo acento bermellón.
@@ -16,6 +16,11 @@ André revisó la primera versión: "quedó muy feo y muy mal". Este rediseño c
 - [x] R6. Revisión de impeccable y design-taste-frontend, y correcciones
 - [x] R7. Pruebas, comparativa antes y después, mockups de visita
 - [x] R8. Reporte
+
+## QR con identidad (2026-11-17)
+Regla de André: todo QR usa las cartas de Gambit dis-094 y dis-081.
+
+- [x] Q1. QR de tinta con el sello, tent card con ticket 食券, QR animado en /menu y pruebas de escaneo
 
 ## Nivel 4 (2026-11-16)
 Plan de Arthemis: todo lo que no depende del negocio, para publicar el sitio oficial en menos de una hora.
@@ -63,12 +68,12 @@ André: "mejor animación, más transiciones, mejor diseño, mejor todo". Metáf
 Repositorio, Pages, datos, inicio, máquina de tickets, sucursales con JSON-LD, pruebas y lista para el negocio. Capturas en `entregables/avances/antes/`.
 
 ## Último paso
-**P9.** Cierre del nivel 4. Lighthouse sobre el ensayo oficial: accesibilidad, buenas prácticas y SEO en 100 en todas las páginas, y rendimiento en escritorio de 99 a 100. En celular, el rendimiento queda entre 77 y 83 (no llega a 95): Lighthouse simula 4G lenta y cuenta como críticas las 6 fuentes y el JS de Angular. Medido de verdad, el LCP es de 0.9 a 2.3 s y el CLS de 0.0014 como máximo; subirlo exige quitar pesos de fuente o retrasar GSAP y la intro, que es decisión de André. La propuesta da SEO 63 por el noindex, a propósito. Se corrigió un aria-label prohibido de SplitText y la foto del héroe pide 960 px en celular. `herramientas/recorridos.mjs` corre las 15 pruebas (los seis recorridos del plan más axe en 11 rutas, 360 px, peso, LCP, CLS, fps, compartir, SEO local, PWA, estadísticas y traducciones): todas en orden (`entregables/pruebas-nivel4.txt`). `GUIA_PUBLICAR.md` probada de punta a punta con el ensayo oficial sin publicar; el build oficial vacío se detiene pidiendo el dominio. Reporte en `entregables/REPORTE_NIVEL_4.md`.
+**Q1.** QR con la identidad (dis-094): módulos de tinta redondeados que se funden, ojos sumi con centro bermellón, sello 家系 al centro, corrección H, fondo claro y zona de silencio de 4 módulos (`sitio/scripts/qr-tinta.mjs`). Tent card con el QR impreso dentro de un ticket 食券 que sale de la ranura 発券口; calcomanía y tarjeta regeneradas. QR animado en /menu (dis-081, solo escritorio): "Pídelo desde tu celular" se imprime fila por fila en 1.18 s, quieto con movimiento reducido y oculto en celular. Escaneo automático con jsQR (`herramientas/escaneo.mjs`): 120 de 120 lecturas con la URL exacta a 2, 3 y 5 cm y a tamaño real, a 10 y 15 cm, limpio, borroso y deslavado; `entregables/impresos/PRUEBA_ESCANEO.md` tiene la tabla para la prueba con celular. Las URL salen del modo (`impresos.mjs --modo oficial`) y `GUIA_PUBLICAR.md` pide regenerar e imprimir los QR con el dominio final. Los parámetros pasaron a `?ref=` (QR más chicos). Todas las pruebas en orden.
 
 ## Sigue
-Nivel 4 terminado. Falta lo que depende del negocio o de cuentas (WhatsApp, dominio, hoja, GoatCounter, datos legales y fotos reales) y probar en un celular físico el enlace por WhatsApp y la instalación.
+Probar los QR impresos con un celular real y anotarlo en PRUEBA_ESCANEO.md. Pendientes del negocio: WhatsApp, dominio, hoja, GoatCounter, datos legales y fotos reales.
 
 ## Capturas más recientes
-| Portada 360 | Portada 1440 | Lighthouse |
+| Antes y después | QR web en /menu | Animación |
 |---|---|---|
-| ![360](entregables/avances/2026-11-16_paso-P9_360.png) | ![1440](entregables/avances/2026-11-16_paso-P9_1440.png) | [resumen](entregables/lighthouse/oficial-resumen.md) |
+| ![impresos](entregables/avances/2026-11-17_paso-QR_antes-despues.png) | ![qr web](entregables/avances/2026-11-17_paso-QR_qr-web_1440.png) | [GIF](entregables/avances/video/2026-11-17_QR_qr_1440.gif) |

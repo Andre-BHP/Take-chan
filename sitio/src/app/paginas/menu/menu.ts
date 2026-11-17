@@ -1,3 +1,4 @@
+import { QrPedido } from '../../componentes/qr-pedido';
 import { Estadisticas } from '../../servicios/estadisticas';
 import { Idioma } from '../../servicios/idioma';
 import { PROPUESTA } from '../../../entornos/modo';
@@ -16,7 +17,7 @@ import { Movimiento } from '../../servicios/movimiento';
 @Component({
   selector: 'app-menu',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [Foto, NotaEjemplo, Odometro],
+  imports: [Foto, NotaEjemplo, Odometro, QrPedido],
   templateUrl: './menu.html',
   styleUrl: './menu.css',
 })

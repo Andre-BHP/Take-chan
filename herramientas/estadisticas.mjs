@@ -14,7 +14,7 @@ async function recorrido(base) {
   const conteos = [];
   await ctx.route(/goatcounter|__conteo/, (r) => { const u = new URL(r.request().url()); conteos.push(Object.fromEntries(u.searchParams)); return r.fulfill({ status: 200, body: '' }); });
   const p = await ctx.newPage();
-  await p.goto(base + '/menu?utm_source=mesa', { waitUntil: 'networkidle' });
+  await p.goto(base + '/menu?ref=mesa', { waitUntil: 'networkidle' });
   await p.waitForTimeout(500);
   await p.getByRole('button', { name: /^Agregar Iekei clásico/ }).click();
   await p.getByRole('button', { name: 'Imprimir ticket' }).click();
@@ -35,7 +35,7 @@ ok(sinNada.length === 0, `propuesta: sin estadísticas (${sinNada.length} envío
 const c = await recorrido(oficialArg.replace(/\/$/, ''));
 const visitas = c.filter((x) => !x.e);
 const eventos = c.filter((x) => x.e === 'true').map((x) => x.p);
-ok(visitas.some((v) => v.p === '/menu' && v.q === '?utm_source=mesa'), 'oficial: visita a /menu con la campaña del QR de mesa (utm_source=mesa)');
+ok(visitas.some((v) => v.p === '/menu' && v.q === '?ref=mesa'), 'oficial: visita a /menu con la campaña del QR de mesa (ref=mesa)');
 ok(visitas.some((v) => v.p === '/' || v.p === ''), 'oficial: visita a la portada al navegar sin recargar');
 ok(visitas.some((v) => v.p === '/links'), 'oficial: visita a /links');
 for (const e of ['tecla/iekei-clasico', 'ticket-impreso', 'whatsapp-enviado', 'links/tiktok']) ok(eventos.includes(e), `oficial: evento ${e}`);

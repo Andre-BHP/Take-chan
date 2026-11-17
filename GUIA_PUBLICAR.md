@@ -43,7 +43,7 @@ Sin número, el pedido sigue en modo demostración. Sin dominio, el build se det
 ### Estadísticas (opcional, gratis y sin cookies)
 1. Crear la cuenta en goatcounter.com (la del negocio o la de André) y elegir un código: `takechan` queda en `takechan.goatcounter.com`.
 2. Poner el código en `goatcounter: 'takechan'` y publicar. No hace falta banner de cookies: GoatCounter no usa cookies ni guarda datos personales.
-3. El sitio no carga el script de GoatCounter: manda cada visita y cada evento con su contador por URL (`sitio/src/app/servicios/estadisticas.ts`). Eventos: `arma-tu-pedido`, `tecla/<platillo>`, `ticket-impreso`, `whatsapp-enviado`, `como-llegar/<sucursal>` y `links/<botón>`. Las visitas desde el QR llegan como campañas `mesa` y `calcomania`.
+3. El sitio no carga el script de GoatCounter: manda cada visita y cada evento con su contador por URL (`sitio/src/app/servicios/estadisticas.ts`). Eventos: `arma-tu-pedido`, `tecla/<platillo>`, `ticket-impreso`, `whatsapp-enviado`, `como-llegar/<sucursal>` y `links/<botón>`. Las visitas desde los QR llegan con `?ref=mesa`, `?ref=calco`, `?ref=tarjeta` y `?ref=qr-web` (los QR más cortos se leen mejor), y GoatCounter las muestra como origen.
 4. Cada mes, llenar `entregables/REPORTE_MENSUAL_PLANTILLA.md` con los números de GoatCounter.
 5. Prueba sin salir a internet: `node herramientas/estadisticas.mjs` (el ensayo oficial cuenta en `http://localhost:4344/__conteo`).
 
@@ -78,5 +78,10 @@ La carpeta que se sube es `sitio/dist/oficial/browser` (sitio estático, sin ser
 - Abrir el dominio en el celular y compartir el enlace por WhatsApp para ver la tarjeta.
 - Dar de alta el sitio en Google Search Console con el `sitemap.xml`.
 - Poner el enlace en la ficha de Google Maps y en la biografía de TikTok (`/links`).
-- **Impresos:** con el dominio ya en `entorno.oficial.ts`, correr `node herramientas/impresos.mjs`. Rehace los PDF de `entregables/impresos/` (tent card de mesa, calcomanía y tarjeta) con el QR al dominio y lee cada QR de vuelta para comprobarlo. Imprimir a tamaño real (100 %), sin "ajustar a la página".
+- **Regenerar e imprimir los QR con el dominio final.** Los impresos de la propuesta apuntan a github.io, así que no se reparten. Con el dominio ya en `entorno.oficial.ts`:
+  1. `node herramientas/impresos.mjs --modo oficial`: rehace los PDF de `entregables/impresos/` (tent card, calcomanía y tarjeta). La URL sale de la configuración del modo; si el dominio está vacío, se detiene.
+  2. `node herramientas/escaneo.mjs`: lee cada QR (impresos y web) a 2, 3 y 5 cm, limpio, borroso y deslavado. Todos deben dar la URL exacta.
+  3. Imprimir a tamaño real (100 %, sin "ajustar a la página") y escanear cada pieza con un celular. Anotarlo en `entregables/impresos/PRUEBA_ESCANEO.md`.
+  4. El QR "Pídelo desde tu celular" de `/menu` se regenera solo con `build:oficial` (`sitio/scripts/qr-datos.mjs`).
+- **Regla de los QR (André):** todo QR usa las cartas de Gambit dis-094 (QR de tinta con el sello, corrección H) y dis-081 (se arma con animación en web). Nunca un QR negro simple. Se generan con `sitio/scripts/qr-tinta.mjs`.
 - La propuesta en GitHub Pages se puede borrar o dejar; sigue con `noindex`.
