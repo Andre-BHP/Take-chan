@@ -137,5 +137,11 @@
     }
   ],
   "avisos": [],
-  "avisosNota": "Avisos temporales {texto, desde, hasta}. Con la hoja de Google se editan ahí (pestaña aviso)."
+  "avisosNota": "Avisos temporales {texto, desde, hasta}. Con la hoja de Google se editan ahí (pestaña aviso).",
+  "legal": {
+    "responsable": null,
+    "domicilio": null,
+    "contactoArco": null,
+    "nota": "Para el aviso de privacidad en modo oficial: razón social o nombre del dueño, domicilio y un medio para los derechos ARCO (PEDIR_AL_NEGOCIO.md)."
+  }
 }

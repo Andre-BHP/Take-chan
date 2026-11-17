@@ -2,7 +2,7 @@
 
 - **Pages:** https://andre-bhp.github.io/Take-chan/
 - **Repositorio:** https://github.com/Andre-BHP/Take-chan
-- **Última subida:** 2026-11-16 21:41 (hora de Guadalajara)
+- **Última subida:** 2026-11-16 21:48 (hora de Guadalajara)
 
 ## Rediseño (2026-11-15)
 André revisó la primera versión: "quedó muy feo y muy mal". Este rediseño cambia la dirección a "una ramen-ya de Yokohama de noche": fotos de ejemplo rotuladas, negro sumi y papel washi, 家系 vertical y un solo acento bermellón.
@@ -28,7 +28,7 @@ Plan de Arthemis: todo lo que no depende del negocio, para publicar el sitio ofi
 - [x] P5. PWA y menú sin conexión
 - [x] P6. Impresos con QR
 - [x] P7. Estadísticas preparadas y plantilla de reporte
-- [ ] P8. Privacidad, accesibilidad y créditos
+- [x] P8. Privacidad, accesibilidad y créditos
 - [ ] P9. Calidad final, guías probadas y reporte
 
 ## Nivel 3 (2026-11-16)
@@ -63,10 +63,12 @@ André: "mejor animación, más transiciones, mejor diseño, mejor todo". Metáf
 Repositorio, Pages, datos, inicio, máquina de tickets, sucursales con JSON-LD, pruebas y lista para el negocio. Capturas en `entregables/avances/antes/`.
 
 ## Último paso
-**P7.** Estadísticas sin cookies con GoatCounter, preparadas y apagadas: solo se encienden en modo oficial con un código en el entorno. No cargan el script de GoatCounter: cada visita y cada evento van por su contador por URL (`servicios/estadisticas.ts`), sin código de terceros ni cookies. Eventos: Arma tu pedido, tecla presionada (por platillo), ticket impreso, WhatsApp enviado, Cómo llegar por sucursal y cada botón de `/links`; las visitas desde el QR de mesa y la calcomanía llegan como campañas. `herramientas/estadisticas.mjs` comprueba cero envíos en la propuesta y, en el ensayo oficial (contador local, nada sale a internet), la visita a /menu con utm_source=mesa, la portada, /links y los eventos: todo en orden. Plantilla `entregables/REPORTE_MENSUAL_PLANTILLA.md` (visitas, embudo de pedidos, platillos más agregados, origen y sucursal más buscada) y pasos en `GUIA_PUBLICAR.md`.
+**P8.** Aviso de privacidad (`/privacidad`), conforme a la Ley Federal de Protección de Datos Personales en Posesión de los Particulares. En la propuesta dice que el prototipo no guarda ni envía datos y explica qué queda en el navegador. En oficial es la plantilla con responsable, finalidad (preparar tu pedido), datos (nombre opcional y lo que escribas en WhatsApp), estadísticas sin cookies si están encendidas y derechos ARCO; el responsable y el contacto salen de `negocio.json → legal` y el build avisa si siguen por confirmar (agregado a `PEDIR_AL_NEGOCIO.md`). Página de accesibilidad (`/accesibilidad`): compromiso WCAG 2.2 AA, lo probado, las limitaciones conocidas y cómo reportar. Créditos (`/creditos`): fotos de Unsplash por autor, mapas © OpenStreetMap (ODbL), tipografías y sello; en el pie quedan una línea y los enlaces. Las tres páginas existen en español y en inglés. Además, la precarga se limitó al menú y se retrasó 3 s: la portada bajó de 491 a 466 KB. axe limpio en 11 rutas y sin español suelto en las páginas en inglés.
 
 ## Sigue
-P8: aviso de privacidad, página de accesibilidad y créditos en su propia página.
+P9: calidad final (Lighthouse 95 o más, recorridos automáticos), guías probadas de punta a punta sin publicar y reporte del nivel 4.
 
 ## Capturas más recientes
-Sin capturas nuevas (sin cambios visibles): [plantilla de reporte](entregables/REPORTE_MENSUAL_PLANTILLA.md)
+| Privacidad (360) | Accesibilidad (360) | Créditos (360) |
+|---|---|---|
+| ![privacidad](entregables/avances/2026-11-16_paso-P8_privacidad_360.png) | ![accesibilidad](entregables/avances/2026-11-16_paso-P8_accesibilidad_360.png) | ![créditos](entregables/avances/2026-11-16_paso-P8_creditos_360.png) |

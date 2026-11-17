@@ -57,6 +57,15 @@ Hoy se muestran solo las de respuesta general del estilo Iekei o del propio siti
 
 ---
 
+## 10. Datos para el aviso de privacidad
+Para publicar el sitio oficial (Ley Federal de Protección de Datos Personales en Posesión de los Particulares), en `negocio.json → legal`:
+- Nombre del responsable (razón social o nombre del dueño) y domicilio.
+- Un medio para que los clientes ejerzan sus derechos ARCO (correo o WhatsApp).
+
+Mientras falten, `/privacidad` en modo oficial dice "por confirmar" y el build lo advierte.
+
+---
+
 ## Lo que hoy es de ejemplo en el sitio
 Cada página lo dice una sola vez: "Propuesta: menú, precios y fotos de ejemplo hasta que Take-chan confirme los suyos".
 

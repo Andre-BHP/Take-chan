@@ -4,7 +4,6 @@ import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { NEGOCIO, SUCURSALES, VERSION_DATOS, direccionCorta } from '../servicios/datos';
 import { horarioTexto } from '../servicios/horario';
-import { FOTOS } from './foto';
 
 /** Pie compacto que demuestra que el negocio es real (dis-052), con los mismos datos que el JSON-LD (dis-091). */
 @Component({
@@ -35,11 +34,8 @@ import { FOTOS } from './foto';
         } @else {
           <p>Take-chan Ramen · {{ t('Ramen Iekei en Tlaquepaque, Jalisco.') }}</p>
         }
-        <p>{{ t('Imágenes ilustrativas de') }} <a href="https://unsplash.com/license" target="_blank" rel="noopener">Unsplash</a>{{ t(', no son platillos ni locales de Take-chan:') }}
-          @for (a of autores; track a.usuario; let ultimo = $last) {
-            <a [href]="'https://unsplash.com/@' + a.usuario" target="_blank" rel="noopener">{{ a.autor }}</a>{{ ultimo ? '.' : ', ' }}
-          }
-        </p>
+        <p>{{ t('Fotos ilustrativas de Unsplash, no son platillos ni locales de Take-chan.') }} {{ t('Mapas') }} © OpenStreetMap.</p>
+        <p class="enlaces-legales"><a [routerLink]="r('/creditos')">{{ t('Créditos') }}</a> · <a [routerLink]="r('/privacidad')">{{ t('Aviso de privacidad') }}</a> · <a [routerLink]="r('/accesibilidad')">{{ t('Accesibilidad') }}</a></p>
       </div>
     </footer>
   `,
@@ -69,7 +65,6 @@ export class Pie {
   protected readonly precio = NEGOCIO.precioPorPersona;
   protected readonly tiktok = NEGOCIO.redes.tiktok;
   protected readonly direccion = direccionCorta;
-  protected readonly autores = [...new Map(Object.values(FOTOS).map((f) => [f.usuario, f])).values()];
   protected horario(s: (typeof SUCURSALES)[number]) {
     return horarioTexto(s.horario.turnos, this.idioma());
   }

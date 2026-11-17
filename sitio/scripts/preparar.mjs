@@ -78,6 +78,8 @@ if (modo === 'propuesta') {
     if (t.includes('noindex')) falla(`${f}: todavía lleva noindex`);
     if (!t.includes(`rel="canonical" href="${dominio}`)) falla(`${f}: falta la URL canónica con ${dominio}`);
   }
+  // El aviso de privacidad necesita responsable y contacto reales antes de publicar (negocio.json → legal).
+  if (fs.existsSync(path.join(raiz, 'privacidad', 'index.html')) && leer('privacidad/index.html').includes('Por confirmar')) console.warn(`[${config}] AVISO: el aviso de privacidad tiene datos por confirmar (negocio.json → legal). Llénalos antes de publicar.`);
 }
 // El service worker comprueba cada archivo con el hash de ngsw.json: los que se tocaron aquí se vuelven a calcular.
 const ngsw = path.join(raiz, 'ngsw.json');

@@ -40,7 +40,7 @@ ok(!p.url().includes('/en') && (await p.locator('h1').innerText()) === 'Menú y 
 await ctx.close();
 
 // Sin español suelto en las páginas en inglés (carga directa, como llega un turista).
-for (const ruta of ['/en', '/en/menu', '/en/tlaquepaque', '/en/americana']) {
+for (const ruta of ['/en', '/en/menu', '/en/tlaquepaque', '/en/americana', '/en/privacidad', '/en/accesibilidad', '/en/creditos']) {
   const c = await b.newContext({ viewport: { width: 1440, height: 900 }, reducedMotion: 'reduce' });
   await c.addInitScript(() => { try { sessionStorage.setItem('take-intro', '1'); } catch (e) {} });
   const pg = await c.newPage();

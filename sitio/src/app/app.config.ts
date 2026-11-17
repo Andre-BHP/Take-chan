@@ -1,10 +1,23 @@
 import { ApplicationConfig, isDevMode, provideBrowserGlobalErrorListeners } from '@angular/core';
 import { provideServiceWorker } from '@angular/service-worker';
-import { PreloadAllModules, provideRouter, withInMemoryScrolling, withPreloading, withViewTransitions } from '@angular/router';
+import { PreloadingStrategy, Route, provideRouter, withInMemoryScrolling, withPreloading, withViewTransitions } from '@angular/router';
+import { Injectable } from '@angular/core';
+import { EMPTY, Observable, switchMap, timer } from 'rxjs';
 import { inject } from '@angular/core';
 import { Telon } from './componentes/telon';
 import { provideClientHydration, withEventReplay } from '@angular/platform-browser';
 import { routes } from './app.routes';
+
+/**
+ * Precarga solo las rutas marcadas (el menú, el siguiente paso natural) y 3 s después de la carga,
+ * para no competir con la portada. Las demás se bajan al visitarlas.
+ */
+@Injectable({ providedIn: 'root' })
+export class PrecargaMarcadas implements PreloadingStrategy {
+  preload(ruta: Route, cargar: () => Observable<unknown>) {
+    return ruta.data?.['precargar'] ? timer(3000).pipe(switchMap(() => cargar())) : EMPTY;
+  }
+}
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -12,7 +25,7 @@ export const appConfig: ApplicationConfig = {
     provideRouter(
       routes,
       withInMemoryScrolling({ anchorScrolling: 'enabled', scrollPositionRestoration: 'enabled' }),
-      withPreloading(PreloadAllModules),
+      withPreloading(PrecargaMarcadas),
       // View Transitions solo para el elemento compartido (foto del bento → tecla). Las demás navegaciones usan el telón de noren.
       withViewTransitions({
         skipInitialTransition: true,

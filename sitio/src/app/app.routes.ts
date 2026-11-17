@@ -5,9 +5,12 @@ import { IdiomaId, conIdioma } from './servicios/idioma';
 /** Las mismas páginas en español (raíz) y en inglés (/en): cambian solo los textos (servicios/idioma.ts). */
 const paginas = (id: IdiomaId): Routes => [
   { path: '', canActivate: [conIdioma(id), conTelon], loadComponent: () => import('./paginas/inicio/inicio').then((m) => m.Inicio) },
-  { path: 'menu', canActivate: [conIdioma(id), conTelon], loadComponent: () => import('./paginas/menu/menu').then((m) => m.Menu) },
+  { path: 'menu', canActivate: [conIdioma(id), conTelon], data: { precargar: true }, loadComponent: () => import('./paginas/menu/menu').then((m) => m.Menu) },
   { path: 'tlaquepaque', canActivate: [conIdioma(id), conTelon], data: { sucursal: 'tlaquepaque' }, loadComponent: () => import('./paginas/sucursal/sucursal').then((m) => m.SucursalPagina) },
   { path: 'americana', canActivate: [conIdioma(id), conTelon], data: { sucursal: 'americana' }, loadComponent: () => import('./paginas/sucursal/sucursal').then((m) => m.SucursalPagina) },
+  { path: 'privacidad', canActivate: [conIdioma(id), conTelon], loadComponent: () => import('./paginas/legales').then((m) => m.Privacidad) },
+  { path: 'accesibilidad', canActivate: [conIdioma(id), conTelon], loadComponent: () => import('./paginas/legales').then((m) => m.Accesibilidad) },
+  { path: 'creditos', canActivate: [conIdioma(id), conTelon], loadComponent: () => import('./paginas/legales').then((m) => m.Creditos) },
 ];
 
 export const routes: Routes = [

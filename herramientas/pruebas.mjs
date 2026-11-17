@@ -6,7 +6,7 @@ import { createRequire } from 'node:module';
 const require = createRequire(import.meta.url);
 const axe = fs.readFileSync(require.resolve('axe-core/axe.min.js'), 'utf8');
 const base = process.argv[2].replace(/\/$/, '');
-const rutas = ['/', '/menu', '/tlaquepaque', '/americana', '/en', '/en/menu', '/en/tlaquepaque', '/links'];
+const rutas = ['/', '/menu', '/tlaquepaque', '/americana', '/en', '/en/menu', '/en/tlaquepaque', '/links', '/privacidad', '/en/accesibilidad', '/creditos'];
 const b = await chromium.launch({ executablePath: 'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe' });
 let fallas = 0;
 
