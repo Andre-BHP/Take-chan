@@ -1,3 +1,4 @@
+import { Estadisticas } from '../../servicios/estadisticas';
 import { Idioma } from '../../servicios/idioma';
 import { PROPUESTA } from '../../../entornos/modo';
 import { ApplicationRef, ChangeDetectionStrategy, Component, DestroyRef, ElementRef, PLATFORM_ID, afterNextRender, computed, effect, inject, signal, viewChild } from '@angular/core';
@@ -20,6 +21,7 @@ import { Movimiento } from '../../servicios/movimiento';
   styleUrl: './menu.css',
 })
 export class Menu {
+  protected readonly est = inject(Estadisticas);
   protected readonly t = inject(Idioma).t;
   protected readonly r = inject(Idioma).r;
   protected readonly idioma = inject(Idioma).actual;
@@ -198,6 +200,7 @@ export class Menu {
     if (this.fueLarga) { this.fueLarga = false; return; }
     const primera = this.pedido.piezas() === 0;
     this.pedido.sumar(id);
+    this.est.evento('tecla/' + id);
     this.pulsada.set(id);
     setTimeout(() => this.pulsada() === id && this.pulsada.set(null), 160);
     if (!e || this.reducir) return;
@@ -241,6 +244,7 @@ export class Menu {
     this.imprimiendo.set(true);
     setTimeout(() => this.imprimiendo.set(false), this.reducir ? 0 : 1400);
     this.pedido.imprimir();
+    this.est.evento('ticket-impreso');
     setTimeout(() => this.host.nativeElement.querySelector<HTMLElement>('.ticket')?.focus(), 0);
   }
 
@@ -253,6 +257,7 @@ export class Menu {
   protected enviar() {
     this.cortado.set(true);
     this.contacto.enviarWhatsapp(this.pedido.mensaje());
+    this.est.evento('whatsapp-enviado');
     setTimeout(() => {
       const b = this.host.nativeElement.querySelector<HTMLElement>('.burbuja');
       if (b && b.getBoundingClientRect().bottom > innerHeight) b.scrollIntoView({ block: 'end', behavior: this.reducir ? 'auto' : 'smooth' });

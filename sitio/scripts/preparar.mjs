@@ -32,7 +32,7 @@ const ruta = (f) => '/' + f.replace(/(^|\/)index\.html$/, '').replace(/\.html$/,
 if (fs.existsSync(path.join(raiz, 'index.csr.html'))) fs.copyFileSync(path.join(raiz, 'index.csr.html'), path.join(raiz, '404.html'));
 escribir('.nojekyll', '');
 // /links: página estática y ligera para la biografía de TikTok (scripts/links.mjs).
-generarLinks({ raiz, modo, dominio, publico: campo('publico') });
+generarLinks({ raiz, modo, dominio, publico: campo('publico'), goatcounter: campo('goatcounter') });
 const AVISO = 'Propuesta no oficial de sitio para Take-chan Ramen';
 
 if (modo === 'propuesta') {

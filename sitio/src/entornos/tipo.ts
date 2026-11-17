@@ -12,7 +12,7 @@ export interface Entorno {
   dominio: string;
   /** Dónde se sirve este build si no hay dominio (la propuesta en GitHub Pages). Solo para las imágenes al compartir. */
   publico: string;
-  /** Código de GoatCounter (el "xxx" de xxx.goatcounter.com). Vacío: sin estadísticas. */
+  /** Código de GoatCounter (el "xxx" de xxx.goatcounter.com) o una URL completa de contador. Vacío: sin estadísticas. */
   goatcounter: string;
   /**
    * Pestañas de la hoja de Google publicadas como CSV (Archivo → Compartir → Publicar en la Web → CSV), una URL por pestaña.

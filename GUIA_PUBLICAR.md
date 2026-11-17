@@ -40,6 +40,13 @@ export const ENTORNO: Entorno = {
 
 Sin número, el pedido sigue en modo demostración. Sin dominio, el build se detiene con un aviso.
 
+### Estadísticas (opcional, gratis y sin cookies)
+1. Crear la cuenta en goatcounter.com (la del negocio o la de André) y elegir un código: `takechan` queda en `takechan.goatcounter.com`.
+2. Poner el código en `goatcounter: 'takechan'` y publicar. No hace falta banner de cookies: GoatCounter no usa cookies ni guarda datos personales.
+3. El sitio no carga el script de GoatCounter: manda cada visita y cada evento con su contador por URL (`sitio/src/app/servicios/estadisticas.ts`). Eventos: `arma-tu-pedido`, `tecla/<platillo>`, `ticket-impreso`, `whatsapp-enviado`, `como-llegar/<sucursal>` y `links/<botón>`. Las visitas desde el QR llegan como campañas `mesa` y `calcomania`.
+4. Cada mes, llenar `entregables/REPORTE_MENSUAL_PLANTILLA.md` con los números de GoatCounter.
+5. Prueba sin salir a internet: `node herramientas/estadisticas.mjs` (el ensayo oficial cuenta en `http://localhost:4344/__conteo`).
+
 ## Paso 2. Poner los datos del negocio
 Lo que el dueño confirme (`entregables/PEDIR_AL_NEGOCIO.md`) va en:
 - `sitio/src/datos/menu.json`: menú y precios.

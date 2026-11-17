@@ -9,8 +9,8 @@
     }
     @if (s.confirmada) { <app-estado [turnos]="s.horario.turnos" /> }
     <div class="acciones">
-      <a class="boton boton-primario" [routerLink]="r('/menu')">{{ t('Arma tu pedido') }}</a>
-      <a class="boton boton-contorno" [href]="s.mapa" target="_blank" rel="noopener">{{ t('Cómo llegar') }}<span class="solo-lector">{{ t(' (se abre Google Maps)') }}</span></a>
+      <a class="boton boton-primario" [routerLink]="r('/menu')" (click)="est.evento('arma-tu-pedido')">{{ t('Arma tu pedido') }}</a>
+      <a class="boton boton-contorno" [href]="s.mapa" target="_blank" rel="noopener" (click)="est.evento('como-llegar/' + s.id)">{{ t('Cómo llegar') }}<span class="solo-lector">{{ t(' (se abre Google Maps)') }}</span></a>
     </div>
   </div>
 </section>

@@ -2,7 +2,7 @@
 
 - **Pages:** https://andre-bhp.github.io/Take-chan/
 - **Repositorio:** https://github.com/Andre-BHP/Take-chan
-- **Última subida:** 2026-11-16 21:35 (hora de Guadalajara)
+- **Última subida:** 2026-11-16 21:41 (hora de Guadalajara)
 
 ## Rediseño (2026-11-15)
 André revisó la primera versión: "quedó muy feo y muy mal". Este rediseño cambia la dirección a "una ramen-ya de Yokohama de noche": fotos de ejemplo rotuladas, negro sumi y papel washi, 家系 vertical y un solo acento bermellón.
@@ -27,7 +27,7 @@ Plan de Arthemis: todo lo que no depende del negocio, para publicar el sitio ofi
 - [x] P4. Versión en inglés
 - [x] P5. PWA y menú sin conexión
 - [x] P6. Impresos con QR
-- [ ] P7. Estadísticas preparadas y plantilla de reporte
+- [x] P7. Estadísticas preparadas y plantilla de reporte
 - [ ] P8. Privacidad, accesibilidad y créditos
 - [ ] P9. Calidad final, guías probadas y reporte
 
@@ -63,12 +63,10 @@ André: "mejor animación, más transiciones, mejor diseño, mejor todo". Metáf
 Repositorio, Pages, datos, inicio, máquina de tickets, sucursales con JSON-LD, pruebas y lista para el negocio. Capturas en `entregables/avances/antes/`.
 
 ## Último paso
-**P6.** Impresos con QR en PDF listos para imprimir (`entregables/impresos/`), generados con `herramientas/impresos.mjs`: tent card de mesa (A5 que se dobla en dos caras A6, la de arriba girada para que ambas queden derechas; QR a `/menu?utm_source=mesa`), calcomanía de 10 × 10 cm para la puerta o la caja (QR a `/links`) y tarjeta de presentación de André (85 × 55 mm, QR al sitio). Llevan el sello y las fuentes del sitio, y en modo propuesta dicen "Propuesta no oficial". El QR usa corrección de errores M y margen de 4 módulos; cada QR se vuelve a leer de una captura (jsQR), como lo haría una cámara, y los cuatro dan la URL correcta. Hoy apuntan a la propuesta en Pages; con el dominio en el entorno oficial se rehacen con el mismo comando (paso añadido a `GUIA_PUBLICAR.md`). La página de impresos queda en `entregables/` y no se publica.
+**P7.** Estadísticas sin cookies con GoatCounter, preparadas y apagadas: solo se encienden en modo oficial con un código en el entorno. No cargan el script de GoatCounter: cada visita y cada evento van por su contador por URL (`servicios/estadisticas.ts`), sin código de terceros ni cookies. Eventos: Arma tu pedido, tecla presionada (por platillo), ticket impreso, WhatsApp enviado, Cómo llegar por sucursal y cada botón de `/links`; las visitas desde el QR de mesa y la calcomanía llegan como campañas. `herramientas/estadisticas.mjs` comprueba cero envíos en la propuesta y, en el ensayo oficial (contador local, nada sale a internet), la visita a /menu con utm_source=mesa, la portada, /links y los eventos: todo en orden. Plantilla `entregables/REPORTE_MENSUAL_PLANTILLA.md` (visitas, embudo de pedidos, platillos más agregados, origen y sucursal más buscada) y pasos en `GUIA_PUBLICAR.md`.
 
 ## Sigue
-P7: estadísticas sin cookies (GoatCounter) preparadas y apagadas, eventos y plantilla de reporte mensual.
+P8: aviso de privacidad, página de accesibilidad y créditos en su propia página.
 
 ## Capturas más recientes
-| Tent card (doblez al centro) | Calcomanía 10 × 10 | Tarjeta |
-|---|---|---|
-| ![tent](entregables/avances/2026-11-16_paso-P6_tent-card-mesa.png) | ![calcomania](entregables/avances/2026-11-16_paso-P6_calcomania-10x10.png) | ![tarjeta](entregables/avances/2026-11-16_paso-P6_tarjeta-andre.png) |
+Sin capturas nuevas (sin cambios visibles): [plantilla de reporte](entregables/REPORTE_MENSUAL_PLANTILLA.md)

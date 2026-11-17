@@ -8,6 +8,7 @@ import { Movimiento } from './servicios/movimiento';
 import { Telon, TelonVista } from './componentes/telon';
 import { BandaAviso } from './componentes/banda-aviso';
 import { Hoja } from './servicios/hoja';
+import { Estadisticas } from './servicios/estadisticas';
 
 @Component({
   selector: 'app-root',
@@ -28,11 +29,13 @@ export class App {
     const router = inject(Router);
     const telon = inject(Telon);
     const hoja = inject(Hoja);
+    const est = inject(Estadisticas);
     // Las anclas (#sucursales) quedan debajo del encabezado fijo, no tapadas por él.
     inject(ViewportScroller).setOffset([0, 100]);
     afterNextRender(() => {
       // Menú, horario y aviso desde la hoja de Google, si el entorno la tiene (si falla, se quedan los JSON).
       hoja.cargar();
+      est.vista();
       // Lenis y GSAP entran cuando la página ya cargó: no compiten con la foto del héroe (LCP).
       const iniciar = () => ('requestIdleCallback' in window ? requestIdleCallback(() => movimiento.iniciarScroll(), { timeout: 1500 }) : setTimeout(() => movimiento.iniciarScroll(), 300));
       if (document.readyState === 'complete') iniciar();
@@ -43,6 +46,7 @@ export class App {
       router.events.pipe(filter((e): e is NavigationEnd => e instanceof NavigationEnd)).subscribe(() => {
         telon.abrir();
         if (primera) { primera = false; return; }
+        est.vista(router.url);
         if (atras) movimiento.sincronizar();
         else movimiento.alNavegar();
       });

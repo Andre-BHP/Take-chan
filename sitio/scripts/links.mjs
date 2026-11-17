@@ -9,7 +9,7 @@ const sitio = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
 /** Escribe <raiz>/links/index.html. modo: propuesta u oficial; publico: raíz absoluta para la imagen al compartir. */
-export function generarLinks({ raiz, modo, dominio, publico }) {
+export function generarLinks({ raiz, modo, dominio, publico, goatcounter = '' }) {
   const negocio = JSON.parse(fs.readFileSync(path.join(sitio, 'src', 'datos', 'negocio.json'), 'utf8'));
   const [tlaquepaque, americana] = negocio.sucursales;
   const tiktok = negocio.redes.tiktok;
@@ -20,6 +20,7 @@ export function generarLinks({ raiz, modo, dominio, publico }) {
   const raizPublica = (dominio || publico || '').replace(/\/$/, '');
   const imagen = raizPublica ? `${raizPublica}/og/${oficial ? 'oficial' : 'propuesta'}/links.jpg` : '';
   const turnos = tlaquepaque.horario.turnos;
+  const conteo = oficial && goatcounter ? (goatcounter.startsWith('http') ? goatcounter : `https://${goatcounter}.goatcounter.com/count`) : '';
   const fijo = turnos.map((t) => `${t.dias.length === 7 ? 'Todos los días' : 'Abre'} · ${t.abre} a ${t.cierra}`).join(' / ');
 
   const html = `<!doctype html>
@@ -80,13 +81,13 @@ export function generarLinks({ raiz, modo, dominio, publico }) {
     <p class="bajada">Ramen Iekei en Tlaquepaque</p>
     <p class="estado" id="estado">${esc(fijo)}</p>
     <ul>
-      <li><a class="b p" href="menu?utm_source=tiktok">Menú y pedido</a></li>
-      <li><a class="b" href="${esc(tlaquepaque.mapa)}" target="_blank" rel="noopener">Cómo llegar a Tlaquepaque<span class="solo-lector"> (se abre Google Maps)</span></a></li>
+      <li><a data-evento="menu" class="b p" href="menu?utm_source=tiktok">Menú y pedido</a></li>
+      <li><a data-evento="como-llegar-tlaquepaque" class="b" href="${esc(tlaquepaque.mapa)}" target="_blank" rel="noopener">Cómo llegar a Tlaquepaque<span class="solo-lector"> (se abre Google Maps)</span></a></li>
       ${americana.confirmada
         ? `<li><a class="b" href="${esc(americana.mapa)}" target="_blank" rel="noopener">Cómo llegar a la Americana<span class="solo-lector"> (se abre Google Maps)</span></a></li>`
         : '<li><a class="b" href="americana">Sucursal Americana <span class="marca">por confirmar</span></a></li>'}
-      <li><a class="b" href="${esc(tlaquepaque.mapa)}" target="_blank" rel="noopener">Reseñas en Google Maps<span class="solo-lector"> (se abre en otra pestaña)</span></a></li>
-      <li><a class="b" href="${esc(tiktok.url)}" target="_blank" rel="noopener">TikTok ${esc(tiktok.usuario)}<span class="solo-lector"> (se abre en otra pestaña)</span></a></li>
+      <li><a data-evento="resenas" class="b" href="${esc(tlaquepaque.mapa)}" target="_blank" rel="noopener">Reseñas en Google Maps<span class="solo-lector"> (se abre en otra pestaña)</span></a></li>
+      <li><a data-evento="tiktok" class="b" href="${esc(tiktok.url)}" target="_blank" rel="noopener">TikTok ${esc(tiktok.usuario)}<span class="solo-lector"> (se abre en otra pestaña)</span></a></li>
     </ul>
     ${oficial ? '' : '<p class="nota">Propuesta: menú, precios y fotos de ejemplo hasta que Take-chan confirme los suyos.</p>'}
   </main>
@@ -112,6 +113,13 @@ export function generarLinks({ raiz, modo, dominio, publico }) {
       }
       pintar();
       setInterval(pintar, 60000);
+      // Estadísticas sin cookies (GoatCounter por URL): la visita y cada botón, solo en el sitio oficial con código.
+      var conteo = ${JSON.stringify(conteo)};
+      if (conteo) {
+        var enviar = function (d) { var u = new URL(conteo); for (var k in d) if (d[k]) u.searchParams.set(k, d[k]); u.searchParams.set('rnd', Math.random().toString(36).slice(2)); fetch(u, { mode: 'no-cors', keepalive: true, credentials: 'omit' }).catch(function () {}); };
+        enviar({ p: '/links', t: document.title, r: document.referrer, q: location.search });
+        document.querySelectorAll('a.b').forEach(function (a, i) { a.addEventListener('click', function () { enviar({ p: 'links/' + (a.dataset.evento || i), t: a.textContent.trim(), e: 'true' }); }); });
+      }
     })();
   </script>
 </body>

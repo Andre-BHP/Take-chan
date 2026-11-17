@@ -13,8 +13,8 @@
       <app-estado class="heroe-estado" [turnos]="tlaquepaque.horario.turnos" />
     </div>
     <div class="acciones">
-      <a class="boton boton-primario" [routerLink]="r('/menu')">{{ t('Arma tu pedido') }}</a>
-      <a class="boton boton-contorno" [href]="tlaquepaque.mapa" target="_blank" rel="noopener">{{ t('Cómo llegar') }}<span class="solo-lector">{{ t(' a Tlaquepaque (se abre Google Maps)') }}</span></a>
+      <a class="boton boton-primario" [routerLink]="r('/menu')" (click)="est.evento('arma-tu-pedido')">{{ t('Arma tu pedido') }}</a>
+      <a class="boton boton-contorno" [href]="tlaquepaque.mapa" target="_blank" rel="noopener" (click)="est.evento('como-llegar/tlaquepaque')">{{ t('Cómo llegar') }}<span class="solo-lector">{{ t(' a Tlaquepaque (se abre Google Maps)') }}</span></a>
     </div>
   </div>
 </section>
@@ -133,7 +133,7 @@
           @if (s.confirmada) { <app-estado [turnos]="s.horario.turnos" /> }
           <p class="t-pequeno tenue">{{ direccion(s) }}</p>
           <div class="acciones-sucursal">
-            <a class="boton boton-contorno con-flecha" [href]="s.mapa" target="_blank" rel="noopener">{{ t('Cómo llegar') }}<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h13m-5-5 5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="solo-lector"> {{ t('a') }} {{ s.nombre }}{{ t(' (se abre Google Maps)') }}</span></a>
+            <a class="boton boton-contorno con-flecha" [href]="s.mapa" target="_blank" rel="noopener" (click)="est.evento('como-llegar/' + s.id)">{{ t('Cómo llegar') }}<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h13m-5-5 5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="solo-lector"> {{ t('a') }} {{ s.nombre }}{{ t(' (se abre Google Maps)') }}</span></a>
             <a class="enlace" [routerLink]="r('/' + s.id)">{{ t('Ver sucursal') }}<span class="solo-lector"> {{ s.nombre }}</span></a>
           </div>
         </div>

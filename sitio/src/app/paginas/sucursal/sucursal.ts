@@ -1,3 +1,4 @@
+import { Estadisticas } from '../../servicios/estadisticas';
 import { Idioma } from '../../servicios/idioma';
 import { PROPUESTA } from '../../../entornos/modo';
 import { ChangeDetectionStrategy, Component, inject, computed } from '@angular/core';
@@ -20,6 +21,7 @@ const DAYS_LARGOS = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Sa
   styleUrl: './sucursal.css',
 })
 export class SucursalPagina {
+  protected readonly est = inject(Estadisticas);
   protected readonly t = inject(Idioma).t;
   protected readonly r = inject(Idioma).r;
   protected readonly idioma = inject(Idioma).actual;

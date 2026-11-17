@@ -1,3 +1,4 @@
+import { Estadisticas } from '../../servicios/estadisticas';
 import { Idioma } from '../../servicios/idioma';
 import { Faq, faqPage, preguntas } from '../../componentes/faq';
 import { Contacto } from '../../servicios/contacto';
@@ -26,6 +27,7 @@ import { Telon } from '../../componentes/telon';
   styleUrl: './inicio.css',
 })
 export class Inicio {
+  protected readonly est = inject(Estadisticas);
   protected readonly t = inject(Idioma).t;
   protected readonly r = inject(Idioma).r;
   protected readonly idioma = inject(Idioma).actual;
