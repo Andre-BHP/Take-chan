@@ -1,3 +1,4 @@
+import { Idioma } from '../servicios/idioma';
 import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
 import faqJson from '../../datos/faq.json';
 import { SUCURSALES, VERSION_DATOS, direccionCorta } from '../servicios/datos';
@@ -11,15 +12,17 @@ export interface Pregunta { id: string; pregunta: string; respuesta: string }
  * Preguntas que se muestran: solo las de respuesta real o general (faq.json → mostrar).
  * En modo demostración (propuesta o sin WhatsApp) se usa la respuesta de la propuesta cuando la hay.
  */
-export function preguntas(demo: boolean): Pregunta[] {
+export function preguntas(demo: boolean, tr: (es: string) => string = (s) => s, en = false): Pregunta[] {
   const t = SUCURSALES[0];
-  const horario = horarioTexto(t.horario.turnos).replace('Todos los días · ', 'todos los días, de ').replace(' a ', ' a ');
+  const horario = en
+    ? horarioTexto(t.horario.turnos, 'en').replace('Every day · ', 'every day, from ')
+    : horarioTexto(t.horario.turnos).replace('Todos los días · ', 'todos los días, de ');
   return (faqJson.preguntas as PreguntaJson[])
     .filter((p) => p.mostrar && p.respuesta)
     .map((p) => ({
       id: p.id,
-      pregunta: p.pregunta,
-      respuesta: ((demo && p.respuestaPropuesta) || p.respuesta!).replace('{horario}', horario).replace('{direccion}', direccionCorta(t) + ', esquina con Niños Héroes'),
+      pregunta: tr(p.pregunta),
+      respuesta: tr((demo && p.respuestaPropuesta) || p.respuesta!).replace('{horario}', horario).replace('{direccion}', direccionCorta(t) + (en ? ', at the corner of Niños Héroes' : ', esquina con Niños Héroes')),
     }));
 }
 
@@ -62,6 +65,9 @@ export const faqPage = (lista: Pregunta[]) => ({
   `,
 })
 export class Faq {
+  protected readonly t = inject(Idioma).t;
+  protected readonly r = inject(Idioma).r;
+  protected readonly idioma = inject(Idioma).actual;
   private readonly contacto = inject(Contacto);
-  protected readonly lista = computed(() => (VERSION_DATOS(), preguntas(this.contacto.demo)));
+  protected readonly lista = computed(() => (VERSION_DATOS(), preguntas(this.contacto.demo, this.t, this.idioma() === 'en')));
 }

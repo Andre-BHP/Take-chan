@@ -2,7 +2,7 @@
 
 - **Pages:** https://andre-bhp.github.io/Take-chan/
 - **Repositorio:** https://github.com/Andre-BHP/Take-chan
-- **Última subida:** 2026-11-16 21:14 (hora de Guadalajara)
+- **Última subida:** 2026-11-16 21:26 (hora de Guadalajara)
 
 ## Rediseño (2026-11-15)
 André revisó la primera versión: "quedó muy feo y muy mal". Este rediseño cambia la dirección a "una ramen-ya de Yokohama de noche": fotos de ejemplo rotuladas, negro sumi y papel washi, 家系 vertical y un solo acento bermellón.
@@ -24,7 +24,7 @@ Plan de Arthemis: todo lo que no depende del negocio, para publicar el sitio ofi
 - [x] P1. Vista previa al compartir y `/links`
 - [x] P2. Datos editables desde CSV, aviso y agotado 売切
 - [x] P3. Preguntas frecuentes y SEO local
-- [ ] P4. Versión en inglés
+- [x] P4. Versión en inglés
 - [ ] P5. PWA y menú sin conexión
 - [ ] P6. Impresos con QR
 - [ ] P7. Estadísticas preparadas y plantilla de reporte
@@ -63,12 +63,12 @@ André: "mejor animación, más transiciones, mejor diseño, mejor todo". Metáf
 Repositorio, Pages, datos, inicio, máquina de tickets, sucursales con JSON-LD, pruebas y lista para el negocio. Capturas en `entregables/avances/antes/`.
 
 ## Último paso
-**P3.** Preguntas frecuentes en la portada, en un acordeón nativo (`<details>`) accesible con teclado y sin JavaScript, y con su JSON-LD FAQPage. Solo se muestran las de respuesta general del estilo o del sitio: qué es el Iekei, cómo pido, qué es pedirlo «al gusto», dónde están, horario (sale de los datos o de la hoja), pedidos para llevar (con respuesta distinta en propuesta y oficial) y qué lleva normalmente un Iekei. Las que dependen del negocio (pago, estacionamiento, sin cerdo, alergias, niños) quedan en `faq.json` con `mostrar: false` y se agregaron a `PEDIR_AL_NEGOCIO.md`. SEO local: el Restaurant ahora lleva imagen; `herramientas/seo-local.mjs` revisa esquemas, que la FAQPage coincida con lo visible, la coherencia de nombre, dirección y horario entre páginas, y el sitemap solo en oficial. Todo en orden en los dos modos. axe limpio; portada de 480 KB.
+**P4.** Versión en inglés: `/en`, `/en/menu`, `/en/tlaquepaque` y `/en/americana`, prerenderizadas, con el selector ES · EN en el encabezado (lleva a la misma página en el otro idioma sin recargar), `lang`, `og:locale` y `hreflang` (es-MX, en y x-default). Los textos se escriben en español y pasan por `t()`. El diccionario (`sitio/src/app/i18n/en.ts`, 211 textos con traducción natural: "Build your order", "Ticket machine", "First time? Get the classic") solo se descarga en `/en`, así que la portada en español no crece. El japonés queda igual; el mensaje de WhatsApp va en español para el local, y así se le avisa al turista. El aviso de propuesta es bilingüe. `herramientas/llaves-idioma.mjs` lista los textos sin traducir (0) y `herramientas/idiomas.mjs` prueba el selector, la navegación dentro de `/en` y que no quede español suelto: todo en orden. La cabecera se compactó para no desbordar a 360 con el selector. axe limpio en las 8 rutas; portada de 483 KB.
 
 ## Sigue
-P4: versión en inglés (/en) con selector ES · EN y hreflang.
+P5: PWA (manifest e íconos del sello) y el menú sin conexión con el service worker de Angular.
 
 ## Capturas más recientes
-| Preguntas frecuentes 1440 | 390 |
-|---|---|
-| ![faq](entregables/avances/2026-11-16_paso-P3_faq_1440.png) | ![faq 390](entregables/avances/2026-11-16_paso-P3_faq_390.png) |
+| /en (1440) | /en (360) | /en/menu (360) |
+|---|---|---|
+| ![en](entregables/avances/2026-11-16_paso-P4_en_1440.png) | ![en 360](entregables/avances/2026-11-16_paso-P4_en_360.png) | ![menu 360](entregables/avances/2026-11-16_paso-P4_en_menu_360.png) |

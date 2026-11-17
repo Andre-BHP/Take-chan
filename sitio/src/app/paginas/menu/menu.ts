@@ -1,3 +1,4 @@
+import { Idioma } from '../../servicios/idioma';
 import { PROPUESTA } from '../../../entornos/modo';
 import { ApplicationRef, ChangeDetectionStrategy, Component, DestroyRef, ElementRef, PLATFORM_ID, afterNextRender, computed, effect, inject, signal, viewChild } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
@@ -19,6 +20,9 @@ import { Movimiento } from '../../servicios/movimiento';
   styleUrl: './menu.css',
 })
 export class Menu {
+  protected readonly t = inject(Idioma).t;
+  protected readonly r = inject(Idioma).r;
+  protected readonly idioma = inject(Idioma).actual;
   /** Se lee en la plantilla: si la hoja de Google cambia los datos, la página se vuelve a dibujar. */
   protected readonly version = VERSION_DATOS;
   protected readonly propuesta = PROPUESTA;
@@ -71,8 +75,8 @@ export class Menu {
 
   constructor() {
     inject(Seo).establecer({
-      titulo: 'Menú y pedido · Take-chan Ramen',
-      descripcion: 'Arma tu pedido de ramen Iekei como en una máquina de tickets japonesa y apártalo para recoger en Tlaquepaque.' + (PROPUESTA ? ' Menú y precios de ejemplo.' : ''),
+      titulo: this.t('Menú y pedido') + ' · Take-chan Ramen',
+      descripcion: this.t('Arma tu pedido de ramen Iekei como en una máquina de tickets japonesa y apártalo para recoger en Tlaquepaque.') + (PROPUESTA ? ' ' + this.t('Menú y precios de ejemplo.') : ''),
       ruta: '/menu',
     });
     const ruta = inject(ActivatedRoute);

@@ -1,3 +1,4 @@
+import { Idioma } from '../servicios/idioma';
 import { ChangeDetectionStrategy, Component, DestroyRef, ElementRef, PLATFORM_ID, afterNextRender, inject, signal } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { Movimiento } from '../servicios/movimiento';
@@ -50,7 +51,7 @@ const GOTAS = [
   template: `
     <div class="tazon-fijo">
       <div class="lienzo">
-        <svg viewBox="0 0 400 400" role="img" aria-label="Ilustración de un tazón de ramen Iekei visto desde arriba que se arma por capas: caldo, tare, fideo y toppings">
+        <svg viewBox="0 0 400 400" role="img" [attr.aria-label]="t('Ilustración de un tazón de ramen Iekei visto desde arriba que se arma por capas: caldo, tare, fideo y toppings')">
           <defs>
             <radialGradient id="md-ceramica" cx="42%" cy="38%" r="70%"><stop offset="0" stop-color="#34302c" /><stop offset=".7" stop-color="#1f1c1a" /><stop offset="1" stop-color="#121110" /></radialGradient>
             <radialGradient id="md-caldo" cx="46%" cy="44%" r="60%"><stop offset="0" stop-color="#efd6ad" /><stop offset=".6" stop-color="#dcb684" /><stop offset="1" stop-color="#b98a55" /></radialGradient>
@@ -129,17 +130,17 @@ const GOTAS = [
         </svg>
       </div>
       <p class="leyenda t-dato" aria-hidden="true">
-        {{ kanji[paso() - 1] }} · {{ pasos[paso() - 1].titulo }}<span class="desliza"> · desliza los pasos<svg viewBox="0 0 24 24" focusable="false"><path d="M5 12h13m-5-5 5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" /></svg></span>
+        {{ kanji[paso() - 1] }} · {{ t(pasos[paso() - 1].titulo) }}<span class="desliza"> · {{ t('desliza los pasos') }}<svg viewBox="0 0 24 24" focusable="false"><path d="M5 12h13m-5-5 5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" /></svg></span>
       </p>
-      <p class="aviso-ilustracion">Ilustración del estilo</p>
+      <p class="aviso-ilustracion">{{ t('Ilustración del estilo') }}</p>
     </div>
-    <ol class="pasos" tabindex="0" aria-label="Pasos para hacer un Iekei">
+    <ol class="pasos" tabindex="0" [attr.aria-label]="t('Pasos para hacer un Iekei')">
       @for (p of pasos; track p.titulo; let i = $index) {
         <li class="paso" [class.activo]="paso() === i + 1" [attr.data-i]="i + 1">
           <span class="numero" lang="ja" aria-hidden="true">{{ kanji[i] }}</span>
           <div class="paso-texto">
-            <h3 class="t-titulo"><span class="solo-lector">Paso {{ i + 1 }}: </span>{{ p.titulo }}</h3>
-            <p>{{ p.texto }}</p>
+            <h3 class="t-titulo"><span class="solo-lector">{{ t('Paso') }} {{ i + 1 }}: </span>{{ t(p.titulo) }}</h3>
+            <p>{{ t(p.texto) }}</p>
           </div>
         </li>
       }
@@ -148,6 +149,9 @@ const GOTAS = [
   styleUrl: './medidor.css',
 })
 export class Medidor {
+  protected readonly t = inject(Idioma).t;
+  protected readonly r = inject(Idioma).r;
+  protected readonly idioma = inject(Idioma).actual;
   protected readonly pasos = [
     { titulo: 'El caldo', texto: 'Hueso de cerdo hervido a fuego alto hasta que el caldo se vuelve espeso, cremoso y casi blanco.' },
     { titulo: 'El tare', texto: 'Una base de salsa de soya va al fondo del tazón: le da el color y el sabor salado.' },

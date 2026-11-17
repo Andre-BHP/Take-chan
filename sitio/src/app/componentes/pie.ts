@@ -1,5 +1,6 @@
+import { Idioma } from '../servicios/idioma';
 import { PROPUESTA } from '../../entornos/modo';
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { NEGOCIO, SUCURSALES, VERSION_DATOS, direccionCorta } from '../servicios/datos';
 import { horarioTexto } from '../servicios/horario';
@@ -16,25 +17,25 @@ import { FOTOS } from './foto';
       <div class="envoltura rejilla">
         <div class="firma">
           <p class="marca"><img class="sello" src="sello-96.webp" srcset="sello-96.webp 96w, sello-192.webp 192w" sizes="48px" width="48" height="48" alt="" /><span><span lang="ja">家系</span> TAKE-CHAN RAMEN</span></p>
-          <p class="tenue">Ramen japonés estilo Iekei. De {{ precio.min }} a {{ precio.max }} MXN por persona.</p>
-          <p><a class="enlace" [href]="tiktok.url" target="_blank" rel="noopener">TikTok {{ tiktok.usuario }}<span class="solo-lector"> (se abre en otra pestaña)</span></a></p>
+          <p class="tenue">{{ t('Ramen japonés estilo Iekei.') }} {{ t('De') }} {{ precio.min }} {{ t('a') }} {{ precio.max }} {{ t('MXN por persona') }}.</p>
+          <p><a class="enlace" [href]="tiktok.url" target="_blank" rel="noopener">TikTok {{ tiktok.usuario }}<span class="solo-lector">{{ t(' (se abre en otra pestaña)') }}</span></a></p>
         </div>
         @for (s of sucursales; track s.id) {
           <div>
-            <p class="t-subtitulo"><a [routerLink]="'/' + s.id">{{ s.nombre }}</a>@if (!s.confirmada) { <span class="marca-tentativa">por confirmar</span> }</p>
+            <p class="t-subtitulo"><a [routerLink]="r('/' + s.id)">{{ s.nombre }}</a>@if (!s.confirmada) { <span class="marca-tentativa">{{ t('por confirmar') }}</span> }</p>
             <p class="t-pequeno tenue">{{ direccion(s) }}</p>
-            <p class="t-dato tenue">{{ s.confirmada ? horario(s) : 'Horario pendiente' }}</p>
-            <p><a class="enlace" [href]="s.mapa" target="_blank" rel="noopener">Mapa<span class="solo-lector"> de {{ s.nombre }} en Google Maps (se abre en otra pestaña)</span></a></p>
+            <p class="t-dato tenue">{{ s.confirmada ? horario(s) : t('Horario pendiente') }}</p>
+            <p><a class="enlace" [href]="s.mapa" target="_blank" rel="noopener">{{ t('Mapa') }}<span class="solo-lector"> {{ t('de') }} {{ s.nombre }} {{ t('en Google Maps (se abre en otra pestaña)') }}</span></a></p>
           </div>
         }
       </div>
       <div class="envoltura legal">
         @if (propuesta) {
-          <p>Propuesta no oficial hecha por un estudiante para enseñársela al negocio. No es el sitio de Take-chan Ramen, no recibe pedidos y no tiene datos de contacto reales. La marca pertenece a su dueño.</p>
+          <p>{{ t('Propuesta no oficial hecha por un estudiante para enseñársela al negocio. No es el sitio de Take-chan Ramen, no recibe pedidos y no tiene datos de contacto reales. La marca pertenece a su dueño.') }}</p>
         } @else {
-          <p>Take-chan Ramen · Ramen Iekei en Tlaquepaque, Jalisco.</p>
+          <p>Take-chan Ramen · {{ t('Ramen Iekei en Tlaquepaque, Jalisco.') }}</p>
         }
-        <p>Imágenes ilustrativas de <a href="https://unsplash.com/license" target="_blank" rel="noopener">Unsplash</a>, no son platillos ni locales de Take-chan:
+        <p>{{ t('Imágenes ilustrativas de') }} <a href="https://unsplash.com/license" target="_blank" rel="noopener">Unsplash</a>{{ t(', no son platillos ni locales de Take-chan:') }}
           @for (a of autores; track a.usuario; let ultimo = $last) {
             <a [href]="'https://unsplash.com/@' + a.usuario" target="_blank" rel="noopener">{{ a.autor }}</a>{{ ultimo ? '.' : ', ' }}
           }
@@ -59,6 +60,9 @@ import { FOTOS } from './foto';
   `,
 })
 export class Pie {
+  protected readonly t = inject(Idioma).t;
+  protected readonly r = inject(Idioma).r;
+  protected readonly idioma = inject(Idioma).actual;
   protected readonly version = VERSION_DATOS;
   protected readonly propuesta = PROPUESTA;
   protected readonly sucursales = SUCURSALES;
@@ -67,6 +71,6 @@ export class Pie {
   protected readonly direccion = direccionCorta;
   protected readonly autores = [...new Map(Object.values(FOTOS).map((f) => [f.usuario, f])).values()];
   protected horario(s: (typeof SUCURSALES)[number]) {
-    return horarioTexto(s.horario.turnos);
+    return horarioTexto(s.horario.turnos, this.idioma());
   }
 }

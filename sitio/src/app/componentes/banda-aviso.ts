@@ -1,3 +1,4 @@
+import { Idioma } from '../servicios/idioma';
 import { ChangeDetectionStrategy, Component, PLATFORM_ID, computed, inject, signal } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { Hoja } from '../servicios/hoja';
@@ -11,9 +12,9 @@ import { Hoja } from '../servicios/hoja';
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     @if (visible(); as a) {
-      <aside class="banda" aria-label="Aviso del negocio">
-        <p>{{ a.texto }}</p>
-        <button type="button" (click)="cerrar()" aria-label="Cerrar el aviso">
+      <aside class="banda" [attr.aria-label]="t('Aviso del negocio')">
+        <p>{{ t(a.texto) }}</p>
+        <button type="button" (click)="cerrar()" [attr.aria-label]="t('Cerrar el aviso')">
           <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6 6 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" /></svg>
         </button>
       </aside>
@@ -29,6 +30,9 @@ import { Hoja } from '../servicios/hoja';
   `,
 })
 export class BandaAviso {
+  protected readonly t = inject(Idioma).t;
+  protected readonly r = inject(Idioma).r;
+  protected readonly idioma = inject(Idioma).actual;
   private readonly hoja = inject(Hoja);
   private readonly navegador = isPlatformBrowser(inject(PLATFORM_ID));
   private readonly cerrados = signal<string[]>(this.leer());

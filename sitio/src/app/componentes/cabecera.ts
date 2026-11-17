@@ -1,5 +1,6 @@
+import { Idioma } from '../servicios/idioma';
 import { PROPUESTA } from '../../entornos/modo';
-import { ChangeDetectionStrategy, Component, ElementRef, afterNextRender, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, afterNextRender, inject, signal, computed } from '@angular/core';
 import { NavigationEnd, Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { filter } from 'rxjs';
 
@@ -10,12 +11,13 @@ import { filter } from 'rxjs';
   imports: [RouterLink, RouterLinkActive],
   template: `
     <header>
-      @if (propuesta) { <p class="aviso" role="note">Propuesta no oficial de sitio para Take-chan Ramen</p> }
+      @if (propuesta) { <p class="aviso" role="note">Propuesta no oficial de sitio para Take-chan Ramen@if (idioma() === 'en') { <span lang="en"> · Unofficial website proposal</span> }</p> }
       <nav class="envoltura barra" aria-label="Principal">
-        <a class="marca" routerLink="/" aria-label="Take-chan Ramen, inicio"><span lang="ja" aria-hidden="true">家系</span> TAKE-CHAN</a>
+        <a class="marca" [routerLink]="r('/')" [attr.aria-label]="t('Take-chan Ramen, inicio')"><span lang="ja" aria-hidden="true">家系</span> TAKE-CHAN</a>
         <ul>
-          <li><a routerLink="/menu" routerLinkActive="activo" ariaCurrentWhenActive="page">Menú<span class="largo">&nbsp;y pedido</span></a></li>
-          <li><a routerLink="/" fragment="sucursales">Sucursales</a></li>
+          <li><a [routerLink]="r('/menu')" routerLinkActive="activo" ariaCurrentWhenActive="page">{{ t('Menú') }}<span class="largo">&nbsp;{{ t('y pedido') }}</span></a></li>
+          <li><a [routerLink]="r('/')" fragment="sucursales">{{ t('Sucursales') }}</a></li>
+          <li class="lengua"><a [href]="otra()" [attr.hreflang]="idioma() === 'en' ? 'es' : 'en'" [attr.lang]="idioma() === 'en' ? 'es' : 'en'" (click)="cambiarIdioma($event)">{{ idioma() === 'en' ? 'ES' : 'EN' }}<span class="solo-lector">{{ idioma() === 'en' ? ', ver en español' : ', view in English' }}</span></a></li>
           <li class="indicador" aria-hidden="true"></li>
         </ul>
       </nav>
@@ -34,15 +36,33 @@ import { filter } from 'rxjs';
     ul { position: relative; }
     /* Subrayado bermellón que se desliza al enlace activo (dis-077). */
     .indicador { position: absolute; left: 0; bottom: 0; height: 2px; width: 1px; background: var(--bermellon); transform-origin: 0 0; transform: translateX(var(--x, 0)) scaleX(var(--w, 0)); opacity: var(--o, 0); pointer-events: none; transition: transform var(--t-3) var(--ease-out), opacity var(--t-2) var(--ease-out); }
+    .lengua a { font: 600 .8125rem/1 var(--mono); letter-spacing: .06em; border: 1px solid var(--linea); border-radius: var(--r-s); min-height: 32px; margin-block: 6px; padding: 0 8px; }
+    .lengua a:hover { border-color: var(--washi-2); }
     @media (max-width: 479px) { .largo { display: none; } }
-    @media (max-width: 359px) { .marca { font-size: .9375rem; gap: var(--e-1); } li a { padding: 0 6px; font-size: .875rem; } ul { gap: 0; } }
+    /* Celular: con el selector ES · EN la barra se compacta para no desbordar a 360 px. */
+    @media (max-width: 419px) { .marca { font-size: .9375rem; gap: var(--e-1); } li a { padding: 0 6px; font-size: .875rem; } ul { gap: 0; } .lengua a { padding: 0 6px; margin-left: 2px; } }
+    @media (max-width: 359px) { .marca { font-size: .875rem; } li a { padding: 0 5px; font-size: .8125rem; } }
   `,
 })
 export class Cabecera {
+  protected readonly t = inject(Idioma).t;
+  protected readonly r = inject(Idioma).r;
+  protected readonly idioma = inject(Idioma).actual;
+  private readonly lenguas = inject(Idioma);
+  private readonly enrutador = inject(Router);
+  private readonly url = signal('/');
+  /** La misma página en el otro idioma, sin la base (/Take-chan/) para que el href funcione con <base>. */
+  protected readonly otra = computed(() => this.lenguas.equivalente(this.url(), this.idioma() === 'en' ? 'es' : 'en').slice(1) || '.');
+  protected cambiarIdioma(e: MouseEvent) {
+    if (e.metaKey || e.ctrlKey || e.shiftKey) return;
+    e.preventDefault();
+    this.enrutador.navigateByUrl(this.lenguas.equivalente(this.url(), this.idioma() === 'en' ? 'es' : 'en'));
+  }
   protected readonly propuesta = PROPUESTA;
   constructor() {
     const host = inject<ElementRef<HTMLElement>>(ElementRef).nativeElement;
     const router = inject(Router);
+    router.events.pipe(filter((e): e is NavigationEnd => e instanceof NavigationEnd)).subscribe((e) => this.url.set(e.urlAfterRedirects));
     afterNextRender(() => {
       const medir = () => requestAnimationFrame(() => {
         const ul = host.querySelector<HTMLElement>('ul');

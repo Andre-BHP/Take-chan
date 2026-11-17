@@ -1,3 +1,4 @@
+import { Idioma } from '../../servicios/idioma';
 import { Faq, faqPage, preguntas } from '../../componentes/faq';
 import { Contacto } from '../../servicios/contacto';
 import { PROPUESTA } from '../../../entornos/modo';
@@ -25,6 +26,9 @@ import { Telon } from '../../componentes/telon';
   styleUrl: './inicio.css',
 })
 export class Inicio {
+  protected readonly t = inject(Idioma).t;
+  protected readonly r = inject(Idioma).r;
+  protected readonly idioma = inject(Idioma).actual;
   /** Se lee en la plantilla: si la hoja de Google cambia los datos, la página se vuelve a dibujar. */
   protected readonly version = VERSION_DATOS;
   protected readonly propuesta = PROPUESTA;
@@ -36,11 +40,12 @@ export class Inicio {
   protected readonly pesos = pesos;
 
   constructor() {
+    const contacto = inject(Contacto);
     inject(Seo).establecer({
-      titulo: 'Take-chan Ramen · Ramen Iekei en Tlaquepaque',
-      descripcion: 'Ramen japonés estilo Iekei en Calz. Córdoba 24, Tlaquepaque. Caldo de cerdo con soya y fideo grueso, hechos en Japón según su ficha.' + (PROPUESTA ? ' Propuesta no oficial de sitio.' : ''),
+      titulo: 'Take-chan Ramen · ' + this.t('Ramen Iekei en Tlaquepaque'),
+      descripcion: this.t('Ramen japonés estilo Iekei en Calz. Córdoba 24, Tlaquepaque. Caldo de cerdo con soya y fideo grueso, hechos en Japón según su ficha.') + (PROPUESTA ? ' ' + this.t('Propuesta no oficial de sitio.') : ''),
       ruta: '/',
-      esquema: [...SUCURSALES.map(restaurante).filter((e): e is object => !!e), faqPage(preguntas(inject(Contacto).demo))],
+      esquema: [...SUCURSALES.map(restaurante).filter((e): e is object => !!e), faqPage(preguntas(contacto.demo, this.t, this.idioma() === 'en'))],
     });
 
     const movimiento = inject(Movimiento);

@@ -55,6 +55,10 @@
     <p class="saludo"><span lang="ja">いらっしゃいませ</span><span>Bienvenido</span></p>
     <button type="button" onclick="document.documentElement.classList.add('intro-saltada')">Saltar</button>
   </div>
+  <script>
+    /* Versión en inglés: el saludo y el botón de la intro, en inglés. */
+    if (/\/en(\/|$)/.test(location.pathname)) { document.querySelector('#intro .saludo span:last-child').textContent = 'Welcome'; document.querySelector('#intro button').textContent = 'Skip'; }
+  </script>
   <app-root></app-root>
 </body>
 </html>

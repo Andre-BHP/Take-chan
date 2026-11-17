@@ -3,6 +3,7 @@ import { isPlatformBrowser } from '@angular/common';
 import { Turno } from './datos';
 
 const DIAS = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado'];
+export const DAYS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
 export interface Ahora { dia: number; minutos: number }
 
@@ -46,24 +47,26 @@ export function falta(min: number): string {
   return [h ? `${h} h` : '', m ? `${m} min` : ''].filter(Boolean).join(' ') || 'menos de 1 min';
 }
 
-/** "Abierto ahora · cierra en 2 h 13 min" o "Cerrado · abre mañana a las 12:00". */
-export function estado(turnos: Turno[], a: Ahora): Estado {
+/** "Abierto ahora · cierra en 2 h 13 min" o "Cerrado · abre mañana a las 12:00" (en inglés con en = 'en'). */
+export function estado(turnos: Turno[], a: Ahora, en: 'es' | 'en' = 'es'): Estado {
+  const ingles = en === 'en';
   const hoy = turnoDe(turnos, a.dia);
   if (hoy && a.minutos >= aMin(hoy.abre) && a.minutos < aMin(hoy.cierra)) {
-    return { abierto: true, texto: `Abierto ahora · cierra en ${falta(aMin(hoy.cierra) - a.minutos)}` };
+    return { abierto: true, texto: ingles ? `Open now · closes in ${falta(aMin(hoy.cierra) - a.minutos)}` : `Abierto ahora · cierra en ${falta(aMin(hoy.cierra) - a.minutos)}` };
   }
-  if (hoy && a.minutos < aMin(hoy.abre)) return { abierto: false, texto: `Cerrado · abre hoy a las ${hoy.abre}` };
+  if (hoy && a.minutos < aMin(hoy.abre)) return { abierto: false, texto: ingles ? `Closed · opens today at ${hoy.abre}` : `Cerrado · abre hoy a las ${hoy.abre}` };
   for (let i = 1; i <= 7; i++) {
     const d = (a.dia + i) % 7;
     const t = turnoDe(turnos, d);
-    if (t) return { abierto: false, texto: `Cerrado · abre ${i === 1 ? 'mañana' : 'el ' + DIAS[d]} a las ${t.abre}` };
+    if (t) return { abierto: false, texto: ingles ? `Closed · opens ${i === 1 ? 'tomorrow' : 'on ' + DAYS[d]} at ${t.abre}` : `Cerrado · abre ${i === 1 ? 'mañana' : 'el ' + DIAS[d]} a las ${t.abre}` };
   }
-  return { abierto: false, texto: 'Cerrado' };
+  return { abierto: false, texto: ingles ? 'Closed' : 'Cerrado' };
 }
 
 /** Texto fijo del horario, igual en el prerender y en el navegador. */
-export function horarioTexto(turnos: Turno[]): string {
+export function horarioTexto(turnos: Turno[], en: 'es' | 'en' = 'es'): string {
+  const ingles = en === 'en';
   return turnos
-    .map((t) => `${t.dias.length === 7 ? 'Todos los días' : t.dias.map((d) => DIAS[d]).join(', ')} · ${t.abre} a ${t.cierra}`)
+    .map((t) => `${t.dias.length === 7 ? (ingles ? 'Every day' : 'Todos los días') : t.dias.map((d) => (ingles ? DAYS : DIAS)[d]).join(', ')} · ${t.abre} ${ingles ? 'to' : 'a'} ${t.cierra}`)
     .join(' / ');
 }

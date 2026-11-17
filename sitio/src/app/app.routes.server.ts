@@ -1,9 +1,9 @@
 import { RenderMode, ServerRoute } from '@angular/ssr';
 
 export const serverRoutes: ServerRoute[] = [
-  { path: '', renderMode: RenderMode.Prerender },
-  { path: 'menu', renderMode: RenderMode.Prerender },
-  { path: 'tlaquepaque', renderMode: RenderMode.Prerender },
-  { path: 'americana', renderMode: RenderMode.Prerender },
+  ...['', 'menu', 'tlaquepaque', 'americana'].flatMap((p) => [
+    { path: p, renderMode: RenderMode.Prerender },
+    { path: p ? `en/${p}` : 'en', renderMode: RenderMode.Prerender },
+  ] as ServerRoute[]),
   { path: '**', renderMode: RenderMode.Prerender },
 ];

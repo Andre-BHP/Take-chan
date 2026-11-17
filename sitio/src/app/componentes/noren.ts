@@ -1,3 +1,4 @@
+import { Idioma } from '../servicios/idioma';
 import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -12,11 +13,11 @@ import { Router } from '@angular/router';
   host: { '[class.abierta]': 'abierta()' },
   template: `
     <div class="vara" aria-hidden="true"></div>
-    <a class="tela" href="menu" (click)="entrar($event)" (pointermove)="mecer($event)" (pointerleave)="soltar($event)" aria-label="Entrar al menú y pedido">
+    <a class="tela" [href]="r('/menu').slice(1)" (click)="entrar($event)" (pointermove)="mecer($event)" (pointerleave)="soltar($event)" [attr.aria-label]="t('Entrar al menú y pedido')">
       @for (i of panos; track i) {
         <span class="pano" aria-hidden="true" [style.--i]="i"><span class="letras" lang="ja">{{ grupos[i] }}</span></span>
       }
-      <span class="pista-tela" aria-hidden="true">Entra al menú</span>
+      <span class="pista-tela" aria-hidden="true">{{ t('Entra al menú') }}</span>
     </a>
   `,
   styles: `
@@ -50,6 +51,9 @@ import { Router } from '@angular/router';
   `,
 })
 export class Noren {
+  protected readonly t = inject(Idioma).t;
+  protected readonly r = inject(Idioma).r;
+  protected readonly idioma = inject(Idioma).actual;
   private readonly router = inject(Router);
   protected readonly panos = [0, 1, 2];
   /** Dos caracteres por paño: las aberturas caen entre caracteres, no a la mitad de uno. */
@@ -72,6 +76,6 @@ export class Noren {
     e.preventDefault();
     const reducir = matchMedia('(prefers-reduced-motion: reduce)').matches;
     this.abierta.set(true);
-    setTimeout(() => this.router.navigateByUrl('/menu'), reducir ? 0 : 220);
+    setTimeout(() => this.router.navigateByUrl(this.r('/menu')), reducir ? 0 : 220);
   }
 }

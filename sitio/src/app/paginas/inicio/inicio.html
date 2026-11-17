@@ -8,13 +8,13 @@
   <div class="envoltura heroe-capa">
     <p class="kanji" lang="ja" aria-hidden="true">家系</p>
     <div class="heroe-texto">
-      <h1 id="heroe-titulo" class="t-display"><span class="marca-heroe l"><span>Take-chan Ramen</span></span><span class="solo-lector">. </span><span class="l"><span>Ramen Iekei</span></span> <span class="l"><span>en Tlaquepaque.</span></span></h1>
-      <p class="bajada"><span>Caldo y fideo traídos de Japón.</span></p>
+      <h1 id="heroe-titulo" class="t-display"><span class="marca-heroe l"><span>Take-chan Ramen</span></span><span class="solo-lector">. </span><span class="l"><span>{{ t('Ramen Iekei') }}</span></span> <span class="l"><span>{{ t('en Tlaquepaque.') }}</span></span></h1>
+      <p class="bajada"><span>{{ t('Caldo y fideo traídos de Japón.') }}</span></p>
       <app-estado class="heroe-estado" [turnos]="tlaquepaque.horario.turnos" />
     </div>
     <div class="acciones">
-      <a class="boton boton-primario" routerLink="/menu">Arma tu pedido</a>
-      <a class="boton boton-contorno" [href]="tlaquepaque.mapa" target="_blank" rel="noopener">Cómo llegar<span class="solo-lector"> a Tlaquepaque (se abre Google Maps)</span></a>
+      <a class="boton boton-primario" [routerLink]="r('/menu')">{{ t('Arma tu pedido') }}</a>
+      <a class="boton boton-contorno" [href]="tlaquepaque.mapa" target="_blank" rel="noopener">{{ t('Cómo llegar') }}<span class="solo-lector">{{ t(' a Tlaquepaque (se abre Google Maps)') }}</span></a>
     </div>
   </div>
 </section>
@@ -25,13 +25,13 @@
   <div class="iekei-rejilla">
     <p class="iekei-vertical" lang="ja" aria-hidden="true">家系ラーメンとは</p>
     <div class="iekei-texto">
-      <h2 id="iekei-titulo" class="t-seccion" data-revelar="lineas">Qué es el Iekei</h2>
+      <h2 id="iekei-titulo" class="t-seccion" data-revelar="lineas">{{ t('Qué es el Iekei') }}</h2>
       <dl data-revelar="grupo">
-        <div><dt>El caldo</dt><dd>Hueso de cerdo hervido hasta que se vuelve cremoso, con soya y una capa de grasa encima.</dd></div>
-        <div><dt>El fideo</dt><dd>Grueso y recto, para que el caldo se le pegue en cada bocado.</dd></div>
-        <div><dt>El nombre</dt><dd><span lang="ja">家系</span> (iekei) viene de las ramen-ya de Yokohama cuyo nombre termina en <span lang="ja">家</span>, «casa».</dd></div>
+        <div><dt>{{ t('El caldo') }}</dt><dd>{{ t('Hueso de cerdo hervido hasta que se vuelve cremoso, con soya y una capa de grasa encima.') }}</dd></div>
+        <div><dt>{{ t('El fideo') }}</dt><dd>{{ t('Grueso y recto, para que el caldo se le pegue en cada bocado.') }}</dd></div>
+        <div><dt>{{ t('El nombre') }}</dt><dd><span lang="ja">家系</span> {{ t('(iekei) viene de las ramen-ya de Yokohama cuyo nombre termina en') }} <span lang="ja">家</span>{{ t(', «casa».') }}</dd></div>
       </dl>
-      <p class="origen">Según su ficha, en Take-chan el fideo y el caldo se hacen en Japón y se importan.</p>
+      <p class="origen">{{ t('Según su ficha, en Take-chan el fideo y el caldo se hacen en Japón y se importan.') }}</p>
     </div>
     <div class="iekei-marco" data-revelar="cortina"><app-foto class="iekei-foto" nombre="clasico" sizes="(min-width: 900px) 45vw, 75vw" /></div>
   </div>
@@ -39,42 +39,42 @@
 
 <section class="social" aria-labelledby="social-titulo">
   <div class="envoltura social-rejilla">
-    <h2 id="social-titulo" class="solo-lector">Lo que dicen en Google</h2>
+    <h2 id="social-titulo" class="solo-lector">{{ t('Lo que dicen en Google') }}</h2>
     <p class="cifra" data-revelar><span class="numero-grande" data-contar="4.8" data-desde="4" data-decimales="1">4.8</span></p>
     <div class="social-texto" data-revelar="grupo">
       <p class="estrellas" aria-hidden="true">
         <span class="estrellas-fondo">@for (i of [1, 2, 3, 4, 5]; track i) { <svg viewBox="0 0 24 24"><path [attr.d]="estrella" /></svg> }</span>
         <span class="estrellas-llenas">@for (i of [1, 2, 3, 4, 5]; track i) { <svg viewBox="0 0 24 24"><path [attr.d]="estrella" /></svg> }</span>
       </p>
-      <p class="resenas">de 5 en Google, con 140 reseñas en su ficha pública</p>
-      <p class="elogio">Lo que más elogian quienes ya fueron: <strong>el caldo</strong> y <strong>la panceta</strong>.</p>
-      <a class="boton boton-contorno" [href]="tlaquepaque.mapa" target="_blank" rel="noopener">Ver en Google Maps<span class="solo-lector"> (se abre en otra pestaña)</span></a>
+      <p class="resenas">{{ t('de 5 en Google, con 140 reseñas en su ficha pública') }}</p>
+      <p class="elogio">{{ t('Lo que más elogian quienes ya fueron:') }} <strong>{{ t('el caldo') }}</strong> {{ t('y') }} <strong>{{ t('la panceta') }}</strong>.</p>
+      <a class="boton boton-contorno" [href]="tlaquepaque.mapa" target="_blank" rel="noopener">{{ t('Ver en Google Maps') }}<span class="solo-lector">{{ t(' (se abre en otra pestaña)') }}</span></a>
     </div>
   </div>
 </section>
 
 <section class="pedir" aria-labelledby="pedir-titulo">
   <div class="encabezado">
-    <div class="con-kanji"><span class="kanji-v" lang="ja" aria-hidden="true">注文</span><h2 id="pedir-titulo" class="t-seccion" data-revelar="lineas">Para pedir</h2></div>
-    <a class="enlace" routerLink="/menu">Ver todo el menú</a>
+    <div class="con-kanji"><span class="kanji-v" lang="ja" aria-hidden="true">注文</span><h2 id="pedir-titulo" class="t-seccion" data-revelar="lineas">{{ t('Para pedir') }}</h2></div>
+    <a class="enlace" [routerLink]="r('/menu')">{{ t('Ver todo el menú') }}</a>
   </div>
   <div class="bento" data-revelar="grupo">
-    <a class="celda grande" routerLink="/menu" [queryParams]="{ ramen: clasico.id }" (pointermove)="seguir($event)" (pointerdown)="volar($event, clasico.id)">
+    <a class="celda grande" [routerLink]="r('/menu')" [queryParams]="{ ramen: clasico.id }" (pointermove)="seguir($event)" (pointerdown)="volar($event, clasico.id)">
       <app-foto [nombre]="clasico.foto!" sizes="(min-width: 900px) 50vw, 100vw" />
-      <span class="ver-menu" aria-hidden="true">Ver en el menú<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h13m-5-5 5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      <span class="ver-menu" aria-hidden="true">{{ t('Ver en el menú') }}<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h13m-5-5 5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
       <div class="celda-texto">
-        <h3 class="t-titulo">{{ clasico.nombre }}</h3>
-        <p class="desc">{{ clasico.desc }}</p>
-        <p class="primera"><strong>¿Primera vez?</strong> Pide el clásico, todo normal.</p>
+        <h3 class="t-titulo">{{ t(clasico.nombre) }}</h3>
+        <p class="desc">{{ t(clasico.desc) }}</p>
+        <p class="primera"><strong>{{ t('¿Primera vez?') }}</strong> {{ t('Pide el clásico, todo normal.') }}</p>
         <p class="precio t-dato">{{ pesos(clasico.precio) }}</p>
       </div>
     </a>
     @for (p of extras; track p.id; let ultimo = $last) {
-      <a class="celda" routerLink="/menu" [queryParams]="{ ramen: p.id }" (pointermove)="seguir($event)" (pointerdown)="volar($event, p.id)">
+      <a class="celda" [routerLink]="r('/menu')" [queryParams]="{ ramen: p.id }" (pointermove)="seguir($event)" (pointerdown)="volar($event, p.id)">
         <app-foto [nombre]="p.foto!" [sizes]="ultimo ? '(min-width: 900px) 50vw, 100vw' : '(min-width: 900px) 25vw, 50vw'" />
-        <span class="ver-menu" aria-hidden="true">Ver en el menú<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h13m-5-5 5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <span class="ver-menu" aria-hidden="true">{{ t('Ver en el menú') }}<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h13m-5-5 5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
         <div class="celda-texto">
-          <h3 class="t-subtitulo">{{ p.nombre }}</h3>
+          <h3 class="t-subtitulo">{{ t(p.nombre) }}</h3>
           <p class="precio t-dato">{{ pesos(p.precio) }}</p>
         </div>
       </a>
@@ -82,31 +82,31 @@
   </div>
 </section>
 
-<section class="pausa" aria-label="Pausa: fideo grueso y caldo espeso">
+<section class="pausa" [attr.aria-label]="t('Pausa: fideo grueso y caldo espeso')">
   <div class="pausa-marco"><app-foto class="pausa-foto" nombre="fideo" sizes="100vw" /></div>
-  <p class="pausa-frase envoltura" data-revelar="lineas">Fideo grueso, caldo espeso. Así se come en Yokohama.</p>
+  <p class="pausa-frase envoltura" data-revelar="lineas">{{ t('Fideo grueso, caldo espeso. Así se come en Yokohama.') }}</p>
 </section>
 
 <section class="como" aria-labelledby="como-titulo">
   <div class="envoltura como-cabeza">
-    <div class="con-kanji"><span class="kanji-v" lang="ja" aria-hidden="true">作り方</span><div class="como-titulos"><h2 id="como-titulo" class="t-seccion" data-revelar="lineas">Cómo se hace un Iekei</h2><p class="como-bajada">Cuatro pasos del estilo, como en Yokohama.</p></div></div>
+    <div class="con-kanji"><span class="kanji-v" lang="ja" aria-hidden="true">作り方</span><div class="como-titulos"><h2 id="como-titulo" class="t-seccion" data-revelar="lineas">{{ t('Cómo se hace un Iekei') }}</h2><p class="como-bajada">{{ t('Cuatro pasos del estilo, como en Yokohama.') }}</p></div></div>
   </div>
   <app-medidor />
 </section>
 
 <section class="tiktok envoltura" aria-labelledby="tiktok-titulo">
   <div class="tiktok-texto">
-    <div class="con-kanji"><span class="kanji-v" lang="ja" aria-hidden="true">動画</span><h2 id="tiktok-titulo" class="t-seccion" data-revelar="lineas">Míralos en TikTok</h2></div>
-    <p>La cuenta {{ tiktok.usuario }} enseña el local y su ramen en video.</p>
-    <p class="tenue">Los videos se cargan solo si los pides: antes de eso, TikTok no recibe nada de tu visita.</p>
-    <a class="enlace" [href]="tiktok.url" target="_blank" rel="noopener">Abrir {{ tiktok.usuario }} en TikTok<span class="solo-lector"> (se abre en otra pestaña)</span></a>
+    <div class="con-kanji"><span class="kanji-v" lang="ja" aria-hidden="true">動画</span><h2 id="tiktok-titulo" class="t-seccion" data-revelar="lineas">{{ t('Míralos en TikTok') }}</h2></div>
+    <p>{{ t('La cuenta') }} {{ tiktok.usuario }} {{ t('enseña el local y su ramen en video.') }}</p>
+    <p class="tenue">{{ t('Los videos se cargan solo si los pides: antes de eso, TikTok no recibe nada de tu visita.') }}</p>
+    <a class="enlace" [href]="tiktok.url" target="_blank" rel="noopener">{{ t('Abrir en TikTok') }}: {{ tiktok.usuario }}<span class="solo-lector">{{ t(' (se abre en otra pestaña)') }}</span></a>
   </div>
   <div class="tiktok-marco">
     @if (!tiktokCargado()) {
       <button type="button" class="tiktok-fachada" (click)="cargarTiktok()">
         <span class="tiktok-play" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M8 5.5v13l11-6.5z" fill="currentColor" /></svg></span>
-        <span class="tiktok-boton">Cargar los videos de {{ tiktok.usuario }}</span>
-        <span class="tiktok-nota">Se conecta con TikTok al tocar</span>
+        <span class="tiktok-boton">{{ t('Cargar los videos de') }} {{ tiktok.usuario }}</span>
+        <span class="tiktok-nota">{{ t('Se conecta con TikTok al tocar') }}</span>
       </button>
     } @else {
       <blockquote class="tiktok-embed" [attr.cite]="tiktok.url" [attr.data-unique-id]="tiktokId" data-embed-type="creator">
@@ -117,24 +117,24 @@
 </section>
 
 <section class="faq envoltura" aria-labelledby="faq-titulo">
-  <div class="con-kanji"><span class="kanji-v" lang="ja" aria-hidden="true">質問</span><h2 id="faq-titulo" class="t-seccion" data-revelar="lineas">Preguntas frecuentes</h2></div>
+  <div class="con-kanji"><span class="kanji-v" lang="ja" aria-hidden="true">質問</span><h2 id="faq-titulo" class="t-seccion" data-revelar="lineas">{{ t('Preguntas frecuentes') }}</h2></div>
   <app-faq />
 </section>
 
 <section id="sucursales" class="sucursales envoltura" aria-labelledby="sucursales-titulo">
-  <div class="con-kanji"><span class="kanji-v" lang="ja" aria-hidden="true">店舗</span><h2 id="sucursales-titulo" class="t-seccion" data-revelar="lineas">Sucursales</h2></div>
+  <div class="con-kanji"><span class="kanji-v" lang="ja" aria-hidden="true">店舗</span><h2 id="sucursales-titulo" class="t-seccion" data-revelar="lineas">{{ t('Sucursales') }}</h2></div>
   <div class="tarjetas" data-revelar="grupo">
     @for (s of sucursales; track s.id) {
       <article class="sucursal">
-        <app-mapa [sucursal]="s.id" [alt]="'Mapa de las calles alrededor de ' + s.direccion.calle" [aproximada]="!s.confirmada" />
+        <app-mapa [sucursal]="s.id" [alt]="t('Mapa de las calles alrededor de') + ' ' + s.direccion.calle" [aproximada]="!s.confirmada" />
         <div class="sucursal-texto">
-          <h3 class="t-titulo"><a [routerLink]="'/' + s.id">{{ s.nombre }}</a></h3>
-          @if (!s.confirmada) { <p class="marca-tentativa">Sucursal por confirmar</p> }
+          <h3 class="t-titulo"><a [routerLink]="r('/' + s.id)">{{ s.nombre }}</a></h3>
+          @if (!s.confirmada) { <p class="marca-tentativa">{{ t('Sucursal por confirmar') }}</p> }
           @if (s.confirmada) { <app-estado [turnos]="s.horario.turnos" /> }
           <p class="t-pequeno tenue">{{ direccion(s) }}</p>
           <div class="acciones-sucursal">
-            <a class="boton boton-contorno con-flecha" [href]="s.mapa" target="_blank" rel="noopener">Cómo llegar<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h13m-5-5 5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="solo-lector"> a {{ s.nombre }} (se abre Google Maps)</span></a>
-            <a class="enlace" [routerLink]="'/' + s.id">Ver sucursal<span class="solo-lector"> {{ s.nombre }}</span></a>
+            <a class="boton boton-contorno con-flecha" [href]="s.mapa" target="_blank" rel="noopener">{{ t('Cómo llegar') }}<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h13m-5-5 5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="solo-lector"> {{ t('a') }} {{ s.nombre }}{{ t(' (se abre Google Maps)') }}</span></a>
+            <a class="enlace" [routerLink]="r('/' + s.id)">{{ t('Ver sucursal') }}<span class="solo-lector"> {{ s.nombre }}</span></a>
           </div>
         </div>
       </article>

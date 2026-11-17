@@ -1,3 +1,4 @@
+import { Idioma } from '../servicios/idioma';
 import { ChangeDetectionStrategy, Component, DestroyRef, ElementRef, PLATFORM_ID, afterNextRender, inject, input, signal } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 
@@ -14,8 +15,8 @@ import { isPlatformBrowser } from '@angular/common';
     <img [src]="'mapas/' + sucursal() + '.svg'" [alt]="alt()" width="1200" height="800" [attr.loading]="prioridad() ? 'eager' : 'lazy'" decoding="async" />
     <span class="pin" aria-hidden="true"><span class="sello" lang="ja">家</span><span class="punta"></span></span>
     <span class="sombra" aria-hidden="true"></span>
-    @if (aproximada()) { <span class="aprox">Ubicación aproximada</span> }
-    <a class="osm" href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">© OpenStreetMap<span class="solo-lector"> (se abre en otra pestaña)</span></a>
+    @if (aproximada()) { <span class="aprox">{{ t('Ubicación aproximada') }}</span> }
+    <a class="osm" href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">© OpenStreetMap<span class="solo-lector">{{ t(' (se abre en otra pestaña)') }}</span></a>
   `,
   styles: `
     :host { position: relative; display: block; overflow: hidden; background: #161412; }
@@ -50,6 +51,9 @@ import { isPlatformBrowser } from '@angular/common';
   `,
 })
 export class Mapa {
+  protected readonly t = inject(Idioma).t;
+  protected readonly r = inject(Idioma).r;
+  protected readonly idioma = inject(Idioma).actual;
   readonly sucursal = input.required<string>();
   readonly alt = input.required<string>();
   readonly aproximada = input(false);

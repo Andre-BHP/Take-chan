@@ -1,3 +1,4 @@
+import { Idioma } from '../servicios/idioma';
 import { ChangeDetectionStrategy, Component, computed, inject, input } from '@angular/core';
 import { Turno, VERSION_DATOS } from '../servicios/datos';
 import { Reloj, estado, horarioTexto } from '../servicios/horario';
@@ -19,12 +20,15 @@ import { Reloj, estado, horarioTexto } from '../servicios/horario';
   styles: `:host { display: inline-flex; }`,
 })
 export class Estado {
+  protected readonly t = inject(Idioma).t;
+  protected readonly r = inject(Idioma).r;
+  protected readonly idioma = inject(Idioma).actual;
   readonly turnos = input.required<Turno[]>();
   private readonly reloj = inject(Reloj);
   protected readonly actual = computed(() => {
     VERSION_DATOS();
     const a = this.reloj.ahora();
-    return a ? estado(this.turnos(), a) : null;
+    return a ? estado(this.turnos(), a, this.idioma()) : null;
   });
-  protected readonly fijo = computed(() => (VERSION_DATOS(), horarioTexto(this.turnos())));
+  protected readonly fijo = computed(() => (VERSION_DATOS(), horarioTexto(this.turnos(), this.idioma())));
 }

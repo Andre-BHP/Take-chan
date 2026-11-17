@@ -1,33 +1,33 @@
 @let datos = version();
 <section class="cabeza" aria-labelledby="sucursal-titulo">
-  <app-mapa class="cabeza-foto" [sucursal]="s.id" [alt]="'Mapa de las calles alrededor de ' + s.direccion.calle" [aproximada]="!s.confirmada" [prioridad]="true" />
+  <app-mapa class="cabeza-foto" [sucursal]="s.id" [alt]="t('Mapa de las calles alrededor de') + ' ' + s.direccion.calle" [aproximada]="!s.confirmada" [prioridad]="true" />
   <div class="envoltura cabeza-texto">
-    <p class="migas t-pequeno"><a routerLink="/" fragment="sucursales">Sucursales</a> / {{ s.nombre }}</p>
+    <p class="migas t-pequeno"><a [routerLink]="r('/')" fragment="sucursales">{{ t('Sucursales') }}</a> / {{ s.nombre }}</p>
     <h1 id="sucursal-titulo" class="t-display"><span class="solo-lector">Take-chan Ramen </span>{{ s.nombre }}</h1>
     @if (!s.confirmada) {
-      <p class="tentativa"><span class="marca-tentativa">Sucursal por confirmar</span> Solo la menciona un video de TikTok. Esta página queda lista para cuando el negocio confirme dirección y horario; mientras, no lleva datos estructurados.</p>
+      <p class="tentativa"><span class="marca-tentativa">{{ t('Sucursal por confirmar') }}</span> {{ t('Solo la menciona un video de TikTok. Esta página queda lista para cuando el negocio confirme dirección y horario; mientras, no lleva datos estructurados.') }}</p>
     }
     @if (s.confirmada) { <app-estado [turnos]="s.horario.turnos" /> }
     <div class="acciones">
-      <a class="boton boton-primario" routerLink="/menu">Arma tu pedido</a>
-      <a class="boton boton-contorno" [href]="s.mapa" target="_blank" rel="noopener">Cómo llegar<span class="solo-lector"> (se abre Google Maps)</span></a>
+      <a class="boton boton-primario" [routerLink]="r('/menu')">{{ t('Arma tu pedido') }}</a>
+      <a class="boton boton-contorno" [href]="s.mapa" target="_blank" rel="noopener">{{ t('Cómo llegar') }}<span class="solo-lector">{{ t(' (se abre Google Maps)') }}</span></a>
     </div>
   </div>
 </section>
 
 <div class="envoltura datos">
   <section class="ficha" aria-labelledby="direccion-titulo">
-    <h2 id="direccion-titulo" class="t-titulo">Dirección</h2>
+    <h2 id="direccion-titulo" class="t-titulo">{{ t('Dirección') }}</h2>
     <p class="direccion">{{ direccion }}</p>
-    @if (s.direccion.referencia) { <p class="tenue">{{ s.direccion.referencia }}</p> }
-    <a class="enlace" [href]="s.mapa" target="_blank" rel="noopener">Abrir en Google Maps<span class="solo-lector"> (se abre en otra pestaña)</span></a>
+    @if (s.direccion.referencia) { <p class="tenue">{{ t(s.direccion.referencia) }}</p> }
+    <a class="enlace" [href]="s.mapa" target="_blank" rel="noopener">{{ t('Abrir en Google Maps') }}<span class="solo-lector">{{ t(' (se abre en otra pestaña)') }}</span></a>
   </section>
 
   <section class="ficha" aria-labelledby="horario-titulo">
-    <h2 id="horario-titulo" class="t-titulo">Horario</h2>
+    <h2 id="horario-titulo" class="t-titulo">{{ t('Horario') }}</h2>
     @if (s.confirmada) {
     <table class="horario">
-      <caption class="solo-lector">Horario de {{ s.nombre }}</caption>
+      <caption class="solo-lector">{{ t('Horario de') }} {{ s.nombre }}</caption>
       <tbody>
         @for (d of semana(); track d.dia) {
           <tr><th scope="row">{{ d.dia }}</th><td class="t-dato">{{ d.horas }}</td></tr>
@@ -35,17 +35,17 @@
       </tbody>
     </table>
     } @else {
-      <p class="tenue">Pendiente: el negocio todavía no publica el horario de esta sucursal.</p>
+      <p class="tenue">{{ t('Pendiente: el negocio todavía no publica el horario de esta sucursal.') }}</p>
     }
   </section>
 
   <section class="ficha" aria-labelledby="info-titulo">
-    <h2 id="info-titulo" class="t-titulo">Para saber</h2>
+    <h2 id="info-titulo" class="t-titulo">{{ t('Para saber') }}</h2>
     <dl>
-      <div><dt>Cocina</dt><dd>Ramen japonés estilo Iekei</dd></div>
-      <div><dt>Precio</dt><dd>De {{ precio.min }} a {{ precio.max }} MXN por persona</dd></div>
-      <div><dt>Pedidos</dt><dd>Para recoger: se arma en la máquina de tickets y se manda por WhatsApp{{ propuesta ? ' (propuesta)' : '' }}</dd></div>
+      <div><dt>{{ t('Cocina') }}</dt><dd>{{ t('Ramen japonés estilo Iekei') }}</dd></div>
+      <div><dt>{{ t('Precio') }}</dt><dd>{{ t('De') }} {{ precio.min }} {{ t('a') }} {{ precio.max }} {{ t('MXN por persona') }}</dd></div>
+      <div><dt>{{ t('Pedidos') }}</dt><dd>{{ t('Para recoger: se arma en la máquina de tickets y se manda por WhatsApp') }}{{ propuesta ? t(' (propuesta)') : '' }}</dd></div>
     </dl>
-    <a class="enlace" routerLink="/menu" [queryParams]="{ ramen: 'iekei-clasico' }">¿Primera vez? Empieza por el Iekei clásico</a>
+    <a class="enlace" [routerLink]="r('/menu')" [queryParams]="{ ramen: 'iekei-clasico' }">{{ t('¿Primera vez? Empieza por el Iekei clásico') }}</a>
   </section>
 </div>
