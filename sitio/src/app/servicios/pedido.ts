@@ -1,3 +1,4 @@
+import { PROPUESTA } from '../../entornos/modo';
 import { Injectable, computed, signal } from '@angular/core';
 import { MENU, Platillo, SUCURSALES, esRamen, platillo, pesos, sucursal } from './datos';
 import { aHora, aMin } from './horario';
@@ -84,7 +85,7 @@ export class Pedido {
       'Sucursal: ' + s.nombre + ' (' + s.direccion.calle + ')',
       'Hora para recoger: ' + (this.hora() === 'pronto' ? 'lo antes posible' : this.hora()),
       ...(this.nombre().trim() ? ['A nombre de: ' + this.nombre().trim()] : []),
-      'Total de ejemplo: ' + pesos(this.total()),
+      (PROPUESTA ? 'Total de ejemplo: ' : 'Total: ') + pesos(this.total()),
       ...(this.folio() ? ['Ticket N.º ' + this.folio()] : []),
     ].join('\n');
   });

@@ -2,7 +2,7 @@
 
 - **Pages:** https://andre-bhp.github.io/Take-chan/
 - **Repositorio:** https://github.com/Andre-BHP/Take-chan
-- **Última subida:** 2026-11-16 20:49 (hora de Guadalajara)
+- **Última subida:** 2026-11-16 20:57 (hora de Guadalajara)
 
 ## Rediseño (2026-11-15)
 André revisó la primera versión: "quedó muy feo y muy mal". Este rediseño cambia la dirección a "una ramen-ya de Yokohama de noche": fotos de ejemplo rotuladas, negro sumi y papel washi, 家系 vertical y un solo acento bermellón.
@@ -16,6 +16,20 @@ André revisó la primera versión: "quedó muy feo y muy mal". Este rediseño c
 - [x] R6. Revisión de impeccable y design-taste-frontend, y correcciones
 - [x] R7. Pruebas, comparativa antes y después, mockups de visita
 - [x] R8. Reporte
+
+## Nivel 4 (2026-11-16)
+Plan de Arthemis: todo lo que no depende del negocio, para publicar el sitio oficial en menos de una hora.
+
+- [x] P0. Interruptor de modo, propuesta u oficial
+- [ ] P1. Vista previa al compartir y `/links`
+- [ ] P2. Datos editables desde CSV, aviso y agotado 売切
+- [ ] P3. Preguntas frecuentes y SEO local
+- [ ] P4. Versión en inglés
+- [ ] P5. PWA y menú sin conexión
+- [ ] P6. Impresos con QR
+- [ ] P7. Estadísticas preparadas y plantilla de reporte
+- [ ] P8. Privacidad, accesibilidad y créditos
+- [ ] P9. Calidad final, guías probadas y reporte
 
 ## Nivel 3 (2026-11-16)
 Plan de Arthemis para pasar de "bien hecho" a "de premio".
@@ -49,12 +63,12 @@ André: "mejor animación, más transiciones, mejor diseño, mejor todo". Metáf
 Repositorio, Pages, datos, inicio, máquina de tickets, sucursales con JSON-LD, pruebas y lista para el negocio. Capturas en `entregables/avances/antes/`.
 
 ## Último paso
-**N10.** Cierre del nivel 3. La revisión de terminado (verificador de design-taste-frontend) encontró y se corrigió: el titular que se salía del héroe en celular, rasgos y acentos cortados por las máscaras de línea, el velo de escritorio, el contraste de los pasos inactivos (50 %), la sugerencia que tapaba el ticket en celular, la foto de la gyoza pedida a menor tamaño y las métricas de las fuentes de respaldo. Pruebas: axe sin violaciones (incluidos los estados del menú), sin scroll a 360, portada de 472 KB, LCP de 0.8 a 2.3 s, CLS de 0.0013 como máximo, 59 a 60 fps y movimiento reducido en orden. Videos finales, capturas de visita, comparativa antes y después, y `entregables/REPORTE_NIVEL_3.md`.
+**P0.** Un solo interruptor de modo, propuesta u oficial (`sitio/src/entornos/`), con WhatsApp, dominio, GoatCounter y hoja en el mismo archivo. Hay tres builds: `build:pages` (la propuesta), `build:oficial` (se llena el día del sí) y `build:prueba-oficial` (ensayo con el número 5210000000000 y el dominio ejemplo.test, nunca se publica). `scripts/preparar.mjs` ajusta cada build según el modo: noindex, robots y aviso en la propuesta; index, sitemap, canónica y sin rastros de la propuesta en el oficial. `herramientas/modos.mjs` comprueba la tabla del plan en los dos builds (aviso, nota, robots, canónica, sitemap, rótulos, estadísticas, "Total" y WhatsApp real a wa.me): todo en orden. Primera versión de `GUIA_PUBLICAR.md`.
 
 ## Sigue
-Nivel 4 (`PLAN_NIVEL_4.md`, P0 a P9): todo lo que no depende del negocio para publicar en menos de una hora el día que el dueño diga que sí.
+P1: vista previa al compartir (imagen de 1200 × 630 por página) y la página `/links` para la biografía de TikTok.
 
 ## Capturas más recientes
-| Antes y después | Portada 360 | Portada 1440 | Menú 1440 | Videos |
-|---|---|---|---|---|
-| ![comparativa](entregables/avances/comparativa-nivel3.png) | ![360](entregables/avances/2026-11-16_paso-N10_360.png) | ![1440](entregables/avances/2026-11-16_paso-N10_1440.png) | ![menú](entregables/avances/2026-11-16_paso-N10_menu_1440.png) | [Portada GIF 390](entregables/avances/video/2026-11-16_N10_inicio_390.gif) · [Menú GIF 390](entregables/avances/video/2026-11-16_N10_menu_390.gif) · [Portada MP4 1440](entregables/avances/video/2026-11-16_N10_inicio_1440.mp4) |
+| Propuesta y oficial (390) |
+|---|
+| ![modos](entregables/avances/2026-11-16_paso-P0_modos.png) |

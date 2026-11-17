@@ -1,3 +1,4 @@
+import { PROPUESTA } from '../../../entornos/modo';
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { NEGOCIO, direccionCompleta, sucursal } from '../../servicios/datos';
@@ -17,6 +18,7 @@ const INDICE = [1, 2, 3, 4, 5, 6, 0];
   styleUrl: './sucursal.css',
 })
 export class SucursalPagina {
+  protected readonly propuesta = PROPUESTA;
   protected readonly s = sucursal(inject(ActivatedRoute).snapshot.data['sucursal']);
   protected readonly direccion = direccionCompleta(this.s);
   protected readonly precio = NEGOCIO.precioPorPersona;

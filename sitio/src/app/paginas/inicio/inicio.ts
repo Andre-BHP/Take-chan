@@ -1,3 +1,4 @@
+import { PROPUESTA } from '../../../entornos/modo';
 import { ChangeDetectionStrategy, Component, DestroyRef, ElementRef, PLATFORM_ID, afterNextRender, inject, signal } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { RouterLink } from '@angular/router';
@@ -22,6 +23,7 @@ import { Telon } from '../../componentes/telon';
   styleUrl: './inicio.css',
 })
 export class Inicio {
+  protected readonly propuesta = PROPUESTA;
   protected readonly tlaquepaque = SUCURSALES[0];
   protected readonly sucursales = SUCURSALES;
   protected readonly clasico = platillo('iekei-clasico');
@@ -32,7 +34,7 @@ export class Inicio {
   constructor() {
     inject(Seo).establecer({
       titulo: 'Take-chan Ramen · Ramen Iekei en Tlaquepaque',
-      descripcion: 'Ramen japonés estilo Iekei en Calz. Córdoba 24, Tlaquepaque. Caldo de cerdo con soya y fideo grueso, hechos en Japón según su ficha. Propuesta no oficial de sitio.',
+      descripcion: 'Ramen japonés estilo Iekei en Calz. Córdoba 24, Tlaquepaque. Caldo de cerdo con soya y fideo grueso, hechos en Japón según su ficha.' + (PROPUESTA ? ' Propuesta no oficial de sitio.' : ''),
       ruta: '/',
       esquema: SUCURSALES.map(restaurante).filter((e): e is object => !!e),
     });

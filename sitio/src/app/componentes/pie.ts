@@ -1,3 +1,4 @@
+import { PROPUESTA } from '../../entornos/modo';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { NEGOCIO, SUCURSALES, direccionCorta } from '../servicios/datos';
@@ -27,7 +28,11 @@ import { FOTOS } from './foto';
         }
       </div>
       <div class="envoltura legal">
-        <p>Propuesta no oficial hecha por un estudiante para enseñársela al negocio. No es el sitio de Take-chan Ramen, no recibe pedidos y no tiene datos de contacto reales. La marca pertenece a su dueño.</p>
+        @if (propuesta) {
+          <p>Propuesta no oficial hecha por un estudiante para enseñársela al negocio. No es el sitio de Take-chan Ramen, no recibe pedidos y no tiene datos de contacto reales. La marca pertenece a su dueño.</p>
+        } @else {
+          <p>Take-chan Ramen · Ramen Iekei en Tlaquepaque, Jalisco.</p>
+        }
         <p>Imágenes ilustrativas de <a href="https://unsplash.com/license" target="_blank" rel="noopener">Unsplash</a>, no son platillos ni locales de Take-chan:
           @for (a of autores; track a.usuario; let ultimo = $last) {
             <a [href]="'https://unsplash.com/@' + a.usuario" target="_blank" rel="noopener">{{ a.autor }}</a>{{ ultimo ? '.' : ', ' }}
@@ -53,6 +58,7 @@ import { FOTOS } from './foto';
   `,
 })
 export class Pie {
+  protected readonly propuesta = PROPUESTA;
   protected readonly sucursales = SUCURSALES;
   protected readonly precio = NEGOCIO.precioPorPersona;
   protected readonly tiktok = NEGOCIO.redes.tiktok;

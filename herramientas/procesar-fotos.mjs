@@ -39,6 +39,8 @@ for (const f of lista) {
     color: '#' + [dominant.r, dominant.g, dominant.b].map((c) => c.toString(16).padStart(2, '0')).join(''),
     lqip: 'data:image/webp;base64,' + lqip.toString('base64'),
     alt: f.alt, autor: f.autor, usuario: f.usuario, id: f.id,
+    // De stock (Unsplash) salvo que fotos.json diga stock: false (las fotos propias del local).
+    stock: f.stock !== false,
   };
   console.log(f.nombre, meta.width + 'x' + meta.height);
 }

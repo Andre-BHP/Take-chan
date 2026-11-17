@@ -1,3 +1,4 @@
+import { PROPUESTA } from '../../entornos/modo';
 import { ChangeDetectionStrategy, Component, ElementRef, afterNextRender, inject } from '@angular/core';
 import { NavigationEnd, Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { filter } from 'rxjs';
@@ -9,7 +10,7 @@ import { filter } from 'rxjs';
   imports: [RouterLink, RouterLinkActive],
   template: `
     <header>
-      <p class="aviso" role="note">Propuesta no oficial de sitio para Take-chan Ramen</p>
+      @if (propuesta) { <p class="aviso" role="note">Propuesta no oficial de sitio para Take-chan Ramen</p> }
       <nav class="envoltura barra" aria-label="Principal">
         <a class="marca" routerLink="/" aria-label="Take-chan Ramen, inicio"><span lang="ja" aria-hidden="true">家系</span> TAKE-CHAN</a>
         <ul>
@@ -38,6 +39,7 @@ import { filter } from 'rxjs';
   `,
 })
 export class Cabecera {
+  protected readonly propuesta = PROPUESTA;
   constructor() {
     const host = inject<ElementRef<HTMLElement>>(ElementRef).nativeElement;
     const router = inject(Router);

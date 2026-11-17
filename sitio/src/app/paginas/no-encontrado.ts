@@ -9,7 +9,7 @@ import { Seo } from '../servicios/seo';
   template: `
     <section class="envoltura">
       <h1 class="t-titulo">Esta página no existe</h1>
-      <p class="tenue">Puede que el enlace esté mal escrito o que la página todavía no esté en la propuesta.</p>
+      <p class="tenue">Puede que el enlace esté mal escrito o que la página ya no exista.</p>
       <a class="boton boton-contorno" routerLink="/">Volver al inicio</a>
     </section>
   `,

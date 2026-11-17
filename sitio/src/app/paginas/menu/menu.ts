@@ -1,3 +1,4 @@
+import { PROPUESTA } from '../../../entornos/modo';
 import { ApplicationRef, ChangeDetectionStrategy, Component, DestroyRef, ElementRef, PLATFORM_ID, afterNextRender, computed, effect, inject, signal, viewChild } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
@@ -18,6 +19,7 @@ import { Movimiento } from '../../servicios/movimiento';
   styleUrl: './menu.css',
 })
 export class Menu {
+  protected readonly propuesta = PROPUESTA;
   protected readonly pedido = inject(Pedido);
   protected readonly contacto = inject(Contacto);
   protected readonly menu = MENU;
@@ -67,7 +69,7 @@ export class Menu {
   constructor() {
     inject(Seo).establecer({
       titulo: 'Menú y pedido · Take-chan Ramen',
-      descripcion: 'Arma tu pedido de ramen Iekei como en una máquina de tickets japonesa y apártalo para recoger en Tlaquepaque. Menú y precios de ejemplo.',
+      descripcion: 'Arma tu pedido de ramen Iekei como en una máquina de tickets japonesa y apártalo para recoger en Tlaquepaque.' + (PROPUESTA ? ' Menú y precios de ejemplo.' : ''),
       ruta: '/menu',
     });
     const ruta = inject(ActivatedRoute);

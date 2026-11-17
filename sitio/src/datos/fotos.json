@@ -7,7 +7,8 @@
     "alt": "Tazón de ramen de caldo cremoso con nori y chashu sobre una barra de madera",
     "autor": "Kouji Tsuru",
     "usuario": "pafuxu",
-    "id": "cM_4SQ5fyrk"
+    "id": "cM_4SQ5fyrk",
+    "stock": true
   },
   "clasico": {
     "ancho": 2400,
@@ -17,7 +18,8 @@
     "alt": "Ramen de caldo cremoso con huevo marinado en tazón negro",
     "autor": "Kouji Tsuru",
     "usuario": "pafuxu",
-    "id": "L9mmUuQbfxI"
+    "id": "L9mmUuQbfxI",
+    "stock": true
   },
   "chashu": {
     "ancho": 2160,
@@ -27,7 +29,8 @@
     "alt": "Ramen con rebanadas de chashu y nori",
     "autor": "Kouji Tsuru",
     "usuario": "pafuxu",
-    "id": "7k1E-aucIkU"
+    "id": "7k1E-aucIkU",
+    "stock": true
   },
   "huevo": {
     "ancho": 2280,
@@ -37,7 +40,8 @@
     "alt": "Ramen con huevo marinado y chashu",
     "autor": "Kouji Tsuru",
     "usuario": "pafuxu",
-    "id": "YpgGpfZWV30"
+    "id": "YpgGpfZWV30",
+    "stock": true
   },
   "picante": {
     "ancho": 2400,
@@ -47,7 +51,8 @@
     "alt": "Ramen picante con huevo y cebollín en tazón negro",
     "autor": "Kouji Tsuru",
     "usuario": "pafuxu",
-    "id": "bD5_uZyrcTg"
+    "id": "bD5_uZyrcTg",
+    "stock": true
   },
   "gyoza": {
     "ancho": 2400,
@@ -57,7 +62,8 @@
     "alt": "Gyoza doradas en plato negro",
     "autor": "Mikey Frost",
     "usuario": "frostyfilmsandphoto",
-    "id": "klTf2RN37Ts"
+    "id": "klTf2RN37Ts",
+    "stock": true
   },
   "caldo": {
     "ancho": 2400,
@@ -67,7 +73,8 @@
     "alt": "Caldo cremoso de ramen con huevo",
     "autor": "Kouji Tsuru",
     "usuario": "pafuxu",
-    "id": "wzsOpOtcuNI"
+    "id": "wzsOpOtcuNI",
+    "stock": true
   },
   "fideo": {
     "ancho": 2400,
@@ -77,7 +84,8 @@
     "alt": "Fideos levantados con palillos sobre un tazón",
     "autor": "Nahima Aparicio",
     "usuario": "nahimaaparicio",
-    "id": "6esxgklFkQs"
+    "id": "6esxgklFkQs",
+    "stock": true
   },
   "tazon": {
     "ancho": 1680,
@@ -87,7 +95,8 @@
     "alt": "Tazón de ramen con nori, huevo y chashu",
     "autor": "Kouji Tsuru",
     "usuario": "pafuxu",
-    "id": "T_B8nPvDWNk"
+    "id": "T_B8nPvDWNk",
+    "stock": true
   },
   "arroz": {
     "ancho": 2400,
@@ -97,7 +106,8 @@
     "alt": "Arroz blanco con ajonjolí en tazón negro",
     "autor": "Vinn Koonyosying",
     "usuario": "mggbox",
-    "id": "zXNC_lBBVGE"
+    "id": "zXNC_lBBVGE",
+    "stock": true
   },
   "extra-huevo": {
     "ancho": 816,
@@ -107,7 +117,8 @@
     "alt": "Medio huevo marinado con la yema suave",
     "autor": "Kouji Tsuru",
     "usuario": "pafuxu",
-    "id": "YpgGpfZWV30"
+    "id": "YpgGpfZWV30",
+    "stock": true
   },
   "extra-chashu": {
     "ancho": 1200,
@@ -117,7 +128,8 @@
     "alt": "Rebanadas de chashu sobre el caldo",
     "autor": "Kouji Tsuru",
     "usuario": "pafuxu",
-    "id": "7k1E-aucIkU"
+    "id": "7k1E-aucIkU",
+    "stock": true
   },
   "extra-fideo": {
     "ancho": 1200,
@@ -127,7 +139,8 @@
     "alt": "Fideos levantados con palillos",
     "autor": "Nahima Aparicio",
     "usuario": "nahimaaparicio",
-    "id": "6esxgklFkQs"
+    "id": "6esxgklFkQs",
+    "stock": true
   },
   "extra-nori": {
     "ancho": 864,
@@ -137,6 +150,7 @@
     "alt": "Hoja de nori al borde del tazón",
     "autor": "Kouji Tsuru",
     "usuario": "pafuxu",
-    "id": "cM_4SQ5fyrk"
+    "id": "cM_4SQ5fyrk",
+    "stock": true
   }
 }

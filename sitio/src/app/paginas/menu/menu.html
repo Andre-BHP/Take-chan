@@ -1,7 +1,7 @@
 <section class="cabeza envoltura" aria-labelledby="menu-titulo">
   <h1 id="menu-titulo" class="t-display">Menú y pedido</h1>
   <p class="entrada">Como en una ramen-ya de Japón: presiona las teclas de la máquina, elige el fideo, el sabor y la grasa, y sale tu ticket listo para WhatsApp.</p>
-  <app-nota-ejemplo />
+  @if (propuesta) { <app-nota-ejemplo /> }
 </section>
 
 <div class="envoltura disposicion">
@@ -137,7 +137,7 @@
           </li>
         }
       </ul>
-      <p class="subtotal"><span>Total de ejemplo</span><span class="t-dato">{{ pesos(pedido.total()) }}</span></p>
+      <p class="subtotal"><span>{{ propuesta ? 'Total de ejemplo' : 'Total' }}</span><span class="t-dato">{{ pesos(pedido.total()) }}</span></p>
       <button type="button" class="vaciar" (click)="pedido.vaciar()">Vaciar pedido</button>
     } @else {
       <div class="vacio">
@@ -202,8 +202,8 @@
           <hr />
           <p class="ticket-linea"><span>Recoger</span><span>{{ pedido.hora() === 'pronto' ? 'lo antes posible' : pedido.hora() }}</span></p>
           @if (pedido.nombre().trim()) { <p class="ticket-linea"><span>A nombre de</span><span>{{ pedido.nombre().trim() }}</span></p> }
-          <p class="ticket-linea total"><span>Total de ejemplo</span><span>{{ pesos(pedido.total()) }}</span></p>
-          <p class="ticket-nota">Ticket de demostración: no es un pedido real.</p>
+          <p class="ticket-linea total"><span>{{ propuesta ? 'Total de ejemplo' : 'Total' }}</span><span>{{ pesos(pedido.total()) }}</span></p>
+          <p class="ticket-nota">{{ contacto.demo ? 'Ticket de demostración: no es un pedido real.' : 'Se confirma por WhatsApp al enviarlo.' }}</p>
           <img class="ticket-sello" src="sello-192.webp" width="76" height="76" alt="" />
         </div>
         <button type="button" class="boton boton-primario ancho" (click)="enviar()">
@@ -216,7 +216,7 @@
             <p class="burbuja-texto">{{ a.mensaje }}</p>
           </div>
         } @else {
-          <p class="ayuda tenue">Modo demostración: se muestra el mensaje, no se envía.</p>
+          <p class="ayuda tenue">{{ contacto.demo ? 'Modo demostración: se muestra el mensaje, no se envía.' : 'Se abre WhatsApp con tu pedido escrito; solo falta enviarlo.' }}</p>
         }
       </div>
     }

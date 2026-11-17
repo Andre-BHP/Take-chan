@@ -43,7 +43,7 @@
     <dl>
       <div><dt>Cocina</dt><dd>Ramen japonés estilo Iekei</dd></div>
       <div><dt>Precio</dt><dd>De {{ precio.min }} a {{ precio.max }} MXN por persona</dd></div>
-      <div><dt>Pedidos</dt><dd>Para recoger: se arma en la máquina de tickets y se manda por WhatsApp (propuesta)</dd></div>
+      <div><dt>Pedidos</dt><dd>Para recoger: se arma en la máquina de tickets y se manda por WhatsApp{{ propuesta ? ' (propuesta)' : '' }}</dd></div>
     </dl>
     <a class="enlace" routerLink="/menu" [queryParams]="{ ramen: 'iekei-clasico' }">¿Primera vez? Empieza por el Iekei clásico</a>
   </section>

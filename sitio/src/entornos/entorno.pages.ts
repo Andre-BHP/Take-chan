@@ -1,7 +1,13 @@
+import { Entorno } from './tipo';
+
 /**
- * Versión publicada en GitHub Pages: prototipo no oficial.
- * Sin WhatsApp, teléfonos ni correo reales; los botones muestran el mensaje que se habría enviado.
+ * GitHub Pages: prototipo no oficial. Aviso fijo, noindex y WhatsApp en modo demostración.
+ * No lleva número, dominio ni estadísticas reales.
  */
-export const ENTORNO = {
-  modoDemo: true,
+export const ENTORNO: Entorno = {
+  modo: 'propuesta',
+  whatsapp: '',
+  dominio: '',
+  goatcounter: '',
+  hojaUrl: '',
 };

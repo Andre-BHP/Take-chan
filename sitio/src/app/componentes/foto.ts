@@ -1,7 +1,8 @@
 import { ChangeDetectionStrategy, Component, computed, input } from '@angular/core';
+import { PROPUESTA } from '../../entornos/modo';
 import fotosJson from '../../datos/fotos.json';
 
-interface FotoDatos { ancho: number; alto: number; color: string; lqip: string; alt: string; autor: string; usuario: string; id: string }
+interface FotoDatos { ancho: number; alto: number; color: string; lqip: string; alt: string; autor: string; usuario: string; id: string; stock?: boolean }
 export const FOTOS = fotosJson as Record<string, FotoDatos>;
 
 /**
@@ -20,7 +21,7 @@ export const FOTOS = fotosJson as Record<string, FotoDatos>;
         [alt]="alt() ?? datos().alt" [width]="datos().ancho" [height]="datos().alto"
         [attr.loading]="prioridad() ? 'eager' : 'lazy'" [attr.fetchpriority]="prioridad() ? 'high' : null" decoding="async" />
     </picture>
-    @if (rotulo()) { <span class="rotulo">Imagen ilustrativa</span> }
+    @if (rotulo() && (propuesta || datos().stock !== false)) { <span class="rotulo">Imagen ilustrativa</span> }
   `,
   styles: `
     :host { position: relative; display: block; overflow: hidden; background: var(--color) var(--lqip) center / cover no-repeat; }
@@ -46,6 +47,8 @@ export const FOTOS = fotosJson as Record<string, FotoDatos>;
   `,
 })
 export class Foto {
+  /** En modo oficial el rótulo queda solo en las fotos que sigan siendo de stock (fotos.json → stock). */
+  protected readonly propuesta = PROPUESTA;
   readonly nombre = input.required<string>();
   readonly sizes = input('100vw');
   readonly prioridad = input(false);
