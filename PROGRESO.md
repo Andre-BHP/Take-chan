@@ -2,7 +2,7 @@
 
 - **Pages:** https://andre-bhp.github.io/Take-chan/
 - **Repositorio:** https://github.com/Andre-BHP/Take-chan
-- **Última subida:** 2026-11-16 21:11 (hora de Guadalajara)
+- **Última subida:** 2026-11-16 21:14 (hora de Guadalajara)
 
 ## Rediseño (2026-11-15)
 André revisó la primera versión: "quedó muy feo y muy mal". Este rediseño cambia la dirección a "una ramen-ya de Yokohama de noche": fotos de ejemplo rotuladas, negro sumi y papel washi, 家系 vertical y un solo acento bermellón.
@@ -23,7 +23,7 @@ Plan de Arthemis: todo lo que no depende del negocio, para publicar el sitio ofi
 - [x] P0. Interruptor de modo, propuesta u oficial
 - [x] P1. Vista previa al compartir y `/links`
 - [x] P2. Datos editables desde CSV, aviso y agotado 売切
-- [ ] P3. Preguntas frecuentes y SEO local
+- [x] P3. Preguntas frecuentes y SEO local
 - [ ] P4. Versión en inglés
 - [ ] P5. PWA y menú sin conexión
 - [ ] P6. Impresos con QR
@@ -63,12 +63,12 @@ André: "mejor animación, más transiciones, mejor diseño, mejor todo". Metáf
 Repositorio, Pages, datos, inicio, máquina de tickets, sucursales con JSON-LD, pruebas y lista para el negocio. Capturas en `entregables/avances/antes/`.
 
 ## Último paso
-**P2.** Menú, horario y aviso editables desde una hoja de Google publicada como CSV, sin servidor (`sitio/src/app/servicios/hoja.ts`). Se lee al abrir, con 3 s de espera y una copia guardada por 10 min; si falla, usa la copia o los JSON del build. El prerender y el SEO siguen con los JSON. Hoy no hay hoja (necesita cuenta): las tres URL del entorno están vacías y hay pestañas de ejemplo en `public/datos-ejemplo/` (generadas con `herramientas/hoja-ejemplo.mjs`), que usa el ensayo oficial. Platillo agotado: la tecla se apaga con 売切 Agotado y no se puede pedir (también en la lista y el detalle). La banda de aviso sale arriba solo entre las fechas desde y hasta, y se cierra con la ✕. `herramientas/hoja.mjs` prueba agotado, cambio de precio, falla y espera de la hoja, copia guardada, aviso vigente, vencido y futuro, y horario con un día de descanso: todo en orden. `GUIA_EDITAR.md` para el dueño, con capturas y sin palabras técnicas. Portada de 476 KB y CLS de 0.0004.
+**P3.** Preguntas frecuentes en la portada, en un acordeón nativo (`<details>`) accesible con teclado y sin JavaScript, y con su JSON-LD FAQPage. Solo se muestran las de respuesta general del estilo o del sitio: qué es el Iekei, cómo pido, qué es pedirlo «al gusto», dónde están, horario (sale de los datos o de la hoja), pedidos para llevar (con respuesta distinta en propuesta y oficial) y qué lleva normalmente un Iekei. Las que dependen del negocio (pago, estacionamiento, sin cerdo, alergias, niños) quedan en `faq.json` con `mostrar: false` y se agregaron a `PEDIR_AL_NEGOCIO.md`. SEO local: el Restaurant ahora lleva imagen; `herramientas/seo-local.mjs` revisa esquemas, que la FAQPage coincida con lo visible, la coherencia de nombre, dirección y horario entre páginas, y el sitemap solo en oficial. Todo en orden en los dos modos. axe limpio; portada de 480 KB.
 
 ## Sigue
-P3: preguntas frecuentes (solo con respuestas reales o genéricas) con FAQPage y revisión de SEO local.
+P4: versión en inglés (/en) con selector ES · EN y hreflang.
 
 ## Capturas más recientes
-| Agotado 売切 | Banda de aviso (390) | Pestaña menú (ejemplo) |
-|---|---|---|
-| ![agotado](entregables/avances/2026-11-16_paso-P2_agotado_1440.png) | ![aviso](entregables/avances/2026-11-16_paso-P2_aviso_390.png) | ![hoja](entregables/guias/hoja-menu.png) |
+| Preguntas frecuentes 1440 | 390 |
+|---|---|
+| ![faq](entregables/avances/2026-11-16_paso-P3_faq_1440.png) | ![faq 390](entregables/avances/2026-11-16_paso-P3_faq_390.png) |

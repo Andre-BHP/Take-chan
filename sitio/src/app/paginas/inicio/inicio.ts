@@ -1,3 +1,5 @@
+import { Faq, faqPage, preguntas } from '../../componentes/faq';
+import { Contacto } from '../../servicios/contacto';
 import { PROPUESTA } from '../../../entornos/modo';
 import { ChangeDetectionStrategy, Component, DestroyRef, ElementRef, PLATFORM_ID, afterNextRender, inject, signal } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
@@ -18,7 +20,7 @@ import { Telon } from '../../componentes/telon';
 @Component({
   selector: 'app-inicio',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [RouterLink, Foto, Mapa, Vapor, Noren, Estado, NotaEjemplo, Medidor],
+  imports: [RouterLink, Foto, Mapa, Vapor, Noren, Estado, NotaEjemplo, Medidor, Faq],
   templateUrl: './inicio.html',
   styleUrl: './inicio.css',
 })
@@ -38,7 +40,7 @@ export class Inicio {
       titulo: 'Take-chan Ramen · Ramen Iekei en Tlaquepaque',
       descripcion: 'Ramen japonés estilo Iekei en Calz. Córdoba 24, Tlaquepaque. Caldo de cerdo con soya y fideo grueso, hechos en Japón según su ficha.' + (PROPUESTA ? ' Propuesta no oficial de sitio.' : ''),
       ruta: '/',
-      esquema: SUCURSALES.map(restaurante).filter((e): e is object => !!e),
+      esquema: [...SUCURSALES.map(restaurante).filter((e): e is object => !!e), faqPage(preguntas(inject(Contacto).demo))],
     });
 
     const movimiento = inject(Movimiento);

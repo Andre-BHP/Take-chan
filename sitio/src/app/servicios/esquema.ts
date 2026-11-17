@@ -1,5 +1,6 @@
 import { NEGOCIO, Sucursal } from './datos';
 import { BASE } from './seo';
+import { OFICIAL } from '../../entornos/modo';
 
 const DIAS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
@@ -23,6 +24,7 @@ export function restaurante(s: Sucursal): object | null {
     currenciesAccepted: 'MXN',
     acceptsReservations: false,
     hasMenu: `${BASE}/menu`,
+    image: `${BASE}/og/${OFICIAL ? 'oficial' : 'propuesta'}/${s.id}.jpg`,
     address: {
       '@type': 'PostalAddress',
       streetAddress: s.direccion.calle,

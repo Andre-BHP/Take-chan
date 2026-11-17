@@ -45,6 +45,16 @@ Lista para la visita. Cada punto dice dónde entra en el sitio. Todo lo que hoy 
 - Dar de alta la sucursal de la Americana en Google.
 - Permite unificar horario, subir el menú y responder reseñas.
 
+## 9. Preguntas frecuentes sin respuesta
+Están listas en `sitio/src/datos/faq.json` con `mostrar: false`; salen en la portada (y en el JSON-LD FAQPage) en cuanto haya respuesta:
+- ¿Qué formas de pago aceptan? (efectivo, tarjeta, transferencia)
+- ¿Hay estacionamiento?
+- ¿Tienen opción sin cerdo o vegetariana?
+- ¿Pueden preparar un platillo sin algún ingrediente (alergias)?
+- ¿Hay porciones o sillas para niños?
+
+Hoy se muestran solo las de respuesta general del estilo Iekei o del propio sitio. "¿Qué lleva normalmente un Iekei?" dice lo típico del estilo (cerdo, trigo, soya, huevo) sin afirmar nada de sus platillos.
+
 ---
 
 ## Lo que hoy es de ejemplo en el sitio

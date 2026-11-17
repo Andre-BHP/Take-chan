@@ -1,0 +1,61 @@
+{
+  "regla": "Solo se muestran las preguntas con respuesta real o general del estilo (mostrar: true). Las que dependen del negocio quedan con mostrar: false hasta que Take-chan responda (PEDIR_AL_NEGOCIO.md, punto 9). {horario} y {direccion} se llenan con negocio.json o la hoja.",
+  "preguntas": [
+    {
+      "id": "iekei",
+      "pregunta": "¿Qué es el ramen Iekei?",
+      "respuesta": "Un estilo de ramen nacido en Yokohama: caldo de hueso de cerdo con salsa de soya, espeso y con una capa de grasa encima, y fideo grueso y recto. Se sirve con espinaca, chashu y tres hojas de nori.",
+      "tipo": "general",
+      "mostrar": true
+    },
+    {
+      "id": "pedir",
+      "pregunta": "¿Cómo pido?",
+      "respuesta": "En el menú, presiona las teclas de la máquina de tickets, elige el fideo, el sabor y la grasa, y envía tu ticket por WhatsApp para recogerlo.",
+      "respuestaPropuesta": "En el menú, presiona las teclas de la máquina de tickets y elige el fideo, el sabor y la grasa. En esta propuesta, el envío por WhatsApp es de demostración.",
+      "tipo": "sitio",
+      "mostrar": true
+    },
+    {
+      "id": "al-gusto",
+      "pregunta": "¿Qué es pedirlo «al gusto»?",
+      "respuesta": "En el estilo Iekei se suele elegir qué tan firme va el fideo (硬め firme, 普通 normal o 柔らかめ suave), qué tan intenso va el sabor y cuánta grasa lleva. Si es tu primera vez, pídelo todo normal.",
+      "tipo": "general",
+      "mostrar": true
+    },
+    {
+      "id": "donde",
+      "pregunta": "¿Dónde están?",
+      "respuesta": "En {direccion}, en San Pedro Tlaquepaque. La sucursal de la Americana (Prisciliano Sánchez 1110) está por confirmar.",
+      "tipo": "dato",
+      "mostrar": true
+    },
+    {
+      "id": "horario",
+      "pregunta": "¿Cuál es el horario?",
+      "respuesta": "En Tlaquepaque: {horario}.",
+      "tipo": "dato",
+      "mostrar": true
+    },
+    {
+      "id": "llevar",
+      "pregunta": "¿Hacen pedidos para llevar?",
+      "respuesta": "Sí. Arma tu pedido en el menú, envíalo por WhatsApp y pasa a recogerlo a la hora que elegiste.",
+      "respuestaPropuesta": "Esta propuesta incluye pedidos para recoger por WhatsApp; falta que el negocio lo confirme.",
+      "tipo": "sitio",
+      "mostrar": true
+    },
+    {
+      "id": "lleva",
+      "pregunta": "¿Qué lleva normalmente un Iekei?",
+      "respuesta": "Por el estilo, lleva normalmente cerdo (en el caldo y el chashu), trigo (en el fideo), soya (en el tare) y huevo si se pide con huevo marinado. Si tienes alguna alergia, pregunta en el local antes de pedir.",
+      "tipo": "general",
+      "mostrar": true
+    },
+    { "id": "pago", "pregunta": "¿Qué formas de pago aceptan?", "respuesta": null, "tipo": "negocio", "mostrar": false },
+    { "id": "estacionamiento", "pregunta": "¿Hay estacionamiento?", "respuesta": null, "tipo": "negocio", "mostrar": false },
+    { "id": "sin-cerdo", "pregunta": "¿Tienen opción sin cerdo o vegetariana?", "respuesta": null, "tipo": "negocio", "mostrar": false },
+    { "id": "alergenos", "pregunta": "¿Pueden preparar un platillo sin algún ingrediente (alergias)?", "respuesta": null, "tipo": "negocio", "mostrar": false },
+    { "id": "ninos", "pregunta": "¿Hay porciones o sillas para niños?", "respuesta": null, "tipo": "negocio", "mostrar": false }
+  ]
+}

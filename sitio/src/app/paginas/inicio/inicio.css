@@ -260,3 +260,7 @@
 .tiktok-nota { font: 500 .8125rem/1.3 var(--sans); color: var(--ceniza); }
 .tiktok-embed { margin: 0; width: min(100%, 340px); min-height: 520px; }
 @media (min-width: 900px) { .tiktok { grid-template-columns: minmax(0, 1fr) auto; column-gap: var(--e-8); } }
+
+/* ---------- Preguntas frecuentes ---------- */
+.faq { padding-block: var(--e-7); display: grid; gap: var(--e-5); }
+@media (min-width: 900px) { .faq { grid-template-columns: minmax(16rem, 1fr) minmax(0, 2fr); column-gap: var(--e-8); align-items: start; } }
