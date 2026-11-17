@@ -37,7 +37,8 @@ export const FOTOS = fotosJson as Record<string, FotoDatos>;
       background: radial-gradient(ellipse at 50% 45%, transparent 58%, rgba(10, 8, 6, .3) 100%);
     }
     .rotulo {
-      position: absolute; right: var(--e-2); bottom: var(--e-2); z-index: 2;
+      /* Siempre arriba a la derecha: abajo van los textos de las tarjetas y del héroe. */
+      position: absolute; right: var(--e-2); top: var(--e-2); z-index: 2;
       padding: 3px 8px; border-radius: var(--r-s);
       background: rgba(18, 17, 16, .72); color: var(--washi);
       font: 500 .6875rem/1.4 var(--sans); letter-spacing: .01em; pointer-events: none;

@@ -1,7 +1,7 @@
-import { ChangeDetectionStrategy, Component, DestroyRef, ElementRef, PLATFORM_ID, afterNextRender, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, DestroyRef, ElementRef, PLATFORM_ID, afterNextRender, inject, signal } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { RouterLink } from '@angular/router';
-import { SUCURSALES, direccionCorta, pesos, platillo } from '../../servicios/datos';
+import { NEGOCIO, SUCURSALES, direccionCorta, pesos, platillo } from '../../servicios/datos';
 import { Seo } from '../../servicios/seo';
 import { restaurante } from '../../servicios/esquema';
 import { Foto } from '../../componentes/foto';
@@ -55,6 +55,20 @@ export class Inicio {
     if (!foto) return;
     foto.style.setProperty('view-transition-name', 'plato-' + id);
     this.telon.compartido = true;
+  }
+
+  /** TikTok con fachada: el embed oficial solo se carga al tocar (sin cookies de terceros antes). */
+  protected readonly tiktok = NEGOCIO.redes.tiktok;
+  protected readonly tiktokId = NEGOCIO.redes.tiktok.usuario.replace('@', '');
+  protected readonly tiktokCargado = signal(false);
+  protected cargarTiktok() {
+    this.tiktokCargado.set(true);
+    setTimeout(() => {
+      const s = document.createElement('script');
+      s.src = 'https://www.tiktok.com/embed.js';
+      s.async = true;
+      document.body.appendChild(s);
+    }, 0);
   }
 
   /** Estrella de cinco puntas (24 × 24). */

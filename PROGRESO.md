@@ -2,7 +2,7 @@
 
 - **Pages:** https://andre-bhp.github.io/Take-chan/
 - **Repositorio:** https://github.com/Andre-BHP/Take-chan
-- **Última subida:** 2026-11-16 20:23 (hora de Guadalajara)
+- **Última subida:** 2026-11-16 20:27 (hora de Guadalajara)
 
 ## Rediseño (2026-11-15)
 André revisó la primera versión: "quedó muy feo y muy mal". Este rediseño cambia la dirección a "una ramen-ya de Yokohama de noche": fotos de ejemplo rotuladas, negro sumi y papel washi, 家系 vertical y un solo acento bermellón.
@@ -28,7 +28,7 @@ Plan de Arthemis para pasar de "bien hecho" a "de premio".
 - [x] N5. Héroe legible y saludo いらっしゃいませ
 - [x] N6. Ritmo editorial: títulos, 4.8 con sección propia y pausa a sangre
 - [x] N7. Menú que vende: sugerencia, detalle de tecla y vista de lista
-- [ ] N8. Reloj en vivo, TikTok bajo demanda, contraste AA y detalles
+- [x] N8. Reloj en vivo, TikTok bajo demanda, contraste AA y detalles
 - [ ] N9. Guion de fotos para André
 - [ ] N10. Pruebas, pulido, videos y reporte
 
@@ -49,12 +49,12 @@ André: "mejor animación, más transiciones, mejor diseño, mejor todo". Metáf
 Repositorio, Pages, datos, inicio, máquina de tickets, sucursales con JSON-LD, pruebas y lista para el negocio. Capturas en `entregables/avances/antes/`.
 
 ## Último paso
-**N7.** Menú que vende. Después del primer ramen aparece "¿Le agregas huevo marinado? +$25", con Agregar y No, gracias (en celular flota sobre la barra; en escritorio va en Tu pedido). Cada tecla tiene un botón "i", y mantenerla presionada abre su detalle: la foto crece con View Transition y muestra la descripción, el precio y "Agregar"; se cierra con Esc o tocando fuera, y la presión larga ya no agrega. Interruptor Máquina / Lista: la lista es compacta y sirve para lector de pantalla; la elección se recuerda en el navegador. Los extras (chashu, huevo, fideo, nori) ya no repiten las fotos de los tazones: cada uno tiene su recorte del ingrediente. El sello en el ticket quedó en N4. Recorrido nuevo `herramientas/menu-estados.mjs`: axe sin violaciones en sugerencia, detalle y lista, a 390 y 1440.
+**N8.** Detalles. Reloj vivo: "Abierto ahora · cierra en 2 h 13 min", que cambia justo al empezar cada minuto; cerrado: "Cerrado · abre mañana a las 12:00". TikTok con fachada: "Míralos en TikTok" no pide nada a TikTok hasta que se toca, y entonces carga el embed oficial de @take_chan_sensei, sin el título no verificado. En escritorio, una etiqueta "Ver en el menú" sigue al puntero dentro de cada tarjeta del bento. El gris secundario sube a #bdb4a8 (AA de sobra). Los rótulos "Imagen ilustrativa" van siempre arriba a la derecha (abajo están los textos). El pedido vacío tiene una mini máquina dibujada. La ficha de Tlaquepaque junta los 7 días iguales en "Todos los días". Revisión nueva `herramientas/detalles.mjs` (reloj con hora fija, cero pedidos a TikTok antes del clic): todo en orden. axe limpio, portada de 472 KB, LCP de 1.2 s y CLS de 0.003.
 
 ## Sigue
-N8: reloj vivo, TikTok bajo demanda, etiqueta en el bento, contraste AA, rótulos y estado vacío del pedido.
+N9: GUION_FOTOS.md con las 12 tomas y PEDIR_AL_NEGOCIO.md al día.
 
 ## Capturas más recientes
-| Sugerencia 390 | Detalle 390 | Lista 390 | Detalle 1440 | Video |
+| TikTok | Bento con etiqueta | Pedido vacío | 360 | 1440 |
 |---|---|---|---|---|
-| ![sugerencia](entregables/avances/2026-11-16_paso-N7_sugerencia_390.png) | ![detalle](entregables/avances/2026-11-16_paso-N7_detalle_390.png) | ![lista](entregables/avances/2026-11-16_paso-N7_lista_390.png) | ![detalle 1440](entregables/avances/2026-11-16_paso-N7_detalle_1440.png) | [GIF 390](entregables/avances/video/2026-11-16_N7_vende_390.gif) · [MP4 1440](entregables/avances/video/2026-11-16_N7_vende_1440.mp4) |
+| ![tiktok](entregables/avances/2026-11-16_paso-N8_tiktok_1440.png) | ![bento](entregables/avances/2026-11-16_paso-N8_bento_1440.png) | ![vacío](entregables/avances/2026-11-16_paso-N8_vacio_390.png) | ![360](entregables/avances/2026-11-16_paso-N8_360.png) | ![1440](entregables/avances/2026-11-16_paso-N8_1440.png) |

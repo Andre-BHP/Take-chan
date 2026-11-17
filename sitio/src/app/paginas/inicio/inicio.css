@@ -60,7 +60,6 @@
   .heroe-visual { inset: 0; -webkit-mask-image: none; mask-image: none; }
   .heroe-visual::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(18, 17, 16, .94) 0%, rgba(18, 17, 16, .82) 30%, rgba(18, 17, 16, .25) 58%, rgba(18, 17, 16, 0) 72%), linear-gradient(0deg, rgba(18, 17, 16, .6) 0%, rgba(18, 17, 16, 0) 30%); }
   .heroe-foto { --enfoque: 70% 50%; }
-  .heroe-foto ::ng-deep .rotulo { top: auto; bottom: var(--e-3); right: var(--e-3); }
   .heroe-vapor { left: 50%; bottom: 50%; width: 32%; height: 48%; z-index: 1; }
   .kanji { font-size: clamp(13rem, 16vw, 15.5rem); }
   /* Dos líneas cortas, sin que "en Tlaquepaque." se parta. */
@@ -226,3 +225,38 @@
 /* Flecha de "Cómo llegar" que se desliza al pasar el cursor */
 .con-flecha svg { transition: transform var(--t-2) var(--ease-out); }
 @media (hover: hover) { .con-flecha:hover svg { transform: translateX(4px); } }
+
+
+/* ---------- Bento: "Ver en el menú" sigue al puntero dentro de la tarjeta (solo escritorio) ---------- */
+.ver-menu { display: none; }
+@media (hover: hover) and (pointer: fine) {
+  .ver-menu {
+    position: absolute; z-index: 3; left: calc((var(--x, 0) + .5) * 100%); top: calc((var(--y, 0) + .5) * 100%);
+    display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; border-radius: 999px;
+    background: var(--washi); color: var(--tinta); font: 600 .8125rem/1 var(--sans); white-space: nowrap;
+    translate: -50% -140%; opacity: 0; scale: .9; pointer-events: none;
+    transition: opacity var(--t-2) var(--ease-out), scale var(--t-2) var(--ease-out);
+  }
+  .ver-menu svg { width: 14px; height: 14px; }
+  .celda:hover .ver-menu { opacity: 1; scale: 1; }
+}
+
+/* ---------- TikTok con fachada ---------- */
+.tiktok { padding-block: var(--e-7); display: grid; gap: var(--e-5); align-items: center; }
+.tiktok-texto { display: grid; gap: var(--e-3); justify-items: start; max-width: 36rem; }
+.tiktok-marco { display: grid; justify-items: center; }
+.tiktok-fachada {
+  width: min(100%, 340px); aspect-ratio: 9 / 16; display: grid; place-content: center; justify-items: center; gap: var(--e-3);
+  padding: var(--e-4); border: 1px solid var(--linea); border-radius: 22px; cursor: pointer; color: var(--washi);
+  background: radial-gradient(120% 80% at 50% 30%, #2a2622, var(--sumi) 70%) var(--grano);
+  box-shadow: 0 30px 60px -30px rgba(0, 0, 0, .9), inset 0 0 0 8px var(--sumi-2);
+  transition: border-color var(--t-2) var(--ease-out);
+}
+.tiktok-fachada:hover { border-color: var(--washi-2); }
+.tiktok-fachada:focus-visible { outline: 2px solid var(--washi); outline-offset: 4px; }
+.tiktok-play { display: grid; place-items: center; width: 64px; height: 64px; border-radius: 50%; background: var(--washi); color: var(--tinta); }
+.tiktok-play svg { width: 28px; height: 28px; margin-left: 3px; }
+.tiktok-boton { font: 600 1rem/1.3 var(--sans); text-align: center; max-width: 16ch; }
+.tiktok-nota { font: 500 .8125rem/1.3 var(--sans); color: var(--ceniza); }
+.tiktok-embed { margin: 0; width: min(100%, 340px); min-height: 520px; }
+@media (min-width: 900px) { .tiktok { grid-template-columns: minmax(0, 1fr) auto; column-gap: var(--e-8); } }

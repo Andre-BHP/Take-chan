@@ -140,7 +140,12 @@
 .cantidad button:hover { border-color: var(--ceniza); }
 .subtotal { display: flex; justify-content: space-between; font-weight: 600; }
 .vaciar { justify-self: start; background: none; border: 0; padding: var(--e-1) 0; color: var(--ceniza); text-decoration: underline; text-underline-offset: .2em; cursor: pointer; font-size: .875rem; }
-.vacio { font-size: .9375rem; }
+.vacio { display: grid; justify-items: center; gap: var(--e-1); padding-block: var(--e-3); text-align: center; font-size: .9375rem; }
+.vacio-maquina { width: 72px; height: auto; margin-bottom: var(--e-2); }
+@media (prefers-reduced-motion: no-preference) {
+  .vacio-ticket { animation: vacio-asoma 1.2s var(--ease-in-out) 2 alternate; }
+  @keyframes vacio-asoma { from { transform: translateY(-14px); } }
+}
 
 .opciones { border: 0; padding: 0; display: grid; gap: var(--e-2); }
 .opciones legend, .campo > span { font-weight: 600; padding: 0; margin-bottom: var(--e-2); }

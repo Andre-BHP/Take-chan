@@ -140,7 +140,17 @@
       <p class="subtotal"><span>Total de ejemplo</span><span class="t-dato">{{ pesos(pedido.total()) }}</span></p>
       <button type="button" class="vaciar" (click)="pedido.vaciar()">Vaciar pedido</button>
     } @else {
-      <p class="vacio tenue">Todavía no hay tickets. Presiona una tecla; si es tu primera vez, el Iekei clásico, todo normal.</p>
+      <div class="vacio">
+        <svg class="vacio-maquina" viewBox="0 0 96 120" aria-hidden="true" focusable="false">
+          <rect x="8" y="4" width="80" height="104" rx="8" fill="#2e2f31" stroke="#4a4c4f" stroke-width="2" />
+          <rect x="16" y="12" width="64" height="14" rx="3" fill="#f3eee4" />
+          @for (k of [0, 1, 2, 3, 4, 5]; track k) { <rect [attr.x]="16 + (k % 3) * 22" [attr.y]="34 + (k > 2 ? 22 : 0)" width="18" height="18" rx="3" fill="#e7e0d2" [attr.opacity]="k === 0 ? 1 : .55" /> }
+          <rect x="24" y="84" width="48" height="6" rx="3" fill="#0b0a09" />
+          <path class="vacio-ticket" d="M34 90h28v22l-3.5-2.5-3.5 2.5-3.5-2.5-3.5 2.5-3.5-2.5-3.5 2.5-3.5-2.5L34 112z" fill="#fbf9f4" />
+        </svg>
+        <p><strong>Todavía no hay tickets.</strong></p>
+        <p class="tenue">Presiona una tecla. Si es tu primera vez, el Iekei clásico, todo normal.</p>
+      </div>
     }
 
     <fieldset class="opciones">

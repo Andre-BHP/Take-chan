@@ -3,7 +3,7 @@ import { Turno } from '../servicios/datos';
 import { Reloj, estado, horarioTexto } from '../servicios/horario';
 
 /**
- * "Abierto ahora · cierra 17:00" calculado con la hora de Guadalajara (dis-039).
+ * "Abierto ahora · cierra en 2 h 13 min", calculado con la hora de Guadalajara y al día cada minuto (dis-039).
  * En el prerender (sin hora) muestra el horario fijo.
  */
 @Component({

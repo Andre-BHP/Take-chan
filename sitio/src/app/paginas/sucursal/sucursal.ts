@@ -20,10 +20,22 @@ export class SucursalPagina {
   protected readonly s = sucursal(inject(ActivatedRoute).snapshot.data['sucursal']);
   protected readonly direccion = direccionCompleta(this.s);
   protected readonly precio = NEGOCIO.precioPorPersona;
-  protected readonly semana = INDICE.map((d, i) => {
-    const t = this.s.horario.turnos.find((x) => x.dias.includes(d));
-    return { dia: DIAS[i], horas: t ? `${t.abre} a ${t.cierra}` : 'Cerrado' };
-  });
+  /** Días seguidos con el mismo horario van en una sola fila ("Todos los días", "Lunes a viernes"). */
+  protected readonly semana = (() => {
+    const dias = INDICE.map((d, i) => {
+      const t = this.s.horario.turnos.find((x) => x.dias.includes(d));
+      return { dia: DIAS[i], horas: t ? `${t.abre} a ${t.cierra}` : 'Cerrado' };
+    });
+    const grupos: { dia: string; horas: string }[] = [];
+    for (let i = 0; i < dias.length; ) {
+      let j = i;
+      while (j + 1 < dias.length && dias[j + 1].horas === dias[i].horas) j++;
+      const nombre = j - i === dias.length - 1 ? 'Todos los días' : j === i ? dias[i].dia : `${dias[i].dia} a ${dias[j].dia.toLowerCase()}`;
+      grupos.push({ dia: nombre, horas: dias[i].horas });
+      i = j + 1;
+    }
+    return grupos;
+  })();
   protected readonly conEsquema = !!restaurante(this.s);
 
   constructor() {

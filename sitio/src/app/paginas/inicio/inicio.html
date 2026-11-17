@@ -60,6 +60,7 @@
   <div class="bento" data-revelar="grupo">
     <a class="celda grande" routerLink="/menu" [queryParams]="{ ramen: clasico.id }" (pointermove)="seguir($event)" (pointerdown)="volar($event, clasico.id)">
       <app-foto [nombre]="clasico.foto!" sizes="(min-width: 900px) 50vw, 100vw" />
+      <span class="ver-menu" aria-hidden="true">Ver en el menú<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h13m-5-5 5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
       <div class="celda-texto">
         <h3 class="t-titulo">{{ clasico.nombre }}</h3>
         <p class="desc">{{ clasico.desc }}</p>
@@ -70,6 +71,7 @@
     @for (p of extras; track p.id) {
       <a class="celda" routerLink="/menu" [queryParams]="{ ramen: p.id }" (pointermove)="seguir($event)" (pointerdown)="volar($event, p.id)">
         <app-foto [nombre]="p.foto!" sizes="(min-width: 900px) 25vw, 50vw" />
+        <span class="ver-menu" aria-hidden="true">Ver en el menú<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h13m-5-5 5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
         <div class="celda-texto">
           <h3 class="t-subtitulo">{{ p.nombre }}</h3>
           <p class="precio t-dato">{{ pesos(p.precio) }}</p>
@@ -89,6 +91,28 @@
     <div class="con-kanji"><span class="kanji-v" lang="ja" aria-hidden="true">作り方</span><div class="como-titulos"><h2 id="como-titulo" class="t-seccion" data-revelar="lineas">Cómo se hace un Iekei</h2><p class="como-bajada">Cuatro pasos del estilo, como en Yokohama.</p></div></div>
   </div>
   <app-medidor />
+</section>
+
+<section class="tiktok envoltura" aria-labelledby="tiktok-titulo">
+  <div class="tiktok-texto">
+    <div class="con-kanji"><span class="kanji-v" lang="ja" aria-hidden="true">動画</span><h2 id="tiktok-titulo" class="t-seccion" data-revelar="lineas">Míralos en TikTok</h2></div>
+    <p>La cuenta {{ tiktok.usuario }} enseña el local y su ramen en video.</p>
+    <p class="tenue">Los videos se cargan solo si los pides: antes de eso, TikTok no recibe nada de tu visita.</p>
+    <a class="enlace" [href]="tiktok.url" target="_blank" rel="noopener">Abrir {{ tiktok.usuario }} en TikTok<span class="solo-lector"> (se abre en otra pestaña)</span></a>
+  </div>
+  <div class="tiktok-marco">
+    @if (!tiktokCargado()) {
+      <button type="button" class="tiktok-fachada" (click)="cargarTiktok()">
+        <span class="tiktok-play" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M8 5.5v13l11-6.5z" fill="currentColor" /></svg></span>
+        <span class="tiktok-boton">Cargar los videos de {{ tiktok.usuario }}</span>
+        <span class="tiktok-nota">Se conecta con TikTok al tocar</span>
+      </button>
+    } @else {
+      <blockquote class="tiktok-embed" [attr.cite]="tiktok.url" [attr.data-unique-id]="tiktokId" data-embed-type="creator">
+        <section><a target="_blank" rel="noopener" [href]="tiktok.url">{{ tiktok.usuario }}</a></section>
+      </blockquote>
+    }
+  </div>
 </section>
 
 <section id="sucursales" class="sucursales envoltura" aria-labelledby="sucursales-titulo">
