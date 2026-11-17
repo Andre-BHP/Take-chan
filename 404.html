@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="es-MX" data-beasties-container="">
+<head>
+  <meta charset="utf-8">
+  <title>Take-chan Ramen · Ramen Iekei en Tlaquepaque</title>
+  <base href="/Take-chan/">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#121110">
+  <meta name="color-scheme" content="dark">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="manifest" href="manifest.webmanifest">
+  <style>
+    /* Subconjuntos autohospedados (herramientas/fuentes.mjs). Rutas relativas a <base href>: sirven en / y en /Take-chan/. */
+    @font-face { font-family: 'Shippori Mincho B1'; font-weight: 700; font-display: swap; src: url(fuentes/shippori-700.woff2) format('woff2'); }
+    @font-face { font-family: 'Shippori Mincho B1'; font-weight: 800; font-display: swap; src: url(fuentes/shippori-800.woff2) format('woff2'); }
+    @font-face { font-family: 'Geist'; font-weight: 400; font-display: swap; src: url(fuentes/geist-400.woff2) format('woff2'); }
+    @font-face { font-family: 'Geist'; font-weight: 500; font-display: swap; src: url(fuentes/geist-500.woff2) format('woff2'); }
+    @font-face { font-family: 'Geist'; font-weight: 600; font-display: swap; src: url(fuentes/geist-600.woff2) format('woff2'); }
+    @font-face { font-family: 'Geist Mono'; font-weight: 500; font-display: swap; src: url(fuentes/geist-mono-500.woff2) format('woff2'); }
+    /* Respaldos con el mismo ancho que las fuentes finales: el cambio de fuente no mueve el texto (CLS 0). */
+    @font-face { font-family: 'Shippori respaldo'; src: local('Times New Roman'), local('Noto Serif'), local('DejaVu Serif'); size-adjust: 114%; ascent-override: 101.75%; descent-override: 25.4%; line-gap-override: 0%; }
+    @font-face { font-family: 'Geist respaldo'; src: local('Arial'), local('Roboto'), local('Helvetica'); size-adjust: 102%; ascent-override: 99%; descent-override: 29.4%; line-gap-override: 0%; }
+  </style>
+  <script>
+    /* Intro de la noren: solo la primera visita de la sesión y nunca con movimiento reducido. */
+    (function () { try { if (!sessionStorage.getItem('take-intro') && !matchMedia('(prefers-reduced-motion: reduce)').matches) { document.documentElement.classList.add('con-intro'); sessionStorage.setItem('take-intro', '1'); setTimeout(function () { document.documentElement.classList.add('intro-saltada'); }, 1300); } } catch (e) {} })();
+  </script>
+  <style>
+    #intro { display: none; }
+    .con-intro #intro { display: block; position: fixed; inset: 0; z-index: 100; pointer-events: none; animation: intro-fin 1ms linear 1.2s forwards; }
+    #intro .mitad { position: absolute; top: 0; bottom: 0; width: 50.5%; background: #1b1917; box-shadow: inset 0 0 120px rgba(0, 0, 0, .55); animation: 560ms cubic-bezier(.33, 1.3, .5, 1) .62s both; }
+    #intro .izq { left: 0; border-right: 1px solid #262320; animation-name: intro-izq; transform-origin: 0 0; }
+    #intro .der { right: 0; animation-name: intro-der; transform-origin: 100% 0; }
+    #intro svg { position: absolute; left: 50%; top: 50%; width: min(34vw, 180px); translate: -50% -52%; overflow: visible; animation: intro-kanji 160ms ease .5s both; }
+    #intro text { font: 800 160px/1 'Shippori Mincho B1', 'Yu Mincho', serif; fill: #f3eee4; fill-opacity: 0; stroke: #f3eee4; stroke-width: 2; stroke-dasharray: 3200; stroke-dashoffset: 3200; animation: intro-trazo 420ms cubic-bezier(.65, 0, .35, 1) .02s forwards, intro-tinta 200ms ease .3s forwards; }
+    #intro button { position: absolute; right: 16px; bottom: 16px; pointer-events: auto; min-height: 44px; padding: 0 16px; border: 1px solid rgba(243, 238, 228, .45); border-radius: 6px; background: transparent; color: #f3eee4; font: 500 .875rem/1 'Geist', system-ui, sans-serif; cursor: pointer; animation: intro-kanji 200ms ease .6s both; }
+    /* Saludo de toda ramen-ya al entrar: aparece cuando se abre la noren y se va antes del titular. */
+    #intro .saludo { position: absolute; left: 50%; top: 50%; translate: -50% -50%; margin: 0; display: grid; justify-items: center; gap: 8px; color: #f3eee4; white-space: nowrap; opacity: 0; animation: intro-saludo 560ms ease .66s both; }
+    #intro .saludo [lang] { font: 700 clamp(1.5rem, 5vw, 2.5rem)/1.2 'Shippori Mincho B1', 'Shippori respaldo', serif; letter-spacing: .08em; }
+    #intro .saludo span:last-child { font: 500 .875rem/1 'Geist', 'Geist respaldo', sans-serif; letter-spacing: .12em; color: rgba(243, 238, 228, .75); }
+    @keyframes intro-saludo { 0% { opacity: 0; transform: translateY(6px); } 25%, 70% { opacity: 1; transform: none; } 100% { opacity: 0; } }
+    @keyframes intro-trazo { to { stroke-dashoffset: 0; } }
+    @keyframes intro-tinta { to { fill-opacity: 1; } }
+    @keyframes intro-kanji { to { opacity: 0; } }
+    @keyframes intro-izq { to { transform: translateX(-102%) skewY(4deg); } }
+    @keyframes intro-der { to { transform: translateX(102%) skewY(-4deg); } }
+    @keyframes intro-fin { to { visibility: hidden; } }
+    .intro-saltada #intro { display: none !important; }
+  </style>
+<style>:root{--sumi:#121110;--sumi-2:#1b1917;--sumi-3:#262320;--linea:#37322d;--ceniza:#bdb4a8;--washi:#f3eee4;--washi-2:#e9e2d4;--washi-linea:#d6ccba;--tinta:#1a1714;--tinta-2:#5c544b;--bermellon:#d9381e;--bermellon-hundido:#b52c15;--blanco:#ffffff;--metal:#2e2f31;--metal-claro:#4a4c4f;--led:#ffb347;--mincho:"Shippori Mincho B1", "Shippori respaldo", "Yu Mincho", "Hiragino Mincho ProN", "Times New Roman", serif;--sans:"Geist", "Geist respaldo", system-ui, -apple-system, "Segoe UI", sans-serif;--mono:"Geist Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;--e-1:4px;--e-2:8px;--e-3:16px;--e-4:24px;--e-5:32px;--e-6:48px;--e-7:64px;--e-8:96px;--e-9:128px;--gutter:clamp(16px, 4vw, 48px);--ancho:76rem;--r-s:3px;--r-m:6px;--r-l:12px;--t-1:.12s;--t-2:.2s;--t-3:.32s;--t-4:.56s;--t-5:.9s;--ease-out:cubic-bezier(.22, 1, .36, 1);--ease-in-out:cubic-bezier(.65, 0, .35, 1);--ease-tela:cubic-bezier(.33, 1.3, .5, 1);--rapido:var(--t-1);--base:var(--t-2);--lento:var(--t-3);--salida:var(--ease-out);--pulsar:cubic-bezier(.3, .7, .4, 1);--grano:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='f'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' seed='4'/%3E%3CfeColorMatrix values='0 0 0 0 .3 0 0 0 0 .25 0 0 0 0 .18 0 0 0 .07 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23f)'/%3E%3C/svg%3E");color-scheme:dark;scrollbar-color:var(--linea) var(--sumi)}*,*:before,*:after{box-sizing:border-box}*{margin:0}html{-webkit-text-size-adjust:100%;text-size-adjust:100%;scroll-padding-top:88px}body{background:var(--sumi);color:var(--washi);font:400 1rem/1.6 var(--sans);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;font-kerning:normal;overflow-x:clip;caret-color:var(--bermellon)}svg{display:block;max-width:100%}button{font:inherit;color:inherit}p{text-wrap:pretty}[lang=ja]{font-family:var(--mincho)}@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}@media(prefers-reduced-motion:no-preference){}@property --rasgado{syntax:"<number>";inherits:false;initial-value:1;}</style><link rel="stylesheet" href="styles-GAWQ7T6E.css" media="print" data-beasties-media="all"><noscript><link rel="stylesheet" href="styles-GAWQ7T6E.css"></noscript><meta name="robots" content="noindex, nofollow"></head>
+<body ngcm="">
+  <div id="intro">
+    <div class="mitad izq"></div><div class="mitad der"></div>
+    <svg viewBox="0 0 160 330" aria-hidden="true" focusable="false"><text x="0" y="140">家</text><text x="0" y="310">系</text></svg>
+    <p class="saludo"><span lang="ja">いらっしゃいませ</span><span>Bienvenido</span></p>
+    <button type="button" onclick="document.documentElement.classList.add('intro-saltada')">Saltar</button>
+  </div>
+  <script>
+    /* Versión en inglés: el saludo y el botón de la intro, en inglés. */
+    if (/\/en(\/|$)/.test(location.pathname)) { document.querySelector('#intro .saludo span:last-child').textContent = 'Welcome'; document.querySelector('#intro button').textContent = 'Skip'; }
+  </script>
+  <app-root></app-root>
+<script src="main-KEIASM7K.js" type="module"></script><script>document.querySelectorAll('link[data-beasties-media]').forEach(function(l){l.media=l.getAttribute('data-beasties-media');l.removeAttribute('data-beasties-media')})</script></body>
+</html>

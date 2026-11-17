@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="es-MX">
+<head>
+  <meta charset="utf-8">
+  <title>Take-chan Ramen · Menú, pedido y cómo llegar</title>
+  <base href="/Take-chan/">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#121110">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="Ramen Iekei en Tlaquepaque: menú y pedido, cómo llegar a cada sucursal, reseñas en Google Maps y TikTok.">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  
+  <meta property="og:title" content="Take-chan Ramen · Menú, pedido y cómo llegar">
+  <meta property="og:description" content="Ramen Iekei en Tlaquepaque: menú y pedido, cómo llegar a cada sucursal, reseñas en Google Maps y TikTok.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_MX">
+  <meta property="og:site_name" content="Take-chan Ramen">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Take-chan Ramen · Menú, pedido y cómo llegar">
+  <meta name="twitter:description" content="Ramen Iekei en Tlaquepaque: menú y pedido, cómo llegar a cada sucursal, reseñas en Google Maps y TikTok.">
+  <meta property="og:image" content="https://andre-bhp.github.io/Take-chan/og/propuesta/links.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Take-chan Ramen · Menú, pedido y cómo llegar">
+  <meta name="twitter:image" content="https://andre-bhp.github.io/Take-chan/og/propuesta/links.jpg">
+  <style>
+    @font-face { font-family: 'Shippori Mincho B1'; font-weight: 700; font-display: swap; src: url(fuentes/shippori-700.woff2) format('woff2'); }
+    @font-face { font-family: 'Geist'; font-weight: 500; font-display: swap; src: url(fuentes/geist-500.woff2) format('woff2'); }
+    @font-face { font-family: 'Geist'; font-weight: 600; font-display: swap; src: url(fuentes/geist-600.woff2) format('woff2'); }
+    :root { --sumi: #121110; --washi: #f3eee4; --washi-2: #e9e2d4; --ceniza: #bdb4a8; --linea: #37322d; --bermellon: #d9381e; --hundido: #b52c15; --led: #ffb347; }
+    * { box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; }
+    body { margin: 0; min-height: 100svh; background: var(--sumi); color: var(--washi); font: 500 1rem/1.5 'Geist', system-ui, -apple-system, 'Segoe UI', sans-serif; -webkit-font-smoothing: antialiased; }
+    .aviso { margin: 0; padding: 5px 16px; text-align: center; font-size: .75rem; line-height: 1.3; color: var(--ceniza); border-bottom: 1px solid var(--linea); }
+    main { display: grid; justify-items: center; gap: 16px; max-width: 30rem; margin: 0 auto; padding: 56px 16px 72px; text-align: center; }
+    .sello { width: 96px; height: 96px; rotate: -5deg; }
+    h1 { margin: 0; font: 700 clamp(2.5rem, 9vw, 3.25rem)/1.05 'Shippori Mincho B1', 'Yu Mincho', 'Times New Roman', serif; letter-spacing: -.015em; }
+    .bajada { margin: -8px 0 0; font-size: 1.125rem; color: var(--washi-2); }
+    .estado { margin: 0; display: inline-flex; align-items: center; gap: 8px; min-height: 1.5rem; font-size: .9375rem; font-variant-numeric: tabular-nums; }
+    .estado::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: var(--ceniza); }
+    .estado.abierto::before { background: #6fcf7a; }
+    ul { list-style: none; margin: 16px 0 0; padding: 0; display: grid; gap: 16px; width: 100%; }
+    a.b { display: flex; align-items: center; justify-content: center; gap: 8px; min-height: 56px; padding: 0 24px; border: 1px solid rgba(243, 238, 228, .55); border-radius: 6px; color: var(--washi); text-decoration: none; font-weight: 600; transition: background-color 200ms ease, border-color 200ms ease; }
+    a.b:hover { background: rgba(243, 238, 228, .08); border-color: var(--washi); }
+    a.b.p { background: var(--bermellon); border-color: var(--bermellon); color: #fff; }
+    a.b.p:hover { background: var(--hundido); }
+    a.b:focus-visible { outline: 2px solid var(--washi); outline-offset: 3px; }
+    .marca { font-weight: 500; font-size: .8125rem; color: var(--ceniza); }
+    .nota { margin: 16px 0 0; max-width: 34ch; font-size: .8125rem; line-height: 1.45; color: var(--ceniza); }
+    .solo-lector { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+  </style>
+</head>
+<body>
+  <header><p class="aviso" role="note">Propuesta no oficial de sitio para Take-chan Ramen</p></header>
+  <main>
+    <img class="sello" src="sello-192.webp" width="96" height="96" alt="">
+    <h1>Take-chan Ramen</h1>
+    <p class="bajada">Ramen Iekei en Tlaquepaque</p>
+    <p class="estado" id="estado">Todos los días · 12:00 a 17:00</p>
+    <ul>
+      <li><a data-evento="menu" class="b p" href="menu?utm_source=tiktok">Menú y pedido</a></li>
+      <li><a data-evento="como-llegar-tlaquepaque" class="b" href="https://www.google.com/maps/search/?api=1&amp;query=Take-chan%20Ramen%2C%20Calz.%20C%C3%B3rdoba%2024%2C%20Tlaquepaque" target="_blank" rel="noopener">Cómo llegar a Tlaquepaque<span class="solo-lector"> (se abre Google Maps)</span></a></li>
+      <li><a class="b" href="americana">Sucursal Americana <span class="marca">por confirmar</span></a></li>
+      <li><a data-evento="resenas" class="b" href="https://www.google.com/maps/search/?api=1&amp;query=Take-chan%20Ramen%2C%20Calz.%20C%C3%B3rdoba%2024%2C%20Tlaquepaque" target="_blank" rel="noopener">Reseñas en Google Maps<span class="solo-lector"> (se abre en otra pestaña)</span></a></li>
+      <li><a data-evento="tiktok" class="b" href="https://www.tiktok.com/@take_chan_sensei" target="_blank" rel="noopener">TikTok @take_chan_sensei<span class="solo-lector"> (se abre en otra pestaña)</span></a></li>
+    </ul>
+    <p class="nota">Propuesta: menú, precios y fotos de ejemplo hasta que Take-chan confirme los suyos.</p>
+  </main>
+  <script>
+    (function () {
+      var turnos = [{"dias":[0,1,2,3,4,5,6],"abre":"12:00","cierra":"17:00"}];
+      var dias = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado'];
+      var m = function (h) { return +h.slice(0, 2) * 60 + +h.slice(3); };
+      var falta = function (n) { var h = Math.floor(n / 60), r = n % 60; return [h ? h + ' h' : '', r ? r + ' min' : ''].filter(Boolean).join(' ') || 'menos de 1 min'; };
+      var turno = function (d) { for (var i = 0; i < turnos.length; i++) if (turnos[i].dias.indexOf(d) >= 0) return turnos[i]; };
+      function pintar() {
+        var p = new Intl.DateTimeFormat('en-US', { timeZone: 'America/Mexico_City', weekday: 'short', hour: '2-digit', minute: '2-digit', hourCycle: 'h23' }).formatToParts(new Date());
+        var v = function (t) { for (var i = 0; i < p.length; i++) if (p[i].type === t) return p[i].value; return '0'; };
+        var dia = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].indexOf(v('weekday')), min = +v('hour') * 60 + +v('minute');
+        var hoy = turno(dia), el = document.getElementById('estado'), texto = 'Cerrado';
+        if (hoy && min >= m(hoy.abre) && min < m(hoy.cierra)) { texto = 'Abierto ahora · cierra en ' + falta(m(hoy.cierra) - min); el.className = 'estado abierto'; }
+        else {
+          el.className = 'estado';
+          if (hoy && min < m(hoy.abre)) texto = 'Cerrado · abre hoy a las ' + hoy.abre;
+          else for (var i = 1; i <= 7; i++) { var d = (dia + i) % 7, t = turno(d); if (t) { texto = 'Cerrado · abre ' + (i === 1 ? 'mañana' : 'el ' + dias[d]) + ' a las ' + t.abre; break; } }
+        }
+        el.textContent = texto;
+      }
+      pintar();
+      setInterval(pintar, 60000);
+      // Estadísticas sin cookies (GoatCounter por URL): la visita y cada botón, solo en el sitio oficial con código.
+      var conteo = "";
+      if (conteo) {
+        var enviar = function (d) { var u = new URL(conteo); for (var k in d) if (d[k]) u.searchParams.set(k, d[k]); u.searchParams.set('rnd', Math.random().toString(36).slice(2)); fetch(u, { mode: 'no-cors', keepalive: true, credentials: 'omit' }).catch(function () {}); };
+        enviar({ p: '/links', t: document.title, r: document.referrer, q: location.search });
+        document.querySelectorAll('a.b').forEach(function (a, i) { a.addEventListener('click', function () { enviar({ p: 'links/' + (a.dataset.evento || i), t: a.textContent.trim(), e: 'true' }); }); });
+      }
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+categoria,id,nombre,descripcion,precio,foto,disponible
+Ramen,iekei-clasico,Iekei clásico,"Caldo de cerdo con soya, fideo grueso, chashu, espinaca y tres hojas de nori.",165,heroe-iekei,sí
+Ramen,iekei-chashu,Iekei con chashu extra,El clásico con tres rebanadas más de chashu.,195,chashu,sí
+Ramen,iekei-huevo,Iekei con huevo marinado,El clásico con un huevo marinado en soya.,185,huevo,sí
+Ramen,iekei-picante,Iekei picante,El clásico con pasta de chile.,185,picante,sí
+Extras,extra-chashu,Chashu,Tres rebanadas.,45,extra-chashu,sí
+Extras,extra-huevo,Huevo marinado,Una pieza.,25,extra-huevo,sí
+Extras,extra-fideo,Fideo extra,Otra porción para el mismo caldo.,30,extra-fideo,sí
+Extras,extra-nori,Nori,Tres hojas.,15,extra-nori,sí
+Para acompañar,gyoza,Gyoza,Cinco piezas a la plancha.,85,gyoza,sí
+Para acompañar,arroz,Arroz blanco,Para el último sorbo de caldo.,30,arroz,no
+Bebidas,te,Té verde,Caliente o frío.,35,,sí
